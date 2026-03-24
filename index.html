@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asia Lab — Client Workspace</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --ink: #0D0D14;
+  --ink2: #1C1C2A;
+  --gold: #B8953A;
+  --gold2: #D4AD55;
+  --line: rgba(184,149,58,.18);
+  --muted: #6B6B7A;
+  --light: #F2F0EB;
+  --accent-bg: rgba(184,149,58,.06);
+  --red: #C0392B;
+  --green: #1A6B3C;
+  --purple: #4A3F7A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SIDEBAR ── */
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: #F4F2ED;
+  border-right: 1px solid var(--line);
+  padding: 32px 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sb-logo {
+  padding: 0 20px 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+.sb-logo-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+.sb-logo-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+.sb-section { margin-bottom: 6px; }
+.sb-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding: 8px 20px 4px;
+  display: block;
+}
+.sb-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 20px;
+  font-size: 12px;
+  color: var(--ink2);
+  text-decoration: none;
+  transition: background .15s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.sb-link:hover { background: rgba(184,149,58,.08); }
+.sb-link.active { background: rgba(184,149,58,.12); color: var(--gold); font-weight: 500; }
+.sb-icon { font-size: 13px; flex-shrink: 0; }
+.sb-status {
+  margin: 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: var(--accent-bg);
+  border-radius: 2px;
+}
+.sb-status-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: .18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px;
+}
+.sb-status-value {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── MAIN ── */
+.main {
+  flex: 1;
+  overflow-y: auto;
+}
+.page-section {
+  display: none;
+  max-width: 780px;
+  padding: 52px 60px 80px;
+}
+.page-section.active { display: block; }
+
+/* ── PAGE HEADER ── */
+.page-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page-tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.page-title em { font-style: italic; color: var(--gold2); }
+.page-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 36px;
+  line-height: 1.7;
+  max-width: 560px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── COMPONENTS ── */
+.card {
+  border: 1px solid var(--line);
+  padding: 22px 24px;
+  margin-bottom: 14px;
+  background: #fff;
+}
+.card-gold { border-color: rgba(184,149,58,.4); background: var(--accent-bg); }
+.card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: .22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.card-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.card-body strong { color: var(--ink); font-weight: 500; }
+
+/* founder message */
+.founder-msg {
+  border: 1px solid rgba(184,149,58,.4);
+  background: var(--ink);
+  color: #F2EDE3;
+  padding: 36px 40px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.founder-msg::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(184,149,58,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.founder-msg-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  color: var(--gold2);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.founder-msg-tag::before { content: ''; width: 16px; height: 1px; background: var(--gold); }
+.founder-msg-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(242,237,227,.88);
+  margin-bottom: 28px;
+}
+.founder-msg-body em { font-style: italic; color: var(--gold2); }
+.founder-msg-sig {
+  border-top: 1px solid rgba(184,149,58,.2);
+  padding-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.founder-sig-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(242,237,227,.9);
+}
+.founder-sig-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .14em;
+  color: rgba(184,149,58,.7);
+  margin-top: 3px;
+}
+.founder-sig-contact {
+  margin-left: auto;
+  text-align: right;
+}
+.founder-sig-contact a {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--gold2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,149,58,.3);
+}
+
+/* status bar */
+.status-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+}
+.status-step {
+  background: var(--bg);
+  padding: 14px 12px;
+  text-align: center;
+}
+.status-step.active {
+  background: var(--ink);
+}
+.status-step-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+}
+.status-step.active .status-step-label { color: var(--gold); }
+.status-step-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink2);
+}
+.status-step.active .status-step-name { color: #F2EDE3; }
+
+/* info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.info-item {
+  border: 1px solid var(--line);
+  padding: 14px 16px;
+  background: #fff;
+}
+.info-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: .18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.info-value {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.info-placeholder {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* roadmap */
+.roadmap-phase {
+  margin-bottom: 24px;
+}
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--ink);
+  margin-bottom: 1px;
+}
+.phase-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .15em;
+  color: var(--gold);
+}
+.phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #F2EDE3;
+}
+.phase-range {
+  margin-left: auto;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .1em;
+  color: rgba(242,237,227,.4);
+}
+.week-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 1px solid var(--line);
+  border-top: none;
+  background: #fff;
+}
+.week-label {
+  padding: 12px 14px;
+  border-right: 1px solid var(--line);
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+.week-content {
+  padding: 12px 16px;
+}
+.week-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.week-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.week-row.milestone {
+  background: var(--accent-bg);
+  border-color: rgba(184,149,58,.3);
+}
+
+/* partner table */
+.partner-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+.partner-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: .18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: rgba(184,149,58,.8);
+  text-align: left;
+  font-weight: 400;
+}
+.partner-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink2);
+  vertical-align: top;
+}
+.partner-table tr:last-child td { border-bottom: none; }
+.partner-table tr:nth-child(even) td { background: #FAFAF5; }
+.status-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.tag-pending { background: rgba(184,149,58,.1); color: var(--gold); }
+.tag-active { background: rgba(26,107,60,.1); color: var(--green); }
+.tag-tbd { background: rgba(107,107,122,.1); color: var(--muted); }
+
+/* milestone cards */
+.milestone-card {
+  border: 1px solid var(--line);
+  padding: 20px 22px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+.milestone-card.upcoming { opacity: .5; }
+.milestone-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.milestone-day {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  min-width: 60px;
+}
+.milestone-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.milestone-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+.milestone-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.milestone-item {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.milestone-item::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+/* communication log */
+.log-entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  border: 1px solid var(--line);
+  border-bottom: none;
+  background: #fff;
+}
+.log-entry:last-child { border-bottom: 1px solid var(--line); }
+.log-date {
+  padding: 14px 16px;
+  border-right: 1px solid var(--line);
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .1em;
+  color: var(--gold);
+  line-height: 1.6;
+}
+.log-body { padding: 14px 16px; }
+.log-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.log-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* legal */
+.legal-section {
+  margin-bottom: 32px;
+}
+.legal-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.legal-h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 18px 0 8px;
+}
+.legal-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.legal-body strong { color: var(--ink); font-weight: 500; }
+.legal-body ul {
+  margin: 8px 0 8px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.legal-highlight {
+  padding: 14px 18px;
+  border-left: 3px solid var(--gold);
+  background: var(--accent-bg);
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin: 14px 0;
+}
+
+/* section divider */
+.s-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  margin: 28px 0;
+}
+
+/* contact box */
+.contact-box {
+  border: 1px solid rgba(184,149,58,.35);
+  background: var(--ink);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+.contact-left {}
+.contact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: .2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.contact-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #F2EDE3;
+  margin-bottom: 2px;
+}
+.contact-title {
+  font-size: 11px;
+  color: rgba(242,237,227,.45);
+}
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+.contact-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--gold2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,149,58,.3);
+}
+
+/* notice box */
+.notice {
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  background: #fffef8;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.notice strong { color: var(--ink); }
+
+/* ── MOBILE ── */
+@media (max-width: 700px) {
+  .sidebar { display: none; }
+  .page-section { padding: 32px 24px 60px; }
+  .info-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sb-logo">
+    <span class="sb-logo-text">Asia Lab</span>
+    <div class="sb-logo-sub">Client Workspace</div>
+  </div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Start Here</span>
+    <button class="sb-link active" onclick="show('welcome')"><span class="sb-icon">◈</span>Welcome — Lee Jungsub</button>
+  </div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Your Case</span>
+    <button class="sb-link" onclick="show('overview')"><span class="sb-icon">◉</span>Case Overview</button>
+    <button class="sb-link" onclick="show('brief')"><span class="sb-icon">◎</span>Direction Brief</button>
+  </div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Execution</span>
+    <button class="sb-link" onclick="show('roadmap')"><span class="sb-icon">▣</span>90-Day Roadmap</button>
+    <button class="sb-link" onclick="show('partners')"><span class="sb-icon">◐</span>Partner List</button>
+    <button class="sb-link" onclick="show('milestones')"><span class="sb-icon">◑</span>Milestones</button>
+  </div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Updates</span>
+    <button class="sb-link" onclick="show('log')"><span class="sb-icon">◷</span>Communication Log</button>
+  </div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Legal & Policies</span>
+    <button class="sb-link" onclick="show('terms')"><span class="sb-icon">◻</span>Terms of Service</button>
+    <button class="sb-link" onclick="show('refund')"><span class="sb-icon">◻</span>Refund Policy</button>
+    <button class="sb-link" onclick="show('privacy')"><span class="sb-icon">◻</span>Privacy Policy</button>
+    <button class="sb-link" onclick="show('disclaimer')"><span class="sb-icon">◻</span>Disclaimer</button>
+  </div>
+
+  <div style="padding: 16px 12px 0;">
+    <div class="sb-status">
+      <span class="sb-status-label">Current Status</span>
+      <div class="sb-status-value">● Onboarding</div>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- ══════════════════════════════════════ -->
+<!-- 01. WELCOME -->
+<!-- ══════════════════════════════════════ -->
+<section id="welcome" class="page-section active">
+  <div class="page-tag">Welcome</div>
+  <h1 class="page-title">Your execution<br>starts <em>here.</em></h1>
+  <p class="page-sub">This is your private workspace. Every step, every deliverable, every update — all in one place. You never need to ask where things stand.</p>
+
+  <!-- LEE JUNGSUB MESSAGE -->
+  <div class="founder-msg">
+    <div class="founder-msg-tag">A personal message from Lee Jungsub · Asia Lab Founder</div>
+    <div class="founder-msg-body">
+      You've made a decision. That matters.<br><br>
+      I've spent 27 years building the networks that make global expansion actually work — not from a database, not through research, but through <em>on-the-ground relationships</em> in Korea, India, Japan, and the US.<br><br>
+      Every case that comes into Asia Lab, I review personally. That's not a policy. That's how this works.<br><br>
+      Your case has been received. Within 48 hours, I will deliver your Direction Brief — a clear, one-page execution map with the specific market direction, the right partner types, and the immediate actions that move things forward.<br><br>
+      If anything is unclear, if something needs adjustment, or if you have a question at any point — <strong style="color:var(--gold2);">contact me directly.</strong> Not a support desk. Me.<br><br>
+      I am responsible for your outcome here. That is the commitment.
+    </div>
+    <div class="founder-msg-sig">
+      <div>
+        <div class="founder-sig-name">Lee Jungsub</div>
+        <div class="founder-sig-title">Founder · Asia Lab · 27 Years Hallyu Industry</div>
+      </div>
+      <div class="founder-sig-contact">
+        <a href="mailto:ceo@asialab.world">ceo@asialab.world</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <div class="card card-gold">
+    <div class="card-label">What Happens Next</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);min-width:60px;">NOW</span>
+        <span style="font-size:12px;color:var(--ink);line-height:1.6;">Complete your intake form if not yet submitted. The link was sent to your email from ceo@asialab.world.</span>
+      </div>
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);min-width:60px;">24 HRS</span>
+        <span style="font-size:12px;color:var(--ink);line-height:1.6;">You will receive a personal confirmation that your case has been reviewed and analysis is underway.</span>
+      </div>
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);min-width:60px;">48 HRS</span>
+        <span style="font-size:12px;color:var(--ink);line-height:1.6;">Your Direction Brief is delivered to this workspace and to your email. Starter clients also receive named partner identification and 90-day execution plan.</span>
+      </div>
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);min-width:60px;">D+3</span>
+        <span style="font-size:12px;color:var(--ink);line-height:1.6;">Partner connection begins. You will receive a notification when contact has been initiated.</span>
+      </div>
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);min-width:60px;">D+7</span>
+        <span style="font-size:12px;color:var(--ink);line-height:1.6;">First week review. Progress confirmed. Next moves defined.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIRECT CONTACT -->
+  <div class="contact-box">
+    <div class="contact-left">
+      <div class="contact-label">Direct Contact · Anytime</div>
+      <div class="contact-name">Lee Jungsub</div>
+      <div class="contact-title">Founder · Asia Lab Global</div>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:ceo@asialab.world" class="contact-link">ceo@asialab.world</a>
+      <span style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(242,237,227,.3);">Response within 24 hours</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 02. CASE OVERVIEW -->
+<!-- ══════════════════════════════════════ -->
+<section id="overview" class="page-section">
+  <div class="page-tag">Your Case</div>
+  <h1 class="page-title">Case <em>Overview</em></h1>
+  <p class="page-sub">Your case profile and current execution status. Updated in real time as your engagement progresses.</p>
+
+  <!-- STATUS -->
+  <div class="card-label" style="margin-bottom:8px;">Execution Status</div>
+  <div class="status-bar">
+    <div class="status-step active">
+      <span class="status-step-label">Stage 01</span>
+      <div class="status-step-name">Onboarding</div>
+    </div>
+    <div class="status-step">
+      <span class="status-step-label">Stage 02</span>
+      <div class="status-step-name">Analyzing</div>
+    </div>
+    <div class="status-step">
+      <span class="status-step-label">Stage 03</span>
+      <div class="status-step-name">Matched</div>
+    </div>
+    <div class="status-step">
+      <span class="status-step-label">Stage 04</span>
+      <div class="status-step-name">Executing</div>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">Client Name</div>
+      <div class="info-placeholder">[To be filled upon intake]</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Product / Service</div>
+      <div class="info-placeholder">[To be filled upon intake]</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Target Market</div>
+      <div class="info-placeholder">[To be filled upon intake]</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Current Stage</div>
+      <div class="info-placeholder">[To be filled upon intake]</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Engagement Tier</div>
+      <div class="info-placeholder">[Blueprint / Starter]</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Start Date</div>
+      <div class="info-placeholder">[Date of purchase]</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Assigned Contact</div>
+      <div class="info-value">Lee Jungsub · ceo@asialab.world</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">90-Day Target End</div>
+      <div class="info-placeholder">[Calculated from start date]</div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Note:</strong> This workspace is updated by Asia Lab as your engagement progresses. If any information is incorrect, reply to your onboarding email or contact ceo@asialab.world directly.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 03. DIRECTION BRIEF -->
+<!-- ══════════════════════════════════════ -->
+<section id="brief" class="page-section">
+  <div class="page-tag">Core Deliverable</div>
+  <h1 class="page-title">Direction <em>Brief</em></h1>
+  <p class="page-sub">Your Direction Brief is delivered within 48 hours of intake form completion. It contains your market direction, partner type identification, and immediate action items. One page. No padding.</p>
+
+  <div class="card" style="border-color:rgba(184,149,58,.3); background:var(--accent-bg);">
+    <div class="card-label">Status</div>
+    <div style="font-size:13px;color:var(--muted);font-style:italic;">Awaiting intake form completion — Brief will appear here within 48 hours.</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <div class="card-label" style="margin-bottom:14px;">Brief Structure — What You Will Receive</div>
+
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div class="card">
+      <div class="card-label">01 · Market Direction</div>
+      <div class="card-body">Which market to enter first, in what sequence, and why — based on your specific product, current stage, and competitive landscape. One or two markets, clearly ranked.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">02 · Partner Type</div>
+      <div class="card-body">The specific category of partner you need — distributor, influencer, local agency, co-production partner, licensee. Starter clients receive named individuals, not categories.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">03 · Immediate Action</div>
+      <div class="card-body">One to two specific actions you take in the next 7 days. Not a strategy document. A starting move.</div>
+    </div>
+    <div class="card" style="border-color:rgba(184,149,58,.25);">
+      <div class="card-label">04 · Next Steps (Starter only)</div>
+      <div class="card-body">Three options for how to proceed. You select one. Asia Lab initiates connection based on your selection.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 04. 90-DAY ROADMAP -->
+<!-- ══════════════════════════════════════ -->
+<section id="roadmap" class="page-section">
+  <div class="page-tag">Execution Plan</div>
+  <h1 class="page-title">90-Day <em>Roadmap</em></h1>
+  <p class="page-sub">Your full execution structure, built week by week. This roadmap is live from Day 1 and updated as your engagement progresses. (Starter tier)</p>
+
+  <div class="roadmap-phase">
+    <div class="phase-header">
+      <span class="phase-num">PHASE 01</span>
+      <span class="phase-name">Foundation & Direction</span>
+      <span class="phase-range">Week 1 – 4</span>
+    </div>
+    <div class="week-row">
+      <span class="week-label">Week 1</span>
+      <div class="week-content">
+        <div class="week-title">Direction Brief + Partner Identification</div>
+        <div class="week-desc">Brief delivered. Partners identified by name. Approach strategy confirmed. Activation session completed.</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <span class="week-label">Week 2</span>
+      <div class="week-content">
+        <div class="week-title">First Contact — Partner Outreach Begins</div>
+        <div class="week-desc">Outreach initiated to priority partner(s). Messaging designed and sequenced. Response window open.</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <span class="week-label">Week 3</span>
+      <div class="week-content">
+        <div class="week-title">Response Assessment & Adjustment</div>
+        <div class="week-desc">Partner responses reviewed. Approach adjusted if needed. Secondary targets activated if primary non-responsive.</div>
+      </div>
+    </div>
+    <div class="week-row milestone">
+      <span class="week-label">Week 4</span>
+      <div class="week-content">
+        <div class="week-title">Day 30 Milestone Review</div>
+        <div class="week-desc">First month reviewed. Connections made, pending, or adjusted. Strategy recalibrated based on real market feedback.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="phase-header">
+      <span class="phase-num">PHASE 02</span>
+      <span class="phase-name">Connection & Activation</span>
+      <span class="phase-range">Week 5 – 8</span>
+    </div>
+    <div class="week-row">
+      <span class="week-label">Week 5–6</span>
+      <div class="week-content">
+        <div class="week-title">Active Partner Engagement</div>
+        <div class="week-desc">Live conversations with identified partners. Terms discussed. Relationship structure defined.</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <span class="week-label">Week 7</span>
+      <div class="week-content">
+        <div class="week-title">Secondary Market / Partner Expansion</div>
+        <div class="week-desc">If applicable: second market or additional partner category activated based on Phase 01 results.</div>
+      </div>
+    </div>
+    <div class="week-row milestone">
+      <span class="week-label">Week 8</span>
+      <div class="week-content">
+        <div class="week-title">Day 60 Milestone Review</div>
+        <div class="week-desc">Progress assessed. Active connections confirmed. Deal structure or collaboration framework reviewed. Next phase defined.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="phase-header">
+      <span class="phase-num">PHASE 03</span>
+      <span class="phase-name">Execution & Expansion Path</span>
+      <span class="phase-range">Week 9 – 13</span>
+    </div>
+    <div class="week-row">
+      <span class="week-label">Week 9–12</span>
+      <div class="week-content">
+        <div class="week-title">Deep Execution</div>
+        <div class="week-desc">Active partnership or deal in progress. Support provided on execution structure as needed. Market response documented.</div>
+      </div>
+    </div>
+    <div class="week-row milestone">
+      <span class="week-label">Week 13</span>
+      <div class="week-content">
+        <div class="week-title">Day 90 Final Review + Expansion Path</div>
+        <div class="week-desc">Full 90-day outcome reviewed. Results documented. Next-tier options presented: Access, Corporate, Aurora Executive.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    This roadmap is adjusted at each milestone based on real market response. If direction needs recalibration at any point, Asia Lab will update this workspace and notify you directly.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 05. PARTNER LIST -->
+<!-- ══════════════════════════════════════ -->
+<section id="partners" class="page-section">
+  <div class="page-tag">Starter Tier · Confidential</div>
+  <h1 class="page-title">Partner <em>List</em></h1>
+  <p class="page-sub">Your named partner shortlist — specific targets identified by Asia Lab for your market and product. This list is built entirely from your case profile. Not a generic database. Confidential to this workspace.</p>
+
+  <div class="notice">
+    <strong>Starter clients only.</strong> Partner names are added within 48 hours of intake form completion. Blueprint clients receive partner type categories in their Direction Brief.
+  </div>
+
+  <table class="partner-table">
+    <tr>
+      <th>Partner Name</th>
+      <th>Market</th>
+      <th>Category</th>
+      <th>Approach Sequence</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td style="color:var(--muted);font-style:italic;">[Identified within 48hrs]</td>
+      <td style="color:var(--muted);">—</td>
+      <td style="color:var(--muted);">—</td>
+      <td style="color:var(--muted);">First priority</td>
+      <td><span class="status-tag tag-pending">Pending</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--muted);font-style:italic;">[Identified within 48hrs]</td>
+      <td style="color:var(--muted);">—</td>
+      <td style="color:var(--muted);">—</td>
+      <td style="color:var(--muted);">Second priority</td>
+      <td><span class="status-tag tag-pending">Pending</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--muted);font-style:italic;">[Identified within 48hrs]</td>
+      <td style="color:var(--muted);">—</td>
+      <td style="color:var(--muted);">—</td>
+      <td style="color:var(--muted);">Secondary</td>
+      <td><span class="status-tag tag-tbd">TBD</span></td>
+    </tr>
+  </table>
+
+  <div class="card" style="margin-top:8px;">
+    <div class="card-label">Connection Approach</div>
+    <div class="card-body">The specific outreach sequence, messaging framework, and connection design for each partner will be detailed here after partner identification is complete. This is not a contact list — it is a structured approach to reaching the right people in the right order.</div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 06. MILESTONES -->
+<!-- ══════════════════════════════════════ -->
+<section id="milestones" class="page-section">
+  <div class="page-tag">Reviews</div>
+  <h1 class="page-title">Milestone <em>Reviews</em></h1>
+  <p class="page-sub">Three formal reviews over 90 days. At each milestone, Asia Lab reviews your progress, adjusts strategy based on real market response, and confirms next moves. No additional cost for recalibration.</p>
+
+  <div class="milestone-card">
+    <div class="milestone-header">
+      <div class="milestone-day">D30</div>
+      <div>
+        <div class="milestone-title">Day 30 Review — Foundation Check</div>
+        <div class="milestone-sub">First month outcomes. Partner response status. Direction confirmation.</div>
+      </div>
+    </div>
+    <div class="milestone-items">
+      <div class="milestone-item">Partner outreach status reviewed — contacted, responded, pending</div>
+      <div class="milestone-item">Market direction confirmed or adjusted based on early signals</div>
+      <div class="milestone-item">Week 5–8 plan locked based on Phase 01 results</div>
+      <div class="milestone-item">Lee Jungsub direct review of case — written summary delivered</div>
+    </div>
+  </div>
+
+  <div class="milestone-card upcoming">
+    <div class="milestone-header">
+      <div class="milestone-day">D60</div>
+      <div>
+        <div class="milestone-title">Day 60 Review — Activation Assessment</div>
+        <div class="milestone-sub">Active connections confirmed. Deal or collaboration structure reviewed.</div>
+      </div>
+    </div>
+    <div class="milestone-items">
+      <div class="milestone-item">Active partner relationships assessed — depth, structure, timeline</div>
+      <div class="milestone-item">Secondary market or partner expansion decision</div>
+      <div class="milestone-item">Phase 03 plan confirmed</div>
+      <div class="milestone-item">Upgrade path to Access or Corporate introduced if appropriate</div>
+    </div>
+  </div>
+
+  <div class="milestone-card upcoming">
+    <div class="milestone-header">
+      <div class="milestone-day">D90</div>
+      <div>
+        <div class="milestone-title">Day 90 Review — Full Outcome + Expansion Path</div>
+        <div class="milestone-sub">Complete 90-day result. Next-tier options presented.</div>
+      </div>
+    </div>
+    <div class="milestone-items">
+      <div class="milestone-item">Full engagement outcome documented and delivered</div>
+      <div class="milestone-item">What worked, what was adjusted, what comes next</div>
+      <div class="milestone-item">Access ($4,000–$20,000), Corporate, or Aurora Executive path presented</div>
+      <div class="milestone-item">Lee Jungsub direct review and recommendation</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 07. COMMUNICATION LOG -->
+<!-- ══════════════════════════════════════ -->
+<section id="log" class="page-section">
+  <div class="page-tag">Updates</div>
+  <h1 class="page-title">Communication <em>Log</em></h1>
+  <p class="page-sub">Every update, message, and status change related to your case is recorded here. You never need to ask where things stand.</p>
+
+  <div class="log-entry">
+    <div class="log-date">Day 0<br>Purchase</div>
+    <div class="log-body">
+      <div class="log-title">Workspace Created</div>
+      <div class="log-desc">Your Asia Lab client workspace has been created. Intake form link sent to your email. Lee Jungsub has been notified of your case.</div>
+    </div>
+  </div>
+  <div class="log-entry">
+    <div class="log-date">Pending</div>
+    <div class="log-body">
+      <div class="log-title">Intake Form Received</div>
+      <div class="log-desc">Awaiting intake form submission. Analysis begins immediately upon receipt.</div>
+    </div>
+  </div>
+  <div class="log-entry">
+    <div class="log-date">Within 24hrs</div>
+    <div class="log-body">
+      <div class="log-title">Personal Confirmation from Lee Jungsub</div>
+      <div class="log-desc">Direct message confirming your case has been reviewed and analysis is underway.</div>
+    </div>
+  </div>
+  <div class="log-entry">
+    <div class="log-date">Within 48hrs</div>
+    <div class="log-body">
+      <div class="log-title">Direction Brief Delivered</div>
+      <div class="log-desc">Brief will appear in this workspace and be sent to your email.</div>
+    </div>
+  </div>
+
+  <div class="notice" style="margin-top:16px;">
+    Updates are added to this log in real time as your case progresses. If you have a question at any point, contact ceo@asialab.world directly.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 08. TERMS OF SERVICE -->
+<!-- ══════════════════════════════════════ -->
+<section id="terms" class="page-section">
+  <div class="page-tag">Legal</div>
+  <h1 class="page-title">Terms of <em>Service</em></h1>
+  <p class="page-sub">Full terms governing your engagement with Asia Lab. Effective upon purchase confirmation.</p>
+
+  <div class="legal-section">
+    <div class="legal-highlight">
+      These Terms of Service govern all engagements between Asia Lab Global Inc. ("Asia Lab") and the client ("you"). By completing a purchase, you confirm that you have read, understood, and agreed to these terms in full.
+    </div>
+
+    <div class="legal-h2">1. Services Provided</div>
+    <div class="legal-body">
+      Asia Lab provides strategic market entry advisory services, partner identification, connection design, and execution structuring for cross-border business expansion. Services are delivered as described in the product tier selected at time of purchase (Blueprint or Starter) and as detailed in your Direction Brief.
+      <br><br>
+      Asia Lab is not a legal firm, financial advisor, immigration consultant, or licensed investment adviser. Nothing in this engagement constitutes legal, tax, regulatory, or financial advice.
+    </div>
+
+    <div class="legal-h2">2. Delivery Timeline</div>
+    <div class="legal-body">
+      Asia Lab commits to initiating delivery within 48 hours of intake form completion. Delivery constitutes:
+      <ul>
+        <li>Blueprint: Custom Strategy Report (10–15 pages)</li>
+        <li>Starter: Strategy Report + Named Partner Shortlist + 90-Day Execution Plan + Activation Session scheduling</li>
+      </ul>
+      The 48-hour window begins upon receipt of a completed intake form, not at time of payment. Incomplete or unclear intake submissions may delay delivery.
+    </div>
+
+    <div class="legal-h2">3. Client Obligations</div>
+    <div class="legal-body">
+      You agree to: submit the intake form within 24 hours of purchase; participate in the activation session (Starter) within the scheduled window; provide accurate and complete information regarding your business, product, and market goals; maintain confidentiality of all partner names, connection strategies, and proprietary content delivered by Asia Lab.
+    </div>
+
+    <div class="legal-h2">4. Confidentiality</div>
+    <div class="legal-body">
+      All deliverables — including partner names, connection strategies, market analysis, and execution frameworks — are confidential and provided solely for your use. You may not share, publish, resell, or redistribute Asia Lab deliverables to third parties without written consent.
+    </div>
+
+    <div class="legal-h2">5. Intellectual Property</div>
+    <div class="legal-body">
+      All frameworks, methodologies, templates, and proprietary content remain the intellectual property of Asia Lab Global Inc. Deliverables prepared specifically for your engagement are licensed to you for personal business use only.
+    </div>
+
+    <div class="legal-h2">6. Limitation of Liability</div>
+    <div class="legal-body">
+      Asia Lab's total liability in connection with any engagement shall not exceed the amount paid for that engagement. Asia Lab is not liable for indirect, consequential, or incidental damages arising from the use or inability to use its services.
+    </div>
+
+    <div class="legal-h2">7. Governing Law</div>
+    <div class="legal-body">
+      These terms are governed by the laws of the State of Delaware, United States. Any disputes shall be resolved through binding arbitration in Delaware.
+    </div>
+
+    <div class="legal-h2">8. Contact</div>
+    <div class="legal-body">
+      For questions regarding these terms: <a href="mailto:ceo@asialab.world" style="color:var(--gold);">ceo@asialab.world</a><br>
+      Asia Lab Global Inc. · 254 Chapman Rd, Ste 208 #23693, Newark, Delaware 19702
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 09. REFUND POLICY -->
+<!-- ══════════════════════════════════════ -->
+<section id="refund" class="page-section">
+  <div class="page-tag">Legal</div>
+  <h1 class="page-title">Refund & Cancellation <em>Policy</em></h1>
+  <p class="page-sub">Full refund and cancellation policy. Effective upon purchase.</p>
+
+  <div class="legal-section">
+    <div class="legal-highlight">
+      <strong>All sales are final.</strong> Due to the strategic and customized nature of Asia Lab's services, no refunds will be issued once a purchase is completed, subject to the specific exceptions listed below.
+    </div>
+
+    <div class="legal-h2">1. General Policy</div>
+    <div class="legal-body">
+      Payment secures a dedicated work slot. Slot allocation and internal preparation begins immediately upon payment confirmation, regardless of when the intake form is submitted. The customized, time-intensive nature of this service means Asia Lab begins resource allocation at the point of purchase.
+    </div>
+
+    <div class="legal-h2">2. Blueprint ($490)</div>
+    <div class="legal-body">
+      Non-refundable once the intake form has been reviewed by Asia Lab. The $490 paid for Blueprint is applied in full as a credit toward Starter at the point of Starter purchase. This credit does not expire and is not redeemable as cash.
+    </div>
+
+    <div class="legal-h2">3. Starter ($1,500)</div>
+    <div class="legal-body">
+      Non-refundable once the activation session has been scheduled or internal work has commenced, whichever occurs first. Work commences upon receipt and review of the intake form.
+    </div>
+
+    <div class="legal-h2">4. Rescheduling</div>
+    <div class="legal-body">
+      If a scheduling conflict arises after purchase, one rescheduling request is permitted. Rescheduling requests must be submitted in writing to <a href="mailto:ceo@asialab.world" style="color:var(--gold);">ceo@asialab.world</a> with at least 24 hours notice before the scheduled session. Asia Lab will accommodate rescheduling within a reasonable window.
+    </div>
+
+    <div class="legal-h2">5. Asia Lab Delivery Failure</div>
+    <div class="legal-body">
+      If Asia Lab fails to initiate delivery within the stated 48-hour window solely due to our operational error — not due to incomplete intake form submission or client-side delays — a full refund may be requested in writing within 24 hours of the missed delivery window. Requests submitted after this window will not be considered.
+    </div>
+
+    <div class="legal-h2">6. Non-Participation</div>
+    <div class="legal-body">
+      Failure to submit the intake form, failure to participate in the scheduled activation session, or failure to respond to Asia Lab communications does not constitute eligibility for a refund.
+    </div>
+
+    <div class="legal-h2">7. Strategy Recalibration</div>
+    <div class="legal-body">
+      If the strategic direction delivered by Asia Lab requires adjustment after activation, Asia Lab will recalibrate at no additional cost. This commitment applies to direction adjustments within the scope of the original engagement, not to requests for additional markets, partners, or services outside the original scope.
+    </div>
+
+    <div class="legal-h2">8. Contact for Refund Requests</div>
+    <div class="legal-body">
+      All refund requests must be submitted in writing to: <a href="mailto:ceo@asialab.world" style="color:var(--gold);">ceo@asialab.world</a><br>
+      Subject line: Refund Request — [Your Name] — [Date of Purchase]
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 10. PRIVACY POLICY -->
+<!-- ══════════════════════════════════════ -->
+<section id="privacy" class="page-section">
+  <div class="page-tag">Legal</div>
+  <h1 class="page-title">Privacy <em>Policy</em></h1>
+  <p class="page-sub">How Asia Lab collects, uses, and protects your information.</p>
+
+  <div class="legal-section">
+    <div class="legal-h2">1. Information We Collect</div>
+    <div class="legal-body">
+      Asia Lab collects information you provide directly, including: name and contact information; business and product details submitted via intake form; payment information (processed securely via Stripe — Asia Lab does not store payment card details); communication history related to your engagement.
+    </div>
+
+    <div class="legal-h2">2. How We Use Your Information</div>
+    <div class="legal-body">
+      Information is used solely to: deliver the services described in your engagement tier; communicate with you regarding your case; improve Asia Lab's service quality internally. Asia Lab does not sell, rent, or share your personal or business information with third parties except as required to deliver your services (e.g., scheduling tools, workspace platforms).
+    </div>
+
+    <div class="legal-h2">3. Partner Confidentiality</div>
+    <div class="legal-body">
+      Partner names and connection strategies provided in your deliverables are confidential. Asia Lab does not disclose your identity or business information to identified partners without your explicit consent.
+    </div>
+
+    <div class="legal-h2">4. Data Retention</div>
+    <div class="legal-body">
+      Client data is retained for a minimum of 3 years following engagement completion for business continuity and legal compliance purposes. You may request deletion of your data after engagement completion by writing to ceo@asialab.world.
+    </div>
+
+    <div class="legal-h2">5. Security</div>
+    <div class="legal-body">
+      Asia Lab uses industry-standard security measures to protect client information. Access to client workspaces and case data is restricted to authorized Asia Lab personnel.
+    </div>
+
+    <div class="legal-h2">6. Contact</div>
+    <div class="legal-body">
+      Privacy questions: <a href="mailto:ceo@asialab.world" style="color:var(--gold);">ceo@asialab.world</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 11. DISCLAIMER -->
+<!-- ══════════════════════════════════════ -->
+<section id="disclaimer" class="page-section">
+  <div class="page-tag">Legal</div>
+  <h1 class="page-title">Disclaimer — No Guarantee<br>of <em>Outcomes</em></h1>
+  <p class="page-sub">Important limitations on Asia Lab's services and liability.</p>
+
+  <div class="legal-section">
+    <div class="legal-highlight">
+      Asia Lab provides strategic guidance, partner identification, and execution structuring. <strong>Asia Lab does not guarantee business outcomes, market success, contracts, partner acceptance, or financial results of any kind.</strong>
+    </div>
+
+    <div class="legal-h2">Nature of Services</div>
+    <div class="legal-body">
+      This program provides strategic advisory services only. All decisions and execution remain the sole responsibility of the client. Results depend on: client product readiness and quality; market timing and conditions; execution discipline and consistency; partner availability and receptiveness; and factors entirely outside Asia Lab's control.
+    </div>
+
+    <div class="legal-h2">No Professional Advice</div>
+    <div class="legal-body">
+      Nothing in this engagement constitutes legal, tax, regulatory, immigration, or financial investment advice. Asia Lab is not a licensed legal, financial, or investment professional. Clients should consult qualified professionals for legal, financial, and regulatory matters.
+    </div>
+
+    <div class="legal-h2">No Liability for Decisions</div>
+    <div class="legal-body">
+      Asia Lab is not liable for decisions made by the client based on strategic recommendations provided. All deliverables are professional guidance provided for use at the client's sole discretion and risk. Asia Lab's maximum liability in any circumstance is limited to the amount paid for the relevant engagement.
+    </div>
+
+    <div class="legal-h2">Partner Outcomes</div>
+    <div class="legal-body">
+      Identification of a partner does not guarantee that partner's acceptance, availability, or willingness to engage. Asia Lab provides connection structure and introduction strategy — the outcome of partner conversations is determined by the quality of the client's product, presentation, and execution.
+    </div>
+
+    <div class="legal-h2">Contact</div>
+    <div class="legal-body">
+      Questions regarding this disclaimer: <a href="mailto:ceo@asialab.world" style="color:var(--gold);">ceo@asialab.world</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+function show(id) {
+  // Hide all sections
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  // Show target
+  document.getElementById(id).classList.add('active');
+  // Highlight sidebar link
+  event.currentTarget.classList.add('active');
+  // Scroll to top
+  document.querySelector('.main').scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
