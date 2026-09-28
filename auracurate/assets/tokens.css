@@ -1,0 +1,74 @@
+/* ==========================================================================
+   AURORA — Design Tokens (CLAUDE.md §2)
+   Source: Canva DAGvvf3oKfs · Drive "Aurora Logos" · Figma styles Aurora/*
+   Do not add brand colors here without CEO approval.
+   ========================================================================== */
+
+:root {
+  /* §2.1 Brand palette ---------------------------------------------------- */
+  --cosmic-midnight: #0B0E15; /* Stage 주색 · 다크 배경/헤더/히어로 */
+  --aurora-magenta:  #CD089C; /* 액센트 · CTA · 활성 (Stage + Read 공통) */
+  --deep-cosmos:     #0B2F89; /* 그라데이션 블루 */
+  --solar-ember:     #E6733A; /* 액센트 웜 */
+  --velvet-eclipse:  #992138; /* 액센트 레드 */
+  --starlight-mist:  #E1E0F6; /* Stage 밝은 텍스트 · 미스트 */
+
+  /* Stage gradient (Figma: Aurora/Stage Gradient) */
+  --stage-gradient: linear-gradient(135deg, #0B2F89 0%, #0B0E15 55%, #CD089C 100%);
+  /* Connecting thread between Stage and Read: accent rule / hairline */
+  --accent-gradient: linear-gradient(90deg, #CD089C 0%, #E6733A 100%);
+
+  /* §2.5 CTA states (WCAG checked) ---------------------------------------- */
+  --cta-bg:            #CD089C; /* 5.11:1 on white text */
+  --cta-bg-hover:      #A80680; /* 6.99:1 */
+  --cta-bg-active:     #8E0568; /* 8.85:1 */
+  --cta-focus-ring:    #0B2F89; /* 2px ring */
+  --cta-disabled-bg:   #C9C2BA;
+  --cta-disabled-fg:   #5F5A55;
+  --cta-fg:            #FFFFFF;
+
+  /* §2.2 Stage mode surface (dark + aurora) -------------------------------- */
+  --stage-bg:        var(--cosmic-midnight);
+  --stage-surface:   #121726;
+  --stage-surface-2: #181E31;
+  --stage-line:      rgba(225, 224, 246, 0.14);
+  --stage-text:      var(--starlight-mist);
+  --stage-text-2:    rgba(225, 224, 246, 0.72);
+  --stage-text-3:    rgba(225, 224, 246, 0.52);
+
+  /* §2.2 Read mode surface (light + accent only) --------------------------- */
+  --read-bg:        #FAF9FC;
+  --read-surface:   #FFFFFF;
+  --read-line:      #E4E2EE;
+  --read-text:      var(--cosmic-midnight);
+  --read-text-2:    #4A4D5C;
+  --read-text-3:    #6E7183;
+
+  /* §2.3 Typography -------------------------------------------------------- */
+  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font-body:    "Manrope", "Pretendard Variable", "Pretendard", system-ui, -apple-system, sans-serif;
+  --font-ko:      "Pretendard Variable", "Pretendard", "Manrope", system-ui, sans-serif;
+
+  --fs-hero:  clamp(2.75rem, 1.6rem + 5.2vw, 6rem);
+  --fs-100:   clamp(6rem, 3rem + 14vw, 14rem);
+  --fs-h1:    clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --fs-h2:    clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  --fs-h3:    clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-body:  1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+  --tracking-eyebrow: 0.22em;
+
+  /* Space · radius · motion ------------------------------------------------ */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --container: 1320px;
+  --radius-s: 6px; --radius-m: 12px; --radius-l: 20px; --radius-pill: 999px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur: 220ms;
+
+  /* Glow used for the white wordmark on dark / gradient backgrounds (§2.4) */
+  --glow: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 0 18px rgba(225,224,246,.35));
+}

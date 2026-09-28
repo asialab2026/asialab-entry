@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora Shop — Aurora Experience</title>
+<meta name="description" content="Aurora Shop: selected objects connected to Studio stories, Curators and Community. A production house by Asia Lab.">
+<meta name="theme-color" content="#0B0E15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/aurora.css">
+</head>
+<body class="mode-stage" data-page="shop">
+<div data-shell="header"></div>
+<noscript><nav class="container" style="padding:16px"><a href="studio.html">Studio</a> · <a href="curators.html">Curators</a> · <a href="community.html">Community</a> · <a href="index.html">Shop</a></nav></noscript>
+
+<main id="main">
+
+  <!-- ============ HERO (Stage) ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="aurora-field"></div>
+    <span class="spark" style="top:18%;left:8%"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12.9 8 16 11.1 24 12 16 12.9 12.9 16 12 24 11.1 16 8 12.9 0 12 8 11.1 11.1 8 12 0Z"/></svg></span>
+    <span class="spark" style="top:12%;left:58%;animation-delay:1.3s;width:10px;height:10px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12.9 8 16 11.1 24 12 16 12.9 12.9 16 12 24 11.1 16 8 12.9 0 12 8 11.1 11.1 8 12 0Z"/></svg></span>
+    <span class="spark" style="top:44%;left:44%;animation-delay:2.4s;width:8px;height:8px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12.9 8 16 11.1 24 12 16 12.9 12.9 16 12 24 11.1 16 8 12.9 0 12 8 11.1 11.1 8 12 0Z"/></svg></span>
+
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <div class="hero__lockup">
+          <img src="assets/brand/aurora_created-by-asia-lab-1.png" alt="Aurora — Created by Asia Lab" width="240" height="113" style="height:auto;width:clamp(180px,22vw,260px);filter:none">
+        </div>
+        <p class="eyebrow">Aurora Shop · The Aurora Experience</p>
+        <h1 class="display" id="hero-title">Where stories<br>become <em>objects.</em></h1>
+        <p class="lede">Every piece in the Aurora Shop begins as a story in Studio, is chosen by a Curator, and lives on in Community. Selected, never simply listed.</p>
+        <p class="lede ko" lang="ko" style="margin-top:12px;font-size:1rem">한 상품이 콘텐츠·큐레이터·커뮤니티로 이어지는 곳.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#highlights">Explore Aurora Highlights</a>
+          <a class="btn btn--secondary" href="#worlds">How Aurora connects</a>
+        </div>
+      </div>
+      <div class="hero__media" data-slot="shopCover" data-render="shop-cover"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRINCIPLES (replaces unverified stats, §4.3) ============ -->
+  <section class="section--tight" aria-label="What Aurora is">
+    <div class="container">
+      <div class="principles">
+        <div class="principle reveal">
+          <span class="principle__i">01 · SELECTED</span>
+          <span class="principle__k">A production house, not a marketplace</span>
+          <span class="principle__v">We produce a small number of objects and collaborations. Nothing appears here automatically.</span>
+        </div>
+        <div class="principle reveal">
+          <span class="principle__i">02 · CONNECTED</span>
+          <span class="principle__k">One object, four worlds</span>
+          <span class="principle__v">Each piece links to its Studio story, its Curator and its Community conversation.</span>
+        </div>
+        <div class="principle reveal">
+          <span class="principle__i">03 · GLOBAL</span>
+          <span class="principle__k">Checkout by Shopify</span>
+          <span class="principle__v">When a piece is released, checkout runs on Shopify with Shop Pay for fast, secure purchase worldwide.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AURORA HIGHLIGHTS (cross-links) ============ -->
+  <section class="section" id="highlights" aria-labelledby="hl-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Aurora Highlights</p>
+          <h2 class="h1" id="hl-title">Chosen this <em>season</em></h2>
+          <p class="lede">Follow a piece from the story to the curator to the conversation.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Filter by field">
+          <button class="tab" role="tab" type="button" data-field="all" aria-selected="true">All</button>
+          <button class="tab" role="tab" type="button" data-field="ent" aria-selected="false" tabindex="-1">ENT</button>
+          <button class="tab" role="tab" type="button" data-field="fashion" aria-selected="false" tabindex="-1">Fashion</button>
+          <button class="tab" role="tab" type="button" data-field="taste" aria-selected="false" tabindex="-1">Taste</button>
+        </div>
+      </div>
+      <div data-slot="highlights" data-render="highlights" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOUR WORLDS (ecosystem loop, §3) ============ -->
+  <section class="section" id="worlds" aria-labelledby="worlds-title" style="overflow:hidden">
+    <div class="aurora-field aurora-field--soft" style="opacity:.35"></div>
+    <div class="container" style="position:relative">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">One world, four doors</p>
+          <h2 class="h1" id="worlds-title">How Aurora <em>connects</em></h2>
+          <p class="lede">Stories bring an audience. The audience meets curators and partners. Together they make objects and new stories — and the circle continues. Not every path ends in a purchase.</p>
+        </div>
+      </div>
+      <div class="loop">
+        <a class="loop__item loop__item--studio reveal" href="studio.html">
+          <span class="card__meta">Content</span>
+          <h3>Studio</h3>
+          <p>Interviews, editorials and the Aurora 100 — stories made with contributors.</p>
+        </a>
+        <a class="loop__item loop__item--curators reveal" href="curators.html">
+          <span class="card__meta">Selection</span>
+          <h3>Curators</h3>
+          <p>People whose taste shapes what Aurora makes and chooses.</p>
+        </a>
+        <a class="loop__item loop__item--community reveal" href="community.html">
+          <span class="card__meta">Conversation</span>
+          <h3>Community</h3>
+          <p>Where readers, fans and creators talk about the work.</p>
+        </a>
+        <a class="loop__item loop__item--shop reveal" href="#highlights">
+          <span class="card__meta">Objects</span>
+          <h3>Shop</h3>
+          <p>Pieces released from the stories — when they are ready.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLLABORATION ============ -->
+  <section class="section" id="collaboration" aria-labelledby="co-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Collaboration</p>
+          <h2 class="h1" id="co-title">Made <em>together</em></h2>
+        </div>
+      </div>
+      <div data-slot="collaborations" data-render="collaborations"></div>
+    </div>
+  </section>
+
+  <!-- ============ SHOP LIVE ============ -->
+  <section class="section" id="live" aria-label="Shop Live">
+    <div class="container live" data-slot="live" data-render="live"></div>
+  </section>
+
+  <!-- ============ BRANDS ============ -->
+  <section class="section" id="brands" aria-labelledby="br-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Brands</p>
+          <h2 class="h1" id="br-title">Our <em>partners</em></h2>
+        </div>
+      </div>
+      <div data-slot="brands" data-render="brands"></div>
+    </div>
+  </section>
+
+  <!-- ============ COMMUNITY VOICES (no fake reviews, §4.9) ============ -->
+  <section class="section" id="voices" aria-labelledby="vo-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Community</p>
+          <h2 class="h1" id="vo-title">In <em>conversation</em></h2>
+        </div>
+      </div>
+      <div class="empty reveal">
+        <div class="aurora-field aurora-field--ember"></div>
+        <span class="empty__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.9 8 16 11.1 24 12 16 12.9 12.9 16 12 24 11.1 16 8 12.9 0 12 8 11.1 11.1 8 12 0Z"/></svg></span>
+        <h3 class="empty__title">Reviews come from real owners only</h3>
+        <p class="empty__body">Product reviews appear here after verified purchases. Until then, the conversation about each story lives in Aurora Community.</p>
+        <a class="link-arrow" href="community.html">Visit Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARTNERS INTAKE (Shop bottom, §3) ============ -->
+  <section class="section" aria-labelledby="pt-title">
+    <div class="container">
+      <div class="band">
+        <div class="aurora-field"></div>
+        <div class="band__grid">
+          <div>
+            <p class="eyebrow" style="color:var(--starlight-mist)">Partners</p>
+            <h2 class="h1" id="pt-title">Bring your brand into <em>the story.</em></h2>
+            <p class="band__note">Brands, products and IP: tell us what you would like to make with Aurora. Every proposal is read; a submission is the start of a conversation, not an approval.</p>
+          </div>
+          <div><a class="btn btn--primary" href="work-with-aurora.html#partners">Propose a collaboration</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div data-shell="footer"></div>
+<script src="content/content.js"></script>
+<script src="assets/aurora.js"></script>
+</body>
+</html>

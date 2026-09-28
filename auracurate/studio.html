@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora Studio</title>
+<meta name="description" content="Aurora Studio — interviews, editorials, Aurora 100 and Global Faces 100.">
+<meta name="theme-color" content="#0B0E15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/aurora.css">
+</head>
+<body class="mode-stage" data-page="studio">
+<div data-shell="header"></div>
+<main id="main">
+
+  <section class="hero" style="min-height:min(70vh,720px)" aria-labelledby="st-title">
+    <div class="aurora-field"></div>
+    <div class="container hero__inner" style="grid-template-columns:1fr">
+      <div class="hero__copy">
+        <p class="eyebrow">Aurora Studio</p>
+        <h1 class="display" id="st-title">Stories first.</h1>
+        <p class="lede">Interviews, editorials and series produced with contributors across Asia and the world. Everything else in Aurora begins here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two 100s — authority vs discovery (§4.2) -->
+  <section class="section" aria-labelledby="two-title">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow">Two series, two purposes</p>
+        <h2 class="h1" id="two-title">The <em>100s</em></h2>
+      </div></div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <article class="band" style="padding:clamp(24px,4vw,48px)">
+          <div class="aurora-field"></div>
+          <img src="assets/brand/aurora100_white.png" alt="Aurora 100" width="220" height="184" style="width:180px;height:auto;filter:var(--glow)">
+          <p class="card__meta" style="margin-top:24px">Authority · Editorial selection</p>
+          <p class="lede" style="margin-top:8px">A confirmed editorial selection by Aurora. Not a ranking — no numbers, no scores.</p>
+        </article>
+        <article class="band" style="padding:clamp(24px,4vw,48px);background:linear-gradient(135deg,var(--stage-surface-2),var(--cosmic-midnight))">
+          <div class="aurora-field aurora-field--ember" style="opacity:.4"></div>
+          <p class="h1" style="font-size:clamp(2.25rem,5vw,3.5rem)">Global Faces <em>100</em></p>
+          <p class="card__meta" style="margin-top:24px">Discovery · Interviews</p>
+          <p class="lede" style="margin-top:8px">Introductions to people we think the world should meet. Taking part in an interview is not an endorsement or a selection.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="latest-title">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow">Latest</p>
+        <h2 class="h1" id="latest-title">From the <em>Studio</em></h2>
+      </div></div>
+      <div data-slot="studio.articles" class="empty reveal">
+        <div class="aurora-field"></div>
+        <span class="empty__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.9 8 16 11.1 24 12 16 12.9 12.9 16 12 24 11.1 16 8 12.9 0 12 8 11.1 11.1 8 12 0Z"/></svg></span>
+        <h3 class="empty__title">New stories are being edited</h3>
+        <p class="empty__body">Interviews and editorials are published here once text, images and usage rights are confirmed.</p>
+        <a class="link-arrow" href="work-with-aurora.html#contributors">Write for Aurora as a contributor</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div data-shell="footer"></div>
+<script src="content/content.js"></script>
+<script src="assets/aurora.js"></script>
+</body>
+</html>

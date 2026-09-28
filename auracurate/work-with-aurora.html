@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work with Aurora</title>
+<meta name="description" content="Propose a collaboration with Aurora as a partner brand, curator or honorary contributor.">
+<meta name="theme-color" content="#0B0E15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/aurora.css">
+</head>
+<body class="mode-read" data-page="work">
+<div data-shell="header"></div>
+<main id="main">
+
+  <section class="section" style="padding-bottom:48px">
+    <div class="container">
+      <img src="assets/brand/black-logo.png" alt="Aurora" width="140" height="32" style="width:140px;height:auto;margin-bottom:32px">
+      <p class="eyebrow">Work with Aurora · 오로라와 함께하기</p>
+      <h1 class="h1">Three ways in, <em>one conversation.</em></h1>
+      <p class="lede">Tell us who you are and what you would like to make. Every submission is read by the Aurora team.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <form class="form" id="intake" novalidate>
+        <div class="notice"><strong>Submitting is not approval.</strong> Proposals go through review, follow-up questions and a project agreement before anything is published, listed or granted. 접수는 승인이 아닙니다.</div>
+
+        <fieldset class="field" style="border:0;padding:0;margin:0">
+          <legend style="font-weight:600;font-size:var(--fs-small);margin-bottom:8px">I am applying as</legend>
+          <div class="seg" role="group" aria-label="Application type">
+            <button type="button" data-type="partners" aria-pressed="true">Partner · brand / product</button>
+            <button type="button" data-type="curators" aria-pressed="false">Curator · creator</button>
+            <button type="button" data-type="contributors" aria-pressed="false">Honorary contributor</button>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="f-country">Country / region</label><input id="f-country" name="country" autocomplete="country-name" required></div>
+          <div class="field"><label for="f-lang">Working language(s)</label><input id="f-lang" name="language" placeholder="e.g. English, 한국어" required></div>
+        </div>
+
+        <!-- Partners -->
+        <div data-for="partners" class="form">
+          <div class="field"><label for="p-link">Brand or product link</label><input id="p-link" name="brand_link" type="url" placeholder="https://"></div>
+          <div class="field-row">
+            <div class="field"><label for="p-market">Target markets</label><input id="p-market" name="target_markets"></div>
+            <div class="field"><label for="p-timing">Timing</label><input id="p-timing" name="timing" placeholder="e.g. Q1 2027"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="p-ready">Readiness</label>
+              <select id="p-ready" name="readiness"><option value="">Select</option><option>Idea</option><option>In development</option><option>Ready to produce</option><option>Ready to sell</option></select></div>
+            <div class="field"><label for="p-budget">Budget range <span class="hint">(optional)</span></label><input id="p-budget" name="budget"></div>
+          </div>
+          <div class="field field--check"><input id="p-ship" name="can_ship" type="checkbox"><label for="p-ship">If selling through Aurora, we can handle supply and shipping.</label></div>
+        </div>
+
+        <!-- Curators -->
+        <div data-for="curators" class="form" hidden>
+          <div class="field"><label for="c-role">I am the</label>
+            <select id="c-role" name="applicant_role"><option value="">Select</option><option>Creator / curator myself</option><option>Manager</option><option>Agency</option></select></div>
+          <div class="field"><label for="c-field">Areas of expertise</label><input id="c-field" name="expertise" placeholder="e.g. Fashion, K-culture, food"></div>
+          <div class="field"><label for="c-links">Public profile links</label><input id="c-links" name="public_links" placeholder="One or more URLs"></div>
+          <div class="field"><label for="c-mode">How you would like to collaborate</label><input id="c-mode" name="collab_mode"></div>
+        </div>
+
+        <!-- Contributors -->
+        <div data-for="contributors" class="form" hidden>
+          <div class="field"><label for="k-topic">Topics you care about</label><input id="k-topic" name="topics"></div>
+          <div class="field-row">
+            <div class="field"><label for="k-lang">Writing language</label><input id="k-lang" name="writing_language"></div>
+            <div class="field"><label for="k-region">Where you are active</label><input id="k-region" name="region"></div>
+          </div>
+          <div class="field"><label for="k-sample">A sample (link) or a story idea</label><input id="k-sample" name="sample"><span class="hint">We never ask for ID documents.</span></div>
+        </div>
+
+        <div class="field"><label for="f-msg">Your proposal</label><textarea id="f-msg" name="proposal" required></textarea></div>
+
+        <div class="field field--check"><input id="f-privacy" name="privacy" type="checkbox" required><label for="f-privacy">I agree that Aurora may use these details to review and reply to my proposal. <a href="/policies/privacy-policy">Privacy policy</a></label></div>
+        <div class="field field--check"><input id="f-mkt" name="marketing" type="checkbox"><label for="f-mkt">Optional: send me Aurora news.</label></div>
+
+        <div id="intake-status" class="status" role="status" aria-live="polite" hidden></div>
+        <div><button class="btn btn--primary" type="submit" id="intake-submit">Send proposal</button></div>
+        <p class="muted" id="intake-note" style="font-size:var(--fs-small);margin:0"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+<div data-shell="footer"></div>
+<script src="content/content.js"></script>
+<script src="assets/aurora.js"></script>
+<script>
+(function () {
+  var form = document.getElementById("intake");
+  var cfg = (window.AURORA_CONTENT && window.AURORA_CONTENT.intake) || {};
+  var segs = Array.prototype.slice.call(form.querySelectorAll(".seg button"));
+  var groups = Array.prototype.slice.call(form.querySelectorAll("[data-for]"));
+  var status = document.getElementById("intake-status");
+  var note = document.getElementById("intake-note");
+  var type = "partners";
+
+  function setType(t) {
+    if (!/^(partners|curators|contributors)$/.test(t)) return;
+    type = t;
+    segs.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-type") === t)); });
+    groups.forEach(function (g) { g.hidden = g.getAttribute("data-for") !== t; });
+  }
+  segs.forEach(function (b) {
+    b.addEventListener("click", function () {
+      setType(b.getAttribute("data-type"));
+      try { history.replaceState(null, "", "#" + type); } catch (e) {}
+    });
+  });
+  setType((location.hash || "").slice(1) || "partners");
+  window.addEventListener("hashchange", function () { setType(location.hash.slice(1)); });
+
+  note.textContent = cfg.endpoint
+    ? ""
+    : "Online submission is being connected. For now, this opens an email to " + (cfg.email || "aurora@auroracurate.com") + " with your answers filled in.";
+
+  function show(msg, tone) { status.hidden = false; status.textContent = msg; status.setAttribute("data-tone", tone); }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var visible = Array.prototype.slice.call(form.querySelectorAll("[required]")).filter(function (el) { return !el.closest("[hidden]"); });
+    var bad = visible.filter(function (el) { return el.type === "checkbox" ? !el.checked : !el.value.trim() || !el.checkValidity(); });
+    visible.forEach(function (el) { el.setAttribute("aria-invalid", String(bad.indexOf(el) > -1)); });
+    if (bad.length) { show("Please complete the highlighted fields.", "error"); bad[0].focus(); return; }
+
+    var data = new FormData(form);
+    data.append("type", type);
+    data.append("source_page", document.referrer || location.href);
+
+    if (cfg.endpoint) {
+      fetch(cfg.endpoint, { method: "POST", body: data })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); show("Thank you — your proposal has been received. Receiving it is not an approval; the team will reply by email.", "ok"); form.reset(); setType(type); })
+        .catch(function () { show("Something went wrong. Please try again, or email " + (cfg.email || "aurora@auroracurate.com") + ".", "error"); });
+      return;
+    }
+    var lines = [];
+    data.forEach(function (v, k) { if (String(v).trim()) lines.push(k + ": " + v); });
+    var subject = "[Work with Aurora] " + type + " — " + (data.get("name") || "");
+    location.href = "mailto:" + (cfg.email || "aurora@auroracurate.com") + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+    show("Your email app should open with your proposal. Send it from there to complete your submission.", "ok");
+  });
+})();
+</script>
+</body>
+</html>
