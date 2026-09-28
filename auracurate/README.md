@@ -13,6 +13,7 @@ auracurate/
   assets/aurora.css       Components (Stage / Read modes)
   assets/aurora.js        Shared header/footer, content rendering, interactions
   assets/brand/           Official logo files (Drive: Aurora Logos) — trimmed, not redrawn
+  assets/texture/         "Final Aurora BG 1" texture exported from the original Figma (em4c3H… node 1:8)
   content/content.js      Editable content slots (empty by default)
 ```
 
@@ -32,12 +33,23 @@ that editors fill in; the public never sees them.
 - **Intake:** a submission is not an approval. With no `intake.endpoint` set, the form
   opens a pre-filled email to `aurora@auroracurate.com`.
 
+## What was changed from the original Figma (§4)
+
+| Original | Here |
+|---|---|
+| Stats "100+ curators / 50+ collabs / 10+ award rankings / 20+ countries" | Three plain facts: Selected · Curator-led · Global checkout |
+| "Only 5 Remaining!", "Limited slots", "Almost Sold Out", "Selling Fast" | Removed. Only "Sold out" / "Pre-order", taken from real Shopify state |
+| Celebrity collab photos and the stock hero model | Explicit empty states on the original aurora texture |
+| "#1 Aurora 100 Best K-beauty" badge and the Ranking shelf | "Aurora 100" badge with no number. The Ranking shelf is dropped |
+| Brand logo strip (unconfirmed partners) | Strip is hidden until `brands` has entries |
+| Review counts and hard-coded prices | Shown only from real data |
+
 ## Status
 
 | Layer | State |
 |---|---|
 | Design tokens, shell, Shop home, section intros, intake | Built · checked at 1440 / 390 / 360 px, no horizontal overflow |
-| Original Figma extraction (layout, imagery) | **Not done.** The Figma MCP call limit (Starter plan) blocked access |
+| Original Figma extraction | Shop home rebuilt on **Shop Final** (`em4c3Hr6C5aD388XpLGFRZ`): hero card, badge highlights, brand strip, product shelves, background texture. `q75c81…` (Shop home) is owned by a separate **Starter** team whose MCP call limit is exhausted, so it can't be read until it is moved to the Pro team |
 | Real imagery | Only official logos. No approved people or product photos available yet |
 | Shopify theme (Liquid), cart, Shop Pay checkout | Not started. `/cart`, `/account`, `/policies/*` are Shopify routes |
 | Community member spaces / Newsroom permissions | App-side (not in this code) |

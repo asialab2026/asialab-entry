@@ -15,28 +15,33 @@ window.AURORA_CONTENT = {
      예: { src: "assets/img/cover.jpg", alt: "…", focal: "50% 18%", credit: "Photo: …" } */
   shopCover: null,
 
-  /* Aurora Highlights — 한 상품이 콘텐츠·큐레이터·커뮤니티로 이어지는 카드.
-     field: "ent" | "fashion" | "taste"
+  /* Aurora Highlights — 원본 Figma 1:44/1:51/1:62의 배지 카드 3장.
+     badge: "exclusive"(Only on Aurora) | "aurora100"(Aurora 100 — 순위 번호 금지) | "curator"(Curator's Pick)
      links 중 없는 항목은 칩이 숨겨집니다. product가 없거나 purchasable=false면 구매 버튼 비활성.
+     sub: 사실만 (예: "Pre-order opens 2026-11-01"). "Only 5 remaining" 같은 문구 금지.
      예:
      {
-       field: "taste",
+       badge: "curator",
        title: "…",
-       meta: "Studio · Interview",
-       image: { src: "assets/img/…jpg", alt: "…", focal: "50% 20%", kind: "person" },
-       links: {
-         studio: "studio.html#…",
-         curators: "curators.html#…",
-         community: "community.html#…",
-         product: "/products/handle"
-       },
+       sub: "…",
+       image: { src: "assets/img/…jpg", alt: "…", focal: "50% 20%" },
+       links: { studio: "studio.html#…", curators: "curators.html#…", community: "community.html#…", product: "/products/handle" },
        purchasable: false
      }
-  */
+     비어 있으면 세 배지 자리가 각각 명시적 빈 상태로 보입니다. */
   highlights: [],
 
-  /* 승인된 협업만. 예: { title, partner, image, href, status: "announced" } */
-  collaborations: [],
+  /* Shop 선반 — 원본 "Aurora Experience / Collaboration / Curator's Recommendation / Curation".
+     원본의 "Ranking" 선반은 순위 번호 문제로 제외(Aurora 100은 Studio에서 편집 선정으로 소개).
+     product: { title, vendor, href: "/products/handle", image: { src, alt },
+                price: "Shopify 데이터에서", status: null | "sold_out" | "preorder" }
+     status는 Shopify 재고/설정과 일치할 때만. 리뷰 수·별점은 실제 리뷰 앱 데이터가 있을 때만. */
+  shelves: [
+    { id: "experience", title: "Aurora Experience", href: "/collections/aurora-experience", products: [] },
+    { id: "collaboration", title: "Collaboration", href: "/collections/collaboration", products: [] },
+    { id: "curators-recommendation", title: "Curator's Recommendation", href: "/collections/curators-recommendation", products: [] },
+    { id: "curation", title: "Curation", href: "/collections/curation", products: [] }
+  ],
 
   /* 입점 브랜드 (승인·계약 완료분만). 예: { name, logo: "assets/brands/x.svg", href } */
   brands: [],

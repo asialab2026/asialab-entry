@@ -135,7 +135,9 @@
         '<img src="' + esc(img.src) + '" alt="' + esc(img.alt || "") + '" loading="lazy" decoding="async">' +
         "</figure>";
     }
-    return '<div class="media media--empty' + ratio + '" role="img" aria-label="' + esc(opt.emptyTitle || "Image coming soon") + '">' +
+    var tex = opt.texture ? " media--texture" : "";
+    var pos = opt.bgpos ? ' style="--bgpos:' + esc(opt.bgpos) + '"' : "";
+    return '<div class="media media--empty' + ratio + tex + '"' + pos + ' role="img" aria-label="' + esc(opt.emptyTitle || "Image coming soon") + '">' +
       '<div class="aurora-field aurora-field--soft"></div><div class="media__frame"></div>' +
       '<div class="media__empty"><span class="star" style="color:#fff">' + STAR + "</span>" +
       "<strong>" + esc(opt.emptyTitle || "Coming soon") + "</strong>" +
@@ -154,38 +156,40 @@
 
   window.Aurora = { media: media, empty: empty, STAR: STAR, esc: esc };
 
-  /* Hero cover */
+  /* Hero cover (Figma 1:94 slot — the original stock model is not reused) */
   var cover = $('[data-render="shop-cover"]');
   if (cover) {
     cover.innerHTML = media(C.shopCover, {
-      ratio: "4x5",
-      emptyTitle: "The season's cover is being produced",
+      texture: true, bgpos: "8% 78%",
+      emptyTitle: "The season's cover is in production",
       emptyText: "Aurora Studio · Editorial"
     });
     if (C.shopCover && C.shopCover.credit) {
-      cover.insertAdjacentHTML("beforeend", '<p class="muted" style="font-size:12px;margin:8px 0 0">' + esc(C.shopCover.credit) + "</p>");
+      cover.insertAdjacentHTML("beforeend", '<p style="position:absolute;right:28px;bottom:24px;margin:0;font-size:11px;color:#fff;opacity:.8">' + esc(C.shopCover.credit) + "</p>");
     }
   }
 
-  /* Highlights + field tabs */
-  var FIELD = { ent: "Entertainment", fashion: "Fashion", taste: "Taste" };
+  /* Aurora Highlights — three badge cards (Figma 1:44 / 1:51 / 1:62) */
+  var BADGE = { exclusive: "Only on Aurora", aurora100: "Aurora 100", curator: "Curator’s Pick" };
+  var BADGE_EMPTY = {
+    exclusive: ["The first Aurora exclusive", "Produced with Studio — announced when confirmed."],
+    aurora100: ["From the Aurora 100", "An editorial selection, never a ranking."],
+    curator: ["A curator’s pick", "Chosen by a named Aurora curator."]
+  };
+  var BG = ["8% 80%", "30% 40%", "95% 90%"];
   var hlRoot = $('[data-render="highlights"]');
-  function renderHighlights(field) {
-    if (!hlRoot) return;
-    var list = (C.highlights || []).filter(function (h) { return !field || field === "all" || h.field === field; });
-    if (!list.length) {
-      var label = field && field !== "all" ? FIELD[field] + " highlights" : "Aurora Highlights";
-      hlRoot.className = "";
-      hlRoot.innerHTML = empty(
-        label + " are in production",
-        "Each highlight will connect one object to the story behind it in Studio, the curator who selected it, and the conversation in Community. Only confirmed pieces appear here.",
-        { href: BASE + "studio.html", label: "Meanwhile, read Studio" }
-      );
-      observe();
-      return;
-    }
-    hlRoot.className = "grid grid--3";
-    hlRoot.innerHTML = list.map(function (h) {
+  if (hlRoot) {
+    var hl = (C.highlights || []).slice(0, 3);
+    var order = ["exclusive", "aurora100", "curator"];
+    var cards = hl.length ? hl : order.map(function (k) { return { badge: k, _empty: true }; });
+    hlRoot.innerHTML = cards.map(function (h, i) {
+      var badge = BADGE[h.badge] ? '<span class="badge">' + STAR + esc(BADGE[h.badge]) + "</span>" : "";
+      if (h._empty) {
+        var e = BADGE_EMPTY[h.badge];
+        return '<article class="hl-card reveal">' + badge +
+          media(null, { texture: true, bgpos: BG[i], emptyTitle: e[0], emptyText: "Coming soon" }) +
+          '<p class="hl-card__sub">' + esc(e[1]) + "</p></article>";
+      }
       var L = h.links || {};
       var chips = [
         L.studio ? '<a class="chip chip--studio" href="' + esc(L.studio) + '">Studio story</a>' : "",
@@ -197,69 +201,63 @@
             ? '<a class="btn btn--primary btn--sm" href="' + esc(L.product) + '">View product</a>'
             : '<button class="btn btn--primary btn--sm" type="button" disabled>Available soon</button>')
         : "";
-      return '<article class="card reveal">' +
-        media(h.image, { ratio: "4x5", emptyTitle: h.title }) +
-        '<p class="card__meta">' + esc(FIELD[h.field] || "") + (h.meta ? " · " + esc(h.meta) : "") + "</p>" +
-        '<h3 class="card__title">' + esc(h.title) + "</h3>" +
+      return '<article class="hl-card reveal">' + badge +
+        media(h.image, { texture: true, bgpos: BG[i], emptyTitle: h.title }) +
+        '<h3 class="hl-card__title">' + esc(h.title) + "</h3>" +
+        (h.sub ? '<p class="hl-card__sub">' + esc(h.sub) + "</p>" : "") +
         (chips ? '<div class="card__links">' + chips + "</div>" : "") +
         (buy ? "<div>" + buy + "</div>" : "") +
         "</article>";
     }).join("");
-    observe();
   }
-  var tabs = $all('[role="tab"][data-field]');
-  tabs.forEach(function (t) {
-    t.addEventListener("click", function () {
-      tabs.forEach(function (o) { o.setAttribute("aria-selected", String(o === t)); o.tabIndex = o === t ? 0 : -1; });
-      renderHighlights(t.getAttribute("data-field"));
-    });
-    t.addEventListener("keydown", function (e) {
-      var i = tabs.indexOf(t);
-      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-        e.preventDefault();
-        var n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
-        n.focus(); n.click();
-      }
-    });
-  });
-  renderHighlights("all");
 
-  /* Collaborations */
-  var coRoot = $('[data-render="collaborations"]');
-  if (coRoot) {
-    var co = C.collaborations || [];
-    if (!co.length) {
-      coRoot.innerHTML = empty(
-        "Collaborations are announced when confirmed",
-        "Aurora produces a small number of collaborations with brands, creators and curators. Each one is published here only after every partner has signed off.",
-        { href: BASE + "work-with-aurora.html#partners", label: "Propose a collaboration" }
-      );
+  /* Shelves (Figma "new arrivals" 83:468) — only shelves with products render */
+  var shRoot = $('[data-render="shelves"]');
+  if (shRoot) {
+    var shelves = (C.shelves || []);
+    var filled = shelves.filter(function (s) { return s.products && s.products.length; });
+    if (!filled.length) {
+      shRoot.innerHTML =
+        '<div class="empty reveal"><div class="aurora-field"></div>' +
+        '<span class="empty__icon">' + STAR + "</span>" +
+        '<h3 class="empty__title">The Shop opens with its first release</h3>' +
+        '<p class="empty__body">Aurora releases a small number of pieces, each tied to a Studio story and a curator. Shelves appear here as soon as a piece is approved for sale, with prices and availability straight from checkout.</p>' +
+        '<div class="shelf-preview" aria-label="Upcoming shelves">' +
+          shelves.map(function (s) { return "<span>" + esc(s.title) + "</span>"; }).join("") +
+        "</div>" +
+        '<a class="link-arrow" href="' + BASE + 'community.html">Hear first in Community</a></div>';
     } else {
-      coRoot.className = "grid grid--3";
-      coRoot.innerHTML = co.map(function (c) {
-        return '<article class="card reveal">' + media(c.image, { ratio: "16x9", emptyTitle: c.title }) +
-          '<p class="card__meta">' + esc(c.partner || "") + "</p>" +
-          '<h3 class="card__title">' + esc(c.title) + "</h3>" +
-          (c.href ? '<a class="link-arrow" href="' + esc(c.href) + '">Read the story</a>' : "") + "</article>";
+      var STATUS = { sold_out: "Sold out", preorder: "Pre-order" };
+      shRoot.innerHTML = filled.map(function (s) {
+        return '<div class="shelf" id="shelf-' + esc(s.id) + '">' +
+          '<div class="shelf__head"><h2>' + esc(s.title) + "</h2></div>" +
+          '<div class="grid grid--3">' + s.products.slice(0, 3).map(function (p) {
+            var img = p.image ? { src: p.image.src, alt: p.image.alt, kind: "product" } : null;
+            return '<a class="product-card reveal" href="' + esc(p.href || "#") + '">' +
+              media(img, { ratio: "1x1", texture: true, emptyTitle: p.title, emptyText: "Photo coming soon" }) +
+              (p.vendor ? '<p class="product-card__vendor">' + esc(p.vendor) + "</p>" : "") +
+              '<h3 class="product-card__title">' + esc(p.title) + "</h3>" +
+              '<div class="product-card__row"><span class="product-card__price">' + esc(p.price || "") + "</span>" +
+              (STATUS[p.status] ? '<span class="product-card__status">' + STATUS[p.status] + "</span>" : "") + "</div></a>";
+          }).join("") + "</div>" +
+          (s.href && s.products.length > 3 ? '<div class="shelf__foot"><a class="btn btn--mist btn--sm" href="' + esc(s.href) + '">View more</a></div>' : "") +
+          "</div>";
       }).join("");
     }
   }
 
-  /* Brands */
+  /* Brands strip (Figma 1:154) — hidden until partnerships are agreed */
   var brRoot = $('[data-render="brands"]');
   if (brRoot) {
     var br = C.brands || [];
     if (!br.length) {
-      /* No empty boxes: hide the section until a partnership is agreed. */
       var brSec = brRoot.closest("section");
       if (brSec && !doc.hasAttribute("data-edit")) brSec.hidden = true;
       else brRoot.innerHTML = empty("Brands", "Shown once a production partnership is agreed.");
     } else {
-      brRoot.className = "grid grid--4";
       brRoot.innerHTML = br.map(function (b) {
-        return '<a class="loop__item" href="' + esc(b.href || "#") + '" style="--_c:var(--starlight-mist)">' +
-          (b.logo ? '<img src="' + esc(b.logo) + '" alt="' + esc(b.name) + '" style="height:32px;width:auto">' : "<h3>" + esc(b.name) + "</h3>") +
-          "</a>";
+        return '<a href="' + esc(b.href || "#") + '" style="display:inline-flex;align-items:center">' +
+          (b.logo ? '<img src="' + esc(b.logo) + '" alt="' + esc(b.name) + '" style="height:28px;width:auto">' : "<b>" + esc(b.name) + "</b>") + "</a>";
       }).join("");
     }
   }
@@ -286,7 +284,7 @@
       '<h2 class="h2" style="margin-top:24px">Shop <em>Live</em></h2>' +
       '<p class="lede">' + body + "</p>" +
       '<div class="hero__actions" style="margin-top:32px">' + cta + "</div></div>" +
-      '<div class="media media--16x9 media--empty"><div class="aurora-field aurora-field--ember"></div><div class="media__frame"></div>' +
+      '<div class="media media--16x9 media--empty media--texture" style="--bgpos:98% 95%"><div class="aurora-field"></div><div class="media__frame"></div>' +
       '<div class="media__empty"><span class="star" style="color:#fff">' + STAR + "</span><strong>Aurora Live</strong><span>" +
       (lv.state === "none" ? "Off air" : STATE[lv.state]) + "</span></div></div>";
   }
