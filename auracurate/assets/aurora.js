@@ -13,7 +13,8 @@
   var BASE = document.body.getAttribute("data-base") || "";
   var PAGE = document.body.getAttribute("data-page") || "";
 
-  var STAR = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0C12.9 8 16 11.1 24 12 16 12.9 12.9 16 12 24 11.1 16 8 12.9 0 12 8 11.1 11.1 8 12 0Z"/></svg>';
+  // Official Aurora star (assets/brand/aurora-star.png), drawn as a mask so it takes the text colour.
+  var STAR = '<span class="aurora-star" aria-hidden="true"></span>';
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
