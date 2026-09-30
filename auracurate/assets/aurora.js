@@ -130,7 +130,7 @@
     opt = opt || {};
     var ratio = opt.ratio ? " media--" + opt.ratio : "";
     if (img && img.src) {
-      var kind = img.kind === "product" ? ' data-kind="product"' : "";
+      var kind = img.kind === "product" || img.kind === "cutout" ? ' data-kind="' + img.kind + '"' : "";
       var focal = img.focal ? "--focal:" + esc(img.focal) + ";" : "";
       return '<figure class="media' + ratio + '"' + kind + ' style="margin:0;' + focal + '">' +
         '<img src="' + esc(img.src) + '" alt="' + esc(img.alt || "") + '" loading="lazy" decoding="async">' +
@@ -228,18 +228,23 @@
         "</div>" +
         '<a class="link-arrow" href="' + BASE + 'community.html">Hear first in Community</a></div>';
     } else {
-      var STATUS = { sold_out: "Sold out", preorder: "Pre-order" };
+      var STATUS = { sample: "Design sample", sold_out: "Sold out", preorder: "Pre-order" };
       shRoot.innerHTML = filled.map(function (s) {
         return '<div class="shelf" id="shelf-' + esc(s.id) + '">' +
-          '<div class="shelf__head"><h2>' + esc(s.title) + "</h2></div>" +
+          '<div class="shelf__head"><h2>' + esc(s.title) + "</h2>" +
+            (s.note ? '<p class="shelf__note">' + esc(s.note) + "</p>" : "") + "</div>" +
           '<div class="grid grid--3">' + s.products.slice(0, 3).map(function (p) {
-            var img = p.image ? { src: p.image.src, alt: p.image.alt, kind: "product" } : null;
-            return '<a class="product-card reveal" href="' + esc(p.href || "#") + '">' +
-              media(img, { ratio: "1x1", texture: true, emptyTitle: p.title, emptyText: "Photo coming soon" }) +
+            // Packshots sit on white (kind "product"); lifestyle photos fill the frame.
+            var img = p.image ? { src: p.image.src, alt: p.image.alt, focal: p.image.focal, kind: p.image.kind } : null;
+            // Without a product page the card is not a link, so it never points nowhere.
+            var tag = p.href ? 'a class="product-card reveal" href="' + esc(p.href) + '"' : 'article class="product-card reveal"';
+            return "<" + tag + ">" +
+              media(img, { texture: true, emptyTitle: p.title, emptyText: "Photo coming soon" }) +
               (p.vendor ? '<p class="product-card__vendor">' + esc(p.vendor) + "</p>" : "") +
               '<h3 class="product-card__title">' + esc(p.title) + "</h3>" +
               '<div class="product-card__row"><span class="product-card__price">' + esc(p.price || "") + "</span>" +
-              (STATUS[p.status] ? '<span class="product-card__status">' + STATUS[p.status] + "</span>" : "") + "</div></a>";
+              (STATUS[p.status] ? '<span class="product-card__status">' + STATUS[p.status] + "</span>" : "") + "</div>" +
+              (p.href ? "</a>" : "</article>");
           }).join("") + "</div>" +
           (s.href && s.products.length > 3 ? '<div class="shelf__foot"><a class="btn btn--mist btn--sm" href="' + esc(s.href) + '">View more</a></div>' : "") +
           "</div>";
@@ -265,8 +270,12 @@
 
   /* Live */
   var lvRoot = $('[data-render="live"]');
-  if (lvRoot) {
-    var lv = C.live || { state: "none" };
+  var lv = C.live || { state: "none" };
+  // Nothing scheduled: the section stays hidden rather than showing an empty stage.
+  if (lvRoot && lv.state === "none" && !doc.hasAttribute("data-edit")) {
+    var lvSec = lvRoot.closest("section");
+    if (lvSec) lvSec.hidden = true;
+  } else if (lvRoot) {
     var STATE = { none: "No live now", scheduled: "Scheduled", live: "Live", replay: "Replay" };
     var body, cta;
     if (lv.state === "scheduled") {
