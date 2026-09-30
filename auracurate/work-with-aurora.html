@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Work with Aurora</title>
+<title>Partner with Aurora</title>
 <meta name="description" content="Propose a collaboration with Aurora as a partner brand, curator or honorary contributor.">
 <meta name="theme-color" content="#0B0E15">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,22 +12,72 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
+<link rel="stylesheet" href="assets/pages.css">
 </head>
-<body class="mode-read" data-page="work">
+<body class="mode-stage page-aurora" data-page="partner">
 <div data-shell="header"></div>
 <main id="main">
 
-  <section class="section" style="padding-bottom:48px">
-    <div class="container">
-      <img src="assets/brand/black-logo.png" alt="Aurora" width="140" height="32" style="width:140px;height:auto;margin-bottom:32px">
-      <p class="eyebrow">Work with Aurora · 오로라와 함께하기</p>
-      <h1 class="h1">Three ways in, <em>one conversation.</em></h1>
-      <p class="lede">Tell us who you are and what you would like to make. Every submission is read by the Aurora team.</p>
+  <!-- ============ HERO (theme index.aurora-partners › intro) ============ -->
+  <section class="photo-hero" aria-labelledby="wa-title" style="min-height:min(70vh,640px)">
+    <img class="photo-hero__img" src="assets/img/aurora100/group.jpg" alt="" style="--focal:50% 30%">
+    <div class="container photo-hero__inner">
+      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Aurora</a></li><li>Partner with us</li></ol>
+      <p class="eyebrow" style="color:rgba(255,255,255,.85)">Work with Aurora · 오로라와 함께하기</p>
+      <h1 class="display" id="wa-title">Make something <em>that matters.</em></h1>
+      <p class="lede">For editorial nominations, original productions, brand partnerships and sponsorship enquiries. Three ways in, one conversation.</p>
+      <div class="photo-hero__actions"><a class="btn btn--primary" href="#apply">Send a proposal</a><a class="btn btn--secondary" href="#ecosystem" style="--_fg:#fff;--_bd:rgba(255,255,255,.6)">How Aurora works</a></div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <!-- ============ THREE DOORS ============ -->
+  <section class="section" aria-labelledby="doors-title" style="border-top:0">
     <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow">Three ways in</p>
+        <h2 class="h1" id="doors-title">Who are you <em>working with us as?</em></h2>
+      </div></div>
+      <div class="doors">
+        <a class="door reveal" href="#partners" data-apply="partners"><img src="assets/img/shop/col-louis-vuitton.jpg" alt="" loading="lazy" style="--focal:50% 20%"><div class="door__body"><p class="door__k">01 · Partners</p><h3>Brands &amp; products</h3><p>Bring a brand, product or IP into a story — from a Studio film to a Shop release.</p><span class="ko" lang="ko">브랜드·제품 협업 제안</span><span class="link-arrow">Propose a collaboration</span></div></a>
+        <a class="door reveal" href="#curators" data-apply="curators"><img src="assets/img/curators/nmixx-guess.jpg" alt="" loading="lazy" style="--focal:50% 30%"><div class="door__body"><p class="door__k">02 · Curators</p><h3>Creators &amp; artists</h3><p>Share your perspective and practice — profiles, curated picks and original projects.</p><span class="ko" lang="ko">큐레이터 협업 제안</span><span class="link-arrow">Start a collaboration</span></div></a>
+        <a class="door reveal" href="#contributors" data-apply="contributors"><img src="assets/img/studio/mongolia.jpg" alt="" loading="lazy" style="--focal:50% 40%"><div class="door__body"><p class="door__k">03 · Contributors</p><h3>Honorary reporters</h3><p>Report culture from where you are — India, Mongolia, Korea and beyond.</p><span class="ko" lang="ko">명예기자 지원</span><span class="link-arrow">Apply to write</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ECOSYSTEM (theme › ecosystem modules) ============ -->
+  <section class="section" id="ecosystem" aria-labelledby="eco-title">
+    <div class="container">
+      <div class="paper reveal">
+        <div class="paper--split">
+          <div>
+            <p class="eyebrow">One ecosystem</p>
+            <h2 class="h1" id="eco-title">A shared project, <em>shaped around your contribution.</em></h2>
+            <p class="lede">Studio, Curators, Community and Shop connect where a project benefits from them. The four areas support one another without turning every story or conversation into a sales pitch.</p>
+          </div>
+          <img src="assets/img/home/ecosystem.jpg" alt="Aurora ecosystem diagram: Studio, Shop, Curator and Community around Aurora" width="987" height="698" loading="lazy" style="border-radius:16px">
+        </div>
+        <div class="eco">
+          <a href="studio.html"><b>Studio</b><span>Discover stories and production.</span></a>
+          <a href="curators.html"><b>Curators</b><span>Explore perspectives and agreed collaborations.</span></a>
+          <a href="community.html"><b>Community</b><span>Ask questions and share experiences.</span></a>
+          <a href="shop.html"><b>Shop</b><span>Explore approved products and projects.</span></a>
+        </div>
+        <div class="pillars">
+          <div class="pillar"><p class="pillar__k">Editorial projects</p><h3>Independent decisions</h3><p>Aurora 100 and Global Faces 100 are distinct editorial projects. Their purpose and selection criteria are read separately.</p></div>
+          <div class="pillar"><p class="pillar__k">Process</p><h3>Review before anything goes live</h3><p>Every proposal goes through review, follow-up questions and a project agreement before anything is published, listed or granted.</p></div>
+          <div class="pillar"><p class="pillar__k">Clarity</p><h3>No bought selection</h3><p>An application or paid partnership does not confer Aurora 100 selection, an award, Curator status or a product endorsement.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply" aria-labelledby="apply-title">
+    <div class="container">
+      <div class="form-card">
+      <img src="assets/brand/black-logo.png" alt="Aurora" width="140" height="32" style="width:120px;height:auto;margin-bottom:24px">
+      <p class="eyebrow">Send a proposal</p>
+      <h2 class="h1" id="apply-title" style="margin-bottom:32px">Three ways in, <em>one conversation.</em></h2>
       <form class="form" id="intake" novalidate>
         <div class="notice"><strong>Submitting is not approval.</strong> Proposals go through review, follow-up questions and a project agreement before anything is published, listed or granted. 접수는 승인이 아닙니다.</div>
 
@@ -92,6 +142,7 @@
         <div><button class="btn btn--primary" type="submit" id="intake-submit">Send proposal</button></div>
         <p class="muted" id="intake-note" style="font-size:var(--fs-small);margin:0"></p>
       </form>
+      </div>
     </div>
   </section>
 
@@ -122,7 +173,11 @@
     });
   });
   setType((location.hash || "").slice(1) || "partners");
-  window.addEventListener("hashchange", function () { setType(location.hash.slice(1)); });
+  window.addEventListener("hashchange", function () {
+    var t = location.hash.slice(1);
+    if (/^(partners|curators|contributors)$/.test(t)) { setType(t); form.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
+  if (/^#(partners|curators|contributors)$/.test(location.hash)) setTimeout(function () { form.scrollIntoView({ block: "start" }); }, 0);
 
   note.textContent = cfg.endpoint
     ? ""

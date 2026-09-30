@@ -34,7 +34,7 @@
     { id: "studio", label: "Studio", href: "studio.html" },
     { id: "curators", label: "Curators", href: "curators.html" },
     { id: "community", label: "Community", href: "community.html" },
-    { id: "shop", label: "Shop", href: "index.html" }
+    { id: "shop", label: "Shop", href: "shop.html" }
   ];
 
   function navLinks(cls) {
@@ -48,12 +48,12 @@
     return (
       '<a class="skip-link" href="#main">본문 바로가기</a>' +
       '<header class="site-header" role="banner"><div class="container site-header__inner">' +
-        '<a class="brand" href="' + BASE + 'index.html" aria-label="Aurora — Shop home">' +
+        '<a class="brand" href="' + BASE + 'index.html" aria-label="Aurora — home">' +
           '<img src="' + BASE + 'assets/brand/white-logo.png" alt="Aurora" width="114" height="26">' +
         "</a>" +
         '<nav class="nav" aria-label="Primary">' + navLinks("") + "</nav>" +
         '<div class="header-actions">' +
-          '<a class="btn btn--primary pill-partner" href="' + BASE + 'work-with-aurora.html#partners">Partner with us</a>' +
+          '<a class="btn btn--primary pill-partner" href="' + BASE + 'work-with-aurora.html"' + (PAGE === "partner" ? ' aria-current="page"' : "") + ">Partner with us</a>" +
           '<a class="icon-btn" href="/cart" aria-label="Cart">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 7Z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>' +
           "</a>" +
@@ -67,7 +67,7 @@
       "</div></header>" +
       '<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-open="false">' +
         navLinks("mobile-nav__link") +
-        '<a class="btn btn--primary" href="' + BASE + 'work-with-aurora.html#partners">Partner with us</a>' +
+        '<a class="btn btn--primary" href="' + BASE + 'work-with-aurora.html">Partner with us</a>' +
       "</nav>"
     );
   }
@@ -297,6 +297,82 @@
       '<div class="media media--16x9 media--empty media--texture" style="--bgpos:98% 95%"><div class="aurora-field"></div><div class="media__frame"></div>' +
       '<div class="media__empty"><span class="star" style="color:#fff">' + STAR + "</span><strong>Aurora Live</strong><span>" +
       (lv.state === "none" ? "Off air" : STATE[lv.state]) + "</span></div></div>";
+  }
+
+  /* ---- Nine-field filter (Studio) ---------------------------------------
+     Cards carry data-fields="beauty travel"; rows with no match are hidden. */
+  var filter = $("[data-filter]");
+  if (filter) {
+    var fButtons = $all("button[data-field]", filter);
+    var fStatus = $("[data-filter-status]");
+    var applyField = function (field) {
+      fButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-field") === field)); });
+      var shown = 0;
+      $all("[data-filter-row]").forEach(function (row) {
+        var visible = 0;
+        $all("[data-fields]", row).forEach(function (card) {
+          var ok = !field || (" " + card.getAttribute("data-fields") + " ").indexOf(" " + field + " ") > -1;
+          card.hidden = !ok;
+          if (ok) { visible++; card.classList.add("is-in"); }
+        });
+        row.hidden = visible === 0;
+        shown += visible;
+      });
+      if (!fStatus) return;
+      if (!field) { fStatus.textContent = ""; return; }
+      var label = fButtons.filter(function (b) { return b.getAttribute("data-field") === field; })[0];
+      fStatus.innerHTML = esc(shown + (shown === 1 ? " story" : " stories") + " in " + (label ? label.textContent.trim() : field) + ".") +
+        ' <button type="button" class="filter-clear">Show all</button>';
+      $(".filter-clear", fStatus).addEventListener("click", function () { applyField(""); });
+    };
+    fButtons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var f = b.getAttribute("data-field");
+        applyField(b.getAttribute("aria-pressed") === "true" ? "" : f);
+      });
+    });
+    var qf = (location.search.match(/[?&]field=([a-z]+)/) || [])[1];
+    if (qf && fButtons.some(function (b) { return b.getAttribute("data-field") === qf; })) applyField(qf);
+  }
+
+  /* ---- Tabs (curator profile) ------------------------------------------ */
+  $all("[role=tablist]").forEach(function (list) {
+    var tabs = $all("[role=tab]", list);
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) { panel.hidden = !on; if (on) $all(".reveal", panel).forEach(function (el) { el.classList.add("is-in"); }); }
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(t); });
+      t.addEventListener("keydown", function (e) {
+        var n = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
+        if (n === null) return;
+        e.preventDefault();
+        select(tabs[(n + tabs.length) % tabs.length], true);
+      });
+    });
+  });
+
+  /* ---- Sub-navigation: mark the section in view ------------------------- */
+  var subLinks = $all(".subnav a[href^='#']");
+  if (subLinks.length && "IntersectionObserver" in window) {
+    var byId = {};
+    subLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        subLinks.forEach(function (a) { a.removeAttribute("aria-current"); });
+        var a = byId[en.target.id];
+        if (a) a.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
   /* ---- Reveal on scroll ----------------------------------------------- */

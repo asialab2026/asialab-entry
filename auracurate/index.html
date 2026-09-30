@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aurora Shop — Aurora Experience</title>
-<meta name="description" content="Aurora Shop: selected objects connected to Studio stories, Curators and Community. A production house by Asia Lab.">
+<title>Aurora — Culture, seen differently</title>
+<meta name="description" content="Aurora is a selective production house by Asia Lab. We discover people, ideas and brands with a distinct point of view and shape their stories through interviews, films, editorials and original projects.">
 <meta name="theme-color" content="#0B0E15">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,113 +12,228 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
+<link rel="stylesheet" href="assets/pages.css">
 </head>
-<body class="mode-stage page-aurora" data-page="shop">
+<body class="mode-stage page-aurora" data-page="home">
 <div data-shell="header"></div>
-<noscript><nav class="container" style="padding:16px"><a href="studio.html">Studio</a> · <a href="curators.html">Curators</a> · <a href="community.html">Community</a> · <a href="index.html">Shop</a></nav></noscript>
+<noscript><nav class="container" style="padding:16px"><a href="studio.html">Studio</a> · <a href="curators.html">Curators</a> · <a href="community.html">Community</a> · <a href="shop.html">Shop</a> · <a href="work-with-aurora.html">Partner with us</a></nav></noscript>
 
 <main id="main">
 
-  <!-- ============ HERO CARD (Figma em4c3H 1:9–1:35) ============ -->
-  <section class="container" aria-labelledby="hero-title">
-    <div class="hero-card">
-      <div class="hero-card__copy">
-        <p class="eyebrow" style="margin:0">Aurora Shop</p>
-        <h1 class="hero-card__title" id="hero-title">Shop the Aurora <em>Experience</em></h1>
-        <p class="hero-card__body">Culture meets commerce through pieces produced with Studio stories and chosen by named curators. Every object is connected to the story behind it and the conversation around it.</p>
-        <p class="hero-card__body ko" lang="ko" style="font-size:.95rem;margin-top:-8px">한 상품이 콘텐츠·큐레이터·커뮤니티로 이어지는 곳.</p>
-        <ul class="hero-card__facts" aria-label="What Aurora is">
-          <li><b>Selected</b><span>Not a marketplace</span></li>
-          <li><b>Curator-led</b><span>Named curators</span></li>
-          <li><b>Global</b><span>Shopify checkout</span></li>
-        </ul>
-        <form class="search" action="/search" method="get" role="search">
-          <label class="visually-hidden" for="q">Search Aurora</label>
-          <input id="q" name="q" type="search" placeholder="Search curators, brands, collections…" autocomplete="off">
-          <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
-        </form>
-      </div>
-      <div class="hero-card__media" data-slot="shopCover" data-render="shop-cover"></div>
-    </div>
-  </section>
-
-  <!-- ============ AURORA HIGHLIGHTS (Figma 1:36 / 1:44 / 1:51 / 1:62) ============ -->
-  <section class="section" id="highlights" aria-labelledby="hl-title" style="border-top:0">
-    <div class="container hl-layout">
-      <div class="hl-intro">
-        <h2 id="hl-title">Aurora<br>Highlights</h2>
-        <p>One exclusive, one piece from the Aurora 100 and one curator&rsquo;s pick — each linked to its story, its curator and its conversation.</p>
-        <div><a class="btn btn--mist btn--sm" href="studio.html">See the stories &rarr;</a></div>
-      </div>
-      <div class="hl-cards" data-slot="highlights" data-render="highlights"></div>
-    </div>
-  </section>
-
-  <!-- ============ BRANDS STRIP (Figma 1:154) — hidden until agreed ============ -->
-  <section aria-label="Partner brands" style="background:var(--starlight-mist);color:var(--cosmic-midnight)">
-    <div class="container" data-slot="brands" data-render="brands" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;min-height:72px"></div>
-  </section>
-
-  <!-- ============ SHELVES (Figma 83:468) ============ -->
-  <section class="section" id="shop" aria-label="Shop" style="border-top:0">
-    <div class="container" data-slot="shelves" data-render="shelves"></div>
-  </section>
-
-  <!-- ============ FOUR WORLDS (ecosystem loop, §3) ============ -->
-  <section class="section" id="worlds" aria-labelledby="worlds-title" style="overflow:hidden">
-    <div class="aurora-field aurora-field--soft" style="opacity:.35"></div>
-    <div class="container" style="position:relative">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">One world, four doors</p>
-          <h2 class="h1" id="worlds-title">How Aurora <em>connects</em></h2>
-          <p class="lede">Stories bring an audience. The audience meets curators and partners. Together they make objects and new stories — and the circle continues. Not every path ends in a purchase.</p>
+  <!-- ============ BRAND SPREAD (theme index.json › brand) ============ -->
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="container home-hero__grid">
+      <div>
+        <img class="home-hero__mark" src="assets/brand/wordmark-white.webp" alt="Aurora" width="900" height="206">
+        <p class="home-hero__lockup">Selective Production House · Created by <b>Asia Lab</b></p>
+        <h1 class="display" id="home-title">Culture, seen <em>differently.</em></h1>
+        <p class="lede">We discover people, ideas and brands with a distinct point of view — and shape their stories through interviews, films, editorials and original projects.</p>
+        <p class="lede ko" lang="ko" style="font-size:1rem;margin-top:12px">사람과 아이디어, 브랜드를 발견하고 그 이야기를 인터뷰·영상·에디토리얼·오리지널 프로젝트로 만듭니다.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="studio.html">Enter Studio</a>
+          <a class="btn btn--secondary" href="work-with-aurora.html#partners">Partner with us</a>
         </div>
       </div>
-      <div class="loop">
-        <a class="loop__item loop__item--studio reveal" href="studio.html">
-          <span class="card__meta">Content</span>
+      <figure class="home-hero__figure reveal">
+        <img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra — Global Faces 100 editorial portrait" width="1200" height="1800">
+        <figcaption>Featured editorial · Harshaali Malhotra · Global Faces 100</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ FOUR WAYS IN (theme index.json › four) ============ -->
+  <section class="section" aria-labelledby="four-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">One Aurora. Four ways in.</p>
+          <h2 class="h1" id="four-title">Stories. People. <em>Connection.</em> Objects.</h2>
+          <p class="lede">Read the work, explore perspectives, join a conversation and discover considered objects and experiences.</p>
+        </div>
+      </div>
+      <div class="ways">
+        <a class="way way--studio reveal" href="studio.html">
+          <div class="way__img"><img src="assets/img/studio/power-100.jpg" alt="Aurora Power 100 stage, 2025" loading="lazy" style="--focal:50% 40%"><span class="way__n">01 · Read &amp; watch</span></div>
           <h3>Studio</h3>
-          <p>Interviews, editorials and the Aurora 100 — stories made with contributors.</p>
+          <p>Original stories, interviews and cultural projects. Discover the work and the perspective behind it.</p>
+          <span class="link-arrow">Enter Studio</span>
         </a>
-        <a class="loop__item loop__item--curators reveal" href="curators.html">
-          <span class="card__meta">Selection</span>
+        <a class="way way--curators reveal" href="curators.html">
+          <div class="way__img"><img src="assets/img/people/lisa.jpg" alt="Lisa — Aurora editorial portrait" loading="lazy" style="--focal:50% 18%"><span class="way__n">02 · People &amp; perspective</span></div>
           <h3>Curators</h3>
-          <p>People whose taste shapes what Aurora makes and chooses.</p>
+          <p>Discover Aurora’s approach to selected voices, creative practice and thoughtful curation.</p>
+          <span class="link-arrow">Meet the perspective</span>
         </a>
-        <a class="loop__item loop__item--community reveal" href="community.html">
-          <span class="card__meta">Conversation</span>
+        <a class="way way--community reveal" href="community.html">
+          <div class="way__img"><img src="assets/img/community/highlight-hero.jpg" alt="A crowd at a community market" loading="lazy" style="--focal:40% 50%"><span class="way__n">03 · Connect &amp; participate</span></div>
           <h3>Community</h3>
-          <p>Where readers, fans and creators talk about the work.</p>
+          <p>A place for thoughtful introductions, cultural conversations and shared creative interests.</p>
+          <span class="link-arrow">Explore the community</span>
         </a>
-        <a class="loop__item loop__item--shop reveal" href="#highlights">
-          <span class="card__meta">Objects</span>
+        <a class="way way--shop reveal" href="shop.html">
+          <div class="way__img"><img src="assets/img/shop/hl-curator.jpg" alt="Felix in black sunglasses and a black suit" loading="lazy" style="--focal:50% 15%"><span class="way__n">04 · Stories into objects</span></div>
           <h3>Shop</h3>
-          <p>Pieces released from the stories — when they are ready.</p>
+          <p>Selected editions, collaborations and experiences, offered when every detail is ready.</p>
+          <span class="link-arrow">Explore Shop</span>
         </a>
       </div>
     </div>
   </section>
 
-
-  <!-- ============ SHOP LIVE ============ -->
-  <section class="section" id="live" aria-label="Shop Live">
-    <div class="container live" data-slot="live" data-render="live"></div>
+  <!-- ============ TWO PROJECTS (theme index.json › projects) ============ -->
+  <section class="section" aria-labelledby="proj-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Aurora originals</p>
+          <h2 class="h1" id="proj-title">Two projects. <em>Distinct perspectives.</em></h2>
+        </div>
+      </div>
+      <div class="projects">
+        <a class="project reveal" href="studio.html#aurora-100">
+          <img src="assets/img/aurora100/cover-entertainment.jpg" alt="Aurora magazine cover — Entertainment 100 with Tyla and Lisa" loading="lazy" style="--focal:50% 20%">
+          <div class="project__body">
+            <p class="project__label">Established cultural influence</p>
+            <h3>Aurora 100</h3>
+            <p>Explore the people, brands and cultural ideas shaping the present.</p>
+            <span class="link-arrow">Explore Aurora 100</span>
+          </div>
+        </a>
+        <a class="project reveal" href="studio.html#global-faces">
+          <img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra — Global Faces 100" loading="lazy" style="--focal:50% 18%">
+          <div class="project__body">
+            <p class="project__label">Discovery · Growth · Possibility</p>
+            <h3>Global Faces 100</h3>
+            <p>Meet Harshaali Malhotra through the full interview, her profile and the conversation around her story.</p>
+            <span class="link-arrow">Explore Global Faces 100</span>
+          </div>
+        </a>
+      </div>
+      <p class="note">Aurora 100 and Global Faces 100 are separate editorial projects with their own purpose. Neither is a public vote, a score or a paid placement.</p>
+    </div>
   </section>
 
+  <!-- ============ NINE FIELDS (theme index.json › nine) ============ -->
+  <section class="section" aria-labelledby="nine-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Nine Tails</p>
+          <h2 class="h2" id="nine-title">Nine editorial fields through which Aurora reads culture.</h2>
+        </div>
+      </div>
+      <ul class="nine">
+        <li><a class="nine__item" href="studio.html?field=entertainment#stories"><span class="nine__icon"><img src="assets/img/nine/entertainment.webp" alt=""></span>Entertainment</a></li>
+        <li><a class="nine__item" href="studio.html?field=icons#stories"><span class="nine__icon"><img src="assets/img/nine/icons.webp" alt=""></span>Icons</a></li>
+        <li><a class="nine__item" href="studio.html?field=beauty#stories"><span class="nine__icon"><img src="assets/img/nine/beauty.webp" alt=""></span>Beauty</a></li>
+        <li><a class="nine__item" href="studio.html?field=fashion#stories"><span class="nine__icon"><img src="assets/img/nine/fashion.webp" alt=""></span>Fashion</a></li>
+        <li><a class="nine__item" href="studio.html?field=hustle#stories"><span class="nine__icon"><img src="assets/img/nine/hustle.webp" alt=""></span>Hustle</a></li>
+        <li><a class="nine__item" href="studio.html?field=taste#stories"><span class="nine__icon"><img src="assets/img/nine/taste.webp" alt=""></span>Taste</a></li>
+        <li><a class="nine__item" href="studio.html?field=lifestyle#stories"><span class="nine__icon"><img src="assets/img/nine/lifestyle.webp" alt=""></span>Lifestyle</a></li>
+        <li><a class="nine__item" href="studio.html?field=travel#stories"><span class="nine__icon"><img src="assets/img/nine/travel.webp" alt=""></span>Travel</a></li>
+        <li><a class="nine__item" href="studio.html?field=wellness#stories"><span class="nine__icon"><img src="assets/img/nine/wellness.webp" alt=""></span>Wellness</a></li>
+      </ul>
+    </div>
+  </section>
 
-  <!-- ============ PARTNERS INTAKE (Shop bottom, §3) ============ -->
-  <section class="section" aria-labelledby="pt-title">
+  <!-- ============ FROM THE STUDIO ============ -->
+  <section class="section" aria-labelledby="fresh-title">
+    <div class="container">
+      <div class="row__head">
+        <div>
+          <p class="eyebrow">Aurora Studio</p>
+          <h2 class="h1" id="fresh-title">Trending <em>now</em></h2>
+        </div>
+        <a class="link-arrow" href="studio.html">All stories</a>
+      </div>
+      <div class="stories">
+        <a class="story reveal" href="studio.html#trending">
+          <div class="story__img"><img src="assets/img/studio/red-carpet.jpg" alt="Three guests on the Aurora 100 red carpet" loading="lazy" style="--focal:50% 25%"></div>
+          <div class="story__body"><p class="story__label">Aurora 100</p><h3 class="story__title">Aurora 100 Awards · Red Carpet Highlights</h3><span class="sample">Design sample</span></div>
+        </a>
+        <a class="story reveal" href="studio.html#trending">
+          <div class="story__img"><img src="assets/img/studio/rashmika-editorial.jpg" alt="Rashmika Mandanna seated beside a pink swan sculpture" loading="lazy" style="--focal:50% 25%"></div>
+          <div class="story__body"><p class="story__label">Article</p><h3 class="story__title">Rashmika Mandanna</h3><span class="sample">Design sample</span></div>
+        </a>
+        <a class="story reveal" href="studio.html#exclusive">
+          <div class="story__img"><img src="assets/img/studio/bong-anurag.jpg" alt="Anurag Kashyap and Bong Joon Ho, black-and-white" loading="lazy" style="--focal:50% 40%"></div>
+          <div class="story__body"><p class="story__label">Celeb × Celeb</p><h3 class="story__title">Bong Joon Ho × Anurag Kashyap</h3><span class="sample">Design sample</span></div>
+        </a>
+        <a class="story reveal" href="community.html#jennie-hera">
+          <div class="story__img"><img src="assets/img/community/jennie-hera-1.jpg" alt="Jennie holding a HERA lipstick" loading="lazy" style="--focal:50% 30%"></div>
+          <div class="story__body"><p class="story__label">Honorary Reporter · India</p><h3 class="story__title">JENNIE × HERA — More Than Beauty, It’s An Attitude</h3><span class="sample">Design sample</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ECOSYSTEM (theme partners › ecosystem, CEO diagram) ============ -->
+  <section class="section" aria-labelledby="eco-title">
+    <div class="container split">
+      <div class="split__media reveal"><img src="assets/img/home/ecosystem.jpg" alt="Aurora ecosystem diagram: Studio, Shop, Curator and Community around Aurora" width="987" height="698" loading="lazy"></div>
+      <div>
+        <p class="eyebrow">One ecosystem</p>
+        <h2 class="h1" id="eco-title">Different ways <em>to take part.</em></h2>
+        <p class="lede">Studio, Curators, Community and Shop connect where a project benefits from them. Participation does not require following a fixed path or making a purchase.</p>
+        <div class="card__links" style="margin-top:24px">
+          <a class="chip chip--studio" href="studio.html">Discover stories and production</a>
+          <a class="chip chip--curators" href="curators.html">Explore perspectives</a>
+          <a class="chip chip--community" href="community.html">Ask questions, share experiences</a>
+          <a class="chip chip--shop" href="shop.html">Approved products and projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOP EDIT (theme index.json › shop_edit) ============ -->
+  <section class="section" aria-labelledby="edit-title">
+    <div class="container split split--rev">
+      <div class="split__media reveal">
+        <div class="gallery" style="grid-template-columns:1fr 1fr;">
+          <img src="assets/img/shop/hl-aurora100.jpg" alt="K-beauty serums on a glass stand" loading="lazy" style="aspect-ratio:3/4">
+          <img src="assets/img/shop/col-clio.jpg" alt="Felix holding a CLIO eyeshadow palette" loading="lazy" style="aspect-ratio:4/3">
+          <img src="assets/img/shop/rec-valentino.jpg" alt="Zendaya in pink Valentino" loading="lazy" style="aspect-ratio:4/3;grid-column:auto">
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Aurora Shop</p>
+        <h2 class="h1" id="edit-title">Discover a considered edit. <em>Create something original.</em></h2>
+        <p class="lede">Explore Aurora Projects and a considered selection of products. Discover what is ready, or share a brief for something made for you.</p>
+        <div class="hero__actions"><a class="btn btn--primary" href="shop.html">Explore Aurora Shop</a><a class="btn btn--secondary" href="work-with-aurora.html#partners">Share a brief</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMUNITY (theme index.json › community) ============ -->
+  <section class="section" aria-labelledby="com-title">
+    <div class="container">
+      <div class="paper paper--split reveal">
+        <div>
+          <p class="eyebrow">Aurora Community</p>
+          <h2 class="h1" id="com-title">Continue the <em>conversation.</em></h2>
+          <p class="lede">Bring your perspective to a community built around curiosity, respect and meaningful creative exchange.</p>
+          <div class="hero__actions"><a class="btn btn--primary" href="community.html">How to take part</a></div>
+        </div>
+        <div class="mosaic" style="grid-template-columns:1fr 1fr;gap:12px">
+          <figure class="tile" style="aspect-ratio:1"><img src="assets/img/studio/hanbok-india.jpg" alt="Hanbok and K-culture events in India" loading="lazy"></figure>
+          <figure class="tile" style="aspect-ratio:1"><img src="assets/img/studio/mongolia.jpg" alt="A traveller in a square in Mongolia" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLLABORATION ============ -->
+  <section class="section" aria-labelledby="col-title">
     <div class="container">
       <div class="band">
         <div class="aurora-field"></div>
         <div class="band__grid">
           <div>
-            <p class="eyebrow" style="color:var(--starlight-mist)">Partners</p>
-            <h2 class="h1" id="pt-title">Bring your brand into <em>the story.</em></h2>
-            <p class="band__note">Brands, products and IP: tell us what you would like to make with Aurora. Every proposal is read; a submission is the start of a conversation, not an approval.</p>
+            <p class="eyebrow" style="color:var(--starlight-mist)">Collaboration</p>
+            <h2 class="h1" id="col-title">Make something <em>that matters.</em></h2>
+            <p class="band__note">For editorial nominations, original productions, partnerships and sponsorship enquiries.</p>
           </div>
-          <div><a class="btn btn--primary" href="work-with-aurora.html#partners">Propose a collaboration</a></div>
+          <div><a class="btn btn--primary" href="work-with-aurora.html">Partner with us</a></div>
         </div>
       </div>
     </div>

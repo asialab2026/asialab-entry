@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aurora Curators</title>
-<meta name="description" content="Aurora Curators — the people whose taste shapes what Aurora makes.">
+<meta name="description" content="Aurora Curators — selected voices, creative practice and thoughtful curation. Profiles, faces in focus and people & perspectives.">
 <meta name="theme-color" content="#0B0E15">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,40 +12,187 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
+<link rel="stylesheet" href="assets/pages.css">
 </head>
-<body class="mode-stage" data-page="curators">
+<body class="mode-stage page-aurora" data-page="curators">
 <div data-shell="header"></div>
 <main id="main">
-  <section class="hero" style="min-height:min(70vh,720px)" aria-labelledby="h-title">
-    <div class="aurora-field aurora-field--ember"></div>
-    <div class="container hero__inner" style="grid-template-columns:1fr">
-      <div class="hero__copy">
-        <p class="eyebrow">Aurora Curators</p>
-        <h1 class="display" id="h-title">Taste, <em>with a name.</em></h1>
-        <p class="lede">Curators select, shape and sometimes co-create what Aurora releases. Each profile shows clearly how that person works with Aurora.</p>
+
+  <!-- ============ INTRO (theme index.aurora-curators › source_editorial / approach) ============ -->
+  <section class="home-hero" aria-labelledby="cu-title">
+    <div class="container home-hero__grid">
+      <div>
+        <ol class="crumbs" aria-label="Breadcrumb" style="color:var(--stage-text-2)"><li><a href="index.html">Aurora</a></li><li>Curators</li></ol>
+        <p class="eyebrow">Selected voices</p>
+        <h1 class="display" id="cu-title">Work before <em>a label.</em></h1>
+        <p class="lede">Aurora’s curator programme connects a person’s perspective with their actual creative practice. Explore the people and perspectives featured in Aurora’s editorial world.</p>
+        <p class="lede ko" lang="ko" style="font-size:1rem;margin-top:12px">큐레이터는 직함이 아니라 작업으로 소개합니다.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#nmixx">Featured profile</a>
+          <a class="btn btn--secondary" href="work-with-aurora.html#curators">Become a curator</a>
+        </div>
+      </div>
+      <div class="faces reveal" style="grid-template-columns:1fr 1fr;gap:12px">
+        <div class="face" style="aspect-ratio:3/4"><img src="assets/img/people/zendaya.jpg" alt="Zendaya" style="--focal:50% 15%"></div>
+        <div class="face" style="aspect-ratio:3/4;margin-top:40px"><img src="assets/img/people/jackson-wang.jpg" alt="Jackson Wang" style="--focal:50% 12%"></div>
       </div>
     </div>
   </section>
-  <section class="section--tight"><div class="container"><div class="principles">
-        <div class="principle reveal"><span class="principle__i">CURATOR</span><span class="principle__k">Official participant</span><span class="principle__v">Has agreed to work with Aurora. Their selections and collaborations appear on their profile.</span></div>
-        <div class="principle reveal"><span class="principle__i">EDITORIAL</span><span class="principle__k">Featured person</span><span class="principle__v">Appears in a Studio story. Being featured does not mean curating, recommending or selling.</span></div>
-        <div class="principle reveal"><span class="principle__i">SHOP</span><span class="principle__k">Only approved pieces</span><span class="principle__v">If a curator has no approved products, their profile simply has no shop section.</span></div>
-  </div></div></section>
-  <section class="section">
+
+  <nav class="subnav" aria-label="Curators sections">
+    <div class="container"><ul>
+      <li><a href="#nmixx">Featured profile</a></li>
+      <li><a href="#faces">Faces in focus</a></li>
+      <li><a href="#rashmika">Aurora 100 spotlight</a></li>
+      <li><a href="#people">People &amp; perspectives</a></li>
+      <li><a href="#approach">Our approach</a></li>
+    </ul></div>
+  </nav>
+
+  <!-- ============ PROFILE (Figma BV7HwR "Profile page — Visitor's View" 1:2) ============ -->
+  <section class="section" id="nmixx" aria-labelledby="nm-title" style="border-top:0">
+    <div class="container">
+      <div class="profile reveal">
+        <aside class="profile__side" aria-label="Curator navigation">
+          <ul class="profile__menu">
+            <li><a href="#nmixx" aria-current="true"><span class="aurora-star" aria-hidden="true"></span>Recent</a></li>
+            <li><a href="#people"><span class="aurora-star" aria-hidden="true"></span>Find Curators</a></li>
+            <li><a href="shop.html#shelf-curators-recommendation"><span class="aurora-star" aria-hidden="true"></span>Shop by Curator</a></li>
+          </ul>
+          <div class="profile__more">
+            <h3>More Curators</h3>
+            <a class="mini" href="#people"><img src="assets/img/people/mike-angelo.jpg" alt=""><span><b>Mike Angelo</b><span>Thailand</span></span></a>
+            <a class="mini" href="#people"><img src="assets/img/people/mackenyu.jpg" alt=""><span><b>Mackenyu</b><span>Japan</span></span></a>
+            <a class="mini" href="#rashmika"><img src="assets/img/people/rashmika-portrait.jpg" alt=""><span><b>Rashmika Mandanna</b><span>India</span></span></a>
+          </div>
+        </aside>
+        <div class="profile__main">
+          <div class="profile__banner"><div class="aurora-field"></div></div>
+          <div class="profile__head">
+            <img class="profile__avatar" src="assets/img/curators/nmixx-avatar.png" alt="NMIXX" width="180" height="180">
+            <span class="profile__badge">K-Pop Global Rising Star</span>
+            <h2 class="profile__name" id="nm-title">NMIXX</h2>
+            <p class="profile__bio">The new vanguard of K-pop innovation. Formed under JYP Entertainment, this powerhouse girl group has redefined pop with their signature “MIXX POP”.</p>
+            <a class="btn btn--outline-magenta" href="work-with-aurora.html#curators">Start Collaboration</a>
+          </div>
+          <div class="profile__tabs" role="tablist" aria-label="NMIXX on Aurora">
+            <button type="button" role="tab" id="t-studio" aria-controls="p-studio" aria-selected="true">Studio</button>
+            <button type="button" role="tab" id="t-shop" aria-controls="p-shop" aria-selected="false" tabindex="-1">Shop</button>
+            <button type="button" role="tab" id="t-community" aria-controls="p-community" aria-selected="false" tabindex="-1">Community</button>
+            <button type="button" role="tab" id="t-curators" aria-controls="p-curators" aria-selected="false" tabindex="-1">Curators</button>
+          </div>
+          <div class="profile__panel" role="tabpanel" id="p-studio" aria-labelledby="t-studio">
+            <div class="stories">
+              <article class="story"><div class="story__img"><img src="assets/img/curators/nmixx-dice.jpg" alt="NMIXX member in the DICE music video" loading="lazy" style="--focal:60% 40%"></div><div class="story__body"><p class="story__label">K-Pop Viral Music Video</p><h3 class="story__title">NMIXX “DICE” M/V</h3></div></article>
+              <article class="story"><div class="story__img"><img src="assets/img/curators/nmixx-billboard.jpg" alt="NMIXX on Billboard's Fishing for Answers" loading="lazy" style="--focal:50% 40%"></div><div class="story__body"><p class="story__label">International Recognition</p><h3 class="story__title">NMIXX Shares Their Favorite Song to Perform &amp; More | Fishing for Answers | Billboard</h3></div></article>
+              <article class="story"><div class="story__img"><img src="assets/img/curators/nmixx-guess.jpg" alt="NMIXX in denim for GUESS" loading="lazy" style="--focal:50% 30%"></div><div class="story__body"><p class="story__label">Brand Collaboration</p><h3 class="story__title">GUESS × NMIXX</h3></div></article>
+            </div>
+          </div>
+          <div class="profile__panel" role="tabpanel" id="p-shop" aria-labelledby="t-shop" hidden>
+            <div class="empty" style="background:#fff;border-color:#DCD9EA;color:var(--cosmic-midnight)">
+              <span class="empty__icon" style="color:var(--aurora-magenta);filter:none"><span class="aurora-star" aria-hidden="true"></span></span>
+              <h3 class="empty__title">Curated picks arrive with the first release</h3>
+              <p class="empty__body" style="color:var(--read-text-2)">Objects chosen by this curator appear here once a collaboration is agreed and the product is approved for sale.</p>
+              <a class="link-arrow" href="shop.html#shelf-curators-recommendation" style="color:var(--cosmic-midnight)">See Curator’s Recommendation in Shop</a>
+            </div>
+          </div>
+          <div class="profile__panel" role="tabpanel" id="p-community" aria-labelledby="t-community" hidden>
+            <div class="empty" style="background:#fff;border-color:#DCD9EA;color:var(--cosmic-midnight)">
+              <span class="empty__icon" style="color:var(--aurora-magenta);filter:none"><span class="aurora-star" aria-hidden="true"></span></span>
+              <h3 class="empty__title">Talk about the work in Aurora Lounge</h3>
+              <p class="empty__body" style="color:var(--read-text-2)">Share a discovery or ask a thoughtful question in the Entertainment topic.</p>
+              <a class="link-arrow" href="community.html#fields" style="color:var(--cosmic-midnight)">Open Community topics</a>
+            </div>
+          </div>
+          <div class="profile__panel" role="tabpanel" id="p-curators" aria-labelledby="t-curators" hidden>
+            <div class="lineup" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+              <a class="person" href="#people" style="color:var(--cosmic-midnight)"><div class="person__img"><img src="assets/img/people/felix.jpg" alt="Felix" loading="lazy"></div><p class="person__name" style="color:var(--cosmic-midnight)">Felix</p></a>
+              <a class="person" href="#people" style="color:var(--cosmic-midnight)"><div class="person__img"><img src="assets/img/people/lisa.jpg" alt="Lisa" loading="lazy"></div><p class="person__name" style="color:var(--cosmic-midnight)">Lisa</p></a>
+              <a class="person" href="#people" style="color:var(--cosmic-midnight)"><div class="person__img"><img src="assets/img/people/tyla.jpg" alt="Tyla" loading="lazy" style="--focal:55% 20%"></div><p class="person__name" style="color:var(--cosmic-midnight)">Tyla</p></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Profile study from the original Figma design. A featured profile does not by itself establish a Curator appointment, a product recommendation or a collaboration.</p>
+    </div>
+  </section>
+
+  <!-- ============ FACES IN FOCUS (theme › monthly) ============ -->
+  <section class="section" id="faces" aria-labelledby="faces-title">
+    <div class="container">
+      <div class="row__head">
+        <div><p class="eyebrow">This month</p><h2 class="h1" id="faces-title">Faces <em>in focus</em></h2></div>
+      </div>
+      <div class="faces">
+        <a class="face reveal" href="community.html#jennie-hera"><img src="assets/img/community/jennie-hera-1.jpg" alt="Jennie" loading="lazy" style="--focal:50% 25%"><span class="face__body"><b>Jennie</b><span>Style, image and the stories around them</span></span></a>
+        <a class="face reveal" href="#people"><img src="assets/img/people/zendaya.jpg" alt="Zendaya" loading="lazy" style="--focal:50% 15%"><span class="face__body"><b>Zendaya</b><span>Film · Fashion</span></span></a>
+        <a class="face reveal" href="#people"><img src="assets/img/people/jackson-wang.jpg" alt="Jackson Wang" loading="lazy" style="--focal:50% 12%"><span class="face__body"><b>Jackson Wang</b><span>Music · East meets West</span></span></a>
+        <a class="face reveal" href="#people"><img src="assets/img/people/alia-bhatt.jpg" alt="Alia Bhatt" loading="lazy" style="--focal:50% 18%"><span class="face__body"><b>Alia Bhatt</b><span>Film · India to Hollywood</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AURORA 100 SPOTLIGHT (theme index.aurora-100 › cover) ============ -->
+  <section class="section" id="rashmika" aria-labelledby="ra-title">
+    <div class="container split">
+      <div class="gallery reveal">
+        <img src="assets/img/people/rashmika-portrait.jpg" alt="Rashmika Mandanna in a pink lehenga" loading="lazy">
+        <img src="assets/img/people/rashmika-story.jpg" alt="Rashmika Mandanna reading a script" loading="lazy" style="aspect-ratio:4/5">
+        <img src="assets/img/people/rashmika-beauty.jpg" alt="Rashmika Mandanna smiling" loading="lazy" style="aspect-ratio:4/5">
+        <img src="assets/img/people/rashmika-appearance.jpg" alt="Rashmika Mandanna at a public appearance" loading="lazy">
+      </div>
+      <div>
+        <p class="eyebrow">Aurora 100 · Icons · Screen &amp; culture</p>
+        <h2 class="h1" id="ra-title">Rashmika <em>Mandanna</em></h2>
+        <p class="lede">Aurora 100 looks at established cultural influence through the people, work and ideas behind recognition.</p>
+        <p class="lede">Explore a person-led perspective on screen, culture and creative expression — from Indian cinema to a growing presence across Korea and Hollywood.</p>
+        <div class="hero__actions"><a class="btn btn--primary" href="studio.html#aurora-100">Explore Aurora 100</a></div>
+        <p class="note">Source profile study. This presentation does not announce selection, appointment, endorsement or artist participation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PEOPLE & PERSPECTIVES (theme › source_people) ============ -->
+  <section class="section" id="people" aria-labelledby="pp-title">
     <div class="container">
       <div class="section-head"><div>
-        <p class="eyebrow">Curators</p>
-        <h2 class="h1">Meet the <em>curators</em></h2>
+        <p class="eyebrow">People &amp; perspectives</p>
+        <h2 class="h1" id="pp-title">Explore more <em>perspectives</em></h2>
+        <p class="lede">Explore the people and perspectives featured in Aurora’s editorial world. Editorial features are distinct from commissioned collaborations.</p>
       </div></div>
-      <div data-slot="curators.list" class="empty reveal">
-        <div class="aurora-field "></div>
-        <span class="empty__icon"><span class="aurora-star" aria-hidden="true"></span></span>
-        <h3 class="empty__title">Curator profiles are on their way</h3>
-        <p class="empty__body">Profiles are published once each curator has approved their page, images and the way they work with Aurora.</p>
-        <a class="link-arrow" href="work-with-aurora.html#curators">Propose a curator collaboration</a>
+      <div class="people">
+        <a class="person reveal" href="#rashmika"><div class="person__img"><img src="assets/img/aurora100/rashmika.jpg" alt="Rashmika Mandanna" loading="lazy" style="--focal:50% 30%"></div><p class="person__field">Aurora 100</p><p class="person__name">Rashmika Mandanna</p></a>
+        <a class="person reveal" href="studio.html#global-faces"><div class="person__img"><img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra" loading="lazy" style="--focal:50% 15%"></div><p class="person__field">Global Faces 100</p><p class="person__name">Harshaali Malhotra</p></a>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/tyla.jpg" alt="Tyla" loading="lazy" style="--focal:55% 20%"></div><p class="person__field">Music</p><p class="person__name">Tyla</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/lisa.jpg" alt="Lisa" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Fashion × Music</p><p class="person__name">Lisa</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/felix.jpg" alt="Felix" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Music</p><p class="person__name">Felix</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/zendaya.jpg" alt="Zendaya" loading="lazy" style="--focal:50% 15%"></div><p class="person__field">Film</p><p class="person__name">Zendaya</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/jackson-wang.jpg" alt="Jackson Wang" loading="lazy" style="--focal:50% 12%"></div><p class="person__field">Music</p><p class="person__name">Jackson Wang</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/alia-bhatt.jpg" alt="Alia Bhatt" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Film</p><p class="person__name">Alia Bhatt</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/aurora100/inigo-pascual.jpg" alt="Iñigo Pascual" loading="lazy" style="--focal:50% 25%"></div><p class="person__field">Entertainment</p><p class="person__name">Iñigo Pascual</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/mike-angelo.jpg" alt="Mike Angelo" loading="lazy" style="--focal:50% 15%"></div><p class="person__field">Thailand</p><p class="person__name">Mike Angelo</p></div>
+        <div class="person reveal"><div class="person__img"><img src="assets/img/people/mackenyu.jpg" alt="Mackenyu" loading="lazy" style="--focal:55% 25%"></div><p class="person__field">Japan</p><p class="person__name">Mackenyu</p></div>
+        <a class="person reveal" href="#nmixx"><div class="person__img"><img src="assets/img/curators/nmixx-guess.jpg" alt="NMIXX" loading="lazy" style="--focal:50% 30%"></div><p class="person__field">K-Pop</p><p class="person__name">NMIXX</p></a>
       </div>
     </div>
   </section>
+
+  <!-- ============ APPROACH (theme › approach) ============ -->
+  <section class="section" id="approach" aria-labelledby="ap-title">
+    <div class="container">
+      <div class="paper reveal">
+        <p class="eyebrow">Our approach</p>
+        <h2 class="h1" id="ap-title">Selected voices, <em>real practice.</em></h2>
+        <p class="lede">An editorial appearance does not automatically confer a curator role. We look at what a person makes, and what it offers to others.</p>
+        <div class="pillars">
+          <div class="pillar"><p class="pillar__k">Perspective</p><h3>A distinct way of seeing</h3><p>We look for care, cultural understanding and a practice that offers something meaningful to others.</p></div>
+          <div class="pillar"><p class="pillar__k">Practice</p><h3>Ideas made tangible</h3><p>Profiles connect a curator’s work with approved stories, projects and selected collaborations.</p></div>
+          <div class="pillar"><p class="pillar__k">Connection</p><h3>Stories into objects</h3><p>When a collaboration is agreed, a curator’s picks can reach the Shop — always with the story behind them. <a href="work-with-aurora.html#curators">Discuss a collaboration</a></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 <div data-shell="footer"></div>
 <script src="content/content.js"></script>

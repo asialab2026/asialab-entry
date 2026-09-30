@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aurora Studio</title>
-<meta name="description" content="Aurora Studio — interviews, editorials, Aurora 100 and Global Faces 100.">
+<meta name="description" content="Aurora Studio — interviews, editorials, Aurora Originals, Aurora 100 and Global Faces 100.">
 <meta name="theme-color" content="#0B0E15">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,58 +12,295 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
+<link rel="stylesheet" href="assets/pages.css">
 </head>
-<body class="mode-stage" data-page="studio">
+<body class="mode-stage page-aurora" data-page="studio">
 <div data-shell="header"></div>
 <main id="main">
 
-  <section class="hero" style="min-height:min(70vh,720px)" aria-labelledby="st-title">
-    <div class="aurora-field"></div>
-    <div class="container hero__inner" style="grid-template-columns:1fr">
-      <div class="hero__copy">
-        <p class="eyebrow">Aurora Studio</p>
-        <h1 class="display" id="st-title">Stories first.</h1>
-        <p class="lede">Interviews, editorials and series produced with contributors across Asia and the world. Everything else in Aurora begins here.</p>
+  <!-- ============ HERO (Figma GXaW3v "Exclusive Content" 1:1313) ============ -->
+  <section class="photo-hero" aria-labelledby="st-title">
+    <img class="photo-hero__img" src="assets/img/studio/exclusive-hero.jpg" alt="" style="--focal:50% 45%">
+    <div class="container photo-hero__inner">
+      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Aurora</a></li><li>Studio</li></ol>
+      <h1 class="display" id="st-title">Studio</h1>
+      <p class="lede">Behind the curtain with Aurora’s premium stories — interviews with icons, original films, cultural collaborations and in-depth articles.</p>
+      <div class="photo-hero__actions">
+        <a class="btn btn--primary" href="#stories">Explore the stories</a>
+        <a class="btn btn--secondary" href="#aurora-100">Aurora 100</a>
       </div>
     </div>
   </section>
 
-  <!-- Two 100s — authority vs discovery (§4.2) -->
-  <section class="section" aria-labelledby="two-title">
+  <nav class="subnav" aria-label="Studio sections">
+    <div class="container"><ul>
+      <li><a href="#stories">Stories</a></li>
+      <li><a href="#trending">Trending</a></li>
+      <li><a href="#exclusive">Exclusive Content</a></li>
+      <li><a href="#experience">Aurora Experience</a></li>
+      <li><a href="#ranking">Ranking</a></li>
+      <li><a href="#highlights">Community Highlights</a></li>
+      <li><a href="#aurora-100">Aurora 100</a></li>
+      <li><a href="#global-faces">Global Faces 100</a></li>
+      <li><a href="#field">From the field</a></li>
+    </ul></div>
+  </nav>
+
+  <!-- ============ NINE FIELDS FILTER (Figma "Icons_black" row 1:1622) ============ -->
+  <section class="section section--tight" id="stories" aria-labelledby="stories-title" style="border-top:0">
     <div class="container">
-      <div class="section-head"><div>
-        <p class="eyebrow">Two series, two purposes</p>
-        <h2 class="h1" id="two-title">The <em>100s</em></h2>
-      </div></div>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-        <article class="band" style="padding:clamp(24px,4vw,48px)">
-          <div class="aurora-field"></div>
-          <img src="assets/brand/aurora100_white.png" alt="Aurora 100" width="220" height="184" style="width:180px;height:auto;filter:var(--glow)">
-          <p class="card__meta" style="margin-top:24px">Authority · Editorial selection</p>
-          <p class="lede" style="margin-top:8px">A confirmed editorial selection by Aurora. Not a ranking — no numbers, no scores.</p>
+      <div class="row__head">
+        <div>
+          <p class="eyebrow">Nine Tails</p>
+          <h2 class="h2" id="stories-title">Browse by field</h2>
+        </div>
+      </div>
+      <div class="nine" role="group" aria-label="Filter stories by field" data-filter>
+        <button class="nine__item" type="button" data-field="entertainment" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/entertainment.webp" alt=""></span>Entertainment</button>
+        <button class="nine__item" type="button" data-field="icons" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/icons.webp" alt=""></span>Icons</button>
+        <button class="nine__item" type="button" data-field="beauty" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/beauty.webp" alt=""></span>Beauty</button>
+        <button class="nine__item" type="button" data-field="fashion" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/fashion.webp" alt=""></span>Fashion</button>
+        <button class="nine__item" type="button" data-field="hustle" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/hustle.webp" alt=""></span>Hustle</button>
+        <button class="nine__item" type="button" data-field="taste" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/taste.webp" alt=""></span>Taste</button>
+        <button class="nine__item" type="button" data-field="lifestyle" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/lifestyle.webp" alt=""></span>Lifestyle</button>
+        <button class="nine__item" type="button" data-field="travel" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/travel.webp" alt=""></span>Travel</button>
+        <button class="nine__item" type="button" data-field="wellness" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/wellness.webp" alt=""></span>Wellness</button>
+      </div>
+      <p class="filter-status" role="status" aria-live="polite" data-filter-status></p>
+
+      <!-- Feature duo (Figma 1:914 / 1:928) -->
+      <div class="duo" style="margin-top:32px" data-filter-row>
+        <article class="feature reveal" data-fields="entertainment icons">
+          <img src="assets/img/studio/power-100.jpg" alt="Guests on stage at the Unforgettable Gala" style="--focal:50% 45%">
+          <div class="feature__body">
+            <p class="feature__label">Cover study · Aurora 100</p>
+            <h3>Aurora Power 100 · 2025</h3>
+            <p>Celebrating Asia’s most influential cultural icons.</p>
+            <span class="sample" style="border-color:rgba(255,255,255,.5);color:#fff">Design sample</span>
+          </div>
         </article>
-        <article class="band" style="padding:clamp(24px,4vw,48px);background:linear-gradient(135deg,var(--stage-surface-2),var(--cosmic-midnight))">
-          <div class="aurora-field aurora-field--ember" style="opacity:.4"></div>
-          <p class="h1" style="font-size:clamp(2.25rem,5vw,3.5rem)">Global Faces <em>100</em></p>
-          <p class="card__meta" style="margin-top:24px">Discovery · Interviews</p>
-          <p class="lede" style="margin-top:8px">Introductions to people we think the world should meet. Taking part in an interview is not an endorsement or a selection.</p>
+        <article class="feature feature--split reveal" data-fields="entertainment">
+          <img src="assets/img/studio/anurag-kashyap.jpg" alt="Anurag Kashyap on set" style="--focal:35% 30%">
+          <img src="assets/img/studio/bong-joon-ho.jpg" alt="Bong Joon Ho at the monitor on set" style="--focal:48% 35%">
+          <div class="feature__body">
+            <p class="feature__label">Celeb × Celeb</p>
+            <h3>Bong Joon Ho × Anurag Kashyap</h3>
+            <span class="sample" style="border-color:rgba(255,255,255,.5);color:#fff">Design sample</span>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="latest-title">
+  <!-- ============ ROWS (Figma Studio home 1:942 → 1:1270) ============ -->
+  <section class="section" aria-label="Studio stories" style="border-top:0;padding-top:0">
+    <div class="container rows">
+
+      <div id="trending" data-filter-row>
+        <div class="row__head"><h2>Trending</h2></div>
+        <div class="stories">
+          <article class="story reveal" data-fields="entertainment fashion icons">
+            <div class="story__img"><img src="assets/img/studio/red-carpet.jpg" alt="Three guests on the Aurora 100 red carpet" loading="lazy" style="--focal:50% 17%"></div>
+            <div class="story__body"><p class="story__label">Aurora 100</p><h3 class="story__title">Aurora 100 Awards · Red Carpet Highlights</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="fashion lifestyle">
+            <div class="story__img"><img src="assets/img/studio/behind-the-shoot.jpg" alt="A photographer shooting in a studio" loading="lazy" style="--focal:50% 45%"></div>
+            <div class="story__body"><p class="story__label">Editorial</p><h3 class="story__title">Behind the editorial shoot</h3><span class="sample">Design sample</span></div>
+          </article>
+          <a class="story reveal" href="curators.html#rashmika" data-fields="icons entertainment">
+            <div class="story__img"><img src="assets/img/studio/rashmika-editorial.jpg" alt="Rashmika Mandanna beside a pink swan sculpture" loading="lazy" style="--focal:50% 30%"></div>
+            <div class="story__body"><p class="story__label">Article</p><h3 class="story__title">Rashmika Mandanna</h3><span class="sample">Design sample</span></div>
+          </a>
+          <a class="story reveal" href="community.html#jennie-hera" data-fields="beauty icons">
+            <div class="story__img"><img src="assets/img/studio/jennie-hera-study.jpg" alt="Jennie with a HERA cushion compact" loading="lazy" style="--focal:55% 40%"></div>
+            <div class="story__body"><p class="story__label">Community Highlights</p><h3 class="story__title">Jennie · HERA visual study</h3><span class="sample">Design sample</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div id="exclusive" data-filter-row>
+        <div class="row__head"><h2>Exclusive Content</h2><p>Aurora Originals · Articles · Collaborations</p></div>
+        <div class="stories">
+          <article class="story reveal" data-fields="beauty">
+            <div class="story__img"><img src="assets/img/studio/hera-product.jpg" alt="A HERA essence bottle" loading="lazy" style="--focal:40% 50%"></div>
+            <div class="story__body"><p class="story__label">Aurora Originals</p><h3 class="story__title">Creating a HERA product</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="entertainment">
+            <div class="story__img"><img src="assets/img/studio/bong-anurag.jpg" alt="Anurag Kashyap and Bong Joon Ho" loading="lazy" style="--focal:50% 40%"></div>
+            <div class="story__body"><p class="story__label">Collaborations</p><h3 class="story__title">Bong Joon Ho × Anurag Kashyap</h3><span class="sample">Design sample</span></div>
+          </article>
+          <a class="story reveal" href="#global-faces" data-fields="icons entertainment">
+            <div class="story__img"><img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra interview portrait" loading="lazy" style="--focal:50% 18%"></div>
+            <div class="story__body"><p class="story__label">Global Faces 100 · Interview</p><h3 class="story__title">Beyond the face the world remembers</h3></div>
+          </a>
+          <a class="story reveal" href="curators.html#nmixx" data-fields="entertainment">
+            <div class="story__img"><img src="assets/img/curators/nmixx-guess.jpg" alt="NMIXX in denim for GUESS" loading="lazy" style="--focal:50% 30%"></div>
+            <div class="story__body"><p class="story__label">Brand Collaboration</p><h3 class="story__title">GUESS × NMIXX</h3><span class="sample">Design sample</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div id="experience" data-filter-row>
+        <div class="row__head"><h2>Aurora Experience</h2><p>Learn, connect and grow through Aurora’s global programs — from masterclasses with industry leaders to community-driven events.</p></div>
+        <div class="stories">
+          <article class="story reveal" data-fields="beauty fashion">
+            <div class="story__img"><img src="assets/img/studio/red-carpet-makeup.jpg" alt="Make-up artist with a guest at an event" loading="lazy" style="--focal:50% 30%"></div>
+            <div class="story__body"><p class="story__label">Masterclass study</p><h3 class="story__title">Red carpet makeup</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="entertainment fashion">
+            <div class="story__img"><img src="assets/img/studio/jungkook-ck.jpg" alt="Jungkook performing on stage" loading="lazy" style="--focal:50% 30%"></div>
+            <div class="story__body"><p class="story__label">Event study</p><h3 class="story__title">Jungkook × CK · Behind the scenes</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="beauty wellness">
+            <div class="story__img"><img src="assets/img/studio/hera-tutorials.jpg" alt="HERA Hydro Reflecting Micro Cream" loading="lazy" style="--focal:50% 50%"></div>
+            <div class="story__body"><p class="story__label">Exclusive content</p><h3 class="story__title">HERA skincare tutorials</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="beauty">
+            <div class="story__img"><img src="assets/img/studio/hera-objects.jpg" alt="HERA foundation bottle and cushion" loading="lazy" style="--focal:50% 50%"></div>
+            <div class="story__body"><p class="story__label">Product study</p><h3 class="story__title">HERA · Objects of beauty</h3><span class="sample">Design sample</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div id="ranking" data-filter-row>
+        <div class="row__head"><h2>Ranking</h2><p>Editorial selection — without numerical rankings or scores.</p></div>
+        <div class="stories">
+          <article class="story reveal" data-fields="beauty">
+            <div class="story__img"><img src="assets/img/studio/kbeauty-selection.jpg" alt="K-beauty products on glass" loading="lazy" style="--focal:50% 45%"></div>
+            <div class="story__body"><p class="story__label">Aurora 100</p><h3 class="story__title">K-beauty editorial selection</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="hustle">
+            <div class="story__img"><img src="assets/img/studio/hustler-may.jpg" alt="Portrait of an entrepreneur in a black blazer" loading="lazy" style="--focal:50% 28%"></div>
+            <div class="story__body"><p class="story__label">Editorial</p><h3 class="story__title">Aurora’s Hustler · May edition</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="entertainment">
+            <div class="story__img"><img src="assets/img/studio/new-voices.jpg" alt="A group portrait of young musicians" loading="lazy" style="--focal:50% 30%"></div>
+            <div class="story__body"><p class="story__label">Editorial</p><h3 class="story__title">New voices in music</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="taste">
+            <div class="story__img"><img src="assets/img/studio/taste-april.jpg" alt="A table of dishes seen from above" loading="lazy" style="--focal:50% 50%"></div>
+            <div class="story__body"><p class="story__label">Editorial</p><h3 class="story__title">Aurora’s Taste · April edition</h3><span class="sample">Design sample</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div id="highlights" data-filter-row>
+        <div class="row__head"><h2>Community Highlights</h2><p>Stories from Aurora’s honorary reporters and community.</p><a class="link-arrow" href="community.html">Visit Community</a></div>
+        <div class="stories">
+          <article class="story reveal" data-fields="travel">
+            <div class="story__img"><img src="assets/img/studio/mongolia.jpg" alt="A traveller in a square in Mongolia" loading="lazy" style="--focal:50% 45%"></div>
+            <div class="story__body"><p class="story__label">Honorary reporter</p><h3 class="story__title">Travel diaries from Mongolia</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="lifestyle hustle">
+            <div class="story__img"><img src="assets/img/studio/believing.jpg" alt="Two friends smiling at a convention" loading="lazy" style="--focal:50% 40%"></div>
+            <div class="story__body"><p class="story__label">Reporter article</p><h3 class="story__title">The art of believing in yourself</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="travel lifestyle">
+            <div class="story__img"><img src="assets/img/studio/hanbok-india.jpg" alt="Collage of K-culture events in India" loading="lazy" style="--focal:50% 40%"></div>
+            <div class="story__body"><p class="story__label">Community story</p><h3 class="story__title">Heritage in motion · Hanbok in India</h3><span class="sample">Design sample</span></div>
+          </article>
+          <article class="story reveal" data-fields="beauty travel">
+            <div class="story__img"><img src="assets/img/studio/beauty-india.jpg" alt="A pink make-up collection with a heart compact" loading="lazy" style="--focal:50% 50%"></div>
+            <div class="story__body"><p class="story__label">Community favourite</p><h3 class="story__title">Beauty discoveries in India</h3><span class="sample">Design sample</span></div>
+          </article>
+        </div>
+      </div>
+
+      <p class="note">Design samples are original Figma compositions. Titles and images illustrate the format and do not announce a collaboration, event, recommendation or offer.</p>
+    </div>
+  </section>
+
+  <!-- ============ AURORA 100 (Figma 1:1882 / 1:1849-51 / lineup 1:1988; theme index.aurora-100) ============ -->
+  <section class="section" id="aurora-100" aria-labelledby="a100-title">
+    <div class="container">
+      <div class="a100-banner reveal">
+        <img class="a100-banner__photo" src="assets/img/aurora100/group.jpg" alt="Aurora 100 group portrait" loading="lazy">
+        <div class="a100-banner__body">
+          <img class="a100-banner__logo" src="assets/brand/aurora100_white.png" alt="Aurora 100" width="220" height="184">
+          <h2 class="h1" id="a100-title">The forces shaping <em>culture now.</em></h2>
+          <p class="lede" style="color:rgba(255,255,255,.85)">People, brands and cultural ideas with a presence beyond the moment.</p>
+        </div>
+      </div>
+
+      <div class="row__head" style="margin-top:64px">
+        <div><p class="eyebrow">Aurora Editorial Issues</p><h3 class="h2">Three fields, three covers</h3></div>
+      </div>
+      <div class="covers">
+        <figure class="cover reveal"><img src="assets/img/aurora100/cover-entertainment.jpg" alt="Aurora cover — Entertainment 100, Upcoming stars to look for" loading="lazy"><figcaption><b>Entertainment</b><span>100 upcoming stars to look for</span></figcaption></figure>
+        <figure class="cover reveal"><img src="assets/img/aurora100/cover-fashion.jpg" alt="Aurora cover — Fashion 100, Top designers featuring Iris van Herpen" loading="lazy"><figcaption><b>Fashion</b><span>100 top designers</span></figcaption></figure>
+        <figure class="cover reveal"><img src="assets/img/aurora100/cover-taste.jpg" alt="Aurora cover — Taste 100, Best chefs and culinary artisans" loading="lazy"><figcaption><b>Taste</b><span>100 chefs and culinary artisans</span></figcaption></figure>
+      </div>
+
+      <div class="row__head" style="margin-top:80px">
+        <div><p class="eyebrow">Aurora Entertainment 100</p><h3 class="h2">The lineup</h3></div>
+        <a class="link-arrow" href="curators.html#people">All profiles</a>
+      </div>
+      <div class="lineup">
+        <a class="person reveal" href="curators.html#people"><div class="person__img"><img src="assets/img/people/tyla.jpg" alt="Tyla" loading="lazy" style="--focal:55% 20%"></div><p class="person__field">Music</p><p class="person__name">Tyla</p><p class="person__text">The Grammy-winning artist bringing Afrobeats to a global stage.</p></a>
+        <a class="person reveal" href="curators.html#people"><div class="person__img"><img src="assets/img/people/lisa.jpg" alt="Lisa" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Fashion × Music</p><p class="person__name">Lisa</p><p class="person__text">From K-pop idol to solo superstar — redefining influence across borders.</p></a>
+        <a class="person reveal" href="curators.html#people"><div class="person__img"><img src="assets/img/people/felix.jpg" alt="Felix" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Music</p><p class="person__name">Felix</p><p class="person__text">The Stray Kids performer captivating fans worldwide with his voice and presence.</p></a>
+        <a class="person reveal" href="curators.html#people"><div class="person__img"><img src="assets/img/people/zendaya.jpg" alt="Zendaya" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Film</p><p class="person__name">Zendaya</p><p class="person__text">Actress, activist and fashion icon — setting the tone for modern Hollywood.</p></a>
+        <a class="person reveal" href="curators.html#people"><div class="person__img"><img src="assets/img/people/jackson-wang.jpg" alt="Jackson Wang" loading="lazy" style="--focal:50% 15%"></div><p class="person__field">Music</p><p class="person__name">Jackson Wang</p><p class="person__text">Blurring the lines between East and West, continuing to reinvent his sound.</p></a>
+        <a class="person reveal" href="curators.html#people"><div class="person__img"><img src="assets/img/people/alia-bhatt.jpg" alt="Alia Bhatt" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Film</p><p class="person__name">Alia Bhatt</p><p class="person__text">Bollywood’s leading actress making her mark in Hollywood.</p></a>
+      </div>
+
+      <div class="paper reveal" style="margin-top:80px">
+        <p class="eyebrow">Editorial direction</p>
+        <h3 class="h1">Influence, <em>with context.</em></h3>
+        <p class="lede">The project considers the work, ideas and cultural impact behind recognition. Its editorial focus is established influence — not a public vote, score or membership tier.</p>
+        <div class="pillars">
+          <div class="pillar"><p class="pillar__k">People</p><h3>A point of view</h3><p>The creators and cultural figures whose work carries beyond an individual moment.</p></div>
+          <div class="pillar"><p class="pillar__k">Brands</p><h3>A cultural presence</h3><p>The brands and creative entities shaping taste, expression and everyday experience.</p></div>
+          <div class="pillar"><p class="pillar__k">Culture</p><h3>A wider consequence</h3><p>The projects and movements that change how audiences see and participate in culture.</p></div>
+        </div>
+        <p class="note">An application or paid partnership does not confer Aurora 100 selection, an award, Curator status or a product endorsement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GLOBAL FACES 100 (theme index.json › projects / Harshaali) ============ -->
+  <section class="section" id="global-faces" aria-labelledby="gf-title">
+    <div class="container split">
+      <div class="split__media reveal"><img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra — Global Faces 100" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;object-position:50% 18%"></div>
+      <div>
+        <p class="eyebrow">Global Faces 100 · Interview</p>
+        <h2 class="h1" id="gf-title">Beyond the face <em>the world remembers.</em></h2>
+        <p class="lede">Global Faces 100 has a different editorial purpose from Aurora 100: discovering and documenting emerging cultural possibility.</p>
+        <p class="lede">Meet Harshaali Malhotra through the full interview, her profile and the conversation around her next chapter.</p>
+        <div class="card__links" style="margin-top:24px"><span class="chip chip--studio">Discovery</span><span class="chip chip--curators">Growth</span><span class="chip chip--community">Possibility</span></div>
+        <div class="hero__actions"><a class="btn btn--primary" href="curators.html#people">Explore the profile</a><a class="btn btn--secondary" href="work-with-aurora.html#contributors">Nominate a face</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FROM THE FIELD (theme index.aurora-studio › field) ============ -->
+  <section class="section" id="field" aria-labelledby="field-title">
     <div class="container">
       <div class="section-head"><div>
-        <p class="eyebrow">Latest</p>
-        <h2 class="h1" id="latest-title">From the <em>Studio</em></h2>
+        <p class="eyebrow">From the field · Asia Lab records</p>
+        <h2 class="h1" id="field-title">Culture beyond <em>the frame.</em></h2>
+        <p class="lede">Selected public records from Asia Lab’s international production and Korea-side field work.</p>
       </div></div>
-      <div data-slot="studio.articles" class="empty reveal">
+      <div class="records">
+        <a class="record reveal" href="https://youtu.be/4P4HbeskPRo?t=120" target="_blank" rel="noopener"><small>Korea-side field record · Asia Lab TV</small><b>Agnez Mo in Korea</b><span>A public record of Korea-side coordination and collaboration. Watch the original video with its production context.</span><span class="link-arrow">Watch on Asia Lab TV · from 2:00</span></a>
+        <a class="record reveal" href="https://asialab.world/assets/kcareer/kcareer-jess-hong-field.mp4" target="_blank" rel="noopener"><small>Culture &amp; conversation · Field record</small><b>Jess Hong in Korea</b><span>A filmed Korea-side field moment, presented with its original Asia Lab context.</span><span class="link-arrow">Watch the field video</span></a>
+        <a class="record reveal" href="https://asialab.world/" target="_blank" rel="noopener"><small>International cultural event · Past record</small><b>Unforgettable Gala</b><span>An international cultural event record from Asia Lab’s publicly documented field history.</span><span class="link-arrow">Asia Lab’s field background</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="write-title">
+    <div class="container">
+      <div class="band">
         <div class="aurora-field"></div>
-        <span class="empty__icon"><span class="aurora-star" aria-hidden="true"></span></span>
-        <h3 class="empty__title">New stories are being edited</h3>
-        <p class="empty__body">Interviews and editorials are published here once text, images and usage rights are confirmed.</p>
-        <a class="link-arrow" href="work-with-aurora.html#contributors">Write for Aurora as a contributor</a>
+        <div class="band__grid">
+          <div>
+            <p class="eyebrow" style="color:var(--starlight-mist)">Honorary contributors</p>
+            <h2 class="h1" id="write-title">Report culture <em>from where you are.</em></h2>
+            <p class="band__note">Aurora’s honorary reporters bring stories from India, Mongolia, Korea and beyond. Tell us what you would like to write about.</p>
+          </div>
+          <div><a class="btn btn--primary" href="work-with-aurora.html#contributors">Write for Aurora</a></div>
+        </div>
       </div>
     </div>
   </section>
