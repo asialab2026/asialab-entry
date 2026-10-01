@@ -12,7 +12,12 @@ auracurate/
   article.html            Studio article — "Meet Asia's Official Crush" (portrait left, story right, share, prev/next)
   community.html          Community launchpad — hero collage, 3 launchpad cards, 2 audiences, plans slot (empty until
                           approved), nine topics, video, Lounge actions, highlights, JENNIE × HERA, learning, principles
-  shop.html               Shop — hero, badge highlights, five shelves incl. Ranking (editorial selection)
+  shop.html               Shop — hero, four ways to shop (Ready now · Fund · Together · Made for You), Ready now
+                          (live Shopify products, field tabs), Programs & experiences, highlights, the Aurora edit shelves
+  product.html            Product detail (?p=<key>) — gallery, options, quantity, Add to cart / Buy it now (Shopify cart
+                          permalinks), delivery/returns, details, Aurora's note, Studio·Curators·Community links, related
+  projects.html           Aurora Projects — Fund, Together, Made for You (process, design studies, request forms) and
+                          nine-field concept collection
   work-with-aurora.html   Partner with us — three doors, ecosystem, one intake form (Partners / Curators / Contributors)
   assets/tokens.css       Brand tokens: palette, Stage gradient, CTA states, type
   assets/aurora.css       Shell + shared components (Stage / Read modes), Shop components
@@ -21,7 +26,9 @@ auracurate/
   assets/brand/           Official logo files and the Aurora star — trimmed, not redrawn
   assets/img/             Page images (see sources below)
   assets/texture/         "Final Aurora BG 1" texture from the original Figma (em4c3H… node 1:8)
-  content/content.js      Editable Shop slots (highlights, shelves, live, intake)
+  content/content.js      Editable slots (highlights, shelves, live, communityPlans, fundProjects, intake)
+  content/products.js     Live catalogue from Shopify (handles, variant IDs, prices, images) + programs
+  assets/shop.js|css      Catalogue, product page, request forms
 ```
 
 Open `index.html` in a browser (serve the folder so the star mask loads over http). Add `?edit=1`

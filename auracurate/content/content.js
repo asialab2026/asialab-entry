@@ -85,6 +85,10 @@ window.AURORA_CONTENT = {
      예: { name: "Free – Discover", price: "$0", period: "/mo", note: "", perks: ["…"], cta: { label: "Join", href: "…" }, tag: "" } */
   communityPlans: [],
 
+  /* Fund 프로젝트 — 실제로 열린 프로젝트만. raised/goal은 실제 결제 데이터에서만.
+     예: { title, field, summary, image, goal: 20000, raised: 0, ends: "2027-01-31", href: "/products/…" } */
+  fundProjects: [],
+
   /* 협업 접수 엔드포인트. null이면 이메일 제출로 대체(접수 ≠ 승인). */
   intake: {
     endpoint: null,

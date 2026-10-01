@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
 <link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/shop.css">
 </head>
 <body class="mode-stage page-aurora" data-page="shop">
 <div data-shell="header"></div>
@@ -43,6 +44,47 @@
     </div>
   </section>
 
+  <!-- ============ FOUR WAYS TO SHOP (theme aurora-shop › routes: Fund / Together / Made for You) ============ -->
+  <section class="section" id="ways" aria-labelledby="ways-title" style="border-top:0">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow">Four ways to shop</p>
+        <h2 class="h1" id="ways-title">Buy it. Fund it. <em>Choose it together.</em> Make it yours.</h2>
+        <p class="lede">Every object in Aurora begins with a story. Some are ready today; some need backers, a group, or your own brief to exist.</p>
+      </div></div>
+      <div class="routes">
+        <a class="route reveal" href="#ready"><img src="assets/img/shop/col-clio.jpg" alt="" style="--focal:50% 30%"><div class="route__body"><span class="route__n">01 · Shop</span><h3>Ready now</h3><p>Selected products and sessions, on sale through Shopify checkout.</p><span class="route__state is-live">Open</span></div></a>
+        <a class="route reveal" href="projects.html#fund"><img src="assets/img/people/lisa.jpg" alt="" style="--focal:50% 18%"><div class="route__body"><span class="route__n">02 · Fund</span><h3>Fund</h3><p>Help an original take shape. Back a project before it is made.</p><span class="route__state">First projects in preparation</span></div></a>
+        <a class="route reveal" href="projects.html#together"><img src="assets/img/people/tyla.jpg" alt="" style="--focal:55% 20%"><div class="route__body"><span class="route__n">03 · Together</span><h3>Together</h3><p>Discover a release. Choose it together, and it opens when enough of you join.</p><span class="route__state">Join the list</span></div></a>
+        <a class="route reveal" href="projects.html#made-for-you"><img src="assets/img/people/jackson-wang.jpg" alt="" style="--focal:50% 10%"><div class="route__body"><span class="route__n">04 · Made for You</span><h3>Made for You</h3><p>Tell us what you want to make — an edition, an object or an experience.</p><span class="route__state is-live">Send a brief</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READY NOW (live Shopify products) ============ -->
+  <section class="section" id="ready" aria-labelledby="ready-title">
+    <div class="container">
+      <div class="row__head">
+        <div><p class="eyebrow">01 · Ready now</p><h2 class="h1" id="ready-title">On sale <em>today</em></h2></div>
+        <div class="shop-tabs" role="group" aria-label="Filter by field" data-render="ready-tabs"></div>
+      </div>
+      <div class="pgrid" data-render="ready"></div>
+      <p class="note">Prices are from the Aurora Shopify store. Taxes, shipping and delivery estimates are confirmed at checkout.</p>
+    </div>
+  </section>
+
+  <!-- ============ PROGRAMS & EXPERIENCES ============ -->
+  <section class="section" id="programs" aria-labelledby="prog-title">
+    <div class="container">
+      <div class="row__head">
+        <div><p class="eyebrow">Programs &amp; experiences</p><h2 class="h1" id="prog-title">Learn, plan, <em>go further.</em></h2>
+        <p style="margin:12px 0 0;color:var(--stage-text-2);max-width:60ch">Private sessions and programs delivered by Asia Lab — from a Korea career plan to a Seoul beauty route.</p></div>
+        <a class="link-arrow" href="community.html#learning">Learning concepts in Community</a>
+      </div>
+      <div class="programs-row" data-render="programs"></div>
+    </div>
+  </section>
+
   <!-- ============ AURORA HIGHLIGHTS (Figma 1:36 / 1:44 / 1:51 / 1:62) ============ -->
   <section class="section" id="highlights" aria-labelledby="hl-title" style="border-top:0">
     <div class="container hl-layout">
@@ -61,8 +103,15 @@
   </section>
 
   <!-- ============ SHELVES (Figma 83:468) ============ -->
-  <section class="section" id="shop" aria-label="Shop" style="border-top:0">
-    <div class="container" data-slot="shelves" data-render="shelves"></div>
+  <section class="section" id="shop" aria-labelledby="edit-title">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow">The Aurora edit · in development</p>
+        <h2 class="h1" id="edit-title">Stories becoming <em>objects</em></h2>
+        <p class="lede">Collaborations, rankings and curator picks in the making. These are design samples until each piece is agreed and approved for sale — then it moves to Ready now, Fund or Together.</p>
+      </div></div>
+      <div data-slot="shelves" data-render="shelves"></div>
+    </div>
   </section>
 
   <!-- ============ FOUR WORLDS (ecosystem loop, §3) ============ -->
@@ -129,6 +178,8 @@
 
 <div data-shell="footer"></div>
 <script src="content/content.js"></script>
+<script src="content/products.js"></script>
+<script src="assets/shop.js"></script>
 <script src="assets/aurora.js"></script>
 </body>
 </html>

@@ -83,7 +83,9 @@
           "</div>" +
           '<div><h2>Aurora</h2><ul>' + NAV.map(function (n) {
             return '<li><a href="' + BASE + n.href + '">' + n.label + "</a></li>";
-          }).join("") + "</ul></div>" +
+          }).join("") +
+          '<li><a href="' + BASE + 'projects.html">Fund · Together · Made for You</a></li>' +
+          "</ul></div>" +
           '<div><h2>Work with Aurora</h2><div class="work-with">' +
             '<a href="' + BASE + 'work-with-aurora.html#partners"><b>Partners</b><span>브랜드·제품 협업 제안</span></a>' +
             '<a href="' + BASE + 'work-with-aurora.html#curators"><b>Curators</b><span>큐레이터 협업 제안</span></a>' +
