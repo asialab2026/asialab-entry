@@ -299,41 +299,83 @@
       (lv.state === "none" ? "Off air" : STATE[lv.state]) + "</span></div></div>";
   }
 
-  /* ---- Nine-field filter (Studio) ---------------------------------------
+  /* ---- Community plans (only when approved in content.js) ------------- */
+  var plRoot = $('[data-render="community-plans"]');
+  if (plRoot) {
+    var plans = C.communityPlans || [];
+    if (plans.length) {
+      plRoot.className = "plans";
+      plRoot.innerHTML = plans.map(function (p) {
+        return '<article class="plan">' + (p.tag ? '<span class="plan__tag">' + esc(p.tag) + "</span>" : "") +
+          "<h3>" + esc(p.name) + '</h3><p class="plan__price">' + esc(p.price) + "<small>" + esc(p.period || "") + "</small></p>" +
+          (p.note ? "<p>" + esc(p.note) + "</p>" : "") +
+          "<ul>" + (p.perks || []).map(function (k) { return "<li>" + esc(k) + "</li>"; }).join("") + "</ul>" +
+          (p.cta && p.cta.href ? '<a class="btn btn--primary btn--sm" href="' + esc(p.cta.href) + '">' + esc(p.cta.label || "Join") + "</a>" : "") +
+          "</article>";
+      }).join("");
+    } else if (doc.hasAttribute("data-edit")) {
+      plRoot.setAttribute("data-slot", "communityPlans");
+      plRoot.innerHTML = empty("Membership plans", "Shown only after the plans and prices are approved.");
+    }
+  }
+
+  /* ---- Studio filter: nine fields + text search ---------------------------
      Cards carry data-fields="beauty travel"; rows with no match are hidden. */
   var filter = $("[data-filter]");
-  if (filter) {
-    var fButtons = $all("button[data-field]", filter);
+  var search = $("[data-search]");
+  if (filter || search) {
+    var fButtons = filter ? $all("button[data-field]", filter) : [];
     var fStatus = $("[data-filter-status]");
-    var applyField = function (field) {
+    var qInput = search ? $("input", search) : null;
+    var state = { field: "", q: "" };
+    var apply = function () {
+      var field = state.field, q = state.q.toLowerCase();
       fButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-field") === field)); });
       var shown = 0;
       $all("[data-filter-row]").forEach(function (row) {
         var visible = 0;
         $all("[data-fields]", row).forEach(function (card) {
-          var ok = !field || (" " + card.getAttribute("data-fields") + " ").indexOf(" " + field + " ") > -1;
-          card.hidden = !ok;
-          if (ok) { visible++; card.classList.add("is-in"); }
+          var okField = !field || (" " + card.getAttribute("data-fields") + " ").indexOf(" " + field + " ") > -1;
+          var okText = !q || card.textContent.toLowerCase().indexOf(q) > -1;
+          card.hidden = !(okField && okText);
+          if (!card.hidden) { visible++; card.classList.add("is-in"); }
         });
         row.hidden = visible === 0;
         shown += visible;
       });
       if (!fStatus) return;
-      if (!field) { fStatus.textContent = ""; return; }
+      if (!field && !q) { fStatus.textContent = ""; return; }
       var label = fButtons.filter(function (b) { return b.getAttribute("data-field") === field; })[0];
-      fStatus.innerHTML = esc(shown + (shown === 1 ? " story" : " stories") + " in " + (label ? label.textContent.trim() : field) + ".") +
+      var what = [label ? label.textContent.trim() : "", q ? "“" + state.q + "”" : ""].filter(Boolean).join(" · ");
+      fStatus.innerHTML = esc((shown ? shown + (shown === 1 ? " story" : " stories") : "No stories yet") + " for " + what + ".") +
         ' <button type="button" class="filter-clear">Show all</button>';
-      $(".filter-clear", fStatus).addEventListener("click", function () { applyField(""); });
+      $(".filter-clear", fStatus).addEventListener("click", function () {
+        state.field = ""; state.q = ""; if (qInput) qInput.value = ""; apply();
+      });
     };
     fButtons.forEach(function (b) {
       b.addEventListener("click", function () {
-        var f = b.getAttribute("data-field");
-        applyField(b.getAttribute("aria-pressed") === "true" ? "" : f);
+        state.field = b.getAttribute("aria-pressed") === "true" ? "" : b.getAttribute("data-field");
+        apply();
       });
     });
+    if (qInput) {
+      qInput.addEventListener("input", function () { state.q = qInput.value.trim(); apply(); });
+      search.addEventListener("submit", function (e) { e.preventDefault(); state.q = qInput.value.trim(); apply(); });
+    }
     var qf = (location.search.match(/[?&]field=([a-z]+)/) || [])[1];
-    if (qf && fButtons.some(function (b) { return b.getAttribute("data-field") === qf; })) applyField(qf);
+    if (qf && fButtons.some(function (b) { return b.getAttribute("data-field") === qf; })) { state.field = qf; apply(); }
   }
+
+  /* ---- Curator roster arrow -------------------------------------------- */
+  $all("[data-roster-next]").forEach(function (btn) {
+    var track = btn.parentNode.querySelector("[data-roster]");
+    if (!track) return;
+    btn.addEventListener("click", function () {
+      var end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      track.scrollTo({ left: end ? 0 : track.scrollLeft + track.clientWidth * 0.8, behavior: "smooth" });
+    });
+  });
 
   /* ---- Tabs (curator profile) ------------------------------------------ */
   $all("[role=tablist]").forEach(function (list) {

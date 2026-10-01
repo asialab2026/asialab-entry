@@ -18,36 +18,60 @@
 <div data-shell="header"></div>
 <main id="main">
 
-  <!-- ============ INTRO (theme index.aurora-curators › source_editorial / approach) ============ -->
-  <section class="home-hero" aria-labelledby="cu-title">
-    <div class="container home-hero__grid">
-      <div>
-        <ol class="crumbs" aria-label="Breadcrumb" style="color:var(--stage-text-2)"><li><a href="index.html">Aurora</a></li><li>Curators</li></ol>
-        <p class="eyebrow">Selected voices</p>
-        <h1 class="display" id="cu-title">Work before <em>a label.</em></h1>
-        <p class="lede">Aurora’s curator programme connects a person’s perspective with their actual creative practice. Explore the people and perspectives featured in Aurora’s editorial world.</p>
-        <p class="lede ko" lang="ko" style="font-size:1rem;margin-top:12px">큐레이터는 직함이 아니라 작업으로 소개합니다.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#nmixx">Featured profile</a>
-          <a class="btn btn--secondary" href="work-with-aurora.html#curators">Become a curator</a>
+  <!-- ============ CURATOR LIST (original "Curator" screen) ============ -->
+  <section class="section" aria-labelledby="cu-title" style="border-top:0;padding-top:48px">
+    <div class="container">
+      <p class="crumb-center"><a href="index.html" style="text-decoration:none">Aurora</a><span class="aurora-star" aria-hidden="true"></span>Curator</p>
+      <h1 class="visually-hidden" id="cu-title">Aurora Curators</h1>
+      <div class="roster">
+        <div class="roster__track" data-roster>
+        <div class="roster__card"><img src="assets/img/people/jennie-red.jpg" alt="" loading="lazy" style="--focal:50% 20%"><span>Jennie</span></div>
+        <div class="roster__card"><img src="assets/img/people/alia-bhatt.jpg" alt="" loading="lazy" style="--focal:50% 15%"><span>Alia Bhatt</span></div>
+        <div class="roster__card"><img src="assets/img/people/felix.jpg" alt="" loading="lazy" style="--focal:50% 15%"><span>Felix</span></div>
+        <div class="roster__card"><img src="assets/img/people/zendaya.jpg" alt="" loading="lazy" style="--focal:50% 12%"><span>Zendaya</span></div>
+        <div class="roster__card"><img src="assets/img/people/lisa.jpg" alt="" loading="lazy" style="--focal:50% 15%"><span>Lisa</span></div>
+        <a class="roster__card" href="curator.html" aria-label="Rashmika Mandanna — profile"><img src="assets/img/people/rashmika-portrait.jpg" alt="" loading="lazy" style="--focal:50% 15%"><span>Rashmika Mandanna</span></a>
+        <div class="roster__card"><img src="assets/img/people/jackson-wang.jpg" alt="" loading="lazy" style="--focal:50% 10%"><span>Jackson Wang</span></div>
+        <div class="roster__card"><img src="assets/img/people/jeff-satur.jpg" alt="" loading="lazy" style="--focal:50% 20%"><span>Jeff Satur</span></div>
+        <a class="roster__card" href="#nmixx" aria-label="NMIXX — profile"><img src="assets/img/curators/nmixx-guess.jpg" alt="" loading="lazy" style="--focal:50% 30%"><span>NMIXX</span></a>
         </div>
+        <button class="roster__next" type="button" data-roster-next aria-label="Show more curators"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
       </div>
-      <div class="faces reveal" style="grid-template-columns:1fr 1fr;gap:12px">
-        <div class="face" style="aspect-ratio:3/4"><img src="assets/img/people/zendaya.jpg" alt="Zendaya" style="--focal:50% 15%"></div>
-        <div class="face" style="aspect-ratio:3/4;margin-top:40px"><img src="assets/img/people/jackson-wang.jpg" alt="Jackson Wang" style="--focal:50% 12%"></div>
+
+      <div class="curated">
+        <article class="curated__big reveal"><img src="assets/img/people/jennie-eyewear.jpg" alt="Jennie in white sunglasses" style="--focal:45% 35%"><div><small>Jennie · <span class="sample" style="color:#fff;border-color:rgba(255,255,255,.5)">Design sample</span></small><b>Aurora Exclusive: Jennie curates her eyewear edit with Gentle Monster.</b></div></article>
+        <article class="curated__big reveal"><img src="assets/img/people/jennie-silver.jpg" alt="Jennie in glasses and a black jacket" style="--focal:50% 25%"></article>
       </div>
+      <div class="curated__pair">
+        <a class="curated__card reveal" href="curator.html"><img src="assets/img/people/rashmika-portrait.jpg" alt="Rashmika Mandanna beside a pink flamingo sculpture" loading="lazy" style="--focal:50% 18%"><div><small>Rashmika Mandanna</small><b>From Bollywood to K-beauty: Rashmika curates her global beauty ritual, only on Aurora.</b><span class="sample" style="color:var(--read-text-2);border-color:var(--read-line)">Design sample</span></div></a>
+        <article class="curated__card reveal"><img src="assets/img/people/kai.jpg" alt="Kai seated against an orange backdrop" loading="lazy" style="--focal:50% 30%"><div><small>Kai</small><b>Kai unveils his Aurora Streetwear Edit – fashion, sneakers, and Seoul vibes.</b><span class="sample" style="color:var(--read-text-2);border-color:var(--read-line)">Design sample</span></div></article>
+      </div>
+      <p class="note">Curated edits are original Figma samples. They do not announce a brand collaboration, product endorsement or Curator appointment.</p>
     </div>
   </section>
 
   <nav class="subnav" aria-label="Curators sections">
     <div class="container"><ul>
+      <li><a href="#top-curators">Top curators</a></li>
       <li><a href="#nmixx">Featured profile</a></li>
-      <li><a href="#faces">Faces in focus</a></li>
-      <li><a href="#rashmika">Aurora 100 spotlight</a></li>
       <li><a href="#people">People &amp; perspectives</a></li>
       <li><a href="#approach">Our approach</a></li>
     </ul></div>
   </nav>
+
+  <!-- ============ TOP CURATORS OF THE MONTH (no rank numbers, §4) ============ -->
+  <section class="section" id="top-curators" aria-labelledby="top-title" style="border-top:0">
+    <div class="container">
+      <h2 id="top-title" style="margin:0;font-weight:500;font-size:1.125rem;color:#fff">Our Top Curators of The Month</h2>
+      <div class="topcurators">
+        <div class="topcurator reveal"><img src="assets/img/people/jennie-pink.jpg" alt="" loading="lazy" style="--focal:50% 25%"><span>Jennie</span></div>
+        <div class="topcurator reveal"><img src="assets/img/people/zendaya.jpg" alt="" loading="lazy" style="--focal:50% 12%"><span>Zendaya</span></div>
+        <div class="topcurator reveal"><img src="assets/img/people/jackson-wang.jpg" alt="" loading="lazy" style="--focal:50% 8%"><span>Jackson Wang</span></div>
+        <div class="topcurator reveal"><img src="assets/img/people/alia-white.jpg" alt="" loading="lazy" style="--focal:50% 25%"><span>Alia Bhatt</span></div>
+      </div>
+      <p class="note">An editor’s selection for the month, shown without rank numbers.</p>
+    </div>
+  </section>
 
   <!-- ============ PROFILE (Figma BV7HwR "Profile page — Visitor's View" 1:2) ============ -->
   <section class="section" id="nmixx" aria-labelledby="nm-title" style="border-top:0">
@@ -63,7 +87,7 @@
             <h3>More Curators</h3>
             <a class="mini" href="#people"><img src="assets/img/people/mike-angelo.jpg" alt=""><span><b>Mike Angelo</b><span>Thailand</span></span></a>
             <a class="mini" href="#people"><img src="assets/img/people/mackenyu.jpg" alt=""><span><b>Mackenyu</b><span>Japan</span></span></a>
-            <a class="mini" href="#rashmika"><img src="assets/img/people/rashmika-portrait.jpg" alt=""><span><b>Rashmika Mandanna</b><span>India</span></span></a>
+            <a class="mini" href="curator.html"><img src="assets/img/people/rashmika-portrait.jpg" alt=""><span><b>Rashmika Mandanna</b><span>India</span></span></a>
           </div>
         </aside>
         <div class="profile__main">
@@ -117,41 +141,6 @@
     </div>
   </section>
 
-  <!-- ============ FACES IN FOCUS (theme › monthly) ============ -->
-  <section class="section" id="faces" aria-labelledby="faces-title">
-    <div class="container">
-      <div class="row__head">
-        <div><p class="eyebrow">This month</p><h2 class="h1" id="faces-title">Faces <em>in focus</em></h2></div>
-      </div>
-      <div class="faces">
-        <a class="face reveal" href="community.html#jennie-hera"><img src="assets/img/community/jennie-hera-1.jpg" alt="Jennie" loading="lazy" style="--focal:50% 25%"><span class="face__body"><b>Jennie</b><span>Style, image and the stories around them</span></span></a>
-        <a class="face reveal" href="#people"><img src="assets/img/people/zendaya.jpg" alt="Zendaya" loading="lazy" style="--focal:50% 15%"><span class="face__body"><b>Zendaya</b><span>Film · Fashion</span></span></a>
-        <a class="face reveal" href="#people"><img src="assets/img/people/jackson-wang.jpg" alt="Jackson Wang" loading="lazy" style="--focal:50% 12%"><span class="face__body"><b>Jackson Wang</b><span>Music · East meets West</span></span></a>
-        <a class="face reveal" href="#people"><img src="assets/img/people/alia-bhatt.jpg" alt="Alia Bhatt" loading="lazy" style="--focal:50% 18%"><span class="face__body"><b>Alia Bhatt</b><span>Film · India to Hollywood</span></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ AURORA 100 SPOTLIGHT (theme index.aurora-100 › cover) ============ -->
-  <section class="section" id="rashmika" aria-labelledby="ra-title">
-    <div class="container split">
-      <div class="gallery reveal">
-        <img src="assets/img/people/rashmika-portrait.jpg" alt="Rashmika Mandanna in a pink lehenga" loading="lazy">
-        <img src="assets/img/people/rashmika-story.jpg" alt="Rashmika Mandanna reading a script" loading="lazy" style="aspect-ratio:4/5">
-        <img src="assets/img/people/rashmika-beauty.jpg" alt="Rashmika Mandanna smiling" loading="lazy" style="aspect-ratio:4/5">
-        <img src="assets/img/people/rashmika-appearance.jpg" alt="Rashmika Mandanna at a public appearance" loading="lazy">
-      </div>
-      <div>
-        <p class="eyebrow">Aurora 100 · Icons · Screen &amp; culture</p>
-        <h2 class="h1" id="ra-title">Rashmika <em>Mandanna</em></h2>
-        <p class="lede">Aurora 100 looks at established cultural influence through the people, work and ideas behind recognition.</p>
-        <p class="lede">Explore a person-led perspective on screen, culture and creative expression — from Indian cinema to a growing presence across Korea and Hollywood.</p>
-        <div class="hero__actions"><a class="btn btn--primary" href="studio.html#aurora-100">Explore Aurora 100</a></div>
-        <p class="note">Source profile study. This presentation does not announce selection, appointment, endorsement or artist participation.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ PEOPLE & PERSPECTIVES (theme › source_people) ============ -->
   <section class="section" id="people" aria-labelledby="pp-title">
     <div class="container">
@@ -161,7 +150,7 @@
         <p class="lede">Explore the people and perspectives featured in Aurora’s editorial world. Editorial features are distinct from commissioned collaborations.</p>
       </div></div>
       <div class="people">
-        <a class="person reveal" href="#rashmika"><div class="person__img"><img src="assets/img/aurora100/rashmika.jpg" alt="Rashmika Mandanna" loading="lazy" style="--focal:50% 30%"></div><p class="person__field">Aurora 100</p><p class="person__name">Rashmika Mandanna</p></a>
+        <a class="person reveal" href="curator.html"><div class="person__img"><img src="assets/img/aurora100/rashmika.jpg" alt="Rashmika Mandanna" loading="lazy" style="--focal:50% 30%"></div><p class="person__field">Aurora 100</p><p class="person__name">Rashmika Mandanna</p></a>
         <a class="person reveal" href="studio.html#global-faces"><div class="person__img"><img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra" loading="lazy" style="--focal:50% 15%"></div><p class="person__field">Global Faces 100</p><p class="person__name">Harshaali Malhotra</p></a>
         <div class="person reveal"><div class="person__img"><img src="assets/img/people/tyla.jpg" alt="Tyla" loading="lazy" style="--focal:55% 20%"></div><p class="person__field">Music</p><p class="person__name">Tyla</p></div>
         <div class="person reveal"><div class="person__img"><img src="assets/img/people/lisa.jpg" alt="Lisa" loading="lazy" style="--focal:50% 18%"></div><p class="person__field">Fashion × Music</p><p class="person__name">Lisa</p></div>

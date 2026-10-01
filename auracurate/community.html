@@ -18,31 +18,93 @@
 <div data-shell="header"></div>
 <main id="main">
 
-  <!-- ============ HERO (Figma GXaW3v "Community Highlight" 1:1491; theme › restored_source) ============ -->
-  <section class="photo-hero" aria-labelledby="cm-title">
-    <img class="photo-hero__img" src="assets/img/community/highlight-hero.jpg" alt="" style="--focal:50% 40%">
-    <div class="container photo-hero__inner">
-      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Aurora</a></li><li>Community</li></ol>
-      <p class="eyebrow" style="color:rgba(255,255,255,.85)">Aurora Community</p>
-      <h1 class="display" id="cm-title">Culture grows <em>through conversation.</em></h1>
-      <p class="lede">Discover stories, exchange perspectives and help shape the next Aurora conversation.</p>
-      <div class="photo-hero__actions">
-        <a class="btn btn--primary" href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9">Open Aurora Lounge</a>
-        <a class="btn btn--secondary" href="https://auroracurate.com/a/members" style="--_fg:#fff;--_bd:rgba(255,255,255,.6)">Member sign-in</a>
+  <!-- ============ LAUNCHPAD HERO (original Community screen) ============ -->
+  <section class="container launch" aria-labelledby="cm-title">
+    <div>
+      <ol class="crumbs" aria-label="Breadcrumb" style="color:var(--stage-text-2)"><li><a href="index.html">Aurora</a></li><li>Community</li></ol>
+      <h1 class="launch__title" id="cm-title">Where Global Voices Meet Influence</h1>
+      <p class="lede">From sharing your story to standing on the world stage, Aurora Community is your launchpad to influence.</p>
+      <div class="launch__actions">
+        <a class="btn btn--white" href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9">Join community</a>
+        <a class="play-link" href="#how"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>Watch how it works</a>
+      </div>
+      <p class="note">Joining is free with an Aurora member sign-in. Membership does not confer Curator status or editorial selection.</p>
+    </div>
+    <div class="collage" aria-hidden="true">
+      <img src="assets/img/studio/believing.jpg" alt="" style="object-position:40% 30%">
+      <img src="assets/img/studio/mongolia.jpg" alt="" style="object-position:50% 40%">
+      <img src="assets/img/people/rashmika-beauty.jpg" alt="">
+      <img src="assets/img/studio/hanbok-india.jpg" alt="">
+      <img src="assets/img/people/tyla.jpg" alt="" style="object-position:55% 20%">
+      <img src="assets/img/studio/harshaali.jpg" alt="" style="object-position:50% 15%">
+      <img src="assets/img/people/mike-angelo.jpg" alt="" style="object-position:50% 12%">
+      <img src="assets/img/community/jennie-hera-3.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- ============ LAUNCHPAD (3 feature cards) ============ -->
+  <section class="section" aria-labelledby="lp-title">
+    <div class="container">
+      <div class="center-head">
+        <h2 id="lp-title">Your Launchpad to Global Success</h2>
+        <p>Aurora Community combines opportunities, tools and visibility to help you grow from local storyteller to global voice.</p>
+      </div>
+      <div class="pads">
+        <a class="pad reveal" href="#learning"><span class="pad__ico"><span class="aurora-star" aria-hidden="true"></span></span><h3>Masterclass &amp; Mentorship</h3><p>Learn from people building culture — starting with Asia Lab’s learning concepts.</p></a>
+        <a class="pad reveal" href="work-with-aurora.html#contributors"><span class="pad__ico"><img src="assets/img/nine/entertainment.webp" alt=""></span><h3>Studio Features &amp; Spotlight</h3><p>Honorary reporters can pitch stories that may be featured in Aurora Studio.</p></a>
+        <a class="pad reveal" href="studio.html#aurora-100"><span class="pad__ico"><img src="assets/brand/aurora100_black.png" alt="" style="filter:none;width:44px;height:auto"></span><h3>Help shape Aurora 100</h3><p>Suggest people and ideas for the editors to consider. Selection stays an editorial decision.</p></a>
       </div>
     </div>
   </section>
 
-  <nav class="subnav" aria-label="Community sections">
-    <div class="container"><ul>
-      <li><a href="#start">Start participating</a></li>
-      <li><a href="#fields">Nine topics</a></li>
-      <li><a href="#highlights">Highlights</a></li>
-      <li><a href="#jennie-hera">Reporter story</a></li>
-      <li><a href="#learning">Learning</a></li>
-      <li><a href="#principles">Principles</a></li>
-    </ul></div>
-  </nav>
+  <!-- ============ WHAT IS AURORA COMMUNITY (2 audiences) ============ -->
+  <section class="section" aria-labelledby="what-title">
+    <div class="container">
+      <div class="center-head">
+        <h2 id="what-title">What is Aurora Community?</h2>
+        <p>The heart of Aurora’s ecosystem — a space where anyone can go global. Honorary reporters, creators and mentors meet here, with Studio features, Aurora 100 conversations and learning.</p>
+      </div>
+      <div class="audiences">
+        <a class="audience reveal" href="work-with-aurora.html#curators"><img src="assets/img/community/jennie-hera-2.jpg" alt="" style="--focal:50% 30%"><span><b>For Mentors &amp; Icons</b><span class="btn btn--white btn--sm">Start a masterclass</span></span></a>
+        <a class="audience audience--members reveal" href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9"><img src="assets/img/studio/believing.jpg" alt="" style="--focal:50% 35%"><span><b>For Members &amp; Creators</b><span class="btn btn--sm">Join a community</span></span></a>
+      </div>
+      <div data-render="community-plans"></div>
+    </div>
+  </section>
+
+  <!-- ============ NINE TOPICS (theme › fields) ============ -->
+  <section class="section" id="fields" aria-labelledby="fields-title">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow">Nine Tails</p>
+        <h2 class="h1" id="fields-title">Aurora Community = <em>Growth Engine</em></h2>
+        <p class="lede">Choose a topic in Aurora Lounge. Some topics do not have contributions yet — be the first.</p>
+      </div></div>
+      <ul class="fields">
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Entertainment"><img src="assets/img/nine/entertainment.webp" alt="">Entertainment</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Icons"><img src="assets/img/nine/icons.webp" alt="">Icons</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Beauty"><img src="assets/img/nine/beauty.webp" alt="">Beauty</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Fashion"><img src="assets/img/nine/fashion.webp" alt="">Fashion</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Hustle"><img src="assets/img/nine/hustle.webp" alt="">Hustle</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Taste"><img src="assets/img/nine/taste.webp" alt="">Taste</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Lifestyle"><img src="assets/img/nine/lifestyle.webp" alt="">Lifestyle</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Travel"><img src="assets/img/nine/travel.webp" alt="">Travel</a></li>
+        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Wellness"><img src="assets/img/nine/wellness.webp" alt="">Wellness</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO (original "Meet the world's best" player → Asia Lab TV record) ============ -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <div class="center-head"><h2 id="how-title">Meet the world’s best to help you expand globally.</h2></div>
+      <div class="video-card reveal">
+        <img src="assets/texture/aurora-bg-1.jpg" alt="" loading="lazy">
+        <div class="video-card__body"><small>Asia Lab TV · Korea-side field record</small><b>Agnez Mo in Korea</b><small>How Asia Lab coordinates an international artist’s work in Korea.</small></div>
+        <a class="video-card__play" href="https://youtu.be/4P4HbeskPRo?t=120" target="_blank" rel="noopener" aria-label="Watch Agnez Mo in Korea on YouTube, from 2:00"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span></a>
+      </div>
+    </div>
+  </section>
 
   <!-- ============ START (theme › actions) ============ -->
   <section class="section" id="start" aria-labelledby="start-title" style="border-top:0">
@@ -60,27 +122,6 @@
     </div>
   </section>
 
-  <!-- ============ NINE TOPICS (theme › fields) ============ -->
-  <section class="section" id="fields" aria-labelledby="fields-title">
-    <div class="container">
-      <div class="section-head"><div>
-        <p class="eyebrow">Nine Tails</p>
-        <h2 class="h1" id="fields-title">Nine ways <em>to explore.</em></h2>
-        <p class="lede">Choose a topic in Aurora Lounge. Some topics do not have contributions yet — be the first.</p>
-      </div></div>
-      <ul class="fields">
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Entertainment"><img src="assets/img/nine/entertainment.webp" alt="">Entertainment</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Icons"><img src="assets/img/nine/icons.webp" alt="">Icons</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Beauty"><img src="assets/img/nine/beauty.webp" alt="">Beauty</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Fashion"><img src="assets/img/nine/fashion.webp" alt="">Fashion</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Hustle"><img src="assets/img/nine/hustle.webp" alt="">Hustle</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Taste"><img src="assets/img/nine/taste.webp" alt="">Taste</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Lifestyle"><img src="assets/img/nine/lifestyle.webp" alt="">Lifestyle</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Travel"><img src="assets/img/nine/travel.webp" alt="">Travel</a></li>
-        <li><a href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9#topic-Wellness"><img src="assets/img/nine/wellness.webp" alt="">Wellness</a></li>
-      </ul>
-    </div>
-  </section>
 
   <!-- ============ HIGHLIGHTS (Figma Community Highlights 1:1226–1:1270) ============ -->
   <section class="section" id="highlights" aria-labelledby="hi-title">

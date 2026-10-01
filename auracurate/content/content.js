@@ -80,6 +80,11 @@ window.AURORA_CONTENT = {
      scheduled → startsAt(ISO), title / live·replay → url, title */
   live: { state: "none" },
 
+  /* Community 멤버십 요금제 — 원본 Community 화면의 4단 요금표(Free / Plus / Pro / Founder's Circle).
+     대표님이 "구독 요금제형"으로 결정하고 요금·혜택을 승인했을 때만 채웁니다. 비어 있으면 섹션이 보이지 않습니다.
+     예: { name: "Free – Discover", price: "$0", period: "/mo", note: "", perks: ["…"], cta: { label: "Join", href: "…" }, tag: "" } */
+  communityPlans: [],
+
   /* 협업 접수 엔드포인트. null이면 이메일 제출로 대체(접수 ≠ 승인). */
   intake: {
     endpoint: null,

@@ -18,58 +18,37 @@
 <div data-shell="header"></div>
 <main id="main">
 
-  <!-- ============ HERO (Figma GXaW3v "Exclusive Content" 1:1313) ============ -->
-  <section class="photo-hero" aria-labelledby="st-title">
-    <img class="photo-hero__img" src="assets/img/studio/exclusive-hero.jpg" alt="" style="--focal:50% 45%">
-    <div class="container photo-hero__inner">
-      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Aurora</a></li><li>Studio</li></ol>
-      <h1 class="display" id="st-title">Studio</h1>
-      <p class="lede">Behind the curtain with Aurora’s premium stories — interviews with icons, original films, cultural collaborations and in-depth articles.</p>
-      <div class="photo-hero__actions">
-        <a class="btn btn--primary" href="#stories">Explore the stories</a>
-        <a class="btn btn--secondary" href="#aurora-100">Aurora 100</a>
-      </div>
-    </div>
-  </section>
+  <!-- ============ STUDIO DISCOVER (original "Discover" screen: sidebar + hero duo + cards) ============ -->
+  <div class="discover container" id="top">
+    <aside class="discover__side" aria-label="Studio menu">
+      <p class="discover__k">Menu</p>
+      <ul class="discover__menu">
+        <li><a href="#top" aria-current="true"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5h-6v5H5a1 1 0 0 1-1-1z"/></svg></span>Discover</a></li>
+        <li><a href="#trending"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m4 16 5-5 4 4 7-7"/><path d="M15 8h5v5"/></svg></span>Trending</a></li>
+        <li><a href="#field"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg></span>Streaming</a></li>
+        <li><a href="#issues"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/></svg></span>Playlist</a></li>
+      </ul>
+      <p class="discover__k">Category</p>
+      <ul class="discover__menu">
+        <li><a href="#exclusive"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c.9 6 3 8.1 9 9-6 .9-8.1 3-9 9-.9-6-3-8.1-9-9 6-.9 8.1-3 9-9z"/></svg></span>Exclusive Interview</a></li>
+        <li><a href="#aurora-100"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 10l3-2"/></svg></span>Aurora 100</a></li>
+        <li><a href="#ranking"><span class="discover__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 20V11M12 20V5M18 20v-6"/></svg></span>Ranking</a></li>
+      </ul>
+    </aside>
 
-  <nav class="subnav" aria-label="Studio sections">
-    <div class="container"><ul>
-      <li><a href="#stories">Stories</a></li>
-      <li><a href="#trending">Trending</a></li>
-      <li><a href="#exclusive">Exclusive Content</a></li>
-      <li><a href="#experience">Aurora Experience</a></li>
-      <li><a href="#ranking">Ranking</a></li>
-      <li><a href="#highlights">Community Highlights</a></li>
-      <li><a href="#aurora-100">Aurora 100</a></li>
-      <li><a href="#global-faces">Global Faces 100</a></li>
-      <li><a href="#field">From the field</a></li>
-    </ul></div>
-  </nav>
-
-  <!-- ============ NINE FIELDS FILTER (Figma "Icons_black" row 1:1622) ============ -->
-  <section class="section section--tight" id="stories" aria-labelledby="stories-title" style="border-top:0">
-    <div class="container">
-      <div class="row__head">
-        <div>
-          <p class="eyebrow">Nine Tails</p>
-          <h2 class="h2" id="stories-title">Browse by field</h2>
-        </div>
-      </div>
-      <div class="nine" role="group" aria-label="Filter stories by field" data-filter>
-        <button class="nine__item" type="button" data-field="entertainment" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/entertainment.webp" alt=""></span>Entertainment</button>
-        <button class="nine__item" type="button" data-field="icons" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/icons.webp" alt=""></span>Icons</button>
-        <button class="nine__item" type="button" data-field="beauty" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/beauty.webp" alt=""></span>Beauty</button>
-        <button class="nine__item" type="button" data-field="fashion" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/fashion.webp" alt=""></span>Fashion</button>
-        <button class="nine__item" type="button" data-field="hustle" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/hustle.webp" alt=""></span>Hustle</button>
-        <button class="nine__item" type="button" data-field="taste" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/taste.webp" alt=""></span>Taste</button>
-        <button class="nine__item" type="button" data-field="lifestyle" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/lifestyle.webp" alt=""></span>Lifestyle</button>
-        <button class="nine__item" type="button" data-field="travel" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/travel.webp" alt=""></span>Travel</button>
-        <button class="nine__item" type="button" data-field="wellness" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/wellness.webp" alt=""></span>Wellness</button>
+    <div class="discover__main">
+      <div class="discover__head">
+        <h1 class="discover__title">Studio</h1>
+        <form class="discover__search" role="search" data-search>
+          <label class="visually-hidden" for="studio-q">Search Studio stories</label>
+          <input id="studio-q" type="search" placeholder="Search" autocomplete="off">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+        </form>
       </div>
       <p class="filter-status" role="status" aria-live="polite" data-filter-status></p>
 
       <!-- Feature duo (Figma 1:914 / 1:928) -->
-      <div class="duo" style="margin-top:32px" data-filter-row>
+      <div class="duo" data-filter-row>
         <article class="feature reveal" data-fields="entertainment icons">
           <img src="assets/img/studio/power-100.jpg" alt="Guests on stage at the Unforgettable Gala" style="--focal:50% 45%">
           <div class="feature__body">
@@ -89,33 +68,43 @@
           </div>
         </article>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ ROWS (Figma Studio home 1:942 → 1:1270) ============ -->
-  <section class="section" aria-label="Studio stories" style="border-top:0;padding-top:0">
-    <div class="container rows">
-
+      <div class="rows" style="margin-top:56px">
       <div id="trending" data-filter-row>
         <div class="row__head"><h2>Trending</h2></div>
         <div class="stories">
           <article class="story reveal" data-fields="entertainment fashion icons">
             <div class="story__img"><img src="assets/img/studio/red-carpet.jpg" alt="Three guests on the Aurora 100 red carpet" loading="lazy" style="--focal:50% 17%"></div>
-            <div class="story__body"><p class="story__label">Aurora 100</p><h3 class="story__title">Aurora 100 Awards · Red Carpet Highlights</h3><span class="sample">Design sample</span></div>
+            <div class="story__body"><p class="story__label">Aurora 100</p><h3 class="story__title">Aurora 100 Awards Red Carpet Highlights</h3><span class="sample">Design sample</span></div>
           </article>
           <article class="story reveal" data-fields="fashion lifestyle">
             <div class="story__img"><img src="assets/img/studio/behind-the-shoot.jpg" alt="A photographer shooting in a studio" loading="lazy" style="--focal:50% 45%"></div>
-            <div class="story__body"><p class="story__label">Editorial</p><h3 class="story__title">Behind the editorial shoot</h3><span class="sample">Design sample</span></div>
+            <div class="story__body"><p class="story__label">Editorial</p><h3 class="story__title">BTS of Aurora 100 Editorial Shoot</h3><span class="sample">Design sample</span></div>
           </article>
-          <a class="story reveal" href="curators.html#rashmika" data-fields="icons entertainment">
+          <a class="story reveal" href="article.html" data-fields="icons entertainment">
             <div class="story__img"><img src="assets/img/studio/rashmika-editorial.jpg" alt="Rashmika Mandanna beside a pink swan sculpture" loading="lazy" style="--focal:50% 30%"></div>
-            <div class="story__body"><p class="story__label">Article</p><h3 class="story__title">Rashmika Mandanna</h3><span class="sample">Design sample</span></div>
+            <div class="story__body"><p class="story__label">Curator</p><h3 class="story__title">Meet Asia’s Official Crush: Rashmika</h3><span class="sample">Design sample</span></div>
           </a>
-          <a class="story reveal" href="community.html#jennie-hera" data-fields="beauty icons">
-            <div class="story__img"><img src="assets/img/studio/jennie-hera-study.jpg" alt="Jennie with a HERA cushion compact" loading="lazy" style="--focal:55% 40%"></div>
-            <div class="story__body"><p class="story__label">Community Highlights</p><h3 class="story__title">Jennie · HERA visual study</h3><span class="sample">Design sample</span></div>
-          </a>
+          <article class="story reveal" data-fields="beauty">
+            <div class="story__img"><img src="assets/img/studio/innisfree-collab.jpg" alt="A brand event on an Innisfree stage" loading="lazy" style="--focal:50% 40%"></div>
+            <div class="story__body"><p class="story__label">Collaborations</p><h3 class="story__title">Exclusive Brand Collab</h3><span class="sample">Design sample</span></div>
+          </article>
         </div>
+      </div>
+
+      <div id="stories" data-filter-row-skip>
+        <div class="row__head"><h2>Browse by field</h2><p>Nine Tails — the nine editorial fields through which Aurora reads culture.</p></div>
+        <div class="nine" role="group" aria-label="Filter stories by field" data-filter>
+        <button class="nine__item" type="button" data-field="entertainment" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/entertainment.webp" alt=""></span>Entertainment</button>
+        <button class="nine__item" type="button" data-field="icons" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/icons.webp" alt=""></span>Icons</button>
+        <button class="nine__item" type="button" data-field="beauty" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/beauty.webp" alt=""></span>Beauty</button>
+        <button class="nine__item" type="button" data-field="fashion" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/fashion.webp" alt=""></span>Fashion</button>
+        <button class="nine__item" type="button" data-field="hustle" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/hustle.webp" alt=""></span>Hustle</button>
+        <button class="nine__item" type="button" data-field="taste" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/taste.webp" alt=""></span>Taste</button>
+        <button class="nine__item" type="button" data-field="lifestyle" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/lifestyle.webp" alt=""></span>Lifestyle</button>
+        <button class="nine__item" type="button" data-field="travel" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/travel.webp" alt=""></span>Travel</button>
+        <button class="nine__item" type="button" data-field="wellness" aria-pressed="false"><span class="nine__icon"><img src="assets/img/nine/wellness.webp" alt=""></span>Wellness</button>
+      </div>
       </div>
 
       <div id="exclusive" data-filter-row>
@@ -125,10 +114,10 @@
             <div class="story__img"><img src="assets/img/studio/hera-product.jpg" alt="A HERA essence bottle" loading="lazy" style="--focal:40% 50%"></div>
             <div class="story__body"><p class="story__label">Aurora Originals</p><h3 class="story__title">Creating a HERA product</h3><span class="sample">Design sample</span></div>
           </article>
-          <article class="story reveal" data-fields="entertainment">
-            <div class="story__img"><img src="assets/img/studio/bong-anurag.jpg" alt="Anurag Kashyap and Bong Joon Ho" loading="lazy" style="--focal:50% 40%"></div>
-            <div class="story__body"><p class="story__label">Collaborations</p><h3 class="story__title">Bong Joon Ho × Anurag Kashyap</h3><span class="sample">Design sample</span></div>
-          </article>
+          <a class="story reveal" href="community.html#jennie-hera" data-fields="beauty icons">
+            <div class="story__img"><img src="assets/img/studio/jennie-hera-study.jpg" alt="Jennie with a HERA cushion compact" loading="lazy" style="--focal:55% 40%"></div>
+            <div class="story__body"><p class="story__label">Community Highlights</p><h3 class="story__title">Jennie · HERA visual study</h3><span class="sample">Design sample</span></div>
+          </a>
           <a class="story reveal" href="#global-faces" data-fields="icons entertainment">
             <div class="story__img"><img src="assets/img/studio/harshaali.jpg" alt="Harshaali Malhotra interview portrait" loading="lazy" style="--focal:50% 18%"></div>
             <div class="story__body"><p class="story__label">Global Faces 100 · Interview</p><h3 class="story__title">Beyond the face the world remembers</h3></div>
@@ -207,8 +196,9 @@
       </div>
 
       <p class="note">Design samples are original Figma compositions. Titles and images illustrate the format and do not announce a collaboration, event, recommendation or offer.</p>
+      </div>
     </div>
-  </section>
+  </div>
 
   <!-- ============ AURORA 100 (Figma 1:1882 / 1:1849-51 / lineup 1:1988; theme index.aurora-100) ============ -->
   <section class="section" id="aurora-100" aria-labelledby="a100-title">
@@ -222,7 +212,7 @@
         </div>
       </div>
 
-      <div class="row__head" style="margin-top:64px">
+      <div class="row__head" id="issues" style="margin-top:64px">
         <div><p class="eyebrow">Aurora Editorial Issues</p><h3 class="h2">Three fields, three covers</h3></div>
       </div>
       <div class="covers">
