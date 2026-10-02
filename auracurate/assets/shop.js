@@ -162,7 +162,7 @@
           '<div class="pdp__main" data-main>' + photo(gallery[0], p.brand + " " + p.title) + "</div>" +
         "</div>" +
         '<div class="pdp__info">' +
-          '<p class="pdp__brand">' + esc(p.brand) + (FIELD[p.field] ? ' · <a href="studio.html?field=' + p.field + '#stories">' + FIELD[p.field] + "</a>" : "") + "</p>" +
+          '<p class="pdp__brand">' + esc(p.brand) + (FIELD[p.field] ? ' · <a href="field.html?f=' + p.field + '">' + FIELD[p.field] + "</a>" : "") + "</p>" +
           '<h1 class="pdp__title">' + esc(p.title) + "</h1>" +
           (p.size ? '<p class="pdp__size">' + esc(p.size) + "</p>" : "") +
           '<p class="pdp__price" data-price>' + (state.variant ? money(state.variant.price) : money(p.matrix ? p.matrix.price : 0)) + "</p>" +
@@ -192,7 +192,7 @@
           '<div><p class="eyebrow" style="margin-bottom:8px">Why it’s in Aurora</p><h2 id="world-title">' + esc(p.note || "") + "</h2>" +
           '<p class="muted">An editor’s note. No celebrity or curator endorsement is implied.</p></div></div>' +
         '<div class="pdp-world__links">' +
-          '<a href="studio.html?field=' + p.field + '#stories"><small>Studio</small><b>Stories in ' + (FIELD[p.field] || "this field") + "</b></a>" +
+          '<a href="field.html?f=' + p.field + '"><small>' + (FIELD[p.field] || "Field") + '</small><b>The whole ' + (FIELD[p.field] || "field") + " world</b></a>" +
           '<a href="curators.html"><small>Curators</small><b>Meet the perspectives</b></a>' +
           '<a href="community.html#fields"><small>Community</small><b>Talk about it in the Lounge</b></a>' +
           '<a href="projects.html#made-for-you"><small>Made for You</small><b>Want your own version?</b></a>' +

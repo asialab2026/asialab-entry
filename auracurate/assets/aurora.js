@@ -54,6 +54,9 @@
         '<nav class="nav" aria-label="Primary">' + navLinks("") + "</nav>" +
         '<div class="header-actions">' +
           '<a class="btn btn--primary pill-partner" href="' + BASE + 'work-with-aurora.html"' + (PAGE === "partner" ? ' aria-current="page"' : "") + ">Partner with us</a>" +
+          '<a class="icon-btn" href="' + BASE + 'search.html" aria-label="Search"' + (PAGE === "search" ? ' aria-current="page"' : "") + ">" +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>' +
+          "</a>" +
           '<a class="icon-btn" href="/cart" aria-label="Cart">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 7Z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>' +
           "</a>" +
@@ -67,6 +70,7 @@
       "</div></header>" +
       '<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-open="false">' +
         navLinks("mobile-nav__link") +
+        '<a class="mobile-nav__link" href="' + BASE + 'search.html">Search</a>' +
         '<a class="btn btn--primary" href="' + BASE + 'work-with-aurora.html">Partner with us</a>' +
       "</nav>"
     );
@@ -85,6 +89,8 @@
             return '<li><a href="' + BASE + n.href + '">' + n.label + "</a></li>";
           }).join("") +
           '<li><a href="' + BASE + 'projects.html">Fund · Together · Made for You</a></li>' +
+          '<li><a href="' + BASE + 'field.html">Nine Tails</a></li>' +
+          '<li><a href="' + BASE + 'about.html">About Aurora</a></li>' +
           "</ul></div>" +
           '<div><h2>Work with Aurora</h2><div class="work-with">' +
             '<a href="' + BASE + 'work-with-aurora.html#partners"><b>Partners</b><span>브랜드·제품 협업 제안</span></a>' +
@@ -99,7 +105,7 @@
             '<li><a href="mailto:' + esc((C.intake && C.intake.email) || "aurora@auroracurate.com") + '">Contact</a></li>' +
           "</ul></div>" +
         "</div>" +
-        '<div class="site-footer__base"><span>© ' + y + " Aurora · Asia Lab</span><span>One Asia, One World</span></div>" +
+        '<div class="site-footer__base"><span>© ' + y + " Aurora · Asia Lab</span><span><a href=\"" + BASE + "guide.html\">Design guide</a> · One Asia, One World</span></div>" +
       "</div></footer>" +
       '<div class="edit-banner" role="status">Edit preview — slot labels are visible only with ?edit=1</div>'
     );

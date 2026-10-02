@@ -19,6 +19,13 @@ auracurate/
   projects.html           Aurora Projects — Fund, Together, Made for You (process, design studies, request forms) and
                           nine-field concept collection
   work-with-aurora.html   Partner with us — three doors, ecosystem, one intake form (Partners / Curators / Contributors)
+  field.html              Nine Tails — index of nine fields; field.html?f=<id> gathers that field's question, Studio
+                          stories, Shop items and programs, a Projects concept and the Community (Lounge) topic
+  search.html             Site search (?q=) — fields, stories, people, products, programs, pages
+  about.html              About Aurora — practice (Discover · Develop · Produce), ecosystem, explore, contact
+  guide.html              Design guide & structure map — page map, brand, colour, type, components, content rules,
+                          where each thing is edited
+  404.html                Not-found page with ways back in
   assets/tokens.css       Brand tokens: palette, Stage gradient, CTA states, type
   assets/aurora.css       Shell + shared components (Stage / Read modes), Shop components
   assets/pages.css        Home / Studio / Curators / Community / Partner components
@@ -28,11 +35,15 @@ auracurate/
   assets/texture/         "Final Aurora BG 1" texture from the original Figma (em4c3H… node 1:8)
   content/content.js      Editable slots (highlights, shelves, live, communityPlans, fundProjects, intake)
   content/products.js     Live catalogue from Shopify (handles, variant IDs, prices, images) + programs
-  assets/shop.js|css      Catalogue, product page, request forms
+  assets/shop.js|css      Catalogue, product page, request forms (shop.css also holds field/search/guide styles)
+  assets/world.js         Field pages, field index and site search (reads stories/people from studio/curators.html)
+  content/fields.js       Nine fields: name, line, question, image, concept + route, Aurora Lounge link
 ```
 
 Open `index.html` in a browser (serve the folder so the star mask loads over http). Add `?edit=1`
-to any page to see the slot labels editors fill in. `studio.html?field=beauty` opens Studio filtered.
+to any page to see the slot labels editors fill in. `studio.html?field=beauty` opens Studio filtered;
+`field.html?f=beauty` opens the Beauty field page; `search.html?q=beauty` searches the site.
+Page scripts that render cards (shop.js, world.js) load before aurora.js so the reveal animation sees them.
 
 ## Image and copy sources
 
@@ -63,7 +74,8 @@ them with the source files for high-density screens.
 
 | Layer | State |
 |---|---|
-| Six pages (Home, Studio, Curators, Community, Shop, Partner) | Built · checked at 1440 / 390 px, no horizontal overflow, no broken images or JS errors |
+| 17 pages (Home, Studio, Article, Curators, Profile, Community, Shop, Product, Projects, Partner, Nine Tails index + fields, Search, About, Guide, 404) | Built · checked at 1440 / 390 px, no horizontal overflow, no JS errors |
+| Shopify product photos | Served from cdn.shopify.com; when it is unreachable the frame shows the aurora texture with the product name |
 | Figma files not yet readable | Starter-team files (`q75c81…`, `dd62tL…`, `VUnymK…`, `cmFZst…`, `taKmQN…`, `LRFDoq…`) — MCP limit exhausted |
 | Image rights | Person and brand photos come from the original design; confirm usage rights before public launch |
 | Shopify theme (Liquid), cart, checkout | `/cart`, `/account`, `/policies/*`, `/a/members` are Shopify routes |
