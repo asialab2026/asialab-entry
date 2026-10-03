@@ -17,7 +17,15 @@ window.AURORA_CONTENT = {
     slogan: "A World Connected by Experience",
     sloganKo: "경험으로 연결되는 하나의 세계",
     definition: "Aurora is a global production house and experience platform created by Asia Lab.",
-    definitionKo: "Aurora는 Asia Lab이 만든 글로벌 프로덕션 하우스이자 경험 플랫폼입니다."
+    definitionKo: "Aurora는 Asia Lab이 만든 글로벌 프로덕션 하우스이자 경험 플랫폼입니다.",
+    /* About 소개문 (대표 확정 2026-10-03) */
+    about: [
+      "Connecting Asia and the world through people, ideas, products, and experiences.",
+      "Aurora crosses borders and connects worlds.",
+      "Built on the belief that human creativity, experience, and possibility should never be confined by geography, Aurora brings together people, products, companies, cultures, and ideas—connecting Asia with the world and the world with Asia.",
+      "Through content, collaboration, commerce, and community, Aurora transforms meaningful connections into shared experiences, new opportunities, and lasting value.",
+      "Our vision is to create one connected world where different identities and cultures meet, create, and grow together."
+    ]
   },
 
   /* Shop 히어로 커버. null이면 오로라 텍스처 빈 상태.
