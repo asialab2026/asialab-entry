@@ -44,29 +44,30 @@ window.AURORA_CONTENT = {
      Ranking은 순위 번호 없이 "Editorial selection"으로 표시.
      price·리뷰 수·잔여 수량은 Shopify 실데이터가 연결될 때만 넣는다(원본의 $가격·(4.1k) 리뷰·
      "Only 5 Remaining" 등은 가상 수치라 제외). status: null | "sample" | "sold_out" | "preorder"
-     href를 넣으면 카드가 상품 페이지로 연결된다. */
+     href를 넣으면 카드가 상품 페이지로 연결된다.
+     선반 href는 프로토타입에서 collection.html?c=<id>, 테마에서는 /collections/<handle>. */
   shelves: [
-    { id: "experience", title: "Aurora Experience", href: "/collections/aurora-experience", products: [
+    { id: "experience", title: "Aurora Experience", href: "collection.html?c=experience", products: [
       { title: "Red Carpet Makeup Masterclass", vendor: "Felix", status: "sample", image: { src: "assets/img/shop/exp-masterclass.jpg", alt: "Two friends posing close to the camera" } },
       { title: "Felix’s Aurora India Concert", vendor: "Felix x Louis Vuitton", status: "sample", image: { src: "assets/img/shop/exp-concert.jpg", alt: "Felix singing on stage with red smoke" } },
       { title: "Felix Edition: K-style to Global Brand", vendor: "Felix · Stray Kids", status: "sample", image: { src: "assets/img/shop/exp-felix-edition.jpg", alt: "Felix on a city street with a phone and bubble tea" } }
     ] },
-    { id: "collaboration", title: "Collaboration", href: "/collections/collaboration", products: [
+    { id: "collaboration", title: "Collaboration", href: "collection.html?c=collaboration", products: [
       { title: "Felix x Louis Vuitton", vendor: "Louis Vuitton", status: "sample", image: { src: "assets/img/shop/col-louis-vuitton.jpg", alt: "Felix in front of the Louis Vuitton logo", focal: "50% 15%" } },
       { title: "Felix x CLIO", vendor: "CLIO", status: "sample", image: { src: "assets/img/shop/col-clio.jpg", alt: "Felix holding a CLIO eyeshadow palette" } },
       { title: "Felix x ATiiSSU", vendor: "ATiiSSU", status: "sample", image: { src: "assets/img/shop/col-atiissu.jpg", alt: "Felix photo card boxes" } }
     ] },
-    { id: "ranking", title: "Ranking", note: "Editorial selection", href: "/collections/ranking", products: [
+    { id: "ranking", title: "Ranking", note: "Editorial selection", href: "collection.html?c=ranking", products: [
       { title: "Best K-Beauty 2025 Foundation", vendor: "HERA", status: "sample", image: { src: "assets/img/shop/rank-foundation.jpg", alt: "Model holding a HERA cushion compact" } },
       { title: "Aurora Top 10 Handbag", vendor: "Prada", status: "sample", image: { src: "assets/img/shop/rank-handbag.jpg", alt: "Black-and-white portrait with a Prada shoulder bag" } },
       { title: "Aurora Top Ranking Makeup", vendor: "Rare Beauty", status: "sample", image: { src: "assets/img/shop/rank-makeup.jpg", alt: "Smiling model holding a Rare Beauty lip product" } }
     ] },
-    { id: "curators-recommendation", title: "Curator’s Recommendation", href: "/collections/curators-recommendation", products: [
+    { id: "curators-recommendation", title: "Curator’s Recommendation", href: "collection.html?c=curators-recommendation", products: [
       { title: "Felix’s sunglasses", vendor: "Gentle Monster", status: "sample", image: { src: "assets/img/shop/rec-sunglasses.jpg", alt: "Felix wearing black sunglasses", focal: "50% 15%" } },
       { title: "Zendaya x Valentino", vendor: "Valentino", status: "sample", image: { src: "assets/img/shop/rec-valentino.jpg", alt: "Zendaya in a pink Valentino outfit on a pink backdrop" } },
       { title: "Shakira’s Summer Essential", vendor: "Shakira Beauty", status: "sample", image: { src: "assets/img/shop/rec-summer.jpg", alt: "Shakira in red for the Rojo fragrance" } }
     ] },
-    { id: "curation", title: "Curation", href: "/collections/curation", products: [
+    { id: "curation", title: "Curation", href: "collection.html?c=curation", products: [
       { title: "K-POP Star Edit – Felix Picks", vendor: "Multiple Brands (Global)", status: "sample", image: { src: "assets/img/shop/cur-kpop-edit.jpg", alt: "Felix surrounded by picks from partner brands" } },
       { title: "Aurora’s K-Beauty Essentials", vendor: "Curated (Korea)", status: "sample", image: { src: "assets/img/shop/cur-kbeauty.jpg", alt: "K-beauty skincare products on a glass stand" } },
       { title: "Aurora Holiday Collab Box (2025)", vendor: "Multiple Brands (Global)", status: "sample", image: { src: "assets/img/shop/cur-holiday-box.jpg", alt: "Pink holiday makeup collection with a heart compact" } }

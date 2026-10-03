@@ -543,3 +543,5 @@ a.audience:focus-visible { outline: 2px solid var(--aurora-magenta); outline-off
 .plan__price { margin: 0; font-size: 1.75rem; font-weight: 700; }
 .plan__price small { font-size: var(--fs-small); font-weight: 500; color: var(--read-text-3); }
 .plan ul { margin: 0; padding-left: 1.1em; font-size: var(--fs-small); color: var(--read-text-2); display: grid; gap: 4px; }
+.profile__route { margin: 8px 0 0; font-size: var(--fs-micro); color: var(--read-text-3); }
+.profile__route a { color: inherit; }

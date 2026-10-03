@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
 <link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/shop.css">
+<link rel="stylesheet" href="assets/journey.css">
 </head>
 <body class="mode-stage page-aurora" data-page="community">
 <div data-shell="header"></div>
@@ -22,13 +24,14 @@
   <section class="container launch" aria-labelledby="cm-title">
     <div>
       <ol class="crumbs" aria-label="Breadcrumb" style="color:var(--stage-text-2)"><li><a href="index.html">Aurora</a></li><li>Community</li></ol>
-      <h1 class="launch__title" id="cm-title">Where Global Voices Meet Influence</h1>
+      <h1 class="launch__title" id="cm-title" data-note="Founder decision: “Meet Influence” can read as a promise of influence. Alternative: “Where Global Voices Meet Culture”.">Where Global Voices Meet Influence</h1>
       <p class="lede">From sharing your story to standing on the world stage, Aurora Community is your launchpad to influence.</p>
       <div class="launch__actions">
-        <a class="btn btn--white" href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9">Join community</a>
+        <a class="btn btn--white" href="offer.html?o=aurora-lounge" data-note="Live theme: the Lounge link (https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9). Prototype opens the Lounge page so the sign-in handoff can be reviewed.">Join the Lounge — free</a>
+        <a class="btn btn--secondary" href="#market">Browse programs</a>
         <a class="play-link" href="#how"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>Watch how it works</a>
       </div>
-      <p class="note">Joining is free with an Aurora member sign-in. Membership does not confer Curator status or editorial selection.</p>
+      <p class="note">Joining the Lounge is free with an Aurora sign-in. Already a member? <a href="learn.html?s=home">Go to Member home</a>. Membership does not confer Curator status or editorial selection.</p>
     </div>
     <div class="collage" aria-hidden="true">
       <img src="assets/img/studio/believing.jpg" alt="" style="object-position:40% 30%">
@@ -42,17 +45,29 @@
     </div>
   </section>
 
+  <!-- ============ THREE WAYS IN: read · join free · learn & experience ============ -->
+  <section class="section section--tight" aria-labelledby="ways-title" style="border-top:0;padding-top:24px">
+    <div class="container">
+      <h2 class="visually-hidden" id="ways-title">Three ways to take part</h2>
+      <div class="market__intro" style="margin-bottom:0">
+        <div class="mode-card"><small>Read · no sign-in</small><b>Stories from our reporters</b><p>Community highlights and reporter stories, open to everyone.</p><a href="#highlights">Read highlights →</a></div>
+        <div class="mode-card"><small>Join · free</small><b>Aurora Lounge</b><p>Ask, share and meet people across the nine fields with a free Aurora sign-in.</p><a href="offer.html?o=aurora-lounge">How joining works →</a></div>
+        <div class="mode-card"><small>Learn &amp; experience · paid</small><b>Programs</b><p>Cohorts, courses, workshops, digital editions and private sessions.</p><a href="#market">Browse programs →</a></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ LAUNCHPAD (3 feature cards) ============ -->
   <section class="section" aria-labelledby="lp-title">
     <div class="container">
       <div class="center-head">
-        <h2 id="lp-title">Your Launchpad to Global Success</h2>
+        <h2 id="lp-title" data-note="Founder decision: “Global Success” can read as a promise. Alternative: “Your Launchpad to a Global Audience”.">Your Launchpad to Global Success</h2>
         <p>Aurora Community combines opportunities, tools and visibility to help you grow from local storyteller to global voice.</p>
       </div>
       <div class="pads">
-        <a class="pad reveal" href="#learning"><span class="pad__ico"><span class="aurora-star" aria-hidden="true"></span></span><h3>Masterclass &amp; Mentorship</h3><p>Learn from people building culture — starting with Asia Lab’s learning concepts.</p></a>
+        <a class="pad reveal" href="#market"><span class="pad__ico"><span class="aurora-star" aria-hidden="true"></span></span><h3>Masterclass &amp; Mentorship</h3><p>Learn from people building culture — starting with Asia Lab’s learning concepts.</p></a>
         <a class="pad reveal" href="work-with-aurora.html#contributors"><span class="pad__ico"><img src="assets/img/nine/entertainment.webp" alt=""></span><h3>Studio Features &amp; Spotlight</h3><p>Honorary reporters can pitch stories that may be featured in Aurora Studio.</p></a>
-        <a class="pad reveal" href="studio.html#aurora-100"><span class="pad__ico"><img src="assets/brand/aurora100_black.png" alt="" style="filter:none;width:44px;height:auto"></span><h3>Help shape Aurora 100</h3><p>Suggest people and ideas for the editors to consider. Selection stays an editorial decision.</p></a>
+        <a class="pad reveal" href="studio.html#aurora-100"><span class="pad__ico"><img src="assets/brand/aurora100_black.png" alt="" style="filter:none;width:44px;height:auto"></span><h3 data-note="Keep Aurora 100 as an editorial authority project: suggesting is not applying, joining or paying. Alternative title: “Suggest someone for Aurora 100”.">Help shape Aurora 100</h3><p>Suggest people and ideas for the editors to consider. Selection stays an editorial decision.</p></a>
       </div>
     </div>
   </section>
@@ -65,8 +80,8 @@
         <p>The heart of Aurora’s ecosystem — a space where anyone can go global. Honorary reporters, creators and mentors meet here, with Studio features, Aurora 100 conversations and learning.</p>
       </div>
       <div class="audiences">
-        <a class="audience reveal" href="work-with-aurora.html#curators"><img src="assets/img/community/jennie-hera-2.jpg" alt="" style="--focal:50% 30%"><span><b>For Mentors &amp; Icons</b><span class="btn btn--white btn--sm">Start a masterclass</span></span></a>
-        <a class="audience audience--members reveal" href="https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9"><img src="assets/img/studio/believing.jpg" alt="" style="--focal:50% 35%"><span><b>For Members &amp; Creators</b><span class="btn btn--sm">Join a community</span></span></a>
+        <a class="audience reveal" href="#host"><img src="assets/img/community/jennie-hera-2.jpg" alt="" style="--focal:50% 30%"><span><b>For Mentors &amp; Hosts</b><span class="btn btn--white btn--sm">Host on Aurora</span></span></a>
+        <a class="audience audience--members reveal" href="offer.html?o=aurora-lounge"><img src="assets/img/studio/believing.jpg" alt="" style="--focal:50% 35%"><span><b>For Members &amp; Creators</b><span class="btn btn--sm">Join the Lounge — free</span></span></a>
       </div>
       <div data-render="community-plans"></div>
     </div>
@@ -77,7 +92,7 @@
     <div class="container">
       <div class="section-head"><div>
         <p class="eyebrow">Nine Tails</p>
-        <h2 class="h1" id="fields-title">Aurora Community = <em>Growth Engine</em></h2>
+        <h2 class="h1" id="fields-title" data-note="Reads like an internal strategy phrase. Alternative: “Nine topics. One conversation.”">Aurora Community = <em>Growth Engine</em></h2>
         <p class="lede">Choose a topic in Aurora Lounge. Some topics do not have contributions yet — be the first.</p>
       </div></div>
       <ul class="fields">
@@ -164,30 +179,40 @@
     </div>
   </section>
 
-  <!-- ============ LEARNING (theme › learning_preview) ============ -->
-  <section class="section" id="learning" aria-labelledby="le-title">
+  <!-- ============ COMMUNITY MARKET (Tevello: communities, cohorts, courses, workshops, digital, experiences) ============ -->
+  <section class="section" id="market" aria-labelledby="mk-title">
+    <span id="learning" aria-hidden="true"></span>
     <div class="container">
-      <div class="paper reveal">
-        <p class="eyebrow">Aurora Community · Learning</p>
-        <h2 class="h1" id="le-title">Learn, create <em>and exchange.</em></h2>
-        <p class="lede">Explore learning concepts from Asia Lab alongside Aurora’s cultural conversations. These previews invite discussion; they are not open course enrolments.</p>
-        <div class="programs" style="margin-top:40px">
-          <article class="program"><p class="program__provider">Asia Lab · Learning concept</p><h3>Entertainment Builder · Online Learning Preview</h3><span class="program__status">Design sample · Enrolment not open</span><p>Explore six creative-development topics through a proposed self-study, assignment and workbook format.</p></article>
-          <article class="program"><p class="program__provider">Asia Lab · Learning concept</p><h3>K-internship preparation</h3><span class="program__status">Design sample · Enrolment not open</span><p>Explore the skills, portfolio and questions to prepare before considering an internship.</p></article>
-          <article class="program"><p class="program__provider">Asia Lab · Learning concept</p><h3>Korean language &amp; culture</h3><span class="program__status">Design sample · Enrolment not open</span><p>A learning concept connecting practical language, cultural context and creative interests.</p></article>
-          <article class="program"><p class="program__provider">Asia Lab · Learning concept</p><h3>Creative workshops</h3><span class="program__status">Design sample · Enrolment not open</span><p>Proposed guided exercises, peer exchange and creative project practice.</p></article>
-          <article class="program"><p class="program__provider">Asia Lab · Learning concept</p><h3>Digital workbooks</h3><span class="program__status">Design sample · Enrolment not open</span><p>Proposed reflection sheets, creative briefs and project-planning resources.</p></article>
+      <div class="row__head">
+        <div><p class="eyebrow">Join · learn · keep · experience</p><h2 class="h1" id="mk-title">Programs <em>&amp; experiences</em></h2>
+        <p style="margin:12px 0 0;color:var(--stage-text-2);max-width:62ch">Communities, cohorts, courses, workshops, digital editions and private sessions — each with what you’ll do, who it’s for and what happens after you join. The same programs appear in the Shop.</p></div>
+        <a class="link-arrow" href="learn.html?s=home">Member home</a>
+      </div>
+      <div data-render="market"></div>
+      <p class="note">Open items can be joined today. Items marked “Design sample” test the template and are not on sale. Prices appear only when they are set in Shopify.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOST ON AURORA (the selling side of experiences) ============ -->
+  <section class="section" id="host" aria-labelledby="host-title">
+    <div class="container">
+      <div class="band">
+        <div class="aurora-field aurora-field--ember"></div>
+        <div class="host" style="position:relative">
+          <div>
+            <p class="eyebrow" style="color:var(--starlight-mist)">Host on Aurora</p>
+            <h2 class="h1" id="host-title">Have something <em>worth teaching?</em></h2>
+            <p class="band__note">Aurora produces a small number of communities, courses, workshops and experiences with hosts whose work fits a field. We shape the format with you, sell it through Aurora and run access for your members.</p>
+            <div class="state__actions" style="margin-top:20px"><a class="btn btn--primary" href="work-with-aurora.html?type=curator&amp;interest=host#apply">Propose a program</a><a class="btn btn--mist" href="application.html?t=host&amp;s=review">What happens after</a></div>
+          </div>
+          <ol class="host__steps" data-note="Revenue share, payouts and rights are contract terms for the founder to decide. Shopify does not split payouts between hosts natively — settle per agreement.">
+            <li><div><b>Propose</b>Tell us the idea, the audience and your work.</div></li>
+            <li><div><b>Editorial review</b>A proposal is not an acceptance. We reply by email.</div></li>
+            <li><div><b>Produce together</b>Format, schedule, price and rights agreed in writing.</div></li>
+            <li><div><b>Open on Aurora</b>Sold at Shopify Checkout; members learn in the Aurora member area.</div></li>
+            <li><div><b>Settle</b>Earnings shared as agreed in your contract.</div></li>
+          </ol>
         </div>
-        <h3 class="h3" style="margin-top:56px">Entertainment Builder · Six proposed learning topics</h3>
-        <ol class="modules">
-          <li><b>Identity</b><span>Reflect on your current creative position and the direction you want to explore.</span><em>Sample exercise: write a one-page creative self-introduction.</em></li>
-          <li><b>Brand</b><span>Consider how your values and creative work become a clear public story.</span><em>Sample exercise: outline a short positioning statement.</em></li>
-          <li><b>Market Path</b><span>Compare possible audiences and routes for your creative work.</span><em>Sample exercise: map questions to research about one target market.</em></li>
-          <li><b>Content &amp; IP</b><span>Consider a repeatable creative format and the rights it may require.</span><em>Sample exercise: draft a content concept and a rights checklist.</em></li>
-          <li><b>Network &amp; Opportunity</b><span>Plan thoughtful ways to build relevant professional relationships.</span><em>Sample exercise: prepare an outreach brief without promises of introductions.</em></li>
-          <li><b>90-Day Roadmap</b><span>Translate an exploratory direction into small, reviewable actions.</span><em>Sample exercise: outline a provisional 90-day learning plan.</em></li>
-        </ol>
-        <p class="note">Provider: Asia Lab. Community context: Aurora. Courses, exercises and materials shown are development samples. Enrolment, paid access, instructor services, dates and prices are not enabled.</p>
       </div>
     </div>
   </section>
@@ -207,25 +232,20 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="biz-title">
-    <div class="container">
-      <div class="band">
-        <div class="aurora-field aurora-field--ember"></div>
-        <div class="band__grid">
-          <div>
-            <p class="eyebrow" style="color:var(--starlight-mist)">Production &amp; partnerships</p>
-            <h2 class="h1" id="biz-title">Have a project <em>in mind?</em></h2>
-            <p class="band__note">For original productions, brand collaborations and sponsorship enquiries, speak directly with the team. Community membership is not required.</p>
-          </div>
-          <div><a class="btn btn--primary" href="work-with-aurora.html#partners">Explore partnerships</a></div>
-        </div>
-      </div>
+  <section class="section section--tight" aria-labelledby="biz-title">
+    <div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+      <div><p class="eyebrow">Production &amp; partnerships</p><h2 class="h3" id="biz-title" style="margin:0">A brand, production or sponsorship project? <span style="color:var(--stage-text-2);font-weight:400">Speak with the team directly — no membership needed.</span></h2></div>
+      <a class="link-arrow" href="work-with-aurora.html#partners">Explore partnerships</a>
     </div>
   </section>
 
 </main>
 <div data-shell="footer"></div>
 <script src="content/content.js"></script>
+<script src="content/products.js"></script>
+<script src="content/offers.js"></script>
+<script src="assets/proto.js"></script>
+<script src="assets/learn.js"></script>
 <script src="assets/aurora.js"></script>
 </body>
 </html>

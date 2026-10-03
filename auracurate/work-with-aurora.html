@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/aurora.css">
 <link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/journey.css">
 </head>
 <body class="mode-stage page-aurora" data-page="partner">
 <div data-shell="header"></div>
@@ -139,7 +140,7 @@
         <div class="field field--check"><input id="f-mkt" name="marketing" type="checkbox"><label for="f-mkt">Optional: send me Aurora news.</label></div>
 
         <div id="intake-status" class="status" role="status" aria-live="polite" hidden></div>
-        <div><button class="btn btn--primary" type="submit" id="intake-submit">Send proposal</button></div>
+        <div><button class="btn btn--primary" type="submit" id="intake-submit">Check my answers</button></div>
         <p class="muted" id="intake-note" style="font-size:var(--fs-small);margin:0"></p>
       </form>
       </div>
@@ -149,66 +150,9 @@
 </main>
 <div data-shell="footer"></div>
 <script src="content/content.js"></script>
+<script src="assets/proto.js"></script>
+<script src="assets/apply.js"></script>
 <script src="assets/aurora.js"></script>
-<script>
-(function () {
-  var form = document.getElementById("intake");
-  var cfg = (window.AURORA_CONTENT && window.AURORA_CONTENT.intake) || {};
-  var segs = Array.prototype.slice.call(form.querySelectorAll(".seg button"));
-  var groups = Array.prototype.slice.call(form.querySelectorAll("[data-for]"));
-  var status = document.getElementById("intake-status");
-  var note = document.getElementById("intake-note");
-  var type = "partners";
-
-  function setType(t) {
-    if (!/^(partners|curators|contributors)$/.test(t)) return;
-    type = t;
-    segs.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-type") === t)); });
-    groups.forEach(function (g) { g.hidden = g.getAttribute("data-for") !== t; });
-  }
-  segs.forEach(function (b) {
-    b.addEventListener("click", function () {
-      setType(b.getAttribute("data-type"));
-      try { history.replaceState(null, "", "#" + type); } catch (e) {}
-    });
-  });
-  setType((location.hash || "").slice(1) || "partners");
-  window.addEventListener("hashchange", function () {
-    var t = location.hash.slice(1);
-    if (/^(partners|curators|contributors)$/.test(t)) { setType(t); form.scrollIntoView({ behavior: "smooth", block: "start" }); }
-  });
-  if (/^#(partners|curators|contributors)$/.test(location.hash)) setTimeout(function () { form.scrollIntoView({ block: "start" }); }, 0);
-
-  note.textContent = cfg.endpoint
-    ? ""
-    : "Online submission is being connected. For now, this opens an email to " + (cfg.email || "aurora@auroracurate.com") + " with your answers filled in.";
-
-  function show(msg, tone) { status.hidden = false; status.textContent = msg; status.setAttribute("data-tone", tone); }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var visible = Array.prototype.slice.call(form.querySelectorAll("[required]")).filter(function (el) { return !el.closest("[hidden]"); });
-    var bad = visible.filter(function (el) { return el.type === "checkbox" ? !el.checked : !el.value.trim() || !el.checkValidity(); });
-    visible.forEach(function (el) { el.setAttribute("aria-invalid", String(bad.indexOf(el) > -1)); });
-    if (bad.length) { show("Please complete the highlighted fields.", "error"); bad[0].focus(); return; }
-
-    var data = new FormData(form);
-    data.append("type", type);
-    data.append("source_page", document.referrer || location.href);
-
-    if (cfg.endpoint) {
-      fetch(cfg.endpoint, { method: "POST", body: data })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); show("Thank you — your proposal has been received. Receiving it is not an approval; the team will reply by email.", "ok"); form.reset(); setType(type); })
-        .catch(function () { show("Something went wrong. Please try again, or email " + (cfg.email || "aurora@auroracurate.com") + ".", "error"); });
-      return;
-    }
-    var lines = [];
-    data.forEach(function (v, k) { if (String(v).trim()) lines.push(k + ": " + v); });
-    var subject = "[Work with Aurora] " + type + " — " + (data.get("name") || "");
-    location.href = "mailto:" + (cfg.email || "aurora@auroracurate.com") + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
-    show("Your email app should open with your proposal. Send it from there to complete your submission.", "ok");
-  });
-})();
-</script>
+<!-- Intake behaviour: assets/apply.js (review before sending, results in application.html) -->
 </body>
 </html>

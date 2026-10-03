@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="assets/aurora.css">
 <link rel="stylesheet" href="assets/pages.css">
 <link rel="stylesheet" href="assets/shop.css">
+<link rel="stylesheet" href="assets/journey.css">
 </head>
 <body class="mode-stage page-aurora" data-page="shop">
 <div data-shell="header"></div>
@@ -69,7 +70,10 @@
         <div class="shop-tabs" role="group" aria-label="Filter by field" data-render="ready-tabs"></div>
       </div>
       <div class="pgrid" data-render="ready"></div>
-      <p class="note">Prices are from the Aurora Shopify store. Taxes, shipping and delivery estimates are confirmed at checkout.</p>
+      <div class="row__foot" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:24px">
+        <p class="note" style="margin:0">Prices are from the Aurora Shopify store. Taxes, shipping and delivery estimates are confirmed at checkout.</p>
+        <a class="link-arrow" href="collection.html?c=ready">Filter everything available</a>
+      </div>
     </div>
   </section>
 
@@ -78,10 +82,10 @@
     <div class="container">
       <div class="row__head">
         <div><p class="eyebrow">Programs &amp; experiences</p><h2 class="h1" id="prog-title">Learn, plan, <em>go further.</em></h2>
-        <p style="margin:12px 0 0;color:var(--stage-text-2);max-width:60ch">Private sessions and programs delivered by Asia Lab — from a Korea career plan to a Seoul beauty route.</p></div>
-        <a class="link-arrow" href="community.html#learning">Learning concepts in Community</a>
+        <p style="margin:12px 0 0;color:var(--stage-text-2);max-width:60ch">Sessions, cohorts, courses and digital editions. The same programs appear in Community — two doors to one place.</p></div>
+        <a class="link-arrow" href="community.html#market">All programs in Community</a>
       </div>
-      <div class="programs-row" data-render="programs"></div>
+      <div data-render="market" data-types="experience,cohort,course,workshop,digital" data-limit="6"></div>
     </div>
   </section>
 
@@ -179,7 +183,10 @@
 <div data-shell="footer"></div>
 <script src="content/content.js"></script>
 <script src="content/products.js"></script>
+<script src="content/offers.js"></script>
+<script src="assets/proto.js"></script>
 <script src="assets/shop.js"></script>
+<script src="assets/learn.js"></script>
 <script src="assets/aurora.js"></script>
 </body>
 </html>

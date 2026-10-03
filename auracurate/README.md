@@ -26,6 +26,18 @@ auracurate/
   guide.html              Design guide & structure map — page map, brand, colour, type, components, content rules,
                           where each thing is edited
   404.html                Not-found page with ways back in
+  review.html             Review hub — J01–J06 start buttons, site map, founder review map, decisions, Codex handoff
+  cart.html               Prototype cart (?s=items|added|empty|soldout|error|country|handoff) → Shopify checkout handoff
+  order.html              After purchase, Shopify order-status reference (?s=confirmed|shipped|program|session|failed|unsupported)
+  help.html               Help centre: orders, shipping, returns, program access, community safety; policy templates
+  collection.html         Collections (?c=ready|ranking|curators-recommendation|curation|experience|collaboration) + filters
+  offer.html              Program detail (?o=<key>) — communities, cohorts, courses, workshops, digital, experiences
+  learn.html              Member area, Tevello reference (?s=signin|home|empty|course|lesson|sample|pending|denied-*|restricted|
+                          guest-thread|thread|compose|compose-error|report)
+  application.html        Proposal results (?t=partners|curators|contributors|host|fund|together|made&s=review|received|
+                          not-sent|error|duplicate|info|accepted|declined)
+  project.html            Fund / Together / Made for You detail (?p=fund|together|made&s=preparing|open|confirm|closed)
+  ops.html                Staff board (J06): one input → card, field page, search, draft/sold-out/no-image states
   assets/tokens.css       Brand tokens: palette, Stage gradient, CTA states, type
   assets/aurora.css       Shell + shared components (Stage / Read modes), Shop components
   assets/pages.css        Home / Studio / Curators / Community / Partner components
@@ -38,12 +50,30 @@ auracurate/
   assets/shop.js|css      Catalogue, product page, request forms (shop.css also holds field/search/guide styles)
   assets/world.js         Field pages, field index and site search (reads stories/people from studio/curators.html)
   content/fields.js       Nine fields: name, line, question, image, concept + route, Aurora Lounge link
+  content/offers.js       Community market (Tevello): communities, cohorts, courses, workshops, digital, experiences
+  assets/proto.js         Prototype layer: state bar, system labels (theme / Shopify native / Tevello / intake),
+                          simulated cart, ?review=1 annotations
+  assets/commerce.js      Cart, order status, help, collections
+  assets/learn.js         Community market cards, program detail, member area
+  assets/apply.js         Partner intake (check before sending), proposal results, project details
+  assets/people.js        Curator profile second data set (curator.html?c=nmixx)
+  assets/ops.js           Staff board
+  assets/journey.css      Styles for all of the above
 ```
 
 Open `index.html` in a browser (serve the folder so the star mask loads over http). Add `?edit=1`
 to any page to see the slot labels editors fill in. `studio.html?field=beauty` opens Studio filtered;
 `field.html?f=beauty` opens the Beauty field page; `search.html?q=beauty` searches the site.
 Page scripts that render cards (shop.js, world.js) load before aurora.js so the reveal animation sees them.
+
+## Prototype rules
+
+- Every new screen has a **state bar** naming the simulated state and the system that owns the real screen:
+  Aurora theme (build target), Shopify native (reference: checkout, order status, account), Tevello (reference:
+  member area), intake (simulated results). Add `?review=1` to see review annotations.
+- No real transaction happens: the cart lives in this browser, checkout buttons open reference screens.
+- Simulated numbers (Fund progress, group sizes) carry a “Simulated” tag; sample programs carry “Design sample”.
+- A program appears once in `content/offers.js` and is shown in Community and Shop from that one list.
 
 ## Image and copy sources
 
@@ -74,8 +104,9 @@ them with the source files for high-density screens.
 
 | Layer | State |
 |---|---|
-| 17 pages (Home, Studio, Article, Curators, Profile, Community, Shop, Product, Projects, Partner, Nine Tails index + fields, Search, About, Guide, 404) | Built · checked at 1440 / 390 px, no horizontal overflow, no JS errors |
-| Shopify product photos | Served from cdn.shopify.com; when it is unreachable the frame shows the aurora texture with the product name |
+| 27 pages (Home, Studio, Article, Curators, Profile, Community, Shop, Product, Projects, Partner, Nine Tails index + fields, Search, About, Guide, 404) | Built · checked at 1440 / 390 px, no horizontal overflow, no JS errors |
+| Shopify product photos | Served from cdn.shopify.com; when it is unreachable the frame shows the aurora texture with the product name. Blocked in the design environment, so normal-state photos are not yet verified |
+| Journeys J01–J06 | Mockup connected end to end (review.html). Payment, Tevello enrolment, intake and markets are not verified |
 | Figma files not yet readable | Starter-team files (`q75c81…`, `dd62tL…`, `VUnymK…`, `cmFZst…`, `taKmQN…`, `LRFDoq…`) — MCP limit exhausted |
 | Image rights | Person and brand photos come from the original design; confirm usage rights before public launch |
 | Shopify theme (Liquid), cart, checkout | `/cart`, `/account`, `/policies/*`, `/a/members` are Shopify routes |

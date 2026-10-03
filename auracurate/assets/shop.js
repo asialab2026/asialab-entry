@@ -3,7 +3,8 @@
    - Ready-now catalogue and Programs (content/products.js)
    - Product detail page (product.html?p=<key>)
    - Fund / Together / Made for You request forms ([data-request-form])
-   Cart and checkout are Shopify's: /cart/add and /cart/<variant>:<qty>.
+   Prototype: Add to cart / Buy it now go to cart.html (simulated cart). In the theme
+   they post to Shopify's /cart/add and /cart/<variant>:<qty>; checkout is Shopify's.
    ========================================================================== */
 (function () {
   "use strict";
@@ -114,6 +115,10 @@
   function renderPDP(p) {
     document.title = p.brand + " " + p.title + " — Aurora Shop";
     var soon = p.status !== "ready";
+    // ?sim=soldout marks the first option as sold out (prototype of Shopify's available=false)
+    var SIM_SOLD = /[?&]sim=soldout\b/.test(location.search);
+    function isSold(v) { return !!v && (v.available === false || (SIM_SOLD && p.variants && v === p.variants[0])); }
+    var offer = (window.AURORA_OFFERS || []).filter(function (o) { return o.product === p.key; })[0];
     var gallery = (p.images && p.images.length ? p.images : [p.fallbackImage]).filter(Boolean);
     var state = { variant: null, size: null, colour: null, qty: 1 };
 
@@ -132,7 +137,7 @@
       state.variant = p.variants[0];
       if (p.variants.length > 1) {
         optsHTML = '<fieldset class="opt"><legend>' + esc(p.optionName || "Option") + ': <b data-opt-label="variant">' + esc(state.variant.label) + "</b></legend><div class=\"opt__list\">" +
-          p.variants.map(function (v, i) { return '<button type="button" data-v="' + i + '" aria-pressed="' + (i === 0) + '">' + esc(v.label) + "</button>"; }).join("") +
+          p.variants.map(function (v, i) { return '<button type="button" data-v="' + i + '" aria-pressed="' + (i === 0) + '"' + (isSold(v) ? ' class="is-sold" aria-describedby="sold-msg"' : "") + ">" + esc(v.label) + (isSold(v) ? '<span class="visually-hidden"> (sold out)</span>' : "") + "</button>"; }).join("") +
           "</div></fieldset>";
       }
     }
@@ -149,7 +154,8 @@
         '<div class="buy">' +
           '<a class="btn btn--primary" data-add href="#">' + (p.kind === "session" ? "Book this session" : "Add to cart") + "</a>" +
           '<a class="btn btn--secondary" data-buynow href="#">Buy it now</a>' +
-        "</div>";
+        "</div>" +
+        '<p class="status" id="sold-msg" data-sold hidden role="status" data-tone="error"></p>';
 
     pdp.innerHTML =
       '<nav class="pdp__crumbs" aria-label="Breadcrumb"><a href="shop.html">Shop</a><span aria-hidden="true">/</span>' +
@@ -169,7 +175,8 @@
           '<p class="pdp__summary">' + esc(p.summary) + "</p>" +
           (p.includes ? '<ul class="pdp__includes">' + p.includes.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul>" : "") +
           optsHTML + buyBlock +
-          '<p class="pdp__fine">Taxes, shipping and delivery estimate are shown at Shopify checkout before you pay.</p>' +
+          '<p class="pdp__fine">Prices in US dollars. ' + (p.kind === "session" ? "Delivered online — no shipping." : "Ships from Korea; destinations, taxes and duties are confirmed at Shopify checkout before you pay.") + ' <a href="help.html#shipping">Shipping help</a></p>' +
+          (offer ? '<p class="pdp__fine" style="color:var(--read-text-2)">Also in Community: <a href="offer.html?o=' + esc(offer.key) + '">see the full program page</a> — the same program, with what happens after you book.</p>' : "") +
           '<div class="pdp__links">' +
             '<a href="mailto:aurora@auroracurate.com?subject=' + encodeURIComponent("Question — " + p.title) + '">Ask a question</a>' +
             '<button type="button" data-share>Share</button>' +
@@ -191,6 +198,7 @@
         '<div class="pdp-world__note"><span class="aurora-star" aria-hidden="true"></span>' +
           '<div><p class="eyebrow" style="margin-bottom:8px">Why it’s in Aurora</p><h2 id="world-title">' + esc(p.note || "") + "</h2>" +
           '<p class="muted">An editor’s note. No celebrity or curator endorsement is implied.</p></div></div>' +
+        '<p class="pdp-world__general">' + (p.relations ? "Connected to this product" : "Keep exploring · no curator, story or conversation is linked to this product yet") + "</p>" +
         '<div class="pdp-world__links">' +
           '<a href="field.html?f=' + p.field + '"><small>' + (FIELD[p.field] || "Field") + '</small><b>The whole ' + (FIELD[p.field] || "field") + " world</b></a>" +
           '<a href="curators.html"><small>Curators</small><b>Meet the perspectives</b></a>' +
@@ -215,11 +223,17 @@
     }
     function sync() {
       var id = currentId();
-      var add = $("[data-add]", pdp), now = $("[data-buynow]", pdp);
-      if (add) add.href = STORE.origin + "/cart/add?id=" + id + "&quantity=" + state.qty;
-      if (now) now.href = STORE.origin + "/cart/" + id + ":" + state.qty;
+      var add = $("[data-add]", pdp), now = $("[data-buynow]", pdp), msg = $("[data-sold]", pdp);
+      var sold = isSold(state.variant);
+      // Theme equivalent: STORE.origin + "/cart/add?id=" + id + "&quantity=" + qty and "/cart/" + id + ":" + qty
+      if (add) { add.href = "cart.html?add=" + encodeURIComponent(p.key) + "&v=" + id + "&q=" + state.qty; add.setAttribute("aria-disabled", String(sold)); add.textContent = sold ? "Sold out" : (p.kind === "session" ? "Book this session" : "Add to cart"); }
+      if (now) { now.href = "cart.html?s=handoff&add=" + encodeURIComponent(p.key) + "&v=" + id + "&q=" + state.qty; now.setAttribute("aria-disabled", String(sold)); }
+      if (msg) { msg.hidden = !sold; msg.textContent = sold ? state.variant.label + " is sold out. Choose another " + (p.optionName || "option").toLowerCase() + " — the others are available." : ""; }
       var q = $("[data-qty]", pdp); if (q) q.textContent = state.qty;
     }
+    $all("[data-add],[data-buynow]", pdp).forEach(function (a) {
+      a.addEventListener("click", function (e) { if (a.getAttribute("aria-disabled") === "true") e.preventDefault(); });
+    });
     $all("[data-v]", pdp).forEach(function (b) {
       b.addEventListener("click", function () {
         state.variant = p.variants[+b.getAttribute("data-v")];
@@ -282,7 +296,7 @@
       var lines = [];
       data.forEach(function (v, k) { if (String(v).trim()) lines.push(k + ": " + v); });
       location.href = "mailto:" + email + "?subject=" + encodeURIComponent("[Aurora " + kind + "] " + (data.get("name") || "")) + "&body=" + encodeURIComponent(lines.join("\n"));
-      show("Your email app should open with your request filled in. Send it from there to complete it.", "ok");
+      show("Not sent yet — we opened an email with your request filled in. It’s sent only when you press Send in your email app.", "ok");
     });
   });
 

@@ -98,6 +98,7 @@
             '<a href="' + BASE + 'work-with-aurora.html#contributors"><b>Contributors</b><span>명예기자 지원</span></a>' +
           "</div></div>" +
           '<div><h2>Help</h2><ul>' +
+            '<li><a href="' + BASE + 'help.html">Help centre</a></li>' +
             '<li><a href="/policies/shipping-policy">Shipping</a></li>' +
             '<li><a href="/policies/refund-policy">Returns &amp; refunds</a></li>' +
             '<li><a href="/policies/privacy-policy">Privacy</a></li>' +
@@ -105,7 +106,7 @@
             '<li><a href="mailto:' + esc((C.intake && C.intake.email) || "aurora@auroracurate.com") + '">Contact</a></li>' +
           "</ul></div>" +
         "</div>" +
-        '<div class="site-footer__base"><span>© ' + y + " Aurora · Asia Lab</span><span><a href=\"" + BASE + "guide.html\">Design guide</a> · One Asia, One World</span></div>" +
+        '<div class="site-footer__base"><span>© ' + y + " Aurora · Asia Lab</span><span><a href=\"" + BASE + "guide.html\">Design guide</a> · <a href=\"" + BASE + "review.html\">Review hub</a> · One Asia, One World</span></div>" +
       "</div></footer>" +
       '<div class="edit-banner" role="status">Edit preview — slot labels are visible only with ?edit=1</div>'
     );
