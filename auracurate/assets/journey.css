@@ -413,3 +413,4 @@
 .ops__form .hint { display: block; font-weight: 500; }
 .summary, .shipto { min-width: 0; }
 .shipto select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+.app .muted, .app .lede { color: var(--read-text-2); }
