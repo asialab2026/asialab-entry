@@ -554,3 +554,8 @@ a.audience:focus-visible { outline: 2px solid var(--aurora-magenta); outline-off
 .about-statement__body { margin: 0; font-size: 1.125rem; color: var(--stage-text-2); max-width: 62ch; }
 .about-statement__vision { margin: var(--space-4) 0 0; padding: var(--space-5) 0 0 var(--space-5); border-left: 2px solid transparent; border-image: var(--accent-gradient) 1; display: grid; gap: var(--space-3); font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem); line-height: 1.35; color: var(--starlight-mist); }
 .about-statement__vision .eyebrow { font-family: var(--font-body); font-style: normal; }
+
+/* Official IP marks: Aurora 100 · Global Faces 100 (master PNGs carry their own glow) */
+.ip-mark { display: block; width: clamp(150px, 18vw, 220px); height: auto; margin-bottom: var(--space-5); }
+.project img.project__mark { position: static; inset: auto; z-index: auto; width: clamp(120px, 12vw, 160px); height: auto; object-fit: contain; transition: none; margin-bottom: var(--space-3); }
+.project:hover img.project__mark { transform: none; }

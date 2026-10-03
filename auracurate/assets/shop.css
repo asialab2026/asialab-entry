@@ -284,3 +284,12 @@
 .opt__list button.is-sold[aria-pressed="true"] { background: #6E7183; border-color: #6E7183; color: #fff; }
 .buy .btn[aria-disabled="true"] { --_bg: var(--cta-disabled-bg); --_fg: var(--cta-disabled-fg); --_bd: var(--cta-disabled-bg); pointer-events: auto; cursor: not-allowed; }
 .pdp-world__general { grid-column: 1 / -1; margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--stage-text-3); }
+
+/* Guide: official IP marks */
+.ipm { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+.ipm__tile { display: grid; gap: var(--space-3); justify-items: center; align-content: center; padding: var(--space-6) var(--space-5); border-radius: 16px; border: 1px solid var(--stage-line); background: var(--cosmic-midnight); min-height: 300px; }
+.ipm__tile img { width: min(100%, 200px); height: auto; }
+.ipm__tile small { font-size: var(--fs-micro); color: var(--stage-text-2); }
+.ipm__tile--light { background: #fff; border-color: var(--read-line); }
+.ipm__tile--light small { color: var(--read-text-3); }
+@media (max-width: 960px) { .ipm { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
