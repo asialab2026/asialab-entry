@@ -83,7 +83,7 @@
         '<div class="site-footer__grid">' +
           '<div class="footer-lockup">' +
             '<img src="' + BASE + 'assets/brand/aurora_created-by-asia-lab-1.png" alt="Aurora — Created by Asia Lab" width="220" height="103" loading="lazy">' +
-            "<p>A selective production house connecting stories, curators, community and objects — One Asia, One World.</p>" +
+            "<p class=\"footer-slogan\">A World Connected by Experience</p><p>Aurora is a global production house and experience platform created by Asia Lab.</p>" +
           "</div>" +
           '<div><h2>Aurora</h2><ul>' + NAV.map(function (n) {
             return '<li><a href="' + BASE + n.href + '">' + n.label + "</a></li>";

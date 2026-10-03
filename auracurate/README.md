@@ -1,4 +1,8 @@
-# auracurate.com — Aurora (dark aurora world)
+# auroracurate.com — Aurora (dark aurora world)
+
+**Official slogan (fixed):** A World Connected by Experience · 경험으로 연결되는 하나의 세계 — always directly under the logo.
+Company description: *Aurora is a global production house and experience platform created by Asia Lab.* “Created by Asia Lab”
+appears only on About and in the footer; “Selective Production House” is not used as a slogan.
 
 Static front-end for the Aurora site, built to be ported section-by-section into the Shopify theme.
 

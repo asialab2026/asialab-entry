@@ -30,6 +30,8 @@ img { height: auto; }
 .home-hero__mark { width: min(420px, 80%); height: auto; filter: var(--glow); margin-bottom: var(--space-6); }
 .home-hero__lockup { font-size: var(--fs-micro); letter-spacing: .22em; text-transform: uppercase; color: var(--stage-text-2); margin: 0 0 var(--space-6); }
 .home-hero__lockup b { color: #9A9CA8; font-weight: 600; }
+/* Official slogan — fixed under the logo (Asia Lab credit lives in About and the footer) */
+.brand-slogan { color: var(--starlight-mist); font-weight: 600; letter-spacing: .24em; }
 .home-hero__figure { margin: 0; position: relative; }
 .home-hero__figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: var(--radius-l); box-shadow: 0 40px 90px rgba(0,0,0,.5); }
 .home-hero__figure figcaption { margin-top: var(--space-3); font-size: var(--fs-micro); letter-spacing: .12em; text-transform: uppercase; color: var(--stage-text-3); }

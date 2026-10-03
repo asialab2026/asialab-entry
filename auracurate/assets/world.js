@@ -169,7 +169,7 @@
       { type: "Person", title: "Rashmika Mandanna — curator profile", label: "Aurora 100 · Icons", href: "curator.html", image: "assets/img/people/rashmika-portrait.jpg" },
       { type: "Story", title: "JENNIE × HERA — More Than Beauty, It’s An Attitude", label: "Honorary Reporter · India · Beauty", href: "community.html#jennie-hera", image: "assets/img/community/jennie-hera-1.jpg" },
       { type: "Page", title: "Design guide & structure map", label: "Brand, colour, type, components, rules", href: "guide.html" },
-      { type: "Page", title: "About Aurora", label: "A selective production house", href: "about.html" },
+      { type: "Page", title: "About Aurora", label: "A World Connected by Experience", href: "about.html" },
       { type: "Page", title: "Partner with us", label: "Partners, curators, contributors", href: "work-with-aurora.html" }
     ];
     var index = PAGES.concat(

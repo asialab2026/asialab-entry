@@ -11,6 +11,15 @@
    ========================================================================== */
 
 window.AURORA_CONTENT = {
+  /* 공식 슬로건 (고정 · 대표 확정 2026-10-03). 로고 바로 아래에는 슬로건만.
+     "Created by Asia Lab"은 About·푸터에서만, "Selective Production House"는 슬로건으로 쓰지 않음. */
+  brand: {
+    slogan: "A World Connected by Experience",
+    sloganKo: "경험으로 연결되는 하나의 세계",
+    definition: "Aurora is a global production house and experience platform created by Asia Lab.",
+    definitionKo: "Aurora는 Asia Lab이 만든 글로벌 프로덕션 하우스이자 경험 플랫폼입니다."
+  },
+
   /* Shop 히어로 커버. null이면 오로라 텍스처 빈 상태.
      예: { src: "assets/img/cover.jpg", alt: "…", focal: "50% 18%", credit: "Photo: …" } */
   shopCover: { src: "assets/img/shop/hero-cover.png", alt: "Model in a pink faux-fur coat, mid-dance", kind: "cutout" },

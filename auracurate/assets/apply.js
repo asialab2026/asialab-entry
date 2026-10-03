@@ -198,7 +198,7 @@
         html = '<div class="state" style="max-width:720px"><span class="state__icon">' + ICON.star + "</span>" +
           '<p class="kicker">' + esc(T.label) + " · <b>What happens after you send</b></p>" +
           '<h1 class="state__title">A proposal starts a conversation</h1>' +
-          '<p class="state__body">Aurora is a selective production house. We read every proposal for ' + esc(T.what) + ", and we reply to each one. A proposal is not an application to be listed, and sending one is not an approval, a selection or a contract.</p>" +
+          '<p class="state__body">Aurora works with a small number of partners at a time. We read every proposal for ' + esc(T.what) + ", and we reply to each one. A proposal is not an application to be listed, and sending one is not an approval, a selection or a contract.</p>" +
           '<div class="state__actions"><a class="btn btn--primary" href="work-with-aurora.html?type=' + (t === "host" ? "curator&interest=host" : t) + '#apply">Start a proposal</a>' + back + "</div></div>" + steps;
     }
     appRoot.innerHTML = '<div class="sheet" style="display:grid;gap:28px">' + html + "</div>";
