@@ -31,10 +31,10 @@
 
   /* ---- Shell ----------------------------------------------------------- */
   var NAV = [
-    { id: "studio", label: "Studio", href: "studio.html" },
-    { id: "curators", label: "Curators", href: "curators.html" },
-    { id: "community", label: "Community", href: "community.html" },
-    { id: "shop", label: "Shop", href: "shop.html" }
+    { id: "studio", label: "Studio", verb: "Read the story", href: "studio.html" },
+    { id: "curators", label: "Curators", verb: "Meet the people", href: "curators.html" },
+    { id: "community", label: "Community", verb: "Join in", href: "community.html" },
+    { id: "shop", label: "Shop", verb: "Take it home", href: "shop.html" }
   ];
 
   function navLinks(cls) {
@@ -147,9 +147,22 @@
     );
   }
 
+  /* World bar — the four doors with "you are here", on every Studio / Curators / Community / Shop page.
+     Theme: snippet world-bar.liquid rendered by the four templates (and product, article, offer). */
+  function worldBar() {
+    var here = document.body.getAttribute("data-page");
+    if (!NAV.some(function (n) { return n.id === here; })) return "";
+    return '<nav class="wbar" aria-label="The four parts of Aurora"><div class="container wbar__in">' +
+      NAV.map(function (n, i) {
+        var on = n.id === here;
+        return '<a class="wbar__i wbar__i--' + n.id + '" href="' + BASE + n.href + '"' + (on ? ' aria-current="page"' : "") + ">" +
+          '<span class="wbar__n">' + (i + 1) + "</span><b>" + n.label + "</b><small>" + n.verb + "</small></a>";
+      }).join('<span class="wbar__sep" aria-hidden="true">→</span>') + "</div></nav>";
+  }
+
   var hSlot = $('[data-shell="header"]');
   var fSlot = $('[data-shell="footer"]');
-  if (hSlot) hSlot.outerHTML = header();
+  if (hSlot) hSlot.outerHTML = header() + worldBar();
   if (fSlot) fSlot.outerHTML = footer();
 
   /* ---- Mobile menu ----------------------------------------------------- */
