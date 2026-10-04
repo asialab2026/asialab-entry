@@ -1,4 +1,5 @@
 const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib"); const { INTEGRATED } = require("./lib");
+const { DOORS } = require("./lib");
 const C = []; const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
 
 if (!INTEGRATED) add(cover({
@@ -6,7 +7,7 @@ if (!INTEGRATED) add(cover({
   title: "Studio 생태계 기획서",
   sub: "이야기 · 편집 IP · 기사 · 게시 운영 · Shop으로 이어지는 구조",
   meta: [
-    ["문서", "Aurora Studio 기획서 v1.0 (검토용)"],
+    ["문서", "Aurora Studio 기획서 v1.1 (최신 목업 반영)"],
     ["작성일", "2026-10-04"],
     ["작성", "수석 디자인 (Claude)"],
     ["대상", "대표님, Codex 기획자, 제작자, 마케터, 편집팀"],
@@ -36,6 +37,7 @@ add(H1("1. 한눈에 보기"),
   ], [1.6, 4.8])
 );
 
+add(DOORS("studio", "1.4"));
 add(H1("2. 기획 의도"),
   TBL(["대표님의 의도", "Studio의 판단", "피해야 할 해석"], [
     ["인물과 문화가 매력의 중심", "인물 풀블리드 사진, 비대칭 배열, 어두운 카드와 오로라 배경 유지", "텍스트 목록형 블로그"],

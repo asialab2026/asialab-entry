@@ -5,7 +5,7 @@ const N = (t, ref = "n") => { if (ref !== lastRef) { L.newList(); lastRef = ref;
 
 // ---- content --------------------------------------------------------------
 const cover = L.cover({ kicker: "AURORA COMMUNITY", title: "커뮤니티 생태계 기획서", sub: "구조 · 대상별 권한 부여 방식 · 기획 의도 · 운영", meta: [
-    ["문서", "Aurora Community 기획서 v1.1 (검토용) — Codex 기획·제작 리뷰 반영"],
+    ["문서", "Aurora Community 기획서 v1.2 (검토용) — Codex 리뷰 + 최신 목업 반영"],
     ["작성일", "2026-10-04"],
     ["작성", "수석 디자인 (Claude)"],
     ["대상", "대표님(Executive Producer), Codex 기획자, 제작자, 마케터"],
@@ -36,6 +36,7 @@ const s1 = [
 ];
 
 const s2 = [
+  ...L.DOORS("community", "1.4"),
   H1("2. 기획 의도"),
   H2("2.1 Aurora 세계관에서 Community의 자리"),
   P("Aurora의 공식 슬로건은 **A World Connected by Experience**입니다. Aurora는 사람·제품·기업·문화·아이디어를 연결해 공유된 경험, 새로운 기회, 지속되는 가치를 만듭니다. 네 개의 세계(Studio · Curators · Community · Shop) 가운데 Community는 **사람과 사람이 직접 만나는 곳**이며, 다른 세 세계를 서로 이어 주는 접점입니다."),
@@ -245,7 +246,7 @@ const s7 = [
   ...TBL(["원칙", "내용"], [
     ["RESPECT · 홍보보다 사람", "배려하기. 괴롭힘·스팸·원치 않는 판매 메시지·타인을 대신한 주장 금지"],
     ["PRIVACY · 비공개는 비공개로", "허락 없이 회원의 작업·사진·대화를 다시 게시하지 않기. 기고가 자동으로 Studio에 실리지 않음"],
-    ["HELP · 우려 알리기", "지원·신고는 aurora@auroracurate.com 또는 게시물의 ‘신고’"]
+    ["HELP · 우려 알리기", "지원·신고는 contact@auroracurate.com 또는 게시물의 ‘신고’"]
   ], [1.6, 4.8]),
   H2("7.2 신고와 모더레이션"),
   B("신고 사유: 스팸·판매 / 괴롭힘·혐오 / 개인정보 노출 / 저작권 / 기타"),

@@ -1,4 +1,5 @@
 const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib"); const { INTEGRATED } = require("./lib");
+const { DOORS } = require("./lib");
 const C = []; const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
 
 if (!INTEGRATED) add(cover({
@@ -6,7 +7,7 @@ if (!INTEGRATED) add(cover({
   title: "Curators 생태계 기획서",
   sub: "사람과 관점 · 프로필 · 협업 흐름 · 권한 · Shop으로 이어지는 신뢰",
   meta: [
-    ["문서", "Aurora Curators 기획서 v1.0 (검토용)"],
+    ["문서", "Aurora Curators 기획서 v1.1 (최신 목업 반영)"],
     ["작성일", "2026-10-04"],
     ["작성", "수석 디자인 (Claude)"],
     ["대상", "대표님, Codex 기획자, 제작자, 마케터, 편집·파트너십 팀"],
@@ -36,6 +37,7 @@ add(H1("1. 한눈에 보기"),
   ], [1.8, 4.6])
 );
 
+add(DOORS("curators", "1.4"));
 add(H1("2. 기획 의도"),
   TBL(["대표님의 의도", "Curators의 판단", "피해야 할 해석"], [
     ["인물이 매력의 중심", "인물 스트립·비대칭 스토리·원형 인물 목록을 유지", "일반 명단·텍스트 디렉터리"],

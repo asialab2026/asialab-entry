@@ -1,4 +1,5 @@
 const { P, H1, H2, H3, B, NL, NOTE, TBL, T, LINK, LINKP, cover, toc, build } = require("./lib"); const { INTEGRATED } = require("./lib");
+const { DOORS } = require("./lib");
 
 const C = [];
 const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
@@ -8,7 +9,7 @@ if (!INTEGRATED) add(cover({
   title: "Shop 생태계 통합 기획서",
   sub: "Studio · Curators · Community가 모이는 곳 — 구조 · 상품 · 구매 · 권한 · 운영",
   meta: [
-    ["문서", "Aurora Shop 생태계 통합 기획서 v1.0 (검토용)"],
+    ["문서", "Aurora Shop 생태계 통합 기획서 v1.1 (최신 목업 반영)"],
     ["작성일", "2026-10-04"],
     ["작성", "수석 디자인 (Claude)"],
     ["대상", "대표님(Executive Producer), Codex 기획자, 제작자, 마케터"],
@@ -42,6 +43,7 @@ add(H1("1. 한눈에 보기"),
 );
 
 /* 2 ------------------------------------------------------------------ */
+add(DOORS("shop", "1.4"));
 add(H1("2. 기획 의도"),
   H2("2.1 대표님 방향의 해석"),
   TBL(["대표님의 방향", "Shop 기획의 판단", "피해야 할 해석"], [
@@ -177,8 +179,8 @@ add(H1("6. 상품 상세(PDP) 구성"),
     ["3", "가격 (USD)", "Shopify 가격만. 정가·할인 표시는 실제 데이터가 있을 때만"],
     ["4", "옵션 선택 · 수량", "선택한 옵션이 이미지·가격에 반영. 품절 옵션은 취소선"],
     ["5", "Add to cart · Buy it now", "판매 불가 시 비활성 + 이유"],
-    ["6", "배송·세금 안내", "‘Ships from Korea; 목적지·세금·관세는 결제 전 확정’ / 프로그램은 ‘온라인, 배송 없음’"],
-    ["7", "Trust: Secure checkout · Shipping · Returns", "정책 링크"],
+    ["6", "배송·세금 안내", "‘목적지·세금·관세는 결제 전 확정’ / 프로그램은 ‘온라인, 배송 없음’"],
+    ["7", "Trust: Secure checkout · Ships from · Returns for this item", "**상품별 조건** — 출고지·반품 기한·반품 불가 여부 (메타필드 aurora.ships_from · return_days · final_sale · return_note, 없으면 기본값: 배송 후 14일, 뷰티는 미개봉만). 정책보다 우선"],
     ["8", "Details (접이식)", "성분·사용법·사이즈 등"],
     ["9", "Why it’s in Aurora (편집자 노트)", "‘셀럽·큐레이터 보증이 아님’ 명시"],
     ["10", "네 세계 링크", "관계 있으면 ‘Connected’, 없으면 ‘Keep exploring’"],
@@ -340,7 +342,7 @@ add(H1("15. 대표님 결정 사항"),
     ["4", "Fund · Together 결제 규칙", "출시 시 관심 명단, 첫 실물 배송 안정 후 개시"],
     ["5", "편집 진열 이름", "Ranking(Editorial selection) · Curator’s Recommendation · Curation 유지"],
     ["6", "Curator’s Recommendation 기준", "서면으로 확인된 추천만. 협업 상품과 편집 소개 구분"],
-    ["7", "반품·환불·배송 정책 문구", "승인된 원문으로 도움말 템플릿 채우기"],
+    ["7", "반품·환불·배송 정책 게시", "정책 기본형 6종 원고 완료(docs/policies) — Shopify 관리자에 붙여넣기. Aurora Entities 페이지는 게시 완료"],
     ["8", "Shop Live", "LiveMeUp 기능 확인 후 개시 시점 결정"],
     ["9", "브랜드 스트립", "계약 완료 브랜드만 노출"]
   ], [0.4, 1.8, 4.2])

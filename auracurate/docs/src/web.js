@@ -1,7 +1,7 @@
 // AuroraCurate.com 글로벌 플랫폼 통합 웹 기획서 — final IA, UX/UI and Shopify build map
 const fs = require("fs"), path = require("path");
 const { Paragraph, ImageRun, TextRun, AlignmentType } = require("docx");
-const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib");
+const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build, INTEGRATED } = require("./lib");
 const C = []; const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
 const CAP = path.join(__dirname, "..", "webcap");
 function IMG(name, caption, widthIn) {
@@ -18,7 +18,7 @@ function IMG(name, caption, widthIn) {
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 200 }, children: [new TextRun({ text: caption, size: 17, color: "4A4D5C" })] })];
 }
 
-add(cover({
+if (!INTEGRATED) add(cover({
   kicker: "AURORACURATE.COM · GLOBAL PLATFORM",
   title: "통합 웹 기획서",
   sub: "최종 정보 구조 · UX/UI 목업 · 컴포넌트 · Shopify 제작 지도",
@@ -32,7 +32,7 @@ add(cover({
     ["원칙", "새 구조를 만들지 않음 — 지금까지 가장 완성도 높은 화면과 컴포넌트를 선별·통합"]
   ]
 }));
-add(toc());
+if (!INTEGRATED) add(toc());
 
 /* 1 */
 add(H1("1. 5초 안에 이해되는 Aurora"),

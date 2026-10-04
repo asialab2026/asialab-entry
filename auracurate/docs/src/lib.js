@@ -112,4 +112,28 @@ function build(file, docTitle, footerLabel, children) {
   return Packer.toBuffer(doc).then(buf => { fs.writeFileSync(file, buf); console.log("written", file); });
 }
 
-module.exports = { P, H1, H2, H3, B, N, NL, newList, NOTE, SP, TBL, T, LINK, LINKP, cover, toc, build, setPrefix, PART, INTEGRATED };
+// Four doors — the shared 5-second model (Home, world bar, cards). Same verb and colour everywhere.
+const DOOR_ROWS = [
+  ["studio", "1", "Studio", "Read the story", "이야기를 읽는 곳", "Deep Cosmos 남색"],
+  ["curators", "2", "Curators", "Meet the people", "Aurora가 고른 사람을 만나는 곳", "Aurora Magenta 자홍"],
+  ["community", "3", "Community", "Join in", "함께 이야기하고 배우는 곳", "Solar Ember 주황"],
+  ["shop", "4", "Shop", "Take it home", "이야기 속 상품·프로그램을 사는 곳", "Velvet Eclipse 와인"]
+];
+const STEP = {
+  studio: "1단계: 한국·아시아에서 커리어를 만드는 이야기를 읽는다 (Hustle 분야)",
+  curators: "2단계: 그 일을 하는 전문가들이 누구이고 어떻게 일하는지 본다",
+  community: "3단계: 무료 Aurora Lounge에서 같은 길을 가는 사람들과 질문한다",
+  shop: "4단계: K-Career Entry Session을 예약하고 다음 단계를 받는다 (Shopify 결제)"
+};
+function DOORS(here, num) {
+  const r = DOOR_ROWS.find(d => d[0] === here);
+  return [
+    H2((num ? num + " " : "") + "네 개의 문 안에서의 자리 (최신 목업 반영)"),
+    P("처음 온 사람이 5초 안에 이해하도록 네 곳에 **동사 하나**씩을 붙였습니다. 이 곳의 동사는 **" + r[3] + "** 입니다. 같은 동사와 색이 Home 첫 화면, 메뉴 아래 길잡이 막대(World bar), 카드, 라벨에 똑같이 쓰입니다."),
+    T(["#", "곳", "동사", "쉬운 설명", "색"], DOOR_ROWS.map(d => [d[1], d[0] === here ? "**" + d[2] + "** (이 문서)" : d[2], d[3], d[4], d[5]]), [0.3, 1.5, 1.3, 2.2, 1.2]), SP(),
+    B("**길잡이 막대:** 이 영역의 모든 페이지 상단에 ‘1 Studio · 2 Curators · 3 Community · 4 Shop’이 보이고 현재 위치(" + r[2] + ")가 강조됩니다. 모바일은 이름만 표시합니다."),
+    B("**Home ‘One story. Four doors.’ 섹션의 " + STEP[here] + "**"),
+    B("Shopify: snippet world-bar.liquid · Home 섹션 brand(네 개의 문)·connect — 통합 웹 기획서 8장")
+  ];
+}
+module.exports = { DOORS, P, H1, H2, H3, B, N, NL, newList, NOTE, SP, TBL, T, LINK, LINKP, cover, toc, build, setPrefix, PART, INTEGRATED };
