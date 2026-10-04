@@ -1,0 +1,127 @@
+<title>Aurora Mockup Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Manrope:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one Stage column — three version cards, then a page-by-page change table with a link to each version. Aurora tokens, dark by design. */
+:root {
+  --bg: #0B0E15; --surface: #121726; --line: rgba(225,224,246,.14);
+  --fg: #E1E0F6; --fg-2: rgba(225,224,246,.74); --fg-3: rgba(225,224,246,.52);
+  --magenta: #CD089C; --cosmos: #3E63D6; --ember: #E6733A; --ok: #6FD39B;
+  --display: "Bodoni Moda", Didot, Georgia, serif;
+  --body: "Manrope", "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.6 var(--body); }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 40% at 12% 0%, rgba(205,8,156,.24), transparent 70%), radial-gradient(50% 40% at 100% 30%, rgba(11,47,137,.4), transparent 70%); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 44px 72px; display: grid; gap: 48px; }
+.logo { height: 24px; width: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,.4)); }
+.eyebrow { margin: 0; font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--fg-3); }
+h1 { margin: 12px 0 0; font: 400 clamp(2.2rem, 1.5rem + 3vw, 3.8rem)/1.05 var(--display); text-wrap: balance; }
+h1 em, h2 em { font-style: italic; }
+h2 { margin: 0; font: 400 clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem)/1.12 var(--display); text-wrap: balance; }
+.lede { margin: 14px 0 0; max-width: 68ch; color: var(--fg-2); }
+.versions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+.ver { display: grid; gap: 8px; align-content: start; padding: 20px; border-radius: 16px; border: 1px solid var(--line); background: rgba(18,23,38,.78); border-top: 3px solid var(--c); }
+.ver small { font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--c); }
+.ver b { font: 400 1.5rem/1.15 var(--display); }
+.ver p { margin: 0; font-size: 14px; color: var(--fg-2); }
+.ver .btn { justify-self: start; margin-top: 6px; display: inline-flex; align-items: center; min-height: 42px; padding: 0 18px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; color: #fff; background: var(--magenta); }
+.ver .btn--ghost { background: transparent; border: 1px solid var(--fg); color: var(--fg); }
+.ver code { font-size: 12px; color: var(--fg-3); }
+.v1 { --c: var(--ember); } .v2 { --c: var(--cosmos); } .v3 { --c: var(--magenta); }
+.tablewrap { overflow-x: auto; margin-top: 18px; border: 1px solid var(--line); border-radius: 14px; }
+table { width: 100%; border-collapse: collapse; min-width: 920px; font-size: 13.5px; }
+th { text-align: left; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); padding: 12px 14px; border-bottom: 1px solid var(--line); background: rgba(18,23,38,.9); position: sticky; top: 0; }
+td { padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--fg-2); }
+td:first-child { color: var(--fg); font-weight: 700; white-space: nowrap; }
+td b { color: var(--fg); }
+td a { color: var(--fg); text-underline-offset: 3px; }
+.go { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; }
+.rm { color: #F4A3D9; } .add { color: var(--ok); }
+.none { color: var(--fg-3); font-style: italic; }
+.notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; color: var(--fg-2); max-width: 80ch; }
+.notes b { color: var(--fg); }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+@media (max-width: 860px) { .versions { grid-template-columns: 1fr; } }
+</style>
+
+<main class="wrap">
+  <header>
+    <img class="logo" src="v1003/assets/brand/white-logo.png" alt="Aurora">
+    <p class="eyebrow" style="margin-top:22px">auroracurate.com · 목업 버전 보관함</p>
+    <h1>이전 목업과 현재 파이널을 <em>나란히</em> 비교하세요.</h1>
+    <p class="lede">현재 파이널 링크는 그대로 두고, 이전 두 시점의 목업을 그대로 되살렸습니다. 각 버전은 당시 코드 그대로 작동합니다. 아래 표에서 페이지마다 무엇이 바뀌거나 빠졌는지 보고, 버전별 링크로 바로 열어 비교할 수 있습니다.</p>
+    <div class="versions">
+      <article class="ver v1"><small>Version A · 2026-10-02</small><b>파이널 이전 목업</b><p>원래 Figma 화면을 바탕으로 한 6개 메인 페이지 + Nine Tails · 검색 · About · 가이드. 커뮤니티 원래 구성과 한 단계 제안 폼이 살아 있는 마지막 버전.</p><code>commit 796cb80</code><a class="btn" href="v1002/home.html">Version A 열기</a></article>
+      <article class="ver v2"><small>Version B · 2026-10-03</small><b>파이널 v1</b><p>여섯 고객 여정을 연결한 첫 파이널. 장바구니·주문·회원 공간·제안 결과·리뷰 허브 추가, 슬로건 확정, Global Faces 100 마크. 오늘의 Home 개편 이전.</p><code>commit 2eaaa44</code><a class="btn" href="v1003/home.html">Version B 열기</a></article>
+      <article class="ver v3"><small>Current · 2026-10-04</small><b>현재 파이널</b><p>Home 네 동사·네 개의 문·연결 예시, 길잡이 막대, 미국 법인 푸터, 정책 페이지, 상품별 반품 조건, 양방향 문구. 수정 작업은 이 링크에서 합니다.</p><code>commit 3ba4139</code><a class="btn btn--ghost" href="https://claude.ai/artifact/9S325ZyZ1nBDtVJqVAzieu" target="_blank" rel="noopener">현재 파이널 열기 ↗</a></article>
+    </div>
+  </header>
+
+  <section aria-labelledby="chg">
+    <p class="eyebrow">Page by page</p>
+    <h2 id="chg">무엇이 <em>바뀌고 빠졌나</em></h2>
+    <p class="lede"><span class="rm">분홍</span>은 사라지거나 바뀐 것, <span class="add">초록</span>은 새로 생긴 것입니다. 되살리고 싶은 항목은 버전과 페이지 이름으로 알려 주시면 현재 파이널에 다시 넣겠습니다.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th style="width:120px">페이지</th><th>Version A · 10-02</th><th>Version B · 10-03</th><th>현재 · 10-04</th></tr></thead>
+        <tbody>
+          <tr><td>Home</td>
+            <td>로고 아래 <b>‘Selective Production House · Created by Asia Lab’</b> 로크업, 첫 화면 Aurora 100 · Global Faces 100 표기, 제목 ‘Culture, seen differently.’<br><a class="go" href="v1002/home.html">A에서 보기</a></td>
+            <td><span class="rm">로크업 → 슬로건 ‘A World Connected by Experience’</span>(대표 결정). 제목·‘Enter Studio / Partner with us’ 버튼, ‘One Aurora. Four ways in. Stories. People. Connection. Objects.’<br><a class="go" href="v1003/home.html">B에서 보기</a></td>
+            <td><span class="rm">제목 ‘Culture, seen differently.’, 버튼 ‘Enter Studio / Partner with us’, ‘Four ways in’ 문구 교체.</span> <span class="add">네 동사 제목, 네 개의 문, ‘One story. Four doors.’ 연결 섹션, ‘See how it works / Shop now’, 양방향 설명.</span></td></tr>
+          <tr><td>Community</td>
+            <td>원래 구성: 히어로 ‘Where Global Voices Meet Influence’ + <b>‘Join community’</b>, ‘Your Launchpad to Global Success’, ‘Masterclass &amp; Mentorship’, ‘Help shape Aurora 100’, <b>‘For Mentors &amp; Icons — Start a masterclass’</b>, ‘For Members &amp; Creators — Join a community’, ‘Aurora Community = Growth Engine’<br><a class="go" href="v1002/community.html">A에서 보기</a></td>
+            <td><span class="rm">‘Join community’ → ‘Join the Lounge — free’ / ‘Browse programs’. ‘For Mentors &amp; Icons — Start a masterclass’ → ‘For Mentors &amp; Hosts — Host on Aurora’.</span> <span class="add">Read · Join · Learn 세 갈래, 프로그램 시장, Host on Aurora, 회원 홈 링크.</span><br><a class="go" href="v1003/community.html">B에서 보기</a></td>
+            <td><span class="rm">‘Help shape Aurora 100’ 카드 문구 변경(의견 수집만, 10-04 결정).</span> 지원 이메일 contact@. 상단 길잡이 막대.</td></tr>
+          <tr><td>Shop</td>
+            <td>가격 안내 문구 ‘Prices are from the Aurora Shopify store…’, 프로그램 소개 ‘Private sessions and programs delivered by Asia Lab…’, ‘Learning concepts in Community’ 링크<br><a class="go" href="v1002/shop.html">A에서 보기</a></td>
+            <td><span class="rm">위 안내 문구와 링크가 빠짐.</span> <span class="add">프로그램 진열이 커뮤니티 시장과 같은 카드로, 컬렉션 필터 페이지.</span><br><a class="go" href="v1003/shop.html">B에서 보기</a></td>
+            <td>길잡이 막대. 상품 상세에 <span class="add">상품별 출고지·반품 조건</span>(이전 ‘Ships from Korea’ 고정 문구 대체).</td></tr>
+          <tr><td>Product</td>
+            <td>상품 상세 기본형<br><a class="go" href="v1002/product.html?p=ohui-geniture-lipstick">A에서 보기</a></td>
+            <td><span class="add">장바구니 연결, 품절 시뮬레이션(?sim=soldout), 프로그램 페이지 연결.</span><br><a class="go" href="v1003/product.html?p=ohui-geniture-lipstick">B에서 보기</a></td>
+            <td><span class="rm">Trust 줄의 Shipping/Returns 정책 링크 →</span> <span class="add">‘Ships from · Returns for this item’.</span></td></tr>
+          <tr><td>Partner with us</td>
+            <td><b>한 번에 보내는 제안 폼</b>(‘Send proposal’), 페이지 안 스크립트<br><a class="go" href="v1002/work-with-aurora.html">A에서 보기</a></td>
+            <td><span class="rm">‘Send proposal’ → ‘Check my answers’ 확인 단계.</span> <span class="add">제안 결과 페이지 8개 상태(접수·중복·추가 정보·수락·거절 등).</span><br><a class="go" href="v1003/work-with-aurora.html">B에서 보기</a></td>
+            <td>개인정보 동의 링크만 변경.</td></tr>
+          <tr><td>Curators · Profile</td>
+            <td>‘Start Collaboration’ 버튼만<br><a class="go" href="v1002/curators.html">A에서 보기</a> · <a class="go" href="v1002/curator.html">프로필</a></td>
+            <td><span class="add">버튼 아래 ‘제안은 Aurora 팀이 받습니다’ 안내, NMIXX 두 번째 데이터 세트.</span><br><a class="go" href="v1003/curators.html">B에서 보기</a> · <a class="go" href="v1003/curator.html?c=nmixx">NMIXX</a></td>
+            <td>길잡이 막대.</td></tr>
+          <tr><td>Design guide</td>
+            <td>로크업 ‘Created by Asia Lab’ 규칙<br><a class="go" href="v1002/guide.html">A에서 보기</a></td>
+            <td><span class="rm">로크업 규칙 →</span> <span class="add">슬로건 블록, 두 IP 마크 규칙.</span><br><a class="go" href="v1003/guide.html">B에서 보기</a></td>
+            <td>변경 없음.</td></tr>
+          <tr><td>Footer (전체)</td>
+            <td>Help 열: Shipping · Returns · Privacy · Terms · Contact, ‘© Aurora · Asia Lab’</td>
+            <td>Help centre · Review hub 링크 추가, 슬로건·회사 정의</td>
+            <td><span class="rm">‘© Aurora · Asia Lab’ →</span> <span class="add">정책 링크 줄, 미국 법인 고지, Your Privacy Choices, ‘© 2026 Asia Lab Global Incorporated’.</span></td></tr>
+          <tr><td>Help</td>
+            <td class="none">없음</td>
+            <td><span class="add">새 페이지.</span> 배송·반품은 ‘Awaiting approved text’ 틀<br><a class="go" href="v1003/help.html">B에서 보기</a></td>
+            <td><span class="rm">‘Awaiting approved text’ 틀 →</span> <span class="add">요약 + 정책 링크, 개인정보 선택, 접근성.</span></td></tr>
+          <tr><td>새 페이지</td>
+            <td class="none">—</td>
+            <td><span class="add">cart · order · collection · offer · learn · application · project · ops · review</span><br><a class="go" href="v1003/review.html">리뷰 허브</a></td>
+            <td><span class="add">policy (정책 6종)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="how">
+    <p class="eyebrow">How to use</p>
+    <h2 id="how">검토 방법</h2>
+    <ul class="notes" style="margin-top:14px">
+      <li><b>같은 페이지를 버전별로</b> 탭 두 개에 열어 비교하세요. 각 버전 안의 메뉴와 링크는 그 버전 안에서만 움직입니다.</li>
+      <li><b>되살리기 요청</b>은 “Version A의 Community ‘For Mentors &amp; Icons — Start a masterclass’를 현재에 다시”처럼 버전·페이지·이름으로 주시면 됩니다.</li>
+      <li><b>상품 사진</b>은 실제 Shopify 서버에서만 보이며, 여기서는 Aurora 기본 배경과 상품명이 대신 보입니다(세 버전 동일).</li>
+      <li>이 보관함은 읽기 전용입니다. 수정은 현재 파이널 링크에서만 합니다.</li>
+    </ul>
+  </section>
+</main>
