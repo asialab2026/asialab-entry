@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Aurora 사업계획서 2026</title>
+<!-- Fonts: local copy of Google Fonts (Bodoni Moda, Manrope, Noto Sans KR, Noto Serif KR) — fetch with docs/bp/get-fonts.sh -->
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+/* Aurora business plan — A4 landscape, Stage (dark) section pages + Read (light) content pages. Tokens = Aurora design system. */
+@page { size: 297mm 210mm; margin: 0; }
+:root {
+  --mid: #0B0E15; --mag: #CD089C; --cos: #0B2F89; --emb: #E6733A; --vel: #992138; --mist: #E1E0F6;
+  --ink: #0B0E15; --ink2: #4A4D5C; --ink3: #7A7D8C; --line: #DDDAE8; --paper: #FBFAFD; --tint: #F1EFF7;
+  --serif: "Bodoni Moda", "Noto Serif KR", Georgia, serif;
+  --sans: "Manrope", "Noto Sans KR", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font: 10.2pt/1.6 var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #777; }
+.page { width: 297mm; height: 210mm; position: relative; overflow: hidden; page-break-after: always; break-after: page; background: var(--paper); padding: 16mm 18mm 14mm; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+@media screen { .page { margin: 10mm auto; box-shadow: 0 6px 30px rgba(0,0,0,.35); } }
+.stage { background: var(--mid); color: var(--mist); }
+.stage::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(55% 60% at 12% 0%, rgba(205,8,156,.38), transparent 70%), radial-gradient(50% 55% at 100% 35%, rgba(11,47,137,.55), transparent 70%), radial-gradient(40% 45% at 85% 100%, rgba(230,115,58,.22), transparent 70%); }
+.page > * { position: relative; z-index: 1; }
+
+/* running header / footer */
+.rh { display: flex; justify-content: space-between; align-items: center; font: 700 7pt/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink3); margin-bottom: 7mm; }
+.rh img { height: 13px; }
+.stage .rh { color: rgba(225,224,246,.55); }
+.rf { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font: 600 6.8pt/1 var(--sans); letter-spacing: .12em; color: var(--ink3); text-transform: uppercase; }
+.stage .rf { color: rgba(225,224,246,.45); }
+
+.eyebrow { font: 800 7.4pt/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--mag); margin: 0 0 3mm; display: flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
+.stage .eyebrow { color: #F27CCB; }
+h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing: -.005em; }
+h1 { font-size: 38pt; line-height: 1.04; }
+h2 { font-size: 23pt; line-height: 1.12; margin-bottom: 4mm; }
+h2 em, h1 em { font-style: italic; }
+.ko-h { font-family: "Noto Serif KR", serif; font-weight: 700; letter-spacing: -.01em; }
+h3 { font: 800 10.5pt/1.3 var(--sans); margin: 0 0 1.5mm; }
+p { margin: 0 0 2.4mm; }
+.lede { font-size: 11.6pt; line-height: 1.6; color: var(--ink2); max-width: 170mm; }
+.stage .lede { color: rgba(225,224,246,.78); }
+.muted { color: var(--ink2); }
+.small { font-size: 8.4pt; line-height: 1.5; color: var(--ink2); }
+.stage .small { color: rgba(225,224,246,.6); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9mm; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
+.fill { flex: none; min-height: 0; align-items: start; align-content: start; margin-bottom: 2mm; }
+.compact .card { padding: 3.2mm 5mm; } .compact .verb { font-size: 13pt; margin: 1mm 0 .6mm; } .compact .small { margin: 0; }
+.fill .card .small, .fill .card li { font-size: 9.3pt; line-height: 1.6; }
+.fill .card h3 { font-size: 11.5pt; margin-bottom: 2.5mm; }
+.fill .card { padding: 6mm; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 4mm; padding: 5mm; }
+.stage .card { background: rgba(18,23,38,.72); border-color: rgba(225,224,246,.16); }
+.tag { display: inline-block; font: 800 6.6pt/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; padding: 1.3mm 2.2mm; border-radius: 99px; background: var(--tint); color: var(--ink2); }
+.tag--open { background: #E4F5EC; color: #11683A; } .tag--soon { background: #FDF0E6; color: #9A4A14; } .tag--plan { background: #EEF0FB; color: #26357A; } .tag--done { background: #E4F5EC; color: #11683A; } .tag--decide { background: #FBE6F4; color: #8E0569; }
+
+table { width: 100%; border-collapse: collapse; font-size: 8.6pt; line-height: 1.45; }
+th { text-align: left; font: 800 7pt/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); padding: 2.2mm 2.6mm; border-bottom: 1.5px solid var(--ink); }
+td { padding: 2.3mm 2.6mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+td b { font-weight: 800; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+
+/* world colours */
+.c-studio { --w: var(--cos); } .c-curators { --w: var(--mag); } .c-community { --w: var(--emb); } .c-shop { --w: var(--vel); }
+.door { border-top: 3px solid var(--w); }
+.num { width: 8mm; height: 8mm; border-radius: 50%; background: var(--w); color: #fff; display: inline-grid; place-items: center; font: 800 9pt/1 var(--sans); }
+.stage .c-studio .num { box-shadow: inset 0 0 0 1px rgba(225,224,246,.4); }
+.verb { font-family: var(--serif); font-style: italic; font-size: 15pt; line-height: 1.15; margin: 2mm 0 1.5mm; }
+.ph { width: 100%; object-fit: cover; border-radius: 3mm; display: block; }
+
+/* cover */
+.cover { padding: 0; flex-direction: row; }
+.cover__l { width: 58%; padding: 18mm 14mm 14mm 20mm; display: flex; flex-direction: column; }
+.cover__r { width: 42%; position: relative; }
+.cover__r img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.cover__r::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--mid) 0%, rgba(11,14,21,0) 30%); }
+.wordmark { width: 92mm; filter: drop-shadow(0 0 10px rgba(255,255,255,.35)); }
+.slogan { font: 800 7.6pt/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; margin-top: 3mm; color: var(--mist); }
+.cover h1 { margin-top: 16mm; font-size: 40pt; }
+.cover .meta { margin-top: auto; display: grid; grid-template-columns: auto 1fr; gap: 1.4mm 6mm; font-size: 8.4pt; color: rgba(225,224,246,.72); }
+.cover .meta b { color: var(--mist); font-weight: 700; letter-spacing: .06em; }
+
+/* toc */
+.toc { columns: 2; column-gap: 14mm; margin-top: 4mm; }
+.toc div { break-inside: avoid; display: grid; grid-template-columns: 11mm 1fr auto; gap: 3mm; padding: 2.6mm 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.toc .n { font: 800 8pt/1 var(--sans); color: var(--mag); letter-spacing: .1em; }
+.toc .t { font-weight: 700; }
+.toc .t small { display: block; font-weight: 400; color: var(--ink2); font-size: 8pt; }
+.toc .p { font: 700 8pt/1 var(--sans); color: var(--ink3); }
+
+/* flow */
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm; }
+.flow .st { position: relative; }
+.flow .st:not(:last-child)::after { content: "→"; position: absolute; right: -5mm; top: 18mm; color: var(--mist); font-size: 12pt; }
+.flow img { height: 40mm; border-bottom: 2.5px solid var(--w); }
+.flow .k { display: flex; align-items: center; gap: 2mm; margin: 3mm 0 1.5mm; font: 800 6.8pt/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: rgba(225,224,246,.7); }
+.flow .k .num { width: 5.5mm; height: 5.5mm; font-size: 7pt; }
+.flow h3 { font-size: 10pt; font-weight: 700; color: #fff; line-height: 1.4; }
+
+.big-quote { font-family: var(--serif); font-size: 19pt; line-height: 1.3; font-style: italic; }
+.kpi { border-left: 3px solid var(--w, var(--mag)); padding: 1mm 0 1mm 4mm; }
+.stepnum { font: 400 26pt/1 var(--serif); color: var(--mag); }
+.note { border-left: 2.5px solid var(--mag); padding: 2mm 0 2mm 4mm; font-size: 8.4pt; color: var(--ink2); background: transparent; }
+.stage .note { color: rgba(225,224,246,.7); }
+.check li { margin-bottom: 1.6mm; }
+ul { margin: 0; padding-left: 4.5mm; }
+li { margin-bottom: 1.2mm; }
+.shot { border-radius: 3mm; border: 1px solid var(--line); width: 100%; display: block; }
+.ipmark { height: 30mm; width: auto; display: block; margin-bottom: 4mm; }
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="page stage cover">
+  <div class="cover__l">
+    <img class="wordmark" src="../../assets/brand/wordmark-white.webp" alt="Aurora">
+    <div class="slogan">A World Connected by Experience</div>
+    <h1><span class="ko-h" style="font-size:34pt">Aurora 사업계획서</span><br><em style="font-size:26pt;color:rgba(225,224,246,.75)">Business Plan 2026</em></h1>
+    <p class="lede" style="margin-top:7mm;max-width:130mm">Aurora is a global production house and experience platform created by Asia Lab.<br><span style="font-size:10pt">Aurora는 Asia Lab이 만든 글로벌 프로덕션 하우스이자 경험 플랫폼입니다.</span></p>
+    <div class="meta">
+      <b>회사</b><span>Asia Lab Global Incorporated · Delaware C Corporation</span>
+      <b>플랫폼</b><span>auroracurate.com</span>
+      <b>버전</b><span>v1.0 · 2026-10-04 · 오픈 준비 단계</span>
+      <b>기준</b><span>Aurora 오픈 통합 기획서 · 통합 웹 기획서 · 최종 목업</span>
+      <b>구분</b><span>Confidential — 투자·파트너 검토용</span>
+    </div>
+  </div>
+  <div class="cover__r"><img src="../../assets/img/studio/harshaali.jpg" alt=""></div>
+</section>
+
+<!-- 2 TOC -->
+<section class="page">
+  <div class="rh"><span>Aurora Business Plan 2026</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Contents</p>
+  <h2>목차</h2>
+  <div class="toc">
+    <div><span class="n">01</span><span class="t">요약<small>한 장으로 보는 Aurora</small></span><span class="p">3</span></div>
+    <div><span class="n">02</span><span class="t">비전과 브랜드<small>슬로건 · 회사 정의 · 소개문</small></span><span class="p">4</span></div>
+    <div><span class="n">03</span><span class="t">기회<small>왜 Aurora인가, 왜 지금인가</small></span><span class="p">5</span></div>
+    <div><span class="n">04</span><span class="t">플랫폼 — 네 개의 문<small>Studio · Curators · Community · Shop</small></span><span class="p">6</span></div>
+    <div><span class="n">05</span><span class="t">연결 원리<small>하나의 이야기가 구매까지</small></span><span class="p">7</span></div>
+    <div><span class="n">06</span><span class="t">핵심 IP<small>Aurora 100 · Global Faces 100 · Nine Tails</small></span><span class="p">8</span></div>
+    <div><span class="n">07</span><span class="t">수익 모델<small>여덟 개의 수익 흐름</small></span><span class="p">9</span></div>
+    <div><span class="n">08</span><span class="t">출시 상품과 프로그램<small>첫 판매 흐름</small></span><span class="p">10</span></div>
+    <div><span class="n">09</span><span class="t">고객과 여정<small>여섯 가지 시작점</small></span><span class="p">11</span></div>
+    <div><span class="n">10</span><span class="t">시장 진출 전략<small>단계 · 시장 · 채널</small></span><span class="p">12</span></div>
+    <div><span class="n">11</span><span class="t">운영과 기술<small>Shopify · Tevello · 파트너 출고</small></span><span class="p">13</span></div>
+    <div><span class="n">12</span><span class="t">조직 · 법인 · 신뢰<small>글로벌 다중 법인 구조</small></span><span class="p">14</span></div>
+    <div><span class="n">13</span><span class="t">로드맵<small>단계별 완료 기준</small></span><span class="p">15</span></div>
+    <div><span class="n">14</span><span class="t">성과 지표<small>네 개의 문별 측정</small></span><span class="p">16</span></div>
+    <div><span class="n">15</span><span class="t">재무 구조<small>수익·비용 틀</small></span><span class="p">17</span></div>
+    <div><span class="n">16</span><span class="t">위험과 대응</span><span class="p">18</span></div>
+    <div><span class="n">17</span><span class="t">결정 사항과 다음 단계</span><span class="p">19</span></div>
+    <div><span class="n">18</span><span class="t">부록 — 최종 화면<small>목업 · 문서 목록</small></span><span class="p">20</span></div>
+  </div>
+  <div class="rf"><span>Asia Lab Global Incorporated · Confidential</span><span>2</span></div>
+</section>
+
+<!-- 3 EXEC SUMMARY -->
+<section class="page">
+  <div class="rh"><span>01 · 요약</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Executive summary</p>
+  <h2><span class="ko-h" style="font-size:20pt">아시아와 세계를 이야기·사람·참여·상품으로 잇는 <em>하나의 플랫폼</em></span></h2>
+  <div class="grid2 fill" style="grid-template-columns:1.15fr .85fr">
+    <div>
+      <p class="lede" style="margin-bottom:5mm">Aurora는 아시아와 세계의 주목할 만한 사람·아이디어·브랜드를 발견해 이야기로 만들고, 그 이야기를 <b>사람과의 만남, 커뮤니티 참여, 상품·프로그램 구매</b>로 이어 주는 글로벌 플랫폼입니다. 콘텐츠·협업·커머스·커뮤니티를 한 곳에서 운영하는 것이 핵심입니다.</p>
+      <table>
+        <tr><th style="width:30mm">항목</th><th>내용</th></tr>
+        <tr><td><b>무엇을</b></td><td>이야기(Studio) → 사람(Curators) → 참여(Community) → 구매(Shop)로 이어지는 하나의 경험</td></tr>
+        <tr><td><b>누구에게</b></td><td>아시아 문화·커리어·뷰티·라이프스타일에 관심 있는 전 세계 고객, 그리고 세계로 나가려는 아시아 브랜드·크리에이터</td></tr>
+        <tr><td><b>어떻게 벌까</b></td><td>실물 상품, 1:1 세션·코호트·코스·워크숍, 디지털 상품, 멤버십, 경험, 브랜드 협업, 프로젝트(Fund·Together·Made for You)</td></tr>
+        <tr><td><b>무엇이 다른가</b></td><td>27년 영화·드라마·엔터테인먼트 제작 경험의 편집력, 두 공식 IP(Aurora 100 · Global Faces 100), 실제 관계만 연결하는 신뢰 원칙</td></tr>
+        <tr><td><b>지금 어디에</b></td><td>미국 법인·결제·정산 완료, 최종 목업(26개 화면)·기획서·정책 원고 완료, 첫 판매 상품(K-Career Entry Session) Shopify 등록</td></tr>
+        <tr><td><b>다음</b></td><td>정책 게시 → 테스트 주문 → 소프트 오픈(첫 판매 흐름) → 시장·상품 확장</td></tr>
+      </table>
+    </div>
+    <div class="compact" style="display:grid;gap:3.5mm;align-content:start">
+      <div class="card c-studio door"><span class="num">1</span> <b style="margin-left:2mm">Studio</b><div class="verb">Read the story</div><p class="small">인터뷰·영상·에디토리얼</p></div>
+      <div class="card c-curators door"><span class="num">2</span> <b style="margin-left:2mm">Curators</b><div class="verb">Meet the people</div><p class="small">Aurora가 고른 사람들</p></div>
+      <div class="card c-community door"><span class="num">3</span> <b style="margin-left:2mm">Community</b><div class="verb">Join in</div><p class="small">대화 · 배움 · 경험</p></div>
+      <div class="card c-shop door"><span class="num">4</span> <b style="margin-left:2mm">Shop</b><div class="verb">Take it home</div><p class="small">상품 · 프로그램 · 프로젝트</p></div>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>3</span></div>
+</section>
+
+<!-- 4 VISION -->
+<section class="page stage">
+  <div class="rh"><span>02 · 비전과 브랜드</span><span>Aurora</span></div>
+  <p class="eyebrow">Vision &amp; brand</p>
+  <div class="grid2 fill" style="grid-template-columns:1.2fr .8fr;align-items:center">
+    <div>
+      <p class="slogan" style="margin:0 0 5mm">A World Connected by Experience · 경험으로 연결되는 하나의 세계</p>
+      <h1 style="font-size:30pt">Connecting Asia and the world through people, ideas, products, and <em>experiences.</em></h1>
+      <p class="lede" style="margin-top:6mm">Aurora crosses borders and connects worlds. Built on the belief that human creativity, experience, and possibility should never be confined by geography, Aurora brings together people, products, companies, cultures, and ideas—connecting Asia with the world and the world with Asia.</p>
+      <p class="lede">Through content, collaboration, commerce, and community, Aurora transforms meaningful connections into shared experiences, new opportunities, and lasting value.</p>
+      <p class="big-quote" style="margin-top:6mm;color:#fff">“Our vision is to create one connected world where different identities and cultures meet, create, and grow together.”</p>
+    </div>
+    <div>
+      <img class="ph" src="../../assets/img/home/ecosystem.jpg" alt="Aurora ecosystem" style="border-radius:4mm">
+      <p class="small" style="margin-top:3mm">Aurora 생태계 — Aurora를 중심으로 Studio · Curators · Community · Shop이 연결됩니다. 대표 확정 소개문(2026-10-03). ‘Created by Asia Lab’은 About과 푸터에만 표기합니다.</p>
+      <div class="card" style="margin-top:4mm"><p class="small" style="margin:0"><b style="color:#fff">One Asia, One World.</b> 한류를 만든 27년의 영화·드라마·엔터테인먼트 경험을 바탕으로, 아시아와 세계를 하나로 연결하는 비즈니스를 만듭니다.</p></div>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>4</span></div>
+</section>
+
+<!-- 5 OPPORTUNITY -->
+<section class="page">
+  <div class="rh"><span>03 · 기회</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Opportunity</p>
+  <h2><span class="ko-h" style="font-size:20pt">발견·만남·참여·구매가 <em>흩어져 있다</em></span></h2>
+  <p class="lede">아시아 문화에 대한 세계의 관심은 이미 생활 속으로 들어왔습니다. 그러나 고객은 이야기는 미디어에서, 사람은 SNS에서, 배움은 강의 플랫폼에서, 상품은 쇼핑몰에서 따로 찾습니다. 브랜드와 크리에이터는 신뢰할 수 있는 이야기와 함께 세계 고객을 만날 길이 부족합니다.</p>
+  <div class="grid3 fill" style="margin-top:4mm">
+    <div class="card"><h3>고객의 문제</h3><ul class="small"><li>좋아하는 이야기에서 사람·배움·상품으로 바로 이어지지 않음</li><li>추천이 광고인지 진짜인지 알기 어려움</li><li>해외에서 아시아 상품·프로그램을 믿고 사기 어려움(배송·관세·반품)</li></ul></div>
+    <div class="card"><h3>브랜드·크리에이터의 문제</h3><ul class="small"><li>세계 고객에게 닿는 편집된 이야기와 무대가 부족</li><li>콘텐츠·커뮤니티·판매를 각각 따로 운영해야 함</li><li>협업 제안을 받아 줄 신뢰할 만한 창구가 부족</li></ul></div>
+    <div class="card"><h3>Aurora의 답</h3><ul class="small"><li>하나의 이야기 → 네 개의 문으로 이어지는 한 플랫폼</li><li>실제 관계만 연결하고 관계를 공개하는 신뢰 원칙</li><li>미국 법인·Shopify 결제·상품별 배송/반품 고지로 글로벌 구매 신뢰 확보</li></ul></div>
+  </div>
+  <div class="grid2" style="margin-top:5mm">
+    <div class="kpi" style="--w:var(--mag)"><h3>왜 지금인가</h3><p class="small" style="margin:0">아시아 문화·커리어·뷰티에 대한 글로벌 관심, 크리에이터 중심 커머스, 온라인 코호트·세션 학습이 함께 커졌습니다. 이 셋을 한 브랜드 안에서 연결하는 곳은 드뭅니다.</p></div>
+    <div class="kpi" style="--w:var(--cos)"><h3>시장 규모 표기 원칙</h3><p class="small" style="margin:0">이 계획서에는 출처 없는 시장 규모·성장률을 쓰지 않습니다. 투자 검토용 수치는 공식 출처(정부·산업 보고서)를 확인한 뒤 부록에 따로 붙입니다.</p></div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>5</span></div>
+</section>
+
+<!-- 6 PLATFORM -->
+<section class="page stage">
+  <div class="rh"><span>04 · 플랫폼</span><span>Aurora</span></div>
+  <p class="eyebrow">The platform</p>
+  <h2 style="color:#fff">Read the story. Meet the people. Join in. <em>Take it home.</em></h2>
+  <p class="lede" style="margin-bottom:5mm">처음 온 사람도 5초 안에 이해하도록 네 곳에 동사 하나씩. 같은 동사와 색이 첫 화면, 메뉴 아래 길잡이 막대, 카드에 반복됩니다.</p>
+  <div class="grid4 fill">
+    <div class="c-studio"><img class="ph" src="../../assets/img/studio/power-100.jpg" style="height:60mm;object-position:50% 40%;border-bottom:3px solid var(--w)"><p style="margin:3mm 0 1mm"><span class="num">1</span> <b style="margin-left:1.5mm;color:#fff">Studio</b></p><div class="verb" style="color:#fff">Read the story</div><p class="small">멋진 사람들의 이야기를 읽고 보는 곳. 인터뷰·영상·에디토리얼, Aurora 100 · Global Faces 100.</p></div>
+    <div class="c-curators"><img class="ph" src="../../assets/img/people/lisa.jpg" style="height:60mm;object-position:50% 18%;border-bottom:3px solid var(--w)"><p style="margin:3mm 0 1mm"><span class="num">2</span> <b style="margin-left:1.5mm;color:#fff">Curators</b></p><div class="verb" style="color:#fff">Meet the people</div><p class="small">Aurora가 고른 아티스트·크리에이터·전문가. 프로필, 추천, 협업 제안(제안은 Aurora로).</p></div>
+    <div class="c-community"><img class="ph" src="../../assets/img/community/highlight-hero.jpg" style="height:60mm;object-position:40% 50%;border-bottom:3px solid var(--w)"><p style="margin:3mm 0 1mm"><span class="num">3</span> <b style="margin-left:1.5mm;color:#fff">Community</b></p><div class="verb" style="color:#fff">Join in</div><p class="small">무료 Lounge와 유료 프로그램(코호트·코스·워크숍·디지털·경험). Tevello 위에서 운영.</p></div>
+    <div class="c-shop"><img class="ph" src="../../assets/img/shop/hl-curator.jpg" style="height:60mm;object-position:50% 15%;border-bottom:3px solid var(--w)"><p style="margin:3mm 0 1mm"><span class="num">4</span> <b style="margin-left:1.5mm;color:#fff">Shop</b></p><div class="verb" style="color:#fff">Take it home</div><p class="small">이야기 속 상품·프로그램·경험, Fund · Together · Made for You. Shopify 결제.</p></div>
+  </div>
+  <p class="small" style="margin-top:4mm">Studio · Curators · Community는 모두 Shop의 상품과 프로그램으로 이어지도록 설계되었고, Shop은 이 생태계 전체를 품습니다. Live는 다섯 번째 세계가 아니라 각 세계에서 쓰는 형식입니다.</p>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>6</span></div>
+</section>
+
+<!-- 7 HOW IT CONNECTS -->
+<section class="page stage">
+  <div class="rh"><span>05 · 연결 원리</span><span>Aurora</span></div>
+  <p class="eyebrow">How Aurora connects</p>
+  <h2 style="color:#fff">One story. <em>Four doors.</em></h2>
+  <p class="lede" style="margin-bottom:6mm">지어낸 예가 아니라 오픈 첫 판매 흐름 그대로입니다. 고객은 어느 문으로 들어와도 나머지 세 곳으로 갈 수 있습니다.</p>
+  <div class="flow">
+    <div class="st c-studio"><img class="ph" src="../../assets/img/studio/hustler-may.jpg" style="object-position:50% 28%"><p class="k"><span class="num">1</span>Studio · Read the story</p><h3>한국·아시아에서 커리어를 만드는 이야기를 읽는다 (Hustle 분야)</h3></div>
+    <div class="st c-curators"><img class="ph" src="../../assets/img/studio/behind-the-shoot.jpg" style="object-position:50% 45%"><p class="k"><span class="num">2</span>Curators · Meet the people</p><h3>그 일을 하는 전문가들이 누구이고 어떻게 일하는지 본다</h3></div>
+    <div class="st c-community"><img class="ph" src="../../assets/img/community/highlight-hero.jpg" style="object-position:40% 50%"><p class="k"><span class="num">3</span>Community · Join in</p><h3>무료 Aurora Lounge에서 같은 길을 가는 사람들과 질문한다</h3></div>
+    <div class="st c-shop"><img class="ph" src="../../assets/img/studio/believing.jpg" style="object-position:50% 35%"><p class="k"><span class="num">4</span>Shop · Take it home</p><h3>60분 K-Career Entry Session(US$99)을 예약하고 다음 단계를 받는다</h3></div>
+  </div>
+  <div class="grid3" style="margin-top:7mm">
+    <div class="card"><h3 style="color:#fff">실제 관계만 연결</h3><p class="small" style="margin:0">협업 계약·실제 사용·편집 선정이 문서로 있을 때만 이야기·사람·상품을 잇습니다.</p></div>
+    <div class="card"><h3 style="color:#fff">관계는 공개</h3><p class="small" style="margin:0">금전·무상 제공·수수료 관계는 추천 가까이에 밝힙니다 (미국 FTC 지침).</p></div>
+    <div class="card"><h3 style="color:#fff">강요하지 않음</h3><p class="small" style="margin:0">구매 없이 읽고 참여할 수 있습니다. 신뢰가 쌓일 때 구매가 따라옵니다.</p></div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>7</span></div>
+</section>
+
+<!-- 8 IP -->
+<section class="page stage">
+  <div class="rh"><span>06 · 핵심 IP</span><span>Aurora</span></div>
+  <p class="eyebrow">Intellectual property</p>
+  <h2 style="color:#fff">두 개의 공식 IP, <em>아홉 개의 분야</em></h2>
+  <div class="grid2" style="margin-top:3mm">
+    <div class="card"><img class="ipmark" src="../../assets/brand/aurora100_white.png" alt="Aurora 100"><h3 style="color:#fff">Aurora 100 — 영향력</h3><p class="small">이미 문화를 움직이는 사람·브랜드·작품을 선정하는 편집 IP. 시상·에디토리얼·레드카펫 콘텐츠로 Studio의 권위를 만듭니다. 공식 추천·심사는 ACC가 담당하고, 커뮤니티의 ‘Help shape Aurora 100’은 의견 수집으로만 운영합니다(2026-10-04 결정).</p></div>
+    <div class="card"><img class="ipmark" src="../../assets/brand/global-faces-100_white.png" alt="Global Faces 100"><h3 style="color:#fff">Global Faces 100 — 발견</h3><p class="small">다음 세대의 얼굴을 발견하는 단독 IP. 인터뷰와 화보로 새 인물을 세계에 소개하고, 그 이야기가 Curators·Community·Shop으로 이어집니다. 첫 인터뷰: Harshaali Malhotra (원문·사진 권리 확정 후 공개).</p></div>
+  </div>
+  <div class="card" style="margin-top:5mm">
+    <h3 style="color:#fff">Nine Tails — Aurora가 문화를 읽는 아홉 개의 분야</h3>
+    <div style="display:grid;grid-template-columns:repeat(9,1fr);gap:3mm;margin-top:3mm;text-align:center">
+      <div><img src="../../assets/img/nine/entertainment.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Entertainment</p></div>
+      <div><img src="../../assets/img/nine/icons.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Icons</p></div>
+      <div><img src="../../assets/img/nine/beauty.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Beauty</p></div>
+      <div><img src="../../assets/img/nine/fashion.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Fashion</p></div>
+      <div><img src="../../assets/img/nine/hustle.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Hustle</p></div>
+      <div><img src="../../assets/img/nine/taste.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Taste</p></div>
+      <div><img src="../../assets/img/nine/lifestyle.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Lifestyle</p></div>
+      <div><img src="../../assets/img/nine/travel.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Travel</p></div>
+      <div><img src="../../assets/img/nine/wellness.webp" style="width:12mm;height:12mm;object-fit:contain"><p class="small" style="margin:1mm 0 0">Wellness</p></div>
+    </div>
+    <p class="small" style="margin:3mm 0 0">모든 이야기·사람·프로그램·상품은 이 아홉 분야로 묶여 같은 분야끼리 자연스럽게 이어집니다. 상표 등록 상태에 맞춰 ™/® 표기를 적용합니다.</p>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>8</span></div>
+</section>
+
+<!-- 9 BUSINESS MODEL -->
+<section class="page">
+  <div class="rh"><span>07 · 수익 모델</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Business model</p>
+  <h2><span class="ko-h" style="font-size:20pt">여덟 개의 수익 흐름, <em>하나의 결제</em></span></h2>
+  <p class="lede" style="margin-bottom:3mm">모든 판매는 Shopify Checkout 하나로 받습니다. 네 개의 문은 모두 아래 수익 흐름으로 이어집니다.</p>
+  <table>
+    <tr><th style="width:6mm">#</th><th style="width:40mm">수익 흐름</th><th>내용</th><th style="width:38mm">어디서 시작되나</th><th style="width:28mm">출시 상태</th></tr>
+    <tr><td>1</td><td><b>1:1 세션</b></td><td>K-Career Entry Session(60분, US$99) 등 전문가 세션. 합격 시 코호트 수강료로 전액 차감</td><td>Studio · Community → Shop</td><td><span class="tag tag--open">판매 등록</span></td></tr>
+    <tr><td>2</td><td><b>코호트 · 코스 · 워크숍</b></td><td>K-Career Training, Entertainment Builder, 한국 문화·워크숍 — Tevello에서 수강</td><td>Community</td><td><span class="tag tag--plan">프로그램별 오픈</span></td></tr>
+    <tr><td>3</td><td><b>실물 상품</b></td><td>K-뷰티 등 편집 선정 상품. 브랜드·파트너 출고(드롭쉬핑), 상품별 출고지·반품 조건 고지</td><td>Studio · Curators → Shop</td><td><span class="tag tag--plan">검증 상품 1개부터</span></td></tr>
+    <tr><td>4</td><td><b>디지털 상품</b></td><td>워크북, Aurora 100 디지털 에디션 등</td><td>Studio · Community</td><td><span class="tag tag--soon">준비</span></td></tr>
+    <tr><td>5</td><td><b>멤버십</b></td><td>정기 결제 서클 — 매달 지킬 약속(주제·자료)이 정해질 때 추가. 온라인 즉시 해지</td><td>Community</td><td><span class="tag tag--plan">출시 후</span></td></tr>
+    <tr><td>6</td><td><b>경험 · 이벤트</b></td><td>서울 뷰티 루트, 레드카펫 마스터클래스 등. 호스트와 계약 기반 수익 배분</td><td>Community · Shop</td><td><span class="tag tag--soon">준비</span></td></tr>
+    <tr><td>7</td><td><b>브랜드 협업 · 스폰서십</b></td><td>편집 콘텐츠·Aurora 100·Global Faces 100 협업, 큐레이터 협업 상품 (관계 공개)</td><td>Work with Aurora</td><td><span class="tag tag--open">제안 접수</span></td></tr>
+    <tr><td>8</td><td><b>프로젝트</b></td><td>Fund(펀딩) · Together(공동 구매) · Made for You(맞춤 제작)</td><td>Shop · Projects</td><td><span class="tag tag--plan">관심 명단 → 개시</span></td></tr>
+  </table>
+  <div class="grid3" style="margin-top:5mm">
+    <div class="kpi" style="--w:var(--cos)"><h3>무재고 확장</h3><p class="small" style="margin:0">실물은 파트너 출고 중심. 재고 위험 없이 분야·도시별로 늘립니다.</p></div>
+    <div class="kpi" style="--w:var(--emb)"><h3>배송 없는 매출</h3><p class="small" style="margin:0">세션·프로그램·디지털은 첫날부터 전 세계 판매. 관세·배송 위험이 없습니다.</p></div>
+    <div class="kpi" style="--w:var(--mag)"><h3>IP가 만드는 협업</h3><p class="small" style="margin:0">두 IP와 편집력이 브랜드 협업·스폰서십의 근거가 됩니다.</p></div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>9</span></div>
+</section>
+
+<!-- 10 LAUNCH OFFER -->
+<section class="page">
+  <div class="rh"><span>08 · 출시 상품과 프로그램</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Launch offer</p>
+  <h2><span class="ko-h" style="font-size:20pt">넓은 진열보다 <em>끝까지 되는 하나의 흐름</em></span></h2>
+  <div class="grid2 fill" style="grid-template-columns:1fr 1fr">
+    <div>
+      <p class="lede">오픈은 끝에서 끝까지 검증된 좁은 흐름으로 시작합니다. 같은 템플릿 위에 상품과 프로그램을 하나씩 더합니다.</p>
+      <div style="display:grid;gap:3.5mm;margin-top:4mm">
+        <div class="card c-shop door"><h3>K-Career Entry Session™ <span class="tag tag--open" style="margin-left:2mm">US$99 · Shopify 등록</span></h3><p class="small" style="margin:0">Asia Lab과 60분 1:1 온라인 세션. 한국·아시아 커리어 방향, 준비 우선순위, K-Career Training 적합성, 다음 단계. Korea Career Entry Guide™ 포함.</p></div>
+        <div class="card c-community door"><h3>Aurora Lounge <span class="tag tag--open" style="margin-left:2mm">무료</span></h3><p class="small" style="margin:0">아홉 분야로 묻고 나누는 무료 공간. 커뮤니티의 입구이자 프로그램으로 가는 길.</p></div>
+        <div class="card c-shop door"><h3>검증된 실물 상품 1개 <span class="tag tag--decide" style="margin-left:2mm">가격·재고 확정</span></h3><p class="small" style="margin:0">K-뷰티 후보(OHUI). 공급·가격·출고지 확인 후 첫 테스트 주문을 거쳐 판매.</p></div>
+      </div>
+    </div>
+    <div>
+      <h3>프로그램 파이프라인 (Community 시장)</h3>
+      <table>
+        <tr><th>프로그램</th><th style="width:22mm">형태</th><th style="width:24mm">상태</th></tr>
+        <tr><td>K-Career Training</td><td>코호트</td><td><span class="tag tag--plan">신청제</span></td></tr>
+        <tr><td>Entertainment Builder</td><td>코스</td><td><span class="tag tag--plan">미리보기</span></td></tr>
+        <tr><td>Reporters’ Desk (명예기자)</td><td>커뮤니티</td><td><span class="tag tag--plan">신청제</span></td></tr>
+        <tr><td>Seoul Beauty Route Session™</td><td>경험·세션</td><td><span class="tag tag--soon">곧 오픈</span></td></tr>
+        <tr><td>Korean culture · Creative brief · Tasting stories</td><td>코스·워크숍</td><td><span class="tag">샘플</span></td></tr>
+        <tr><td>Builder workbook · Aurora 100 edition</td><td>디지털</td><td><span class="tag">샘플</span></td></tr>
+        <tr><td>Red Carpet Masterclass</td><td>경험</td><td><span class="tag">샘플</span></td></tr>
+      </table>
+      <p class="note" style="margin-top:4mm">가격·환불·열람 기간은 프로그램별로 공개 전 확정합니다. 확정 전에는 ‘Price set at launch’로 표시하고, 샘플은 샘플이라고 밝힙니다.</p>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>10</span></div>
+</section>
+
+<!-- 11 CUSTOMERS -->
+<section class="page">
+  <div class="rh"><span>09 · 고객과 여정</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Customers &amp; journeys</p>
+  <h2><span class="ko-h" style="font-size:20pt">여섯 가지 시작점, <em>모두 목업으로 검증</em></span></h2>
+  <div class="grid3 fill" style="margin-top:2mm">
+    <div class="card"><span class="tag">J01</span><h3 style="margin-top:2mm">처음 온 문화 독자</h3><p class="small">Home → Studio → 기사 → 큐레이터 → Community. 5초 안에 네 개의 문을 이해하고 원하는 곳으로.</p></div>
+    <div class="card"><span class="tag">J02</span><h3 style="margin-top:2mm">글로벌 구매자</h3><p class="small">상품 → 장바구니 → 배송 국가 → 결제 → 주문 상태. 품절·국가 미지원·결제 실패까지 다음 행동 안내.</p></div>
+    <div class="card"><span class="tag">J03</span><h3 style="margin-top:2mm">사람을 따라 온 팬</h3><p class="small">Curators → 프로필(내용 많은 인물·연결 없는 인물 모두 정직하게) → 협업 제안.</p></div>
+    <div class="card"><span class="tag">J04</span><h3 style="margin-top:2mm">배우려는 사람</h3><p class="small">프로그램 → 샘플 수업 → 결제 → 같은 이메일로 로그인 → 첫 수업. 권한 오류 16개 상태 설계.</p></div>
+    <div class="card"><span class="tag">J05</span><h3 style="margin-top:2mm">협업을 제안하는 브랜드</h3><p class="small">유형 선택 → 답변 → 확인 → 결과(접수·중복·추가 정보·수락·거절). 제안은 사람이 아니라 Aurora로.</p></div>
+    <div class="card"><span class="tag">J06</span><h3 style="margin-top:2mm">콘텐츠를 올리는 운영자</h3><p class="small">입력 한 번 → 카드·분야 페이지·검색·상태에 동시 반영(운영 보드).</p></div>
+  </div>
+  <div class="grid3" style="margin-top:3mm;gap:5mm"><div><img class="shot" src="../webcap/curator-1440.jpg" alt="" style="aspect-ratio:16/6.8;object-fit:cover;object-position:top"><p class="small" style="margin:1.2mm 0 0">J03 · 큐레이터 프로필 — 협업 제안은 Aurora로</p></div><div><img class="shot" src="../webcap/offer-1440.jpg" alt="" style="aspect-ratio:16/6.8;object-fit:cover;object-position:top"><p class="small" style="margin:1.2mm 0 0">J04 · 프로그램 상세 — 무엇을 얻고 다음에 무엇이 일어나는지</p></div><div><img class="shot" src="../webcap/partner-1440.jpg" alt="" style="aspect-ratio:16/6.8;object-fit:cover;object-position:top"><p class="small" style="margin:1.2mm 0 0">J05 · Work with Aurora — 유형별 제안</p></div></div>
+  <p class="small" style="margin-top:4mm">핵심 고객: 아시아 문화·커리어·뷰티에 관심 있는 전 세계 20–40대, 한국·아시아로 커리어를 준비하는 학생·초기 직장인, 세계로 나가려는 아시아 브랜드·크리에이터.</p>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>11</span></div>
+</section>
+
+<!-- 12 GTM -->
+<section class="page">
+  <div class="rh"><span>10 · 시장 진출 전략</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Go-to-market</p>
+  <h2><span class="ko-h" style="font-size:20pt">디지털은 전 세계, 실물은 <em>검증된 시장부터</em></span></h2>
+  <div class="grid2 fill" style="grid-template-columns:1.1fr .9fr">
+    <div>
+      <table>
+        <tr><th style="width:24mm">단계</th><th>내용</th><th style="width:48mm">넘어가는 조건</th></tr>
+        <tr><td><b>1 결정</b></td><td>출시 국가·첫 판매 상품·가격·관세 방식·정책 문구</td><td>결정표 전 항목 확정</td></tr>
+        <tr><td><b>2 설정</b></td><td>Shopify 정책·Markets·세금·개인정보, Tevello 연결</td><td>설정 체크리스트 완료</td></tr>
+        <tr><td><b>3 제작</b></td><td>목업 → Shopify 미리보기 테마 (MAIN 직접 수정 금지)</td><td>1440·390·360 검수</td></tr>
+        <tr><td><b>4 검증</b></td><td>테스트 주문·환불·프로그램 접근·구독 해지·개인정보 거부</td><td>시나리오 12개 통과</td></tr>
+        <tr><td><b>5 소프트 오픈</b></td><td>K-Career Entry Session + 실물 1개 + 무료 Lounge</td><td>첫 실주문 이행 완료</td></tr>
+        <tr><td><b>6 확장</b></td><td>국가·상품·큐레이터·Fund·Together·Live</td><td>실제 데이터 기준</td></tr>
+      </table>
+    </div>
+    <div style="display:grid;gap:4mm;align-content:start">
+      <div class="card"><h3>출시 시장</h3><p class="small" style="margin:0"><b>디지털·프로그램:</b> 첫날부터 전 세계.<br><b>실물:</b> 테스트 주문 1건씩 거친 뒤 한국 + Aurora 고객이 이미 있는 2–3개 시장(인도·싱가포르·미국 후보). 미국은 소액 면세 중단(2025-08-29)에 따라 결제 시 관세 포함(DDP) 권장.</p></div>
+      <div class="card"><h3>채널</h3><ul class="small"><li><b>Studio 콘텐츠</b> — Aurora 100 · Global Faces 100 인터뷰·영상</li><li><b>큐레이터·인물</b> — 서면 합의된 1–2명부터</li><li><b>커뮤니티</b> — 무료 Lounge가 입구</li><li><b>브랜드 협업</b> — Work with Aurora 접수</li><li><b>유료 광고</b> — 개인정보 선택권(Your Privacy Choices)과 함께</li></ul></div>
+      <div class="note">마케팅 원칙: 근거 없는 숫자·긴급 문구·할인 비교가 금지. 협찬·수수료 관계는 공개.</div>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>12</span></div>
+</section>
+
+<!-- 13 OPS -->
+<section class="page">
+  <div class="rh"><span>11 · 운영과 기술</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Operations &amp; technology</p>
+  <h2><span class="ko-h" style="font-size:20pt">검증된 플랫폼 위에, <em>Aurora만의 경험</em></span></h2>
+  <div class="grid3 fill" style="margin-top:2mm">
+    <div class="card"><h3>커머스 — Shopify</h3><ul class="small"><li>Checkout · Payments (미국 법인 정산 완료)</li><li>Markets: 국가·통화·관세</li><li>상품 메타필드: 출고지·반품 기한·반품 불가·예외 문구 → 상품 상세에 자동 표시</li><li>정책 6종 + Aurora Entities 페이지</li><li>미리보기 테마에서 제작·검수 후 게시</li></ul></div>
+    <div class="card"><h3>커뮤니티·학습 — Tevello</h3><ul class="small"><li>커뮤니티·코호트·코스·워크숍·디지털 판매</li><li>구매 이메일 = 로그인 이메일 → 즉시 접근</li><li>권한 오류·잠긴 수업·신고까지 16개 상태 설계</li><li>모더레이션 담당·응답 시간 지정 후 공개</li></ul></div>
+    <div class="card"><h3>파트너 출고 (드롭쉬핑)</h3><ul class="small"><li>브랜드·파트너가 도시별로 출고</li><li>한 주문이 여러 상자로 올 수 있음 안내</li><li>반품은 요청 시 상품별 반품지 안내 (주소 비공개)</li><li>파손·불량 7일 내 신고, 10영업일 내 환불</li></ul></div>
+  </div>
+  <div class="grid2" style="margin-top:5mm">
+    <div class="card"><h3>콘텐츠 운영</h3><p class="small" style="margin:0">운영 보드에서 한 번 입력하면 카드·분야 페이지·검색·상태에 반영. 인물·프로그램은 메타오브젝트로 관리해 코드 없이 교체합니다.</p></div>
+    <div class="card"><h3>디자인 시스템</h3><p class="small" style="margin:0">Stage(발견)·Read(구매·학습) 두 모드, 네 세계 색, Bodoni Moda·Manrope·Pretendard, 접근성 기준(포커스·대비·대체 텍스트), 360px까지 가로 스크롤 없음.</p></div>
+  </div>
+  <div class="grid3" style="margin-top:3mm;gap:5mm"><div><img class="shot" src="../webcap/learn-1440.jpg" alt="" style="aspect-ratio:16/8.2;object-fit:cover;object-position:top"><p class="small" style="margin:1.2mm 0 0">회원 공간(Tevello) — 구매 후 첫 화면</p></div><div><img class="shot" src="../webcap/cart-1440.jpg" alt="" style="aspect-ratio:16/8.2;object-fit:cover;object-position:top"><p class="small" style="margin:1.2mm 0 0">장바구니 — 국가·수량·결제 안내</p></div><div><img class="shot" src="../webcap/order-1440.jpg" alt="" style="aspect-ratio:16/8.2;object-fit:cover;object-position:top"><p class="small" style="margin:1.2mm 0 0">주문 상태 — 세션 결제 후 ‘시간 미예약’</p></div></div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>13</span></div>
+</section>
+
+<!-- 14 ORG & LEGAL -->
+<section class="page">
+  <div class="rh"><span>12 · 조직 · 법인 · 신뢰</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Organisation, entities &amp; trust</p>
+  <h2><span class="ko-h" style="font-size:20pt">하나의 정책, <em>여러 나라의 법인</em></span></h2>
+  <div class="grid2 fill" style="grid-template-columns:1fr 1fr">
+    <div>
+      <h3>법인 구조</h3>
+      <table>
+        <tr><th>법인</th><th style="width:34mm">형태 · 국가</th><th style="width:26mm">상태</th></tr>
+        <tr><td><b>Asia Lab Global Incorporated</b><br><span class="small">254 Chapman Rd, Ste 208 #23693, Newark, DE 19702</span></td><td>Delaware C Corporation · 미국 (2025-07-17 설립)</td><td><span class="tag tag--done">운영 · 기본 판매자</span></td></tr>
+        <tr><td>한국 사업자</td><td>한국</td><td><span class="tag tag--plan">추가 예정</span></td></tr>
+        <tr><td>인도 법인</td><td>인도</td><td><span class="tag tag--plan">추가 예정</span></td></tr>
+        <tr><td>싱가포르 법인</td><td>싱가포르</td><td><span class="tag tag--plan">추가 예정</span></td></tr>
+      </table>
+      <p class="small" style="margin-top:3mm">약관·정책의 ‘Aurora’는 <b>주문 확인서에 판매자로 표시된 Aurora 법인</b>을 뜻합니다. 법인이 늘면 Aurora Entities 페이지에 한 줄을 더하면 되고, 약관을 다시 쓰지 않습니다. 준거법은 판매 법인 설립지, 소비자는 거주국 보호 유지.</p>
+    </div>
+    <div>
+      <h3>역할</h3>
+      <table>
+        <tr><td style="width:36mm"><b>Founder &amp; CEO</b></td><td>최종 결정 — 브랜드·법인·가격·시장·사람과 권리. 27년 영화·드라마·엔터테인먼트 경험</td></tr>
+        <tr><td><b>수석 디자인</b></td><td>목업·디자인 시스템·기획서·화면 검수</td></tr>
+        <tr><td><b>Codex 기획·제작</b></td><td>구조 검토, Shopify 테마·앱 연결</td></tr>
+        <tr><td><b>마케터</b></td><td>출시 메시지·채널·광고 픽셀</td></tr>
+        <tr><td><b>운영</b></td><td>주문·배송·환불·모더레이션·문의 (contact@auroracurate.com)</td></tr>
+        <tr><td><b>법무·세무 자문</b></td><td>정책, FTC 공개 문구, 판매세, 관세 — 푸터 검토 완료</td></tr>
+      </table>
+      <h3 style="margin-top:4mm">신뢰 장치</h3>
+      <p class="small" style="margin:0">정책 6종(Terms · Refund · Shipping · Subscription · Contact · Entities) · 상품별 반품 조건 · Your Privacy Choices · 관계 공개 · 샘플 표기 · 근거 없는 숫자 금지.</p>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>14</span></div>
+</section>
+
+<!-- 15 ROADMAP -->
+<section class="page stage">
+  <div class="rh"><span>13 · 로드맵</span><span>Aurora</span></div>
+  <p class="eyebrow">Roadmap</p>
+  <h2 style="color:#fff">완료 기준으로 넘어가는 <em>여덟 단계 제작</em></h2>
+  <p class="lede" style="margin-bottom:5mm">날짜가 아니라 완료 기준으로 진행합니다. 일정은 대표 결정 후 채웁니다.</p>
+  <div class="grid4" style="row-gap:5mm">
+    <div class="card"><div class="stepnum">01</div><h3 style="color:#fff">공통</h3><p class="small" style="margin:0">헤더·길잡이 막대·푸터·토큰<br><b style="color:var(--mist)">완료:</b> 360px 가로 스크롤 0</p></div>
+    <div class="card"><div class="stepnum">02</div><h3 style="color:#fff">Home</h3><p class="small" style="margin:0">11개 섹션<br><b style="color:var(--mist)">완료:</b> 5초 테스트 5명 중 4명</p></div>
+    <div class="card"><div class="stepnum">03</div><h3 style="color:#fff">Shop</h3><p class="small" style="margin:0">상품(실물·세션)·장바구니<br><b style="color:var(--mist)">완료:</b> 테스트 주문 1건 이행</p></div>
+    <div class="card"><div class="stepnum">04</div><h3 style="color:#fff">Community</h3><p class="small" style="margin:0">프로그램·Tevello 연결<br><b style="color:var(--mist)">완료:</b> 구매→첫 수업 열림</p></div>
+    <div class="card"><div class="stepnum">05</div><h3 style="color:#fff">Studio</h3><p class="small" style="margin:0">기사·연결 메타필드<br><b style="color:var(--mist)">완료:</b> 실제 관계만 표시</p></div>
+    <div class="card"><div class="stepnum">06</div><h3 style="color:#fff">Curators</h3><p class="small" style="margin:0">프로필 메타오브젝트<br><b style="color:var(--mist)">완료:</b> 두 데이터 세트 정직</p></div>
+    <div class="card"><div class="stepnum">07</div><h3 style="color:#fff">협업·About</h3><p class="small" style="margin:0">About·Help·Work with Aurora·Projects<br><b style="color:var(--mist)">완료:</b> 폼 접수 메일</p></div>
+    <div class="card"><div class="stepnum">08</div><h3 style="color:#fff">오픈</h3><p class="small" style="margin:0">정책 게시·이메일·최종 QA<br><b style="color:var(--mist)">완료:</b> 오픈 체크리스트 통과</p></div>
+  </div>
+  <p class="small" style="margin-top:5mm">이후: 실물 시장 확대 → 멤버십 → Fund · Together 개시 → Shop Live → 한국·인도·싱가포르 법인별 판매.</p>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>15</span></div>
+</section>
+
+<!-- 16 KPIs -->
+<section class="page">
+  <div class="rh"><span>14 · 성과 지표</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Measurement</p>
+  <h2><span class="ko-h" style="font-size:20pt">네 개의 문마다, <em>다음 문으로 넘어가는 비율</em></span></h2>
+  <p class="lede" style="margin-bottom:4mm">목표 수치는 출시 후 실제 데이터로 정합니다. 지금 정하는 것은 무엇을 재는가입니다.</p>
+  <div class="grid4 fill">
+    <div class="card c-studio door"><span class="num">1</span><h3 style="margin-top:3mm">Studio</h3><ul class="small"><li>이야기 읽기 완료율</li><li>기사 끝 연결 클릭률</li><li>Aurora 100 · Global Faces 100 재방문</li></ul></div>
+    <div class="card c-curators door"><span class="num">2</span><h3 style="margin-top:3mm">Curators</h3><ul class="small"><li>프로필 → Studio·Community·Shop 이동률</li><li>협업 제안 접수 수와 수락률</li><li>추천 상품 전환율</li></ul></div>
+    <div class="card c-community door"><span class="num">3</span><h3 style="margin-top:3mm">Community</h3><ul class="small"><li>Lounge 가입 → 첫 글</li><li>프로그램 상세 → 결제</li><li>결제 → 첫 수업 열림, 수료율</li></ul></div>
+    <div class="card c-shop door"><span class="num">4</span><h3 style="margin-top:3mm">Shop</h3><ul class="small"><li>상품 상세 → 장바구니 → 결제</li><li>국가별 주문·관세 이슈</li><li>반품·환불률, 재구매</li></ul></div>
+  </div>
+  <div class="grid3" style="margin-top:5mm">
+    <div class="kpi"><h3>북극성 지표</h3><p class="small" style="margin:0">한 고객이 거친 문의 수 — 두 개 이상의 문을 지나 구매한 고객 비율</p></div>
+    <div class="kpi" style="--w:var(--emb)"><h3>오픈 첫 판매 흐름</h3><p class="small" style="margin:0">Lounge 가입 → Entry Session 예약 → Training 신청까지의 단계별 전환</p></div>
+    <div class="kpi" style="--w:var(--cos)"><h3>신뢰 지표</h3><p class="small" style="margin:0">정책·배송 문의 비율, 분쟁(chargeback), 신고 처리 시간</p></div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>16</span></div>
+</section>
+
+<!-- 17 FINANCE -->
+<section class="page">
+  <div class="rh"><span>15 · 재무 구조</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Financial framework</p>
+  <h2><span class="ko-h" style="font-size:20pt">숫자는 확정 후에, <em>틀은 지금</em></span></h2>
+  <p class="lede" style="margin-bottom:4mm">이 계획서에는 확인되지 않은 매출 전망을 넣지 않습니다. 아래 틀에 대표님이 확정한 가격·원가·목표를 넣어 재무 모델을 완성합니다.</p>
+  <div class="grid2 fill">
+    <div>
+      <h3>수익 단위 (Unit economics)</h3>
+      <table>
+        <tr><th>수익 흐름</th><th>단가</th><th>원가·수수료</th><th>공헌이익</th></tr>
+        <tr><td>1:1 세션</td><td>US$99 (Entry)</td><td>전문가 시간 · 결제 수수료</td><td class="small">대표 입력</td></tr>
+        <tr><td>코호트·코스</td><td>Price set at launch</td><td>강사 · Tevello · 수수료</td><td class="small">대표 입력</td></tr>
+        <tr><td>실물 (파트너 출고)</td><td>Shopify 판매가</td><td>공급가 · 배송 · 관세 · 반품</td><td class="small">대표 입력</td></tr>
+        <tr><td>디지털</td><td>—</td><td>제작비(1회) · 수수료</td><td class="small">대표 입력</td></tr>
+        <tr><td>멤버십</td><td>—</td><td>운영 · 콘텐츠</td><td class="small">대표 입력</td></tr>
+        <tr><td>경험</td><td>—</td><td>호스트 배분 · 현장비</td><td class="small">대표 입력</td></tr>
+        <tr><td>브랜드 협업</td><td>계약별</td><td>제작비</td><td class="small">대표 입력</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>비용 구조</h3>
+      <table>
+        <tr><th>구분</th><th>항목</th></tr>
+        <tr><td><b>플랫폼</b></td><td>Shopify 플랜·앱, Tevello, 도메인·이메일</td></tr>
+        <tr><td><b>콘텐츠 제작</b></td><td>인터뷰·촬영·편집, Aurora 100 · Global Faces 100 제작</td></tr>
+        <tr><td><b>사람</b></td><td>운영·모더레이션·고객 응대, 프로그램 강사·호스트</td></tr>
+        <tr><td><b>마케팅</b></td><td>광고, 큐레이터·인물 협업</td></tr>
+        <tr><td><b>법무·세무</b></td><td>미국 법무 검토, 판매세·관세, 상표, 신규 법인 설립</td></tr>
+        <tr><td><b>결제·물류</b></td><td>결제 수수료, 관세(DDP 시), 반품</td></tr>
+      </table>
+      <p class="note" style="margin-top:4mm">재무 모델 완성에 필요한 입력: 프로그램 가격·환불 기간, 실물 공급가와 출시 가격, 관세 방식, 월 운영비, 콘텐츠 제작 계획.</p>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>17</span></div>
+</section>
+
+<!-- 18 RISKS -->
+<section class="page">
+  <div class="rh"><span>16 · 위험과 대응</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Risks</p>
+  <h2><span class="ko-h" style="font-size:20pt">미리 보고, <em>구조로 막는다</em></span></h2>
+  <table style="margin-top:2mm">
+    <tr><th style="width:44mm">위험</th><th>내용</th><th>대응</th></tr>
+    <tr><td><b>배송·관세</b></td><td>미국 소액 면세 중단, 국가별 관세·지연</td><td>디지털·프로그램 먼저, 실물은 테스트 주문 후 시장 개방, 미국 DDP 권장, 상품별 출고지 고지</td></tr>
+    <tr><td><b>반품·분쟁</b></td><td>여러 출고지, 개봉 뷰티 상품</td><td>상품별 반품 조건 우선, 요청 시 반품지 안내, 파손 7일 신고, 10영업일 환불</td></tr>
+    <tr><td><b>신뢰·광고 규제</b></td><td>추천이 광고로 보이는 문제</td><td>실제 관계만 연결, 관계 공개(FTC), 샘플 표기, 근거 없는 숫자 금지</td></tr>
+    <tr><td><b>초상·사진 권리</b></td><td>인물 사진·인터뷰 사용 범위</td><td>인물별 승인 범위 기록 후 공개, 서면 합의된 큐레이터부터</td></tr>
+    <tr><td><b>프로그램 품질</b></td><td>강의 단위·일정·접근 오류</td><td>프로그램별 출시 단위 확정, 구매→접근 테스트, 16개 권한 상태 설계</td></tr>
+    <tr><td><b>개인정보</b></td><td>광고 픽셀, 미국 주별 개인정보법</td><td>Your Privacy Choices, GPC 신호 존중, 거부 페이지 운영</td></tr>
+    <tr><td><b>구독</b></td><td>자동갱신 규제(캘리포니아 등)</td><td>결제 전 고지·동의, 온라인 즉시 해지, 갱신 알림</td></tr>
+    <tr><td><b>다국가 확장</b></td><td>법인마다 다른 약관·세금</td><td>하나의 정책 + Aurora Entities, Shopify Markets로 법인별 분리</td></tr>
+    <tr><td><b>운영 부담</b></td><td>콘텐츠·커뮤니티·커머스 동시 운영</td><td>좁은 첫 흐름, 같은 템플릿에 하나씩 추가, 운영 보드</td></tr>
+  </table>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>18</span></div>
+</section>
+
+<!-- 19 DECISIONS -->
+<section class="page stage">
+  <div class="rh"><span>17 · 결정 사항과 다음 단계</span><span>Aurora</span></div>
+  <p class="eyebrow">Decisions &amp; next steps</p>
+  <h2 style="color:#fff">오픈까지 <em>남은 결정</em></h2>
+  <div class="grid2 fill" style="grid-template-columns:1.1fr .9fr">
+    <div>
+      <table style="color:var(--mist);font-size:9.6pt">
+        <tr><th style="color:rgba(225,224,246,.6);border-color:var(--mist)">#</th><th style="color:rgba(225,224,246,.6);border-color:var(--mist)">결정</th><th style="color:rgba(225,224,246,.6);border-color:var(--mist)">권장안</th></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">1</td><td style="border-color:rgba(225,224,246,.15)"><b>정책 게시</b></td><td style="border-color:rgba(225,224,246,.15)">원고 6종 완료 → Shopify 관리자에 붙여넣기, 스토어 이메일 contact@</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">2</td><td style="border-color:rgba(225,224,246,.15)"><b>출시 국가(실물)</b></td><td style="border-color:rgba(225,224,246,.15)">테스트 주문 후 2–3개 시장, 디지털은 전 세계</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">3</td><td style="border-color:rgba(225,224,246,.15)"><b>관세 방식</b></td><td style="border-color:rgba(225,224,246,.15)">미국은 DDP(결제 시 관세 포함)</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">4</td><td style="border-color:rgba(225,224,246,.15)"><b>실물 첫 상품·가격</b></td><td style="border-color:rgba(225,224,246,.15)">공급가·재고 확인 후 확정</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">5</td><td style="border-color:rgba(225,224,246,.15)"><b>프로그램 가격·환불</b></td><td style="border-color:rgba(225,224,246,.15)">프로그램별 공개 전 확정</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">6</td><td style="border-color:rgba(225,224,246,.15)"><b>호스트 정산</b></td><td style="border-color:rgba(225,224,246,.15)">선별·계약 기반 수익 배분, 2–3명부터</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">7</td><td style="border-color:rgba(225,224,246,.15)"><b>Community 첫 문구</b></td><td style="border-color:rgba(225,224,246,.15)">‘Where Global Voices Meet Culture’</td></tr>
+        <tr><td style="border-color:rgba(225,224,246,.15)">8</td><td style="border-color:rgba(225,224,246,.15)"><b>소셜·사진 권리</b></td><td style="border-color:rgba(225,224,246,.15)">공식 URL, 인물별 승인 범위</td></tr>
+      </table>
+    </div>
+    <div style="display:grid;gap:4mm;align-content:start">
+      <div class="card"><h3 style="color:#fff">이미 완료</h3><ul class="small"><li>미국 법인 · EIN · 정산 계좌 · 결제</li><li>슬로건 · 회사 정의 · About 소개문 확정</li><li>두 공식 IP 로고</li><li>최종 목업 26개 화면 · 기획서 8종</li><li>정책 원고 6종 · Aurora Entities 게시</li><li>푸터 법무 확인</li></ul></div>
+      <div class="card"><h3 style="color:#fff">다음 30일의 일</h3><ul class="small"><li>정책 게시 → 테스트 주문 → 5초 테스트</li><li>미리보기 테마에서 Home·Shop·Community 제작</li><li>Entry Session → Lounge → Training 흐름 검증</li></ul></div>
+    </div>
+  </div>
+  <div class="rf"><span>Aurora Business Plan 2026</span><span>19</span></div>
+</section>
+
+<!-- 20 APPENDIX -->
+<section class="page">
+  <div class="rh"><span>18 · 부록</span><img src="../../assets/brand/black-logo.png" alt=""></div>
+  <p class="eyebrow">Appendix — final screens</p>
+  <h2><span class="ko-h" style="font-size:18pt">최종 목업 — <em>Shopify 제작 기준</em></span></h2>
+  <div class="grid2" style="gap:5mm;width:78%;margin:0 auto">
+    <div><img class="shot" src="../webcap/home-1440.jpg" alt="" style="aspect-ratio:16/10;object-fit:cover;object-position:top"><p class="small" style="margin:1.5mm 0 0">Home 첫 화면 — 네 동사 제목과 네 개의 문</p></div>
+    <div><img class="shot" src="../webcap/connect-1440.jpg" alt="" style="aspect-ratio:16/10;height:auto;object-fit:cover;object-position:top"><p class="small" style="margin:1.5mm 0 0">One story. Four doors. — 첫 판매 흐름</p></div>
+  </div>
+  <div class="grid3" style="margin-top:3mm;gap:5mm;width:78%;margin-left:auto;margin-right:auto">
+    <div><img class="shot" src="../webcap/community-1440.jpg" alt=""><p class="small" style="margin:1.5mm 0 0">Community — 읽기 · 무료 참여 · 유료 프로그램</p></div>
+    <div><img class="shot" src="../webcap/shop-1440.jpg" alt=""><p class="small" style="margin:1.5mm 0 0">Shop — 상품·프로그램·프로젝트</p></div>
+    <div><img class="shot" src="../webcap/pdp-1440.jpg" alt=""><p class="small" style="margin:1.5mm 0 0">상품 상세 — 길잡이 막대, 결제</p></div>
+  </div>
+  <p class="small" style="margin-top:4mm"><b>관련 문서:</b> Aurora 오픈 통합 기획서 · AuroraCurate 통합 웹 기획서 · About · Studio · Curators · Community · Shop · 푸터·법적 고지 기획서 · 정책 원고 6종.&nbsp; <b>목업:</b> claude.ai/artifact/9S325ZyZ1nBDtVJqVAzieu</p>
+  <div class="rf"><span>Asia Lab Global Incorporated · contact@auroracurate.com</span><span>20</span></div>
+</section>
+
+</body>
+</html>
