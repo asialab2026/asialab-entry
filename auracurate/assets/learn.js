@@ -50,7 +50,7 @@
         "<h3>" + esc(o.title) + "</h3>" +
         "<p>" + esc(o.summary) + "</p>" +
         '<div class="ocard__meta">' + pill(o) +
-          (pr ? '<span class="ocard__price">' + esc(pr.text) + "</span>" : '<span class="ocard__price is-tbd">Price set at launch</span>') +
+          (pr ? '<span class="ocard__price">' + esc(pr.text) + "</span>" : '<span class="ocard__price is-tbd">' + (o.status === "application" ? "No fee to apply" : "Price set at launch") + "</span>") +
         "</div>" +
       "</div></a>";
   }
@@ -126,6 +126,25 @@
     }
   }
 
+  // FAQ that matches how this item is actually joined (free · application · purchase)
+  function faq(o) {
+    var d = function (q, a, open) { return "<details" + (open ? " open" : "") + "><summary>" + q + "</summary><p>" + a + "</p></details>"; };
+    if (o.status === "free") return d("Is it really free?", "Yes. You only need an Aurora sign-in. Nothing is charged and no card is asked for.", true) +
+      d("Where will I find it?", 'In the member area, under Communities, after you <a href="learn.html?s=signin">sign in</a>.') +
+      d("Can I read before joining?", 'You can look at example conversations first. Posting and replying need a sign-in. <a href="learn.html?s=guest-thread">Look inside</a>.');
+    if (o.status === "application") return d("Does applying give me access?", "No. Access opens only if your application is approved. Applying is not an approval, a selection or a purchase.", true) +
+      d("Is there a fee?", "There is no fee to apply." + (o.type === "cohort" ? " If you are accepted, the programme fee and dates are shown before you enrol." : "")) +
+      d("When will I hear back?", "Every application gets a reply by email. The reply time is confirmed before launch.");
+    var notOpen = o.status !== "open";
+    var where = o.type === "experience" || o.type === "workshop" ? "Asia Lab or the host emails you the date, time zone, joining link and how to change it. Your receipt is in your account." : 'In <a href="learn.html?s=home">My learning</a>, signed in with the email you used at checkout.';
+    return (notOpen ? d("When can I buy it?", o.status === "preview" ? "It isn’t on sale yet. You can read the sample lesson now; the page will show a price and a buy button once it opens." : "It isn’t on sale yet. Ask to be notified and we’ll email you when it opens.", true) : "") +
+      d("Where will I find it after buying?", where, !notOpen) +
+      (o.type === "experience" || o.type === "workshop" ? d("Is my time booked when I pay?", "Not yet. Paying secures your place; the time is booked when you confirm it by email.") :
+        d("I bought it but can’t see it.", 'Access can take a few minutes — please don’t buy again. If you used another email, <a href="learn.html?s=denied-email">follow these steps</a>.')) +
+      d("How long can I use it?", "Access period, schedule changes, downloads and recordings are set for each program and shown here before it goes on sale.") +
+      d("Can I get a refund?", 'Refund terms for each program are shown here before you buy. See <a href="help.html#returns">Returns &amp; refunds</a>.');
+  }
+
   function renderOffer() {
     var key = A.param("o");
     var o = offer(key) || OFFERS[0];
@@ -164,7 +183,9 @@
               "<div><dt>Where</dt><dd>" + esc(o.where) + "</dd></div>" +
               "<div><dt>Access</dt><dd>" + (o.type === "experience" || o.type === "workshop" ? "Joining details by email" : "Aurora member area") + "</dd></div>" +
             "</dl>" +
-            '<div class="offer__price">' + (pr ? "<b>" + esc(pr.text) + "</b><span>" + (pr.amount ? "USD · taxes shown at checkout" : "Sign-in required") + "</span>" : '<b style="font-size:1.0625rem">Price set at launch</b><span>Shown here once approved</span>') + "</div>" +
+            '<div class="offer__price">' + (pr ? "<b>" + esc(pr.text) + "</b><span>" + (pr.amount ? "USD · taxes shown at checkout" : "Sign-in required") + "</span>"
+              : o.status === "application" ? '<b style="font-size:1.0625rem">By application</b><span>No fee to apply' + (o.type === "cohort" ? " · the programme fee is shown only if you are accepted" : "") + "</span>"
+              : '<b style="font-size:1.0625rem">Price set at launch</b><span>Shown here once approved</span>') + "</div>" +
             '<div class="offer__cta">' + cta(o) + "</div>" +
             (o.fine ? '<p class="fine">' + esc(o.fine) + "</p>" : "") +
           "</div>" +
@@ -174,16 +195,13 @@
       '<div class="sheet" style="margin-top:24px">' +
         '<section class="offer-sec"><h2>What you’ll do</h2><ul class="ticks">' + (o.outcomes || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></section>" +
         (o.structure ? '<section class="offer-sec"><h2>' + (o.type === "cohort" ? "Weeks &amp; topics" : "Curriculum") + '</h2><ol class="curric">' + o.structure.map(function (x, i) {
-          return "<li><b>" + esc(x) + "</b>" + (i === 0 ? '<a href="learn.html?s=sample&o=' + esc(o.key) + '">Sample lesson</a>' : '<span class="fine">' + (o.type === "cohort" ? "Opens on schedule" : "Included") + "</span>") + "</li>";
+          return "<li><b>" + esc(x) + "</b>" + (i === 0 ? '<a href="learn.html?s=sample&o=' + esc(o.key) + '">Sample lesson</a>' : '<span class="fine">' + (o.type === "cohort" ? "Opens on schedule" : (o.status === "open" ? "Included" : "Planned")) + "</span>") + "</li>";
         }).join("") + "</ol></section>" : "") +
         '<section class="offer-sec"><h2>Who it’s for</h2><p class="muted" style="margin:0">' + esc(o.forWho) + "</p></section>" +
-        '<section class="offer-sec" id="after"><h2>What happens after you ' + (o.status === "application" ? "apply" : o.status === "free" ? "join" : "buy") + '</h2><ol class="steps-h" style="--n:' + steps.length + '">' + steps.map(function (st) {
+        '<section class="offer-sec" id="after"><h2>' + (o.status === "application" ? "What happens after you apply" : o.status === "free" ? "What happens after you join" : o.status === "open" ? "What happens after you buy" : "How it will work once it opens") + '</h2><div style="display:grid;gap:12px;min-width:0">' + (["preview", "soon", "sample"].indexOf(o.status) > -1 ? '<p class="fine" style="margin:0">Not on sale yet. These are the planned steps; nothing can be bought today.</p>' : "") + '<ol class="steps-h" style="--n:' + steps.length + '">' + steps.map(function (st) {
           return '<li><span class="sys ' + st[0].s + '">' + st[0].n + "</span><b>" + esc(st[1]) + "</b>" + esc(st[2]) + "</li>";
-        }).join("") + "</ol></section>" +
-        '<section class="offer-sec"><h2>Access &amp; help</h2><div class="faq">' +
-          '<details open><summary>Where will I find it?</summary><p>' + (o.type === "experience" || o.type === "workshop" ? "Asia Lab or the host emails you the details. Your receipt is in your account." : 'In <a href="learn.html?s=home">My learning</a>, signed in with the email you used at checkout.') + "</p></details>" +
-          '<details><summary>I bought it but can’t see it.</summary><p>Access can take a few minutes. If you used another email, <a href="learn.html?s=denied-email">follow these steps</a>.</p></details>' +
-          '<details><summary>Can I get a refund?</summary><p>Refund terms for each program are shown here before you buy, once approved. See <a href="help.html#returns">Returns &amp; refunds</a>.</p></details>' +
+        }).join("") + "</ol></div></section>" +
+        '<section class="offer-sec"><h2>Access &amp; help</h2><div class="faq">' + faq(o) +
           '<details><summary>Does joining make me a Curator or part of Aurora 100?</summary><p>No. Programs and communities are for learning and participation. Curator status and Aurora 100 are separate editorial decisions.</p></details>' +
         "</div></section>" +
         (worlds.length ? '<section class="offer-sec"><h2>Connected in Aurora</h2><div class="worlds">' + worlds.map(function (w) { return '<a href="' + esc(w[1]) + '">' + w[0] + "</a>"; }).join("") + "</div></section>" : "") +
@@ -282,7 +300,7 @@
         var owned = [offer("entertainment-builder"), offer("aurora-lounge"), offer("builder-workbook")];
         html = '<div class="app__head"><div><h2>Welcome back, Priyanka</h2><p>Pick up where you left off.</p></div><a class="link-arrow" href="community.html#market" style="color:var(--read-text)">Find more programs</a></div>' +
           '<div class="continue"><img src="' + esc(course.image) + '" alt="" style="--focal:' + esc(course.focal) + '"><div class="continue__body"><p class="kicker">Continue · <b>Course</b></p><h3>' + esc(course.title) + "</h3>" +
-            '<div class="prog"><span>Lesson 3 of 6 · Market Path</span><div class="prog__bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Your progress"><span style="width:33%"></span></div></div>' +
+            '<div class="prog"><span>Lesson 3 of 6 · Market Path <span class="sim">Planned structure</span></span><div class="prog__bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Your progress"><span style="width:33%"></span></div></div>' +
             '<div class="state__actions"><a class="btn btn--primary" href="learn.html?s=lesson">Continue lesson 3</a><a class="btn btn--secondary" href="learn.html?s=course">Course overview</a></div></div></div>' +
           '<section style="display:grid;gap:16px"><h2>My learning</h2><div class="tiles">' + owned.map(function (x) {
             var lbl = x.type === "community" ? "Community" : x.type === "digital" ? "Library" : "Course";
@@ -295,7 +313,7 @@
       }
       learnRoot.innerHTML = appFrame("home", html);
     } else if (s === "course") {
-      html = '<div class="app__head"><div><p class="kicker">Course · <b>Asia Lab</b></p><h2>' + esc(course.title) + '</h2><p>Self-paced · 1 reading lesson covering six topics in the current test course.</p></div><a class="btn btn--primary btn--sm" href="learn.html?s=lesson">Continue lesson 3</a></div>' +
+      html = '<div class="app__head"><div><p class="kicker">Course · <b>Asia Lab</b></p><h2>' + esc(course.title) + '</h2><p>Planned structure: six lessons, one per topic. The current Tevello test course holds all six topics in one reading lesson. <span class="sim">Planned structure</span></p></div><a class="btn btn--primary btn--sm" href="learn.html?s=lesson">Continue lesson 3</a></div>' +
         '<div class="lesson">' + nav(2, false) +
           '<div class="lesson__main"><article><h3>About this course</h3><p>' + esc(course.summary) + "</p>" +
             '<div class="prog"><span>2 of 6 complete</span><div class="prog__bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Your progress"><span style="width:33%"></span></div></div>' +
@@ -325,7 +343,7 @@
         "</div></div>";
       learnRoot.innerHTML = appFrame("learning", html, !sample);
     } else if (s === "pending") {
-      learnRoot.innerHTML = appFrame("learning", stateCard("state--warn", ICON.clock, "Access · <b>On its way</b>", "Your program is being added", "Your payment went through. Access usually appears within a few minutes of purchase. This page will show it as soon as it’s ready.",
+      learnRoot.innerHTML = appFrame("learning", stateCard("state--warn", ICON.clock, "Access · <b>On its way</b>", "Your program is being added", "Your payment went through and your order is saved — you don’t need to buy again. Access usually appears within a few minutes; this page shows it as soon as it’s ready.",
         '<a class="btn btn--primary" href="learn.html?s=home">Refresh My learning</a><a class="btn btn--secondary" href="help.html#access">Get help</a>',
         "<b>Still not here after 30 minutes?</b><span>Email <a href=\"mailto:" + EMAIL + "\">" + EMAIL + "</a> with your order number. <span class=\"sim\">Wait time to confirm</span></span>"));
     } else if (s === "denied-guest") {

@@ -307,7 +307,7 @@
     } else if (s === "session") {
       html = '<div class="order"><div style="display:grid;gap:20px">' +
         '<div class="state state--ok"><span class="state__icon">' + ICON.check + "</span>" +
-          '<p class="kicker">Order #1001 · <b>Session booked</b></p>' +
+          '<p class="kicker">Order #1001 · <b>Paid · time not yet booked</b></p>' +
           '<h1 class="state__title">Next, choose your time</h1>' +
           '<p class="state__body">Asia Lab will email you to schedule your private 60-minute session and send the Korea Career Entry Guide™.</p></div>' +
         '<ol class="steps-h" style="--n:3" data-note="Scheduling tool and reply time are not decided. Do not promise a response time until operations confirm it.">' +
