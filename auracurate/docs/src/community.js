@@ -1,78 +1,19 @@
-const fs = require("fs");
-const {
-  Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType,
-  HeadingLevel, AlignmentType, LevelFormat, BorderStyle, PageBreak, Footer, PageNumber,
-  TableOfContents, ExternalHyperlink, VerticalAlign
-} = require("docx");
-
-const FONT = { ascii: "Malgun Gothic", eastAsia: "Malgun Gothic", hAnsi: "Malgun Gothic", cs: "Malgun Gothic" };
-const INK = "0B0E15", MUTED = "4A4D5C", MAGENTA = "CD089C", LINE = "D9D6E6", HEAD = "F1EFF7";
-const W = 9638; // A4 content width (2 cm margins)
-const LINK = "https://claude.ai/artifact/9S325ZyZ1nBDtVJqVAzieu";
-
-// ---- helpers --------------------------------------------------------------
-const runs = (t, o = {}) => {
-  // **bold** segments
-  return String(t).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(s =>
-    s.startsWith("**") ? new TextRun({ text: s.slice(2, -2), bold: true, ...o }) : new TextRun({ text: s, ...o }));
-};
-const P = (t, o = {}) => new Paragraph({ children: runs(t, o.run), spacing: { after: 120, line: 300 }, ...o.p });
-const H1 = t => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(t)], pageBreakBefore: true });
-const H2 = t => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun(t)] });
-const H3 = t => new Paragraph({ heading: HeadingLevel.HEADING_3, children: [new TextRun(t)] });
-const B = (t, lvl = 0) => new Paragraph({ numbering: { reference: "b", level: lvl }, children: runs(t), spacing: { after: 60, line: 290 } });
-const N = (t, ref = "n") => new Paragraph({ numbering: { reference: ref, level: 0 }, children: runs(t), spacing: { after: 60, line: 290 } });
-const NOTE = t => new Paragraph({
-  children: runs(t, { size: 19, color: MUTED }), spacing: { before: 60, after: 160, line: 280 },
-  border: { left: { style: BorderStyle.SINGLE, size: 12, color: MAGENTA, space: 8 } }, indent: { left: 160 }
-});
-const SP = () => new Paragraph({ children: [], spacing: { after: 60 } });
-
-const border = { style: BorderStyle.SINGLE, size: 4, color: LINE };
-const borders = { top: border, bottom: border, left: border, right: border };
-function cell(text, w, head = false, shade = null) {
-  const paras = String(text).split("\n").map(line => new Paragraph({ children: runs(line, { size: 18, bold: head ? true : undefined, color: head ? INK : undefined }), spacing: { after: 40, line: 260 } }));
-  return new TableCell({
-    width: { size: w, type: WidthType.DXA }, borders, verticalAlign: VerticalAlign.TOP,
-    shading: head ? { fill: HEAD, type: ShadingType.CLEAR, color: "auto" } : (shade ? { fill: shade, type: ShadingType.CLEAR, color: "auto" } : undefined),
-    margins: { top: 70, bottom: 70, left: 110, right: 110 }, children: paras
-  });
-}
-function T(headers, rows, ratios) {
-  const total = ratios.reduce((a, b) => a + b, 0);
-  const widths = ratios.map(r => Math.floor(W * r / total));
-  widths[widths.length - 1] += W - widths.reduce((a, b) => a + b, 0);
-  return new Table({
-    width: { size: W, type: WidthType.DXA }, columnWidths: widths,
-    rows: [new TableRow({ tableHeader: true, children: headers.map((h, i) => cell(h, widths[i], true)) })]
-      .concat(rows.map(r => new TableRow({ children: r.map((c, i) => cell(c, widths[i], false, (i === 0 ? "FBFAFD" : null))) })))
-  });
-}
-const TBL = (...a) => [T(...a), SP()];
+const L = require("./lib");
+const { P, H1, H2, H3, B, NOTE, SP, TBL, T, LINK, LINKP } = L;
+let lastRef = null;
+const N = (t, ref = "n") => { if (ref !== lastRef) { L.newList(); lastRef = ref; } return L.N(t); };
 
 // ---- content --------------------------------------------------------------
-const cover = [
-  new Paragraph({ children: [], spacing: { before: 2200 } }),
-  new Paragraph({ children: [new TextRun({ text: "AURORA COMMUNITY", bold: true, size: 22, color: MAGENTA, characterSpacing: 60 })], spacing: { after: 200 } }),
-  new Paragraph({ children: [new TextRun({ text: "커뮤니티 생태계 기획서", bold: true, size: 56, color: INK })], spacing: { after: 160 } }),
-  new Paragraph({ children: [new TextRun({ text: "구조 · 대상별 권한 부여 방식 · 기획 의도 · 운영", size: 28, color: MUTED })], spacing: { after: 600 } }),
-  new Paragraph({ children: [new TextRun({ text: "A World Connected by Experience", italics: true, size: 26, color: INK })], spacing: { after: 80 } }),
-  new Paragraph({ children: [new TextRun({ text: "경험으로 연결되는 하나의 세계", size: 22, color: MUTED })], spacing: { after: 1400 } }),
-  T(["항목", "내용"], [
+const cover = L.cover({ kicker: "AURORA COMMUNITY", title: "커뮤니티 생태계 기획서", sub: "구조 · 대상별 권한 부여 방식 · 기획 의도 · 운영", meta: [
     ["문서", "Aurora Community 기획서 v1.1 (검토용) — Codex 기획·제작 리뷰 반영"],
     ["작성일", "2026-10-04"],
     ["작성", "수석 디자인 (Claude)"],
     ["대상", "대표님(Executive Producer), Codex 기획자, 제작자, 마케터"],
     ["기준 목업", "auroracurate.com 최종 목업 — " + LINK],
     ["상태", "디자인·구조 확정을 위한 기획서. 실제 결제, Tevello 권한, 신청 접수는 운영 검증 전입니다."]
-  ], [1, 4]),
-];
+  ] });
 
-const toc = [
-  new Paragraph({ children: [new TextRun({ text: "목차", bold: true, size: 32 })], pageBreakBefore: true, spacing: { after: 200 } }),
-  new TableOfContents("목차", { hyperlink: true, headingStyleRange: "1-2" }),
-  NOTE("Word에서 목차가 비어 보이면 목차를 마우스 오른쪽 버튼으로 눌러 ‘필드 업데이트’를 선택하세요.")
-];
+const toc = L.toc();
 
 const s1 = [
   H1("1. 한눈에 보기"),
@@ -295,7 +236,7 @@ const s6 = [
   N("승인 시에만 해당 공간 권한이 부여됩니다.", "n5"),
   H2("6.4 목업에서 확인하기"),
   P("아래 링크의 검토 허브(Review hub)에서 각 여정을 버튼 하나로 시작할 수 있습니다."),
-  new Paragraph({ children: [new ExternalHyperlink({ link: LINK, children: [new TextRun({ text: LINK, style: "Hyperlink" })] })], spacing: { after: 160 } }),
+  LINKP(LINK),
 ];
 
 const s7 = [
@@ -437,34 +378,6 @@ const s11 = [
   ], [1.8, 4.6]),
 ];
 
-// ---- document ---------------------------------------------------------------
-const doc = new Document({
-  creator: "Aurora", title: "Aurora Community 기획서", description: "커뮤니티 구조·대상별 권한 부여·기획 의도",
-  styles: {
-    default: { document: { run: { font: FONT, size: 21, color: INK } } },
-    paragraphStyles: [
-      { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
-        run: { size: 34, bold: true, font: FONT, color: INK }, paragraph: { spacing: { before: 120, after: 240 }, outlineLevel: 0,
-        border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: MAGENTA, space: 6 } } } },
-      { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
-        run: { size: 26, bold: true, font: FONT, color: INK }, paragraph: { spacing: { before: 300, after: 140 }, outlineLevel: 1 } },
-      { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
-        run: { size: 22, bold: true, font: FONT, color: MAGENTA }, paragraph: { spacing: { before: 200, after: 100 }, outlineLevel: 2 } }
-    ]
-  },
-  numbering: {
-    config: [
-      { reference: "b", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 500, hanging: 280 } } } },
-                                   { level: 1, format: LevelFormat.BULLET, text: "–", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 900, hanging: 280 } } } }] },
-      ...["n", "n2", "n3", "n4", "n5", "n6"].map(r => ({ reference: r, levels: [{ level: 0, format: LevelFormat.DECIMAL, text: "%1.", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 500, hanging: 320 } } } }] }))
-    ]
-  },
-  sections: [{
-    properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 1134, bottom: 1134, left: 1134, right: 1134 } } },
-    footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [
-      new TextRun({ text: "Aurora Community 기획서 · ", size: 16, color: MUTED }), new TextRun({ children: [PageNumber.CURRENT], size: 16, color: MUTED })] })] }) },
-    children: [...cover, ...toc, ...s1, ...s2, ...s3, ...s4, ...s5, ...s6, ...s7, ...s8, ...s9, ...s10, ...s105, ...s11]
-  }]
-});
-
-Packer.toBuffer(doc).then(buf => { fs.writeFileSync(process.argv[2] || "Aurora_Community_Plan.docx", buf); console.log("written"); });
+const CONTENT = [...s1, ...s2, ...s3, ...s4, ...s5, ...s6, ...s7, ...s8, ...s9, ...s10, ...s105, ...s11];
+module.exports = CONTENT;
+if (require.main === module) L.build(process.argv[2] || "Aurora_Community_기획서.docx", "Aurora Community 기획서", "Aurora Community 기획서", [...cover, ...toc, ...CONTENT]);

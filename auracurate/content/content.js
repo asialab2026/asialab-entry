@@ -25,7 +25,18 @@ window.AURORA_CONTENT = {
       "Built on the belief that human creativity, experience, and possibility should never be confined by geography, Aurora brings together people, products, companies, cultures, and ideas—connecting Asia with the world and the world with Asia.",
       "Through content, collaboration, commerce, and community, Aurora transforms meaningful connections into shared experiences, new opportunities, and lasting value.",
       "Our vision is to create one connected world where different identities and cultures meet, create, and grow together."
-    ]
+    ],
+    /* 미국 법인 고지 (Shopify 공개 필수: 법인명·주소·이메일·전화).
+       값이 null이면 푸터에 "확인 필요" 자리표시가 ?review=1에서만 보이고, 실제 화면에서는 숨김.
+       Shopify 설정 > 스토어 세부정보의 값과 글자 하나까지 같아야 함. */
+    legal: {
+      entity: null,          /* 예: "Aurora Curate Inc." — 미국 법인 정식 명칭 */
+      address: null,         /* 예: "123 Example St, Suite 100, Los Angeles, CA 90000, USA" */
+      email: "aurora@auroracurate.com",
+      phone: null,           /* 예: "+1 (000) 000-0000" */
+      sellsOrSharesData: true,   /* 맞춤 광고 픽셀 사용 시 true → "Your Privacy Choices" 링크 표시 */
+      subscriptions: true        /* 멤버십·정기 결제 판매 시 true → Subscription policy 링크 표시 */
+    }
   },
 
   /* Shop 히어로 커버. null이면 오로라 텍스처 빈 상태.

@@ -76,6 +76,38 @@
     );
   }
 
+  /* Legal row — US entity (Shopify public contact + policy pages). Missing values show only in ?review=1. */
+  var L = (C.brand && C.brand.legal) || {};
+  var REVIEW = /[?&]review=1\b/.test(location.search);
+  function need(v, label) {
+    return v ? esc(v) : (REVIEW ? '<span class="legal-todo">[' + label + " · 확인 필요]</span>" : "");
+  }
+  function part(html) { return html ? "<span>" + html + "</span>" : ""; }
+  function legalRow() {
+    var links = [
+      ["/policies/privacy-policy", "Privacy Policy"],
+      ["/policies/terms-of-service", "Terms of Service"],
+      ["/policies/refund-policy", "Refund Policy"],
+      ["/policies/shipping-policy", "Shipping Policy"],
+      ["/policies/contact-information", "Contact Information"]
+    ];
+    if (L.subscriptions) links.push(["/policies/subscription-policy", "Subscription Policy"]);
+    links.push([BASE + "help.html#accessibility", "Accessibility"]);
+    var items = links.map(function (l) { return '<li><a href="' + l[0] + '">' + l[1] + "</a></li>"; }).join("");
+    if (L.sellsOrSharesData) items += '<li><a href="' + BASE + 'help.html#privacy-choices" class="privacy-choices">' +
+      '<svg width="26" height="12" viewBox="0 0 30 14" aria-hidden="true"><rect x=".5" y=".5" width="29" height="13" rx="6.5" fill="none" stroke="currentColor"/><path d="M15 .5h8a6.5 6.5 0 010 13h-8z" fill="currentColor"/><path d="M6 7l2 2 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/><path d="M19 5l4 4m0-4l-4 4" stroke="#0B0E15" stroke-width="1.4"/></svg>' +
+      "Your Privacy Choices</a></li>";
+    var mail = L.email || (C.intake && C.intake.email) || "aurora@auroracurate.com";
+    return '<div class="site-footer__legal">' +
+      '<ul class="legal-links" aria-label="Legal">' + items + "</ul>" +
+      '<address class="legal-entity">' +
+        part(need(L.entity, "US legal entity") && "Operated by " + need(L.entity, "US legal entity")) +
+        part(need(L.address, "Business address")) +
+        part('<a href="mailto:' + esc(mail) + '">' + esc(mail) + "</a>") +
+        part(L.phone ? '<a href="tel:' + esc(L.phone.replace(/[^+\d]/g, "")) + '">' + esc(L.phone) + "</a>" : need(null, "Phone")) +
+      "</address></div>";
+  }
+
   function footer() {
     var y = new Date().getFullYear();
     return (
@@ -99,14 +131,15 @@
           "</div></div>" +
           '<div><h2>Help</h2><ul>' +
             '<li><a href="' + BASE + 'help.html">Help centre</a></li>' +
-            '<li><a href="/policies/shipping-policy">Shipping</a></li>' +
+            '<li><a href="' + BASE + 'order.html">Track an order</a></li>' +
+            '<li><a href="/policies/shipping-policy">Shipping &amp; duties</a></li>' +
             '<li><a href="/policies/refund-policy">Returns &amp; refunds</a></li>' +
-            '<li><a href="/policies/privacy-policy">Privacy</a></li>' +
-            '<li><a href="/policies/terms-of-service">Terms</a></li>' +
-            '<li><a href="mailto:' + esc((C.intake && C.intake.email) || "aurora@auroracurate.com") + '">Contact</a></li>' +
+            '<li><a href="/policies/contact-information">Contact us</a></li>' +
           "</ul></div>" +
         "</div>" +
-        '<div class="site-footer__base"><span>© ' + y + " Aurora · Asia Lab</span><span><a href=\"" + BASE + "guide.html\">Design guide</a> · <a href=\"" + BASE + "review.html\">Review hub</a> · One Asia, One World</span></div>" +
+        legalRow() +
+        '<div class="site-footer__base"><span>© ' + y + " " + esc(L.entity || "Aurora") + ". All rights reserved. Aurora is a brand created by Asia Lab.</span>" +
+          "<span><a href=\"" + BASE + "guide.html\">Design guide</a> · <a href=\"" + BASE + "review.html\">Review hub</a> · One Asia, One World</span></div>" +
       "</div></footer>" +
       '<div class="edit-banner" role="status">Edit preview — slot labels are visible only with ?edit=1</div>'
     );

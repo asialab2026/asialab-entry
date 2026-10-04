@@ -1,7 +1,7 @@
-const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib");
+const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib"); const { INTEGRATED } = require("./lib");
 const C = []; const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
 
-add(cover({
+if (!INTEGRATED) add(cover({
   kicker: "AURORA CURATORS",
   title: "Curators 생태계 기획서",
   sub: "사람과 관점 · 프로필 · 협업 흐름 · 권한 · Shop으로 이어지는 신뢰",
@@ -15,7 +15,7 @@ add(cover({
     ["상태", "디자인·구조 확정용. 인물 사진 권리·협업 계약·추천 근거는 확인 전"]
   ]
 }));
-add(toc());
+if (!INTEGRATED) add(toc());
 
 add(H1("1. 한눈에 보기"),
   P("Curators는 Aurora가 **신뢰하는 사람과 그들의 관점**을 보여 주는 곳입니다. 생태계에서 Curators의 역할은 **선택의 이유를 만드는 것** — ‘누가, 왜 골랐는가’를 보여 줌으로써 Studio의 이야기와 Shop의 상품 사이에 신뢰를 놓습니다. 그 신뢰는 Curator’s Recommendation·협업 상품·Curator Highlights를 통해 Shop의 판매로 이어집니다."),
@@ -162,4 +162,5 @@ add(H1("부록. 목업 화면"),
   ], [2, 4.4])
 );
 
-build(process.argv[2] || "Aurora_Curators_기획서.docx", "Aurora Curators 기획서", "Aurora Curators 기획서", C);
+module.exports = C;
+if (require.main === module) build(process.argv[2] || "Aurora_Curators_기획서.docx", "Aurora Curators 기획서", "Aurora Curators 기획서", C);

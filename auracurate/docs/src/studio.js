@@ -1,7 +1,7 @@
-const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib");
+const { P, H1, H2, H3, B, NL, NOTE, TBL, LINK, LINKP, cover, toc, build } = require("./lib"); const { INTEGRATED } = require("./lib");
 const C = []; const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
 
-add(cover({
+if (!INTEGRATED) add(cover({
   kicker: "AURORA STUDIO",
   title: "Studio 생태계 기획서",
   sub: "이야기 · 편집 IP · 기사 · 게시 운영 · Shop으로 이어지는 구조",
@@ -15,7 +15,7 @@ add(cover({
     ["상태", "디자인·구조 확정용. 실제 블로그 필드·게시 자동화는 운영 검증 전"]
   ]
 }));
-add(toc());
+if (!INTEGRATED) add(toc());
 
 add(H1("1. 한눈에 보기"),
   P("Studio는 Aurora가 **발견한 사람과 문화의 이야기**를 인터뷰·영상·에디토리얼·오리지널 프로젝트로 보여 주는 곳입니다. 생태계에서 Studio의 역할은 **욕구를 만드는 것** — 읽고, 알고, 갖고 싶고, 경험하고 싶은 이유를 만드는 것입니다. 이 욕구는 Curators의 관점, Community의 대화, 그리고 최종적으로 Shop의 상품과 프로그램으로 이어집니다."),
@@ -174,4 +174,5 @@ add(H1("부록. 목업 화면"),
   ], [2, 4.4])
 );
 
-build(process.argv[2] || "Aurora_Studio_기획서.docx", "Aurora Studio 기획서", "Aurora Studio 기획서", C);
+module.exports = C;
+if (require.main === module) build(process.argv[2] || "Aurora_Studio_기획서.docx", "Aurora Studio 기획서", "Aurora Studio 기획서", C);

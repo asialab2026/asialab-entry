@@ -14,12 +14,20 @@ const LINK = "https://claude.ai/artifact/9S325ZyZ1nBDtVJqVAzieu";
 const runs = (t, o = {}) => String(t).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(s =>
   s.startsWith("**") ? new TextRun({ text: s.slice(2, -2), bold: true, ...o }) : new TextRun({ text: s, ...o }));
 const P = (t, o = {}) => new Paragraph({ children: runs(t, o.run), spacing: { after: 120, line: 300 } });
-const H1 = t => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(t)], pageBreakBefore: true });
+let PREFIX = "";
+const setPrefix = p => { PREFIX = p; };
+const H1 = t => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(PREFIX ? PREFIX + " · " + t : t)], pageBreakBefore: true });
+const PART = (t, sub) => [
+  new Paragraph({ children: [], pageBreakBefore: true, spacing: { before: 2600 } }),
+  new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun({ text: t, size: 48 })], border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: MAGENTA, space: 8 } } }),
+  new Paragraph({ children: [new TextRun({ text: sub, size: 24, color: MUTED })], spacing: { before: 200 } })
+];
+const INTEGRATED = !!process.env.AURORA_INTEGRATED;
 const H2 = t => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun(t)] });
 const H3 = t => new Paragraph({ heading: HeadingLevel.HEADING_3, children: [new TextRun(t)] });
 const B = (t, lvl = 0) => new Paragraph({ numbering: { reference: "b", level: lvl }, children: runs(t), spacing: { after: 60, line: 290 } });
 let listNo = 0;
-const NUMREFS = Array.from({ length: 60 }, (_, i) => "n" + i);
+const NUMREFS = Array.from({ length: 400 }, (_, i) => "n" + i);
 // numbered list: call newList() to start a fresh 1,2,3 sequence
 let cur = "n0";
 const newList = () => { cur = NUMREFS[++listNo]; return cur; };
@@ -104,4 +112,4 @@ function build(file, docTitle, footerLabel, children) {
   return Packer.toBuffer(doc).then(buf => { fs.writeFileSync(file, buf); console.log("written", file); });
 }
 
-module.exports = { P, H1, H2, H3, B, N, NL, NOTE, SP, TBL, T, LINK, LINKP, cover, toc, build };
+module.exports = { P, H1, H2, H3, B, N, NL, newList, NOTE, SP, TBL, T, LINK, LINKP, cover, toc, build, setPrefix, PART, INTEGRATED };

@@ -550,3 +550,13 @@ a.product-card:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba
   .hero-card__facts b { font-size: 1rem; }
   .hero-card__facts span { font-size: 11px; }
 }
+
+/* Footer legal row — US entity + Shopify policy pages */
+.site-footer__legal { margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--stage-line); display: grid; gap: var(--space-4); }
+.legal-links { display: flex !important; flex-wrap: wrap; gap: var(--space-2) var(--space-5) !important; }
+.legal-links a { font-size: var(--fs-micro); letter-spacing: .04em; }
+.privacy-choices { display: inline-flex; align-items: center; gap: 6px; }
+.legal-entity { font-style: normal; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); font-size: var(--fs-micro); letter-spacing: .04em; }
+.legal-todo { color: var(--solar-ember, #E6733A); border-bottom: 1px dashed currentColor; }
+.site-footer__legal + .site-footer__base { margin-top: var(--space-5); }
+.legal-entity a, .site-footer__base a { font-size: inherit; }

@@ -1,9 +1,9 @@
-const { P, H1, H2, H3, B, NL, NOTE, TBL, T, LINK, LINKP, cover, toc, build } = require("./lib");
+const { P, H1, H2, H3, B, NL, NOTE, TBL, T, LINK, LINKP, cover, toc, build } = require("./lib"); const { INTEGRATED } = require("./lib");
 
 const C = [];
 const add = (...x) => x.forEach(i => Array.isArray(i) ? C.push(...i) : C.push(i));
 
-add(cover({
+if (!INTEGRATED) add(cover({
   kicker: "AURORA SHOP · MASTER PLAN",
   title: "Shop 생태계 통합 기획서",
   sub: "Studio · Curators · Community가 모이는 곳 — 구조 · 상품 · 구매 · 권한 · 운영",
@@ -17,7 +17,7 @@ add(cover({
     ["상태", "디자인·구조 확정용 기획서. 실제 결제·배송·국가·Tevello 권한·신청 접수는 운영 검증 전"]
   ]
 }));
-add(toc());
+if (!INTEGRATED) add(toc());
 
 /* 1 ------------------------------------------------------------------ */
 add(H1("1. 한눈에 보기"),
@@ -384,4 +384,5 @@ add(H1("부록. 목업 화면 대응표와 관계 문서"),
   ], [2, 4.4])
 );
 
-build(process.argv[2] || "Aurora_Shop_기획서.docx", "Aurora Shop 생태계 통합 기획서", "Aurora Shop 통합 기획서", C);
+module.exports = C;
+if (require.main === module) build(process.argv[2] || "Aurora_Shop_기획서.docx", "Aurora Shop 생태계 통합 기획서", "Aurora Shop 통합 기획서", C);
