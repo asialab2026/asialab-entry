@@ -23,7 +23,7 @@ add(H1("1. 한눈에 보기"),
     "**어떻게:** 법인 정보는 content.js의 brand.legal 한 곳에서 관리합니다. 비어 있는 값은 실제 화면에서 숨기고, ?review=1 에서만 주황색 ‘확인 필요’로 보입니다.",
     "**왜:** Shopify 정책 위반, 결제 계정 보류, 소비자 분쟁을 미리 막고, 해외 고객에게 신뢰를 주기 위해서입니다."
   ]),
-  NOTE("법인명·주소·전화·EIN 등은 현재 확인되지 않았습니다. 이 문서의 대괄호 [ ] 값은 모두 대표님 확정이 필요합니다.")
+  NOTE("2026-10-04 확인: 판매 법인은 Asia Lab Global Incorporated(Delaware C Corporation, 2025-07-17 설립). 주소는 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA로 Shopify 스토어 주소와 같습니다. EIN과 정산 계좌는 대표님이 등록을 확인했습니다. 남은 대괄호 [ ] 값만 확정이 필요합니다.")
 );
 
 add(H1("2. Shopify 필수 기재사항 (확인 결과)"),
@@ -46,8 +46,8 @@ add(H1("3. 푸터 구조 (목업 반영 완료)"),
     ["1. 브랜드", "Aurora — Created by Asia Lab 로크업 · 슬로건 · 회사 정의", "‘Created by Asia Lab’이 허용되는 두 곳 중 하나"],
     ["2. 탐색", "Aurora (Studio · Curators · Community · Shop · Fund·Together·Made for You · Nine Tails · About) / Work with Aurora (Partners · Curators · Contributors) / Help (Help centre · Track an order · Shipping & duties · Returns & refunds · Contact us)", "기존 4열 유지"],
     ["3. 정책 링크", "Privacy Policy · Terms of Service · Refund Policy · Shipping Policy · Contact Information · Subscription Policy* · Accessibility · Your Privacy Choices*", "*조건부 표시 (설정값)"],
-    ["4. 법인 고지", "Operated by [미국 법인명] · [사업장 주소] · aurora@auroracurate.com · [전화]", "값이 없으면 숨김, ?review=1에서 ‘확인 필요’"],
-    ["5. 저작권", "© 2026 [미국 법인명]. All rights reserved. Aurora is a brand created by Asia Lab.", "법인명 미정 시 ‘Aurora’"]
+    ["4. 법인 고지", "Operated by Asia Lab Global Incorporated · 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA · aurora@auroracurate.com · [전화]", "값이 없으면 숨김, ?review=1에서 ‘확인 필요’"],
+    ["5. 저작권", "© 2026 Asia Lab Global Incorporated. All rights reserved. Aurora is a brand created by Asia Lab.", "목업 반영 완료"]
   ], [1.2, 3.6, 1.6]),
   H2("3.1 관리 위치"),
   P("content/content.js → brand.legal { entity, address, email, phone, sellsOrSharesData, subscriptions }. Shopify 테마로 옮길 때는 테마 설정(Theme settings)의 같은 이름 필드로 바꾸고, 가능하면 Shopify의 shop 객체(법인명·주소)를 그대로 읽어 이중 입력을 없앱니다."),
@@ -115,7 +115,7 @@ add(H1("6. Shopify 관리자 설정 체크리스트"),
     ["5", "설정 → 마켓", "판매 국가, 통화, 관세·수입세 (DDP 여부)"],
     ["6", "설정 → 세금 및 관세", "미국 판매세 등록 주, 관세 계산"],
     ["7", "설정 → 알림", "이메일 발신 주소, 푸터 법인 주소"],
-    ["8", "설정 → 결제", "Shopify Payments 미국 법인 정보, EIN, 정산 계좌"],
+    ["8", "설정 → 결제", "Shopify Payments 미국 법인 정보, EIN, 정산 계좌 — 대표님 등록 확인(2026-10-04)"],
     ["9", "온라인 스토어 → 테마", "푸터 법인 줄·정책 링크 (MAIN 테마에 직접 쓰지 않고 미리보기 테마에서 검수 후 게시)"],
     ["10", "앱 (Tevello · 리뷰 · 구독)", "각 앱의 개인정보·구독 설정이 정책 문구와 일치"]
   ], [0.3, 2, 4.1])
@@ -136,7 +136,7 @@ add(H1("7. Help 페이지 연결"),
 
 add(H1("8. 결정 사항"),
   TBL(["#", "결정할 것", "권장안"], [
-    ["1", "미국 법인 정식 명칭과 주소", "스토어 세부정보·푸터·정책·이메일에 동일 표기"],
+    ["1", "Shopify 정책 4종 작성·게시 (Refund · Terms · Shipping · Contact information)", "현재 스토어에는 Privacy policy만 있음 — 오픈 전 필수"],
     ["2", "고객 전화번호 공개", "Shopify 요건 — 전용 고객 번호 권장"],
     ["3", "관세 방식", "미국 고객은 DDP(결제 시 관세 포함) 권장 — 수령 시 추가 비용 분쟁 예방"],
     ["4", "맞춤 광고 픽셀 사용", "사용 시 Your Privacy Choices 유지"],
@@ -159,8 +159,8 @@ add(H1("9. 오픈 전 검증"),
 
 add(H1("10. 문구 초안 (영문 · 법무 검토용)"),
   TBL(["위치", "초안"], [
-    ["저작권 줄", "© 2026 [Legal entity name]. All rights reserved. Aurora is a brand created by Asia Lab."],
-    ["법인 줄", "Operated by [Legal entity name] · [Street, City, State ZIP, USA] · aurora@auroracurate.com · [+1 phone]"],
+    ["저작권 줄", "© 2026 Asia Lab Global Incorporated. All rights reserved. Aurora is a brand created by Asia Lab."],
+    ["법인 줄", "Operated by Asia Lab Global Incorporated · 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA · [문의 이메일] · [공개용 전화]"],
     ["관계 공개 (큐레이터)", "Paid partnership with Aurora. / Aurora may earn a commission from purchases."],
     ["멤버십 고지", "Renews automatically every [period] at [price] until you cancel. Cancel anytime in your account."],
     ["개인정보 선택", "You can opt out of the sale or sharing of your personal information for targeted advertising."]

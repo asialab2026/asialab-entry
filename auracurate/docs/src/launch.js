@@ -87,8 +87,8 @@ add(PART("VII부 · 오픈 체크리스트", "모든 결정 · 설정 · 검증�
 add(H1("1. 대표님 결정 통합표"),
   P("각 부의 결정 사항을 모았습니다. 권장안은 각 부 본문에 있습니다."),
   TBL(["#", "영역", "결정할 것", "막히는 것"], [
-    ["1", "법인", "미국 법인 정식 명칭 · 주소 · 고객 전화", "Shopify 공개 요건, 푸터, 이메일"],
-    ["2", "법인", "Shopify Payments 미국 법인·EIN·정산 계좌", "결제"],
+    ["1", "정책", "Refund · Terms · Shipping · Contact information 정책 작성·게시 (스토어에 Privacy만 있음)", "Shopify 이용약관 요건, 체크아웃"],
+    ["2", "연락처", "공개용 고객 전화 · 문의 이메일 통일 (global@asialab.world / aurora@auroracurate.com)", "Shopify 공개 요건, 푸터, 개인정보 처리방침"],
     ["3", "Shop", "출시 국가 (실물 / 디지털·프로그램)", "Markets, 배송 정책"],
     ["4", "Shop", "관세 방식 (미국 DDP 권장)", "배송 정책, 체크아웃"],
     ["5", "Shop", "첫 판매 흐름과 출시 가격", "소프트 오픈"],
@@ -104,7 +104,7 @@ add(H1("1. 대표님 결정 통합표"),
     ["15", "Curators", "Curator’s Recommendation 근거, FTC 관계 공개 문구", "추천 상품"],
     ["16", "About", "Asia Lab·소셜 공식 URL, 상표 표기(™/®)", "About, 푸터"]
   ], [0.3, 0.9, 3, 2.2]),
-  NOTE("이미 확정: 슬로건·회사 정의·About 소개문(2026-10-03), Global Faces 100 단독 마크, ‘Help shape Aurora 100’은 의견 수집으로 유지하고 공식 추천·심사는 ACC가 담당(2026-10-04).")
+  NOTE("확인 완료(2026-10-04): 판매 법인 Asia Lab Global Incorporated(Delaware C Corporation), 주소 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702 — Shopify 스토어 주소와 일치, EIN·정산 계좌·결제 등록 완료(대표님 확인). 이미 확정: 슬로건·회사 정의·About 소개문(2026-10-03), Global Faces 100 단독 마크, ‘Help shape Aurora 100’은 의견 수집으로 유지하고 공식 추천·심사는 ACC가 담당(2026-10-04).")
 );
 add(H1("2. 오픈 전 필수 검증 시나리오"),
   TBL(["#", "시나리오", "통과 기준"], [

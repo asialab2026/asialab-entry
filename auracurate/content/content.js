@@ -30,10 +30,10 @@ window.AURORA_CONTENT = {
        값이 null이면 푸터에 "확인 필요" 자리표시가 ?review=1에서만 보이고, 실제 화면에서는 숨김.
        Shopify 설정 > 스토어 세부정보의 값과 글자 하나까지 같아야 함. */
     legal: {
-      entity: null,          /* 예: "Aurora Curate Inc." — 미국 법인 정식 명칭 */
-      address: null,         /* 예: "123 Example St, Suite 100, Los Angeles, CA 90000, USA" */
+      entity: "Asia Lab Global Incorporated",   /* Delaware C Corporation (설립 2025-07-17) */
+      address: "254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA",   /* Shopify 스토어 주소와 동일 */
       email: "aurora@auroracurate.com",
-      phone: null,           /* 예: "+1 (000) 000-0000" */
+      phone: null,           /* Shopify 스토어 전화 비어 있음 — 공개용 고객 번호 확정 후 입력 */
       sellsOrSharesData: true,   /* 맞춤 광고 픽셀 사용 시 true → "Your Privacy Choices" 링크 표시 */
       subscriptions: true        /* 멤버십·정기 결제 판매 시 true → Subscription policy 링크 표시 */
     }
