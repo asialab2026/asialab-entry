@@ -56,7 +56,7 @@ add(H1("2. 기획 의도"),
   H2("2.2 Shop이 파는 것"),
   TBL(["판매 대상", "예", "왜 Aurora에서 사는가"], [
     ["Ready now 실물", "OHUI, AMOREPACIFIC, BIBLIAN, EpiLynx, e.l.f., Blushimmer, Downeast", "분야와 이야기로 선택된 물건 — Aurora의 관점이 담긴 선별"],
-    ["Programs & experiences", "K-Career Entry Session, Seoul Beauty Route, 코스·코호트·워크숍·디지털", "한국·아시아로 가는 실질적인 다음 걸음"],
+    ["Programs & experiences", "K-Career Entry Session, Seoul Beauty Route, 코스·코호트·워크숍·디지털", "아시아와 세계를 오가는 실질적인 다음 걸음 (첫 흐름: 한국·아시아에서 일하려는 세계의 인재)"],
     ["Fund", "오리지널 영상·에디션 제작 후원", "만들어지는 과정에 참여"],
     ["Together", "그룹 주문(최소 인원 달성 시 진행)", "함께 고르는 릴리스"],
     ["Made for You", "맞춤 제작 의뢰", "나만의 버전을 Aurora 팀과 제작"],

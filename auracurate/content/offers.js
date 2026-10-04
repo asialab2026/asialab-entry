@@ -32,7 +32,7 @@ window.AURORA_OFFERS = [
     format: "Online community · nine topics", length: "Ongoing", where: "Aurora member area",
     href: "https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9",
     outcomes: ["A home for conversations across Entertainment, Icons, Beauty, Fashion, Hustle, Taste, Lifestyle, Travel and Wellness", "Start Here guidance and an Introductions topic", "Studio stories you can discuss with members"],
-    forWho: "Anyone with an Aurora sign-in who wants to follow and talk about Asian culture going global.",
+    forWho: "Anyone with an Aurora sign-in who wants to follow and talk about culture moving between Asia and the world.",
     links: { studio: "studio.html", field: "field.html" } },
 
   { key: "reporters-desk", type: "community", status: "application", field: "icons",
@@ -81,7 +81,7 @@ window.AURORA_OFFERS = [
     format: "Self-paced course", length: "1 reading lesson · six topics", where: "Aurora member area",
     structure: ["Identity", "Brand", "Market Path", "Content & IP", "Network & Opportunity", "90-Day Roadmap"],
     outcomes: ["Write a one-page creative self-introduction", "Outline a positioning statement", "Draft a provisional 90-day plan"],
-    forWho: "Anyone curious about building a creative career across Asia.",
+    forWho: "Anyone curious about building a creative career across Asia and the world.",
     fine: "A limited test course exists in Tevello. It is not on sale, and purchase-to-access has not been tested yet.",
     links: { field: "field.html?f=entertainment" } },
 

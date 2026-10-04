@@ -39,7 +39,8 @@ add(H1("1. 5초 안에 이해되는 Aurora"),
   P("처음 온 사람이 첫 화면에서 5초 안에 세 가지를 알아야 합니다: **Aurora가 무엇인지, 네 곳이 무엇인지, 그 네 곳이 어떻게 이어지는지.**"),
   H2("1.1 한 문장"),
   TBL(["언어", "문장"], [
-    ["쉬운 말", "Aurora는 아시아와 세계의 멋진 사람·아이디어·브랜드를 찾아서, 그 이야기를 읽고, 그 사람을 만나고, 함께 참여하고, 마음에 드는 것을 가져갈 수 있게 해 주는 곳입니다."],
+    ["방향", "Asia → World, World → Asia — 아시아를 세계로, 세계를 아시아로. 고객·브랜드·크리에이터는 전 세계 (아시아 한정 아님)"],
+    ["쉬운 말", "Aurora는 전 세계의 멋진 사람·아이디어·브랜드를 찾아 아시아는 세계로, 세계는 아시아로 이어 주고, 그 이야기를 읽고, 그 사람을 만나고, 함께 참여하고, 마음에 드는 것을 가져갈 수 있게 해 주는 곳입니다."],
     ["첫 화면 제목", "Read the story. Meet the people. Join in. Take it home."],
     ["회사 정의", "Aurora is a global production house and experience platform created by Asia Lab."],
     ["슬로건", "A World Connected by Experience — 경험으로 연결되는 하나의 세계"]

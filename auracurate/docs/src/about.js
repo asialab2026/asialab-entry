@@ -33,7 +33,8 @@ add(H1("2. 브랜드 정의 (고정)"),
     ["슬로건", "A World Connected by Experience", "로고 바로 아래 (Home · About · 푸터 · 브랜드 자료)"],
     ["대문자 표기", "A WORLD CONNECTED BY EXPERIENCE", "웹 헤더 하단, 굿즈, 배지"],
     ["국문", "경험으로 연결되는 하나의 세계", "한국어 자료"],
-    ["예비안", "Experience Beyond Borders", "대표 승인 시에만"]
+    ["예비안", "Experience Beyond Borders", "대표 승인 시에만"],
+    ["방향 (필수 원칙)", "Asia → World 그리고 World → Asia — 양방향. 고객·브랜드·크리에이터는 전 세계", "모든 문서·화면·마케팅"]
   ], [1.2, 2.8, 2.4]),
   H2("2.2 회사 정의"),
   TBL(["언어", "문장", "사용 위치"], [
@@ -52,6 +53,7 @@ add(H1("2. 브랜드 정의 (고정)"),
   B("‘Selective Production House’를 슬로건으로 사용하지 않음 (사업 형태 설명이므로)"),
   B("로고 바로 아래에 ‘Created by Asia Lab’을 두지 않음 — About과 푸터에서만"),
   B("Asia Lab의 실적을 Aurora 자체 실적으로 표기하지 않음"),
+  B("‘아시아 브랜드를 세계로’처럼 **한 방향·아시아 한정**으로 쓰지 않음 — 항상 아시아 ↔ 세계 양방향, 대상은 전 세계"),
   B("가입·구매로 성공·영향력이 보장되는 듯한 표현")
 );
 

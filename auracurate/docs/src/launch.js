@@ -30,7 +30,7 @@ add(H1("1. 한 줄 정의와 슬로건"),
     ["비전", "Our vision is to create one connected world where different identities and cultures meet, create, and grow together."],
     ["두 공식 IP", "Aurora 100 · Global Faces 100"]
   ], [1.3, 5.1]),
-  P("Aurora는 아시아와 세계를 사람 · 아이디어 · 상품 · 경험으로 잇습니다. 네 세계는 각자 다른 입구지만 **모두 Shop의 상품과 프로그램으로 이어지도록** 설계되어 있고, Shop은 이 생태계 전체를 품는 판매의 장입니다.")
+  P("Aurora는 **아시아를 세계로, 세계를 아시아로** — 양방향으로 사람 · 아이디어 · 상품 · 경험을 잇습니다. 고객과 브랜드·크리에이터는 아시아 한정이 아니라 전 세계입니다. 네 세계는 각자 다른 입구지만 **모두 Shop의 상품과 프로그램으로 이어지도록** 설계되어 있고, Shop은 이 생태계 전체를 품는 판매의 장입니다.")
 );
 add(H1("2. 생태계 지도"),
   TBL(["세계", "역할", "고객이 하는 일", "Shop으로 이어지는 방식"], [
