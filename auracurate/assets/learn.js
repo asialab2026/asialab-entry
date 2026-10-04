@@ -16,7 +16,7 @@
   var TYPES = window.AURORA_OFFER_TYPES || [];
   var STATUS = window.AURORA_OFFER_STATUS || {};
   var C = window.AURORA_CONTENT || {};
-  var EMAIL = (C.intake && C.intake.email) || "aurora@auroracurate.com";
+  var EMAIL = (C.intake && C.intake.email) || "contact@auroracurate.com";
   var LOUNGE = window.AURORA_LOUNGE || "https://auroracurate.com/a/members/community/2323d8b4-0cff-4f82-8859-4bd8eea506b9";
 
   function typeOf(id) { return TYPES.filter(function (t) { return t.id === id; })[0] || { id: id, label: id, one: id }; }

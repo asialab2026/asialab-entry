@@ -414,3 +414,16 @@
 .summary, .shipto { min-width: 0; }
 .shipto select { width: 100%; min-width: 0; text-overflow: ellipsis; }
 .app .muted, .app .lede { color: var(--read-text-2); }
+
+/* Policy pages (policy.html) — Read mode document */
+.pol-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+.pol-doc { max-width: 760px; line-height: 1.7; }
+.pol-doc h2 { font-size: 1.15rem; margin: 28px 0 8px; }
+.pol-doc ul, .pol-doc ol { padding-left: 1.2em; display: grid; gap: 6px; }
+.pol-doc table { width: 100%; border-collapse: collapse; font-size: .92rem; display: block; overflow-x: auto; }
+.pol-doc th, .pol-doc td { text-align: left; vertical-align: top; padding: 10px; border-bottom: 1px solid var(--read-line, #e3e1ec); }
+.pol-url { font-size: .82rem; color: var(--read-text-2, #555); margin: 0 0 8px; }
+.pol-url code { font-size: inherit; }
+.pol-tabs .tab[aria-current="page"] { background: var(--starlight-mist); color: var(--cosmic-midnight); border-color: var(--starlight-mist); }
+.pol-tabs .tab { text-decoration: none; display: inline-flex; align-items: center; line-height: 1.2; }
+@media (max-width: 600px) { .pol-tabs { gap: 6px; } .pol-tabs .tab { padding: 8px 12px; font-size: 12px; letter-spacing: .04em; } }

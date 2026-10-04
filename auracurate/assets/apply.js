@@ -14,7 +14,7 @@
   var esc = A.esc, $ = A.$, $all = A.$all;
   var C = window.AURORA_CONTENT || {};
   var CFG = C.intake || {};
-  var EMAIL = CFG.email || "aurora@auroracurate.com";
+  var EMAIL = CFG.email || "contact@auroracurate.com";
 
   var TYPES = {
     partners:     { label: "Partner proposal", team: "Aurora partnerships", what: "a brand, product or production collaboration" },

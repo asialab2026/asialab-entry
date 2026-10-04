@@ -14,7 +14,7 @@
   var esc = A.esc, $ = A.$, $all = A.$all, money = A.money, FIELD = A.FIELD;
   var P = window.AURORA_PRODUCTS || [];
   var C = window.AURORA_CONTENT || {};
-  var EMAIL = (C.intake && C.intake.email) || "aurora@auroracurate.com";
+  var EMAIL = (C.intake && C.intake.email) || "contact@auroracurate.com";
 
   var ICON = {
     bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 7Z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>',

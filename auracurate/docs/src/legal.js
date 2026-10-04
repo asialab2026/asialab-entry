@@ -46,7 +46,7 @@ add(H1("3. 푸터 구조 (목업 반영 완료)"),
     ["1. 브랜드", "Aurora — Created by Asia Lab 로크업 · 슬로건 · 회사 정의", "‘Created by Asia Lab’이 허용되는 두 곳 중 하나"],
     ["2. 탐색", "Aurora (Studio · Curators · Community · Shop · Fund·Together·Made for You · Nine Tails · About) / Work with Aurora (Partners · Curators · Contributors) / Help (Help centre · Track an order · Shipping & duties · Returns & refunds · Contact us)", "기존 4열 유지"],
     ["3. 정책 링크", "Privacy Policy · Terms of Service · Refund Policy · Shipping Policy · Contact Information · Subscription Policy* · Accessibility · Your Privacy Choices*", "*조건부 표시 (설정값)"],
-    ["4. 법인 고지", "Operated by Asia Lab Global Incorporated · 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA · aurora@auroracurate.com · [전화]", "값이 없으면 숨김, ?review=1에서 ‘확인 필요’"],
+    ["4. 법인 고지", "Operated by Asia Lab Global Incorporated · 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA · contact@auroracurate.com (전화는 선택)", "값이 없으면 숨김, ?review=1에서 ‘확인 필요’"],
     ["5. 저작권", "© 2026 Asia Lab Global Incorporated. All rights reserved. Aurora is a brand created by Asia Lab.", "목업 반영 완료"]
   ], [1.2, 3.6, 1.6]),
   H2("3.1 관리 위치"),
@@ -136,8 +136,8 @@ add(H1("7. Help 페이지 연결"),
 
 add(H1("8. 결정 사항"),
   TBL(["#", "결정할 것", "권장안"], [
-    ["1", "Shopify 정책 4종 작성·게시 (Refund · Terms · Shipping · Contact information)", "현재 스토어에는 Privacy policy만 있음 — 오픈 전 필수"],
-    ["2", "고객 전화번호 공개", "Shopify 요건 — 전용 고객 번호 권장"],
+    ["1", "Shopify 정책 4종 작성·게시 (Refund · Terms · Shipping · Contact information)", "기본형 초안 완료 (docs/policies, 목업 policy.html) — 검토 후 게시"],
+    ["2", "고객 전화번호", "선택. Shopify 약관 문구에는 있으나 실제 운영은 이메일 중심이 일반적 — 필요 시 저비용 미국 가상번호(음성사서함)로 충족"],
     ["3", "관세 방식", "미국 고객은 DDP(결제 시 관세 포함) 권장 — 수령 시 추가 비용 분쟁 예방"],
     ["4", "맞춤 광고 픽셀 사용", "사용 시 Your Privacy Choices 유지"],
     ["5", "멤버십 정기 결제 시점", "구독 정책과 해지 흐름 확정 후 판매"],
@@ -157,17 +157,40 @@ add(H1("9. 오픈 전 검증"),
   ])
 );
 
-add(H1("10. 문구 초안 (영문 · 법무 검토용)"),
+add(H1("10. 글로벌 다중 법인 구조 — 사업이 먼저 움직이게"),
+  P("미국 법인 외에 글로벌 법인, 한국 사업자, 인도 법인, 싱가포르 법인이 추가됩니다. 약관과 정책을 법인마다 따로 쓰지 않고, **하나의 정책 세트가 ‘그 주문의 판매 법인’을 가리키도록** 만들었습니다."),
+  TBL(["장치", "어떻게 작동하나", "법인 추가 시 할 일"], [
+    ["‘Aurora entities’ 정의", "약관·정책의 ‘we’ = 체크아웃·주문 확인 메일에 판매자로 표시된 Aurora 법인. 표시가 없으면 Asia Lab Global Incorporated", "없음"],
+    ["Aurora Entities 페이지", "법인명·형태·국가·역할·담당 시장 표 (/pages/aurora-entities)", "content.js brand.legal.entities에 한 줄 추가 → 페이지 갱신"],
+    ["준거법", "판매 법인 설립지 법 (미국 법인은 델라웨어주). 소비자는 거주국 강행 법규 보호 유지", "없음"],
+    ["주문 이관", "세금·통관·현지 배송을 위해 다른 Aurora 법인으로 주문을 옮길 수 있음 — 고객 권리는 그대로", "없음"],
+    ["개인정보", "기존 방침의 ‘계열사(affiliates)와 공유’ 조항으로 법인 간 이전 근거 확보", "운영 법인명·이메일 문구만 갱신"],
+    ["Shopify 운영", "시장별 판매 법인은 Shopify Markets(또는 별도 확장 스토어)로 분리", "법인별 결제·세금 설정"]
+  ], [1.5, 3.2, 1.7]),
+  H2("10.1 상품별 반품·배송 고지 (드롭쉬핑)"),
+  P("반품지와 출고지가 상품·도시마다 다르기 때문에, **정책은 원칙만, 구체 조건은 상품 페이지에** 둡니다. 정책에 ‘상품 페이지 조건이 우선한다’고 명시했습니다."),
+  TBL(["상품 페이지 표시", "Shopify 메타필드", "기본값 (값이 없을 때)"], [
+    ["Ships from (출고지)", "aurora.ships_from", "Korea"],
+    ["Return window (반품 기한)", "aurora.return_days", "배송 후 14일"],
+    ["Final sale (반품 불가)", "aurora.final_sale", "아니오"],
+    ["Return note (예외 문구)", "aurora.return_note", "뷰티: 미개봉만, 개봉품은 불량·파손 시만"]
+  ], [1.8, 1.8, 2.8]),
+  B("반품 주소는 공개하지 않고, 고객이 contact@auroracurate.com으로 요청하면 그 상품의 반품지를 회신합니다. Shopify가 요구하는 ‘반품 주소’ 항목은 이 절차로 충족하는 것이 일반적인 운영 방식입니다."),
+  B("목업 반영: 상품 상세의 ‘Ships from · Returns for this item’, 정책 페이지 6종 (policy.html), Shopify 붙여넣기용 HTML (docs/policies)."),
+  NOTE("법무 확인 포인트: 반품 주소를 요청 시 제공하는 방식, 준거법 조항, 법인 간 주문 이관 조항.")
+);
+
+add(H1("11. 문구 초안 (영문 · 법무 검토용)"),
   TBL(["위치", "초안"], [
     ["저작권 줄", "© 2026 Asia Lab Global Incorporated. All rights reserved. Aurora is a brand created by Asia Lab."],
-    ["법인 줄", "Operated by Asia Lab Global Incorporated · 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA · [문의 이메일] · [공개용 전화]"],
+    ["법인 줄", "Operated by Asia Lab Global Incorporated · 254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA · contact@auroracurate.com"],
     ["관계 공개 (큐레이터)", "Paid partnership with Aurora. / Aurora may earn a commission from purchases."],
     ["멤버십 고지", "Renews automatically every [period] at [price] until you cancel. Cancel anytime in your account."],
     ["개인정보 선택", "You can opt out of the sale or sharing of your personal information for targeted advertising."]
   ], [1.6, 4.8])
 );
 
-add(H1("11. 출처"),
+add(H1("12. 출처"),
   TBL(["주제", "URL"], [
     ["Shopify 정책 설정 (환불·개인정보·이용약관)", "https://help.shopify.com/en/manual/checkout-settings/refund-privacy-tos"],
     ["Shopify 소비자 보호 (공개 연락처·환불 정책 요건)", "https://help.shopify.com/en/manual/compliance/legal/consumer-protection"],
@@ -177,6 +200,7 @@ add(H1("11. 출처"),
     ["FTC 추천·보증 지침 개정 (2023-06)", "https://www.ftc.gov/news-events/news/press-releases/2023/06/federal-trade-commission-announces-updated-advertising-guides-combat-deceptive-reviews-endorsements"],
     ["FTC CAN-SPAM 안내", "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"],
     ["캘리포니아 자동갱신법 개정 AB 2863 (2025-07-01 시행) — 법률사무소 해설", "https://natlawreview.com/article/californias-auto-renewal-law-takes-effect-july-1"],
+    ["Shopify 이용약관 (4조 판매자 책임: 공개 연락처·정책)", "https://www.shopify.com/legal/terms"],
     ["CBP de minimis 중단 팩트시트 (2025-08-18 갱신)", "https://www.cbp.gov/sites/default/files/2025-08/factsheet_suspension_of_duty-free_de_minimis_treatment.pdf"],
     ["백악관 행정명령: 모든 국가 de minimis 중단", "https://www.whitehouse.gov/presidential-actions/2025/07/suspending-duty-free-de-minimis-treatment-for-all-countries/"]
   ], [2.4, 4]),

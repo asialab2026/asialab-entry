@@ -38,6 +38,18 @@
     return (p.variants && p.variants[0] && p.variants[0].image) || (p.images && p.images[0]) || p.fallbackImage || "";
   }
   function pdpURL(p) { return "product.html?p=" + encodeURIComponent(p.key); }
+  /* Item terms — ships from / return window per product (Shopify: product metafields
+     aurora.ships_from, aurora.return_days, aurora.final_sale, aurora.return_note). Overrides the policy defaults. */
+  function itemTerms(p) {
+    var D = (C.brand && C.brand.legal && C.brand.legal.returnsDefault) || { window: 14 };
+    if (p.kind === "session") return '<div data-item-terms><b>Delivery &amp; refunds</b><span>Online, no shipping. ' +
+      esc(p.refund || "Full refund before you book a time; free rescheduling up to 24 hours before.") + ' <a href="policy.html?p=refund">Refund policy</a></span></div>';
+    var days = p.returnDays || D.window, hygiene = p.field === "beauty";
+    var ret = p.finalSale ? "Final sale — returns only if damaged or faulty." :
+      (hygiene ? "Return unopened within " + days + " days of delivery. Opened items only if damaged or faulty." : "Return unused within " + days + " days of delivery.");
+    return '<div data-item-terms><b>Ships from</b><span>' + esc(p.shipsFrom || "Korea") + " · delivery estimate at checkout · <a href=\"policy.html?p=shipping\">Shipping</a></span></div>" +
+      '<div><b>Returns for this item</b><span>' + esc(p.returnNote || ret) + ' <a href="policy.html?p=refund">How returns work</a></span></div>';
+  }
 
   // Product photos are served by Shopify's CDN. If one cannot load, the frame
   // falls back to the aurora texture with the product name instead of a broken icon.
@@ -147,7 +159,7 @@
 
     var buyBlock = soon
       ? '<div class="buy"><button class="btn btn--primary" type="button" disabled>Not yet open</button>' +
-        '<a class="btn btn--secondary" href="mailto:aurora@auroracurate.com?subject=' + encodeURIComponent("Notify me — " + p.title) + '">Ask to be notified</a></div>'
+        '<a class="btn btn--secondary" href="mailto:contact@auroracurate.com?subject=' + encodeURIComponent("Notify me — " + p.title) + '">Ask to be notified</a></div>'
       : '<div class="qty" role="group" aria-label="Quantity">' +
           '<button type="button" data-q="-1" aria-label="Decrease quantity">−</button><output data-qty aria-live="polite">1</output><button type="button" data-q="1" aria-label="Increase quantity">+</button>' +
         "</div>" +
@@ -175,17 +187,16 @@
           '<p class="pdp__summary">' + esc(p.summary) + "</p>" +
           (p.includes ? '<ul class="pdp__includes">' + p.includes.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul>" : "") +
           optsHTML + buyBlock +
-          '<p class="pdp__fine">Prices in US dollars. ' + (p.kind === "session" ? "Delivered online — no shipping." : "Ships from Korea; destinations, taxes and duties are confirmed at Shopify checkout before you pay.") + ' <a href="help.html#shipping">Shipping help</a></p>' +
+          '<p class="pdp__fine">Prices in US dollars. ' + (p.kind === "session" ? "Delivered online — no shipping." : "Destinations, taxes and duties are confirmed at Shopify checkout before you pay.") + "</p>" +
           (offer ? '<p class="pdp__fine" style="color:var(--read-text-2)">Also in Community: <a href="offer.html?o=' + esc(offer.key) + '">see the full program page</a> — the same program, with what happens after you book.</p>' : "") +
           '<div class="pdp__links">' +
-            '<a href="mailto:aurora@auroracurate.com?subject=' + encodeURIComponent("Question — " + p.title) + '">Ask a question</a>' +
+            '<a href="mailto:contact@auroracurate.com?subject=' + encodeURIComponent("Question — " + p.title) + '">Ask a question</a>' +
             '<button type="button" data-share>Share</button>' +
             '<a href="' + esc(STORE.origin) + "/products/" + encodeURIComponent(p.handle) + '">View on the Shopify store</a>' +
           "</div>" +
           '<div class="trust">' +
             '<div><b>Secure checkout</b><span>Payment is handled by Shopify Checkout.</span></div>' +
-            '<div><b>Shipping</b><span><a href="/policies/shipping-policy">Shipping policy</a> · estimate at checkout</span></div>' +
-            '<div><b>Returns</b><span><a href="/policies/refund-policy">Returns &amp; refunds</a></span></div>' +
+            itemTerms(p) +
           "</div>" +
           '<div class="pdp__details">' + (p.details || []).map(function (d, i) {
             return "<details" + (i === 0 ? " open" : "") + "><summary>" + esc(d[0]) + "</summary><p>" + esc(d[1]) + "</p></details>";
@@ -277,7 +288,7 @@
     var kind = form.getAttribute("data-request-form");
     var status = $(".status", form);
     var cfg = C.intake || {};
-    var email = cfg.email || "aurora@auroracurate.com";
+    var email = cfg.email || "contact@auroracurate.com";
     function show(msg, tone) { if (!status) return; status.hidden = false; status.textContent = msg; status.setAttribute("data-tone", tone); }
     form.addEventListener("submit", function (e) {
       e.preventDefault();

@@ -32,8 +32,21 @@ window.AURORA_CONTENT = {
     legal: {
       entity: "Asia Lab Global Incorporated",   /* Delaware C Corporation (설립 2025-07-17) */
       address: "254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA",   /* Shopify 스토어 주소와 동일 */
-      email: "aurora@auroracurate.com",
+      email: "contact@auroracurate.com",
       phone: null,           /* Shopify 스토어 전화 비어 있음 — 공개용 고객 번호 확정 후 입력 */
+      /* 전화는 선택. 값이 있을 때만 푸터·Contact 정책에 표시 */
+      /* 판매 법인 목록 (Aurora Entities). 법인이 늘면 여기에 한 줄 추가 → 약관·정책·푸터가 따라감.
+         주문별 실제 판매자(seller of record)는 주문 확인 메일에 표시. */
+      entities: [
+        { name: "Asia Lab Global Incorporated", form: "Delaware C Corporation", country: "United States",
+          address: "254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA", role: "Operator of auroracurate.com and default seller", markets: "All markets unless another entity is named at checkout", since: "2025" }
+        /* 추가 예시 (설립 후 활성화):
+        { name: "[Korean business name]", form: "Korean business (사업자)", country: "Republic of Korea", registration: "[사업자등록번호]", role: "Seller for Korea", markets: "Korea" },
+        { name: "[India entity]", form: "Private Limited Company", country: "India", role: "Seller for India", markets: "India" },
+        { name: "[Singapore entity]", form: "Private Limited Company", country: "Singapore", role: "Seller for Southeast Asia", markets: "Singapore, …" } */
+      ],
+      /* 상품별 반품·배송 기본값. 상품에 returns/shipsFrom이 있으면 그 값이 우선 (Shopify에서는 상품 메타필드) */
+      returnsDefault: { window: 14, physical: "Unopened and unused items can be returned within 14 days of delivery.", hygiene: "Opened beauty and personal-care items can’t be returned unless they arrive damaged or faulty." },
       sellsOrSharesData: true,   /* 맞춤 광고 픽셀 사용 시 true → "Your Privacy Choices" 링크 표시 */
       subscriptions: true        /* 멤버십·정기 결제 판매 시 true → Subscription policy 링크 표시 */
     }
@@ -121,6 +134,6 @@ window.AURORA_CONTENT = {
   /* 협업 접수 엔드포인트. null이면 이메일 제출로 대체(접수 ≠ 승인). */
   intake: {
     endpoint: null,
-    email: "aurora@auroracurate.com"
+    email: "contact@auroracurate.com"
   }
 };

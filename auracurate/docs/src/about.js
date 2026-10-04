@@ -84,7 +84,7 @@ add(H1("5. 신뢰 정보 — 누가 운영하는가"),
   TBL(["항목", "값", "상태"], [
     ["운영 법인명", "Asia Lab Global Incorporated (Delaware C Corporation, 2025-07-17 설립)", "확인 완료 — 정관 표기 ASIA LAB GLOBAL INCORPORATED"],
     ["사업장 주소", "254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA", "확인 완료 — Shopify 스토어 주소와 일치. 우편 대행(CMRA) 주소이므로 반품 수령 가능 여부 확인"],
-    ["고객 문의 이메일", "aurora@auroracurate.com", "운영 수신 확인 필요"],
+    ["고객 문의 이메일", "contact@auroracurate.com", "확정 (2026-10-04)"],
     ["고객 문의 전화", "[공개용 번호]", "확정 필요 — Shopify 스토어 전화 비어 있음"],
     ["브랜드와 법인의 관계", "Aurora는 Asia Lab이 만든 브랜드이며 [법인]이 운영", "문구 승인 필요"],
     ["상표", "Aurora · Aurora 100 · Global Faces 100", "등록 여부 확인"]
@@ -105,7 +105,7 @@ add(H1("6. 다른 세계와의 연결"),
 add(H1("7. 상태와 결정 사항"),
   B("목업 완료: 슬로건·소개문·일하는 방식·생태계·탐색·연락"),
   TBL(["#", "결정할 것", "권장안"], [
-    ["1", "고객 전화번호와 문의 이메일 통일", "공개용 번호 1개 확정, 문의 이메일은 Shopify 값(global@asialab.world)과 사이트 값(aurora@auroracurate.com) 중 하나로 통일"],
+    ["1", "고객 전화번호와 문의 이메일 통일", "문의 이메일 contact@auroracurate.com 확정. 전화는 선택 — Shopify 스토어 이메일도 같은 주소로 변경"],
     ["2", "Asia Lab 채널 노출", "Follow Asia Lab — 공식 URL 확정 후"],
     ["3", "공식 소셜 링크", "Instagram · YouTube 공식 URL 확정 후 헤더·푸터에 같은 방식으로"],
     ["4", "상표 표기", "등록 상태에 맞게 ™/® 사용"]

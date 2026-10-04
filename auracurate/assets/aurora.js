@@ -76,7 +76,8 @@
     );
   }
 
-  /* Legal row — US entity (Shopify public contact + policy pages). Missing values show only in ?review=1. */
+  /* Legal row — operator entity + policy pages. Mockup links go to policy.html; on Shopify use the
+     native /policies/... URLs listed in content/policies.js. Missing values show only in ?review=1. */
   var L = (C.brand && C.brand.legal) || {};
   var REVIEW = /[?&]review=1\b/.test(location.search);
   function need(v, label) {
@@ -85,19 +86,20 @@
   function part(html) { return html ? "<span>" + html + "</span>" : ""; }
   function legalRow() {
     var links = [
-      ["/policies/privacy-policy", "Privacy Policy"],
-      ["/policies/terms-of-service", "Terms of Service"],
-      ["/policies/refund-policy", "Refund Policy"],
-      ["/policies/shipping-policy", "Shipping Policy"],
-      ["/policies/contact-information", "Contact Information"]
+      ["https://auroracurate.com/policies/privacy-policy", "Privacy Policy"],
+      [BASE + "policy.html?p=terms", "Terms of Service"],
+      [BASE + "policy.html?p=refund", "Refund Policy"],
+      [BASE + "policy.html?p=shipping", "Shipping Policy"],
+      [BASE + "policy.html?p=contact", "Contact Information"]
     ];
-    if (L.subscriptions) links.push(["/policies/subscription-policy", "Subscription Policy"]);
+    if (L.subscriptions) links.push([BASE + "policy.html?p=subscription", "Subscription Policy"]);
+    links.push([BASE + "policy.html?p=entities", "Aurora Entities"]);
     links.push([BASE + "help.html#accessibility", "Accessibility"]);
     var items = links.map(function (l) { return '<li><a href="' + l[0] + '">' + l[1] + "</a></li>"; }).join("");
     if (L.sellsOrSharesData) items += '<li><a href="' + BASE + 'help.html#privacy-choices" class="privacy-choices">' +
       '<svg width="26" height="12" viewBox="0 0 30 14" aria-hidden="true"><rect x=".5" y=".5" width="29" height="13" rx="6.5" fill="none" stroke="currentColor"/><path d="M15 .5h8a6.5 6.5 0 010 13h-8z" fill="currentColor"/><path d="M6 7l2 2 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/><path d="M19 5l4 4m0-4l-4 4" stroke="#0B0E15" stroke-width="1.4"/></svg>' +
       "Your Privacy Choices</a></li>";
-    var mail = L.email || (C.intake && C.intake.email) || "aurora@auroracurate.com";
+    var mail = L.email || (C.intake && C.intake.email) || "contact@auroracurate.com";
     return '<div class="site-footer__legal">' +
       '<ul class="legal-links" aria-label="Legal">' + items + "</ul>" +
       '<address class="legal-entity">' +
@@ -132,9 +134,9 @@
           '<div><h2>Help</h2><ul>' +
             '<li><a href="' + BASE + 'help.html">Help centre</a></li>' +
             '<li><a href="' + BASE + 'order.html">Track an order</a></li>' +
-            '<li><a href="/policies/shipping-policy">Shipping &amp; duties</a></li>' +
-            '<li><a href="/policies/refund-policy">Returns &amp; refunds</a></li>' +
-            '<li><a href="/policies/contact-information">Contact us</a></li>' +
+            '<li><a href="' + BASE + 'policy.html?p=shipping">Shipping &amp; duties</a></li>' +
+            '<li><a href="' + BASE + 'policy.html?p=refund">Returns &amp; refunds</a></li>' +
+            '<li><a href="' + BASE + 'policy.html?p=contact">Contact us</a></li>' +
           "</ul></div>" +
         "</div>" +
         legalRow() +

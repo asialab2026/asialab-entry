@@ -87,8 +87,8 @@ add(PART("VII부 · 오픈 체크리스트", "모든 결정 · 설정 · 검증�
 add(H1("1. 대표님 결정 통합표"),
   P("각 부의 결정 사항을 모았습니다. 권장안은 각 부 본문에 있습니다."),
   TBL(["#", "영역", "결정할 것", "막히는 것"], [
-    ["1", "정책", "Refund · Terms · Shipping · Contact information 정책 작성·게시 (스토어에 Privacy만 있음)", "Shopify 이용약관 요건, 체크아웃"],
-    ["2", "연락처", "공개용 고객 전화 · 문의 이메일 통일 (global@asialab.world / aurora@auroracurate.com)", "Shopify 공개 요건, 푸터, 개인정보 처리방침"],
+    ["1", "정책", "정책 기본형 6종 초안 완료(docs/policies) → 대표 확인·법무 검토 후 Shopify에 게시 (현재 스토어에는 Privacy만 있음)", "Shopify 이용약관 요건, 체크아웃"],
+    ["2", "연락처", "Shopify 스토어 연락 이메일을 contact@auroracurate.com으로 변경 (현재 global@asialab.world), 개인정보 처리방침의 빈 전화 문구 정리", "개인정보 처리방침, 주문 메일"],
     ["3", "Shop", "출시 국가 (실물 / 디지털·프로그램)", "Markets, 배송 정책"],
     ["4", "Shop", "관세 방식 (미국 DDP 권장)", "배송 정책, 체크아웃"],
     ["5", "Shop", "첫 판매 흐름과 출시 가격", "소프트 오픈"],
