@@ -1,0 +1,139 @@
+/* ==========================================================================
+   AURORA — Editable content (편집 슬롯)
+   CEO / 마케터가 승인한 자료만 여기에 넣습니다. 비어 있으면 화면은
+   "명시적 빈 상태"를 보여 줍니다 (회색 자리표시자 없음).
+
+   바인딩 규칙 (CLAUDE.md §4) — 넣기 전에 확인:
+   - 팔로워·인게이지먼트·순위 번호·수상 등 지표: 출처+측정 기간이 있을 때만
+   - "N명 시청 중", 카운트다운, "거의 품절" 같은 긴급성 문구 금지
+   - 콜라보·셀럽·가격: 승인된 것만. 가격/재고는 Shopify 데이터에서만
+   - 이미지: 사용권 승인된 것만. 세로 인물은 focal을 얼굴 쪽으로 (예: "50% 15%")
+   ========================================================================== */
+
+window.AURORA_CONTENT = {
+  /* 공식 슬로건 (고정 · 대표 확정 2026-10-03). 로고 바로 아래에는 슬로건만.
+     "Created by Asia Lab"은 About·푸터에서만, "Selective Production House"는 슬로건으로 쓰지 않음. */
+  brand: {
+    slogan: "A World Connected by Experience",
+    sloganKo: "경험으로 연결되는 하나의 세계",
+    definition: "Aurora is a global production house and experience platform created by Asia Lab.",
+    definitionKo: "Aurora는 Asia Lab이 만든 글로벌 프로덕션 하우스이자 경험 플랫폼입니다.",
+    /* About 소개문 (대표 확정 2026-10-03) */
+    about: [
+      "Connecting Asia and the world through people, ideas, products, and experiences.",
+      "Aurora crosses borders and connects worlds.",
+      "Built on the belief that human creativity, experience, and possibility should never be confined by geography, Aurora brings together people, products, companies, cultures, and ideas—connecting Asia with the world and the world with Asia.",
+      "Through content, collaboration, commerce, and community, Aurora transforms meaningful connections into shared experiences, new opportunities, and lasting value.",
+      "Our vision is to create one connected world where different identities and cultures meet, create, and grow together."
+    ],
+    /* 미국 법인 고지 (Shopify 공개 필수: 법인명·주소·이메일·전화).
+       값이 null이면 푸터에 "확인 필요" 자리표시가 ?review=1에서만 보이고, 실제 화면에서는 숨김.
+       Shopify 설정 > 스토어 세부정보의 값과 글자 하나까지 같아야 함. */
+    legal: {
+      entity: "Asia Lab Global Incorporated",   /* Delaware C Corporation (설립 2025-07-17) */
+      address: "254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA",   /* Shopify 스토어 주소와 동일 */
+      email: "contact@auroracurate.com",
+      phone: null,           /* Shopify 스토어 전화 비어 있음 — 공개용 고객 번호 확정 후 입력 */
+      /* 전화는 선택. 값이 있을 때만 푸터·Contact 정책에 표시 */
+      /* 판매 법인 목록 (Aurora Entities). 법인이 늘면 여기에 한 줄 추가 → 약관·정책·푸터가 따라감.
+         주문별 실제 판매자(seller of record)는 주문 확인 메일에 표시. */
+      entities: [
+        { name: "Asia Lab Global Incorporated", form: "Delaware C Corporation", country: "United States",
+          address: "254 Chapman Rd, Ste 208 #23693, Newark, DE 19702, USA", role: "Operator of auroracurate.com and default seller", markets: "All markets unless another entity is named at checkout", since: "2025" }
+        /* 추가 예시 (설립 후 활성화):
+        { name: "[Korean business name]", form: "Korean business (사업자)", country: "Republic of Korea", registration: "[사업자등록번호]", role: "Seller for Korea", markets: "Korea" },
+        { name: "[India entity]", form: "Private Limited Company", country: "India", role: "Seller for India", markets: "India" },
+        { name: "[Singapore entity]", form: "Private Limited Company", country: "Singapore", role: "Seller for Southeast Asia", markets: "Singapore, …" } */
+      ],
+      /* 상품별 반품·배송 기본값. 상품에 returns/shipsFrom이 있으면 그 값이 우선 (Shopify에서는 상품 메타필드) */
+      returnsDefault: { window: 14, physical: "Unopened and unused items can be returned within 14 days of delivery.", hygiene: "Opened beauty and personal-care items can’t be returned unless they arrive damaged or faulty." },
+      sellsOrSharesData: true,   /* 맞춤 광고 픽셀 사용 시 true → "Your Privacy Choices" 링크 표시 */
+      subscriptions: true        /* 멤버십·정기 결제 판매 시 true → Subscription policy 링크 표시 */
+    }
+  },
+
+  /* Shop 히어로 커버. null이면 오로라 텍스처 빈 상태.
+     예: { src: "assets/img/cover.jpg", alt: "…", focal: "50% 18%", credit: "Photo: …" } */
+  shopCover: { src: "assets/img/shop/hero-cover.png", alt: "Model in a pink faux-fur coat, mid-dance", kind: "cutout" },
+
+  /* Aurora Highlights — 원본 Figma 1:44/1:51/1:62의 배지 카드 3장.
+     badge: "exclusive"(Only on Aurora) | "aurora100"(Aurora 100 — 순위 번호 금지) | "curator"(Curator's Pick)
+     links 중 없는 항목은 칩이 숨겨집니다. product가 없거나 purchasable=false면 구매 버튼 비활성.
+     sub: 사실만 (예: "Pre-order opens 2026-11-01"). "Only 5 remaining" 같은 문구 금지.
+     예:
+     {
+       badge: "curator",
+       title: "…",
+       sub: "…",
+       image: { src: "assets/img/…jpg", alt: "…", focal: "50% 20%" },
+       links: { studio: "studio.html#…", curators: "curators.html#…", community: "community.html#…", product: "/products/handle" },
+       purchasable: false
+     }
+     비어 있으면 세 배지 자리가 각각 명시적 빈 상태로 보입니다. */
+  /* 원본 Figma em4c3H 1:44/1:51/1:62 이미지·제목. 가격·잔여 수량·공동구매·예약 문구는
+     실제 판매 설정이 생기기 전까지 넣지 않는다(§4). "Only 5 Remaining!" 문구는 이미지에서 잘라 냄. */
+  highlights: [
+    { badge: "exclusive", title: "Felix x Aurora", sub: "Design sample",
+      image: { src: "assets/img/shop/hl-exclusive.jpg", alt: "Felix x Aurora", focal: "50% 30%" } },
+    { badge: "aurora100", title: "Best K-Beauty 2025 Serum", sub: "Design sample",
+      image: { src: "assets/img/shop/hl-aurora100.jpg", alt: "K-beauty serums and skincare on a glass stand", focal: "50% 50%" } },
+    { badge: "curator", title: "Felix’s Favorite Off-Duty Sunglasses", sub: "Design sample",
+      image: { src: "assets/img/shop/hl-curator.jpg", alt: "Felix in black sunglasses and a black suit", focal: "50% 15%" } }
+  ],
+
+  /* Shop 선반 — 원본 Figma em4c3H "new arrivals"의 5개 선반, 이미지·제목·브랜드는 원본 그대로.
+     Ranking은 순위 번호 없이 "Editorial selection"으로 표시.
+     price·리뷰 수·잔여 수량은 Shopify 실데이터가 연결될 때만 넣는다(원본의 $가격·(4.1k) 리뷰·
+     "Only 5 Remaining" 등은 가상 수치라 제외). status: null | "sample" | "sold_out" | "preorder"
+     href를 넣으면 카드가 상품 페이지로 연결된다.
+     선반 href는 프로토타입에서 collection.html?c=<id>, 테마에서는 /collections/<handle>. */
+  shelves: [
+    { id: "experience", title: "Aurora Experience", href: "collection.html?c=experience", products: [
+      { title: "Red Carpet Makeup Masterclass", vendor: "Felix", status: "sample", image: { src: "assets/img/shop/exp-masterclass.jpg", alt: "Two friends posing close to the camera" } },
+      { title: "Felix’s Aurora India Concert", vendor: "Felix x Louis Vuitton", status: "sample", image: { src: "assets/img/shop/exp-concert.jpg", alt: "Felix singing on stage with red smoke" } },
+      { title: "Felix Edition: K-style to Global Brand", vendor: "Felix · Stray Kids", status: "sample", image: { src: "assets/img/shop/exp-felix-edition.jpg", alt: "Felix on a city street with a phone and bubble tea" } }
+    ] },
+    { id: "collaboration", title: "Collaboration", href: "collection.html?c=collaboration", products: [
+      { title: "Felix x Louis Vuitton", vendor: "Louis Vuitton", status: "sample", image: { src: "assets/img/shop/col-louis-vuitton.jpg", alt: "Felix in front of the Louis Vuitton logo", focal: "50% 15%" } },
+      { title: "Felix x CLIO", vendor: "CLIO", status: "sample", image: { src: "assets/img/shop/col-clio.jpg", alt: "Felix holding a CLIO eyeshadow palette" } },
+      { title: "Felix x ATiiSSU", vendor: "ATiiSSU", status: "sample", image: { src: "assets/img/shop/col-atiissu.jpg", alt: "Felix photo card boxes" } }
+    ] },
+    { id: "ranking", title: "Ranking", note: "Editorial selection", href: "collection.html?c=ranking", products: [
+      { title: "Best K-Beauty 2025 Foundation", vendor: "HERA", status: "sample", image: { src: "assets/img/shop/rank-foundation.jpg", alt: "Model holding a HERA cushion compact" } },
+      { title: "Aurora Top 10 Handbag", vendor: "Prada", status: "sample", image: { src: "assets/img/shop/rank-handbag.jpg", alt: "Black-and-white portrait with a Prada shoulder bag" } },
+      { title: "Aurora Top Ranking Makeup", vendor: "Rare Beauty", status: "sample", image: { src: "assets/img/shop/rank-makeup.jpg", alt: "Smiling model holding a Rare Beauty lip product" } }
+    ] },
+    { id: "curators-recommendation", title: "Curator’s Recommendation", href: "collection.html?c=curators-recommendation", products: [
+      { title: "Felix’s sunglasses", vendor: "Gentle Monster", status: "sample", image: { src: "assets/img/shop/rec-sunglasses.jpg", alt: "Felix wearing black sunglasses", focal: "50% 15%" } },
+      { title: "Zendaya x Valentino", vendor: "Valentino", status: "sample", image: { src: "assets/img/shop/rec-valentino.jpg", alt: "Zendaya in a pink Valentino outfit on a pink backdrop" } },
+      { title: "Shakira’s Summer Essential", vendor: "Shakira Beauty", status: "sample", image: { src: "assets/img/shop/rec-summer.jpg", alt: "Shakira in red for the Rojo fragrance" } }
+    ] },
+    { id: "curation", title: "Curation", href: "collection.html?c=curation", products: [
+      { title: "K-POP Star Edit – Felix Picks", vendor: "Multiple Brands (Global)", status: "sample", image: { src: "assets/img/shop/cur-kpop-edit.jpg", alt: "Felix surrounded by picks from partner brands" } },
+      { title: "Aurora’s K-Beauty Essentials", vendor: "Curated (Korea)", status: "sample", image: { src: "assets/img/shop/cur-kbeauty.jpg", alt: "K-beauty skincare products on a glass stand" } },
+      { title: "Aurora Holiday Collab Box (2025)", vendor: "Multiple Brands (Global)", status: "sample", image: { src: "assets/img/shop/cur-holiday-box.jpg", alt: "Pink holiday makeup collection with a heart compact" } }
+    ] }
+  ],
+
+  /* 입점 브랜드 (승인·계약 완료분만). 예: { name, logo: "assets/brands/x.svg", href } */
+  brands: [],
+
+  /* Shop Live (LiveMeUp). state: "none" | "scheduled" | "live" | "replay"
+     scheduled → startsAt(ISO), title / live·replay → url, title */
+  live: { state: "none" },
+
+  /* Community 멤버십 요금제 — 원본 Community 화면의 4단 요금표(Free / Plus / Pro / Founder's Circle).
+     대표님이 "구독 요금제형"으로 결정하고 요금·혜택을 승인했을 때만 채웁니다. 비어 있으면 섹션이 보이지 않습니다.
+     예: { name: "Free – Discover", price: "$0", period: "/mo", note: "", perks: ["…"], cta: { label: "Join", href: "…" }, tag: "" } */
+  communityPlans: [],
+
+  /* Fund 프로젝트 — 실제로 열린 프로젝트만. raised/goal은 실제 결제 데이터에서만.
+     예: { title, field, summary, image, goal: 20000, raised: 0, ends: "2027-01-31", href: "/products/…" } */
+  fundProjects: [],
+
+  /* 협업 접수 엔드포인트. null이면 이메일 제출로 대체(접수 ≠ 승인). */
+  intake: {
+    endpoint: null,
+    email: "contact@auroracurate.com"
+  }
+};
